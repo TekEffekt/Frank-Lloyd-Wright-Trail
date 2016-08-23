@@ -5,5 +5,6 @@ use_frameworks!
 
 target 'Frank Lloyd Wright Trail' do
 pod 'expanding-collection'
+pod 'RealmSwift'
 end
 
