@@ -4,7 +4,7 @@
 use_frameworks!
 
 target 'Frank Lloyd Wright Trail' do
-pod 'expanding-collection'
+pod 'NYTPhotoViewer', '~> 1.1.0'
 pod 'RealmSwift'
 end
 

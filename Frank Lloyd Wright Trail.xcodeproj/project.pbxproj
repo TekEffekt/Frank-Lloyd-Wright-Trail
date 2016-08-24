@@ -13,9 +13,8 @@
 		B6109DA31D528DDE002A6D77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6109DA21D528DDE002A6D77 /* Assets.xcassets */; };
 		B6109DA61D528DDE002A6D77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6109DA41D528DDE002A6D77 /* LaunchScreen.storyboard */; };
 		FA38D3B81D6A4D7E00B8073E /* Site.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA38D3B71D6A4D7E00B8073E /* Site.swift */; };
-		FA38D3BA1D6B73EB00B8073E /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA38D3B91D6B73EB00B8073E /* Query.swift */; };
-		FA38D3BC1D6B758600B8073E /* Populator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA38D3BB1D6B758600B8073E /* Populator.swift */; };
 		FAD304B11D6CD80500D8CE2F /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD304B01D6CD80500D8CE2F /* Location.swift */; };
+		FAD304B31D6D28E800D8CE2F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD304B21D6D28E800D8CE2F /* DetailViewController.swift */; };
 		FAEE90AE1D6771B5008264DC /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE90AD1D6771B5008264DC /* TabBarController.swift */; };
 		FAEE90B41D677EBB008264DC /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE90B31D677EBB008264DC /* LocationsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -31,9 +30,8 @@
 		B6109DA71D528DDE002A6D77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF68C79F7226D19F1DACC2B8 /* Pods_Frank_Lloyd_Wright_Trail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Frank_Lloyd_Wright_Trail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA38D3B71D6A4D7E00B8073E /* Site.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Site.swift; sourceTree = "<group>"; };
-		FA38D3B91D6B73EB00B8073E /* Query.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
-		FA38D3BB1D6B758600B8073E /* Populator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Populator.swift; sourceTree = "<group>"; };
 		FAD304B01D6CD80500D8CE2F /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		FAD304B21D6D28E800D8CE2F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FAEE90AD1D6771B5008264DC /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		FAEE90B31D677EBB008264DC /* LocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,11 +71,10 @@
 			children = (
 				B6109D991D528DDE002A6D77 /* AppDelegate.swift */,
 				FA38D3B71D6A4D7E00B8073E /* Site.swift */,
-				FA38D3BB1D6B758600B8073E /* Populator.swift */,
-				FA38D3B91D6B73EB00B8073E /* Query.swift */,
+				FAD304B01D6CD80500D8CE2F /* Location.swift */,
 				FAEE90AD1D6771B5008264DC /* TabBarController.swift */,
 				FAEE90B31D677EBB008264DC /* LocationsViewController.swift */,
-				FAD304B01D6CD80500D8CE2F /* Location.swift */,
+				FAD304B21D6D28E800D8CE2F /* DetailViewController.swift */,
 				B6109D9F1D528DDE002A6D77 /* Main.storyboard */,
 				B6109DA21D528DDE002A6D77 /* Assets.xcassets */,
 				B6109DA41D528DDE002A6D77 /* LaunchScreen.storyboard */,
@@ -225,13 +222,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA38D3BA1D6B73EB00B8073E /* Query.swift in Sources */,
 				B6109D9A1D528DDE002A6D77 /* AppDelegate.swift in Sources */,
 				FA38D3B81D6A4D7E00B8073E /* Site.swift in Sources */,
 				FAEE90AE1D6771B5008264DC /* TabBarController.swift in Sources */,
-				FA38D3BC1D6B758600B8073E /* Populator.swift in Sources */,
 				FAEE90B41D677EBB008264DC /* LocationsViewController.swift in Sources */,
 				FAD304B11D6CD80500D8CE2F /* Location.swift in Sources */,
+				FAD304B31D6D28E800D8CE2F /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

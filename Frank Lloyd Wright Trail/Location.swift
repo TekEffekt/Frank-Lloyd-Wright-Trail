@@ -14,12 +14,12 @@ import MapKit
 
 class Location: NSObject, MKAnnotation {
     // Don't really need the name variable
-    let name: String
+    let id: Int
     let title: String?
     let coordinate: CLLocationCoordinate2D
     
-    init(name: String, title: String?, coordinate: CLLocationCoordinate2D) {
-        self.name = name
+    init(id: Int, title: String?, coordinate: CLLocationCoordinate2D) {
+        self.id = id
         self.title = title ?? ""
         self.coordinate = coordinate
         
@@ -32,17 +32,17 @@ class Location: NSObject, MKAnnotation {
     func newPinColor() -> UIColor{
         switch title! {
         case "SC Johnson Administration Building and Research Tower" :
-            return UIColor.yellowColor()
-        case "Wingspread" :
-            return UIColor.greenColor()
-        case "Monona Terrace" :
             return UIColor.redColor()
-        case "First Unitatrian Society Meeting House" :
-            return UIColor.purpleColor()
-        case "Talisesin and Frank Lloyd Wright Visitor Center" :
+        case "Wingspread" :
             return UIColor.orangeColor()
-        case "A.D. German Warehouse" :
+        case "Monona Terrace" :
+            return UIColor.magentaColor()
+        case "First Unitatrian Society Meeting House" :
+            return UIColor.greenColor()
+        case "Talisesin and Frank Lloyd Wright Visitor Center" :
             return UIColor.blueColor()
+        case "A.D. German Warehouse" :
+            return UIColor.purpleColor()
         default :
             return UIColor.redColor()
         }
