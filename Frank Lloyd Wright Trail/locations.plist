@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>lat</key>
+		<real>42.7152375</real>
+		<key>long</key>
+		<real>-87.79288560000001</real>
+		<key>title</key>
+		<string>SC Johnson Administration Building and Research Tower</string>
+	</dict>
+	<dict>
+		<key>lat</key>
+		<real>42.784472</real>
+		<key>long</key>
+		<real>-87.7737877</real>
+		<key>title</key>
+		<string>Wingspread</string>
+	</dict>
+	<dict>
+		<key>lat</key>
+		<real>43.0717445</real>
+		<key>long</key>
+		<real>-89.38259050000001</real>
+		<key>title</key>
+		<string>Monona Terrace</string>
+	</dict>
+	<dict>
+		<key>lat</key>
+		<real>43.0757361</real>
+		<key>long</key>
+		<real>-89.43752550000001</real>
+		<key>title</key>
+		<string>First Unitatrian Society Meeting House</string>
+	</dict>
+	<dict>
+		<key>lat</key>
+		<real>43.1439006</real>
+		<key>long</key>
+		<real>-90.0617113</real>
+		<key>title</key>
+		<string>Talisesin and Frank Lloyd Wright Visitor Center</string>
+	</dict>
+	<dict>
+		<key>lat</key>
+		<real>43.3334718</real>
+		<key>long</key>
+		<real>-90.38655610000001</real>
+		<key>title</key>
+		<string>A.D. German Warehouse</string>
+	</dict>
+</array>
+</plist>

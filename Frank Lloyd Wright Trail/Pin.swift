@@ -12,17 +12,18 @@ import MapKit
 // Class so that the pin can change color based on location extends from 
 // MKAnnotation
 
-class Location: NSObject, MKAnnotation {
-    // Don't really need the name variable
-    let id: Int
-    let title: String?
-    let coordinate: CLLocationCoordinate2D
+class Pin: NSObject, MKAnnotation {
     
-    init(id: Int, title: String?, coordinate: CLLocationCoordinate2D) {
-        self.id = id
-        self.title = title ?? ""
-        self.coordinate = coordinate
-        
+    var title: String?
+    var lat: Double
+    var long: Double
+    var coordinate: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: lat, longitude: long)
+    }
+    
+    init(lat: Double, long: Double) {
+        self.lat = lat
+        self.long = long
         super.init()
     }
     

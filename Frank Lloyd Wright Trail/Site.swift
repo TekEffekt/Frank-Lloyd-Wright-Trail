@@ -15,10 +15,6 @@ struct Site {
     var subtitle = ""
     var image: UIImage?
     var details = ""
-    var hasBeenVisited = false
-    var lat = 0.0
-    var long = 0.0
-    
-    
+    var hasBeenVisited = false    
 
 }

@@ -1,30 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cc9-cf-jen">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
-        <scene sceneID="MHc-I5-PXq">
-            <objects>
-                <viewController id="xbN-IM-spS" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="VZD-2x-nUq"/>
-                        <viewControllerLayoutGuide type="bottom" id="JUC-kw-hd8"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="HoT-gn-aTM">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="hfm-Xe-CEs"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EBk-5c-qVM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="385" y="-369"/>
-        </scene>
-        <!--Item-->
+        <!--Scrapbook-->
         <scene sceneID="gX6-1R-4nf">
             <objects>
                 <viewController id="QAU-Lt-uxf" sceneMemberID="viewController">
@@ -37,11 +17,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="BjM-SI-FMt"/>
+                    <tabBarItem key="tabBarItem" title="Scrapbook" image="open-book" id="BjM-SI-FMt"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qC-Z4-soF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-427" y="281"/>
+            <point key="canvasLocation" x="-435" y="281"/>
         </scene>
         <!--Location-->
         <scene sceneID="W6Z-WJ-Lei">
@@ -55,33 +35,115 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8G7-rr-gBN">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8G7-rr-gBN">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <variation key="heightClass=compact-widthClass=compact" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="0.0" y="97" width="600" height="254"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="97" width="600" height="654"/>
+                                    <rect key="frame" x="0.0" y="97" width="400" height="654"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="0.0" y="97" width="600" height="654"/>
                                 </variation>
                             </mapView>
+                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xit-Bo-jwH">
+                                <rect key="frame" x="0.0" y="420" width="600" height="131"/>
+                                <connections>
+                                    <segue destination="0Vr-b5-rlz" kind="embed" identifier="mapView" id="MJu-wc-hLP"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="8G7-rr-gBN" firstAttribute="height" secondItem="x77-s5-c5o" secondAttribute="height" id="6Pm-no-RDZ"/>
-                            <constraint firstItem="8G7-rr-gBN" firstAttribute="width" secondItem="x77-s5-c5o" secondAttribute="width" id="A5v-JG-2DW"/>
+                            <constraint firstItem="8G7-rr-gBN" firstAttribute="height" secondItem="x77-s5-c5o" secondAttribute="height" id="7dV-zo-sEV"/>
+                            <constraint firstItem="8G7-rr-gBN" firstAttribute="width" secondItem="x77-s5-c5o" secondAttribute="width" id="Pll-eo-W3T"/>
+                            <constraint firstItem="xit-Bo-jwH" firstAttribute="width" secondItem="x77-s5-c5o" secondAttribute="width" id="QWu-rB-itX"/>
+                            <constraint firstItem="xit-Bo-jwH" firstAttribute="top" secondItem="BVr-Ba-l6L" secondAttribute="bottom" constant="356" id="ZyJ-On-1T3"/>
+                            <constraint firstAttribute="bottom" secondItem="xit-Bo-jwH" secondAttribute="bottom" constant="49" id="qvy-NP-iIs"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="TJN-ZX-pXy"/>
+                    <navigationItem key="navigationItem" title="Locations" id="TJN-ZX-pXy"/>
                     <connections>
+                        <outlet property="containerView" destination="xit-Bo-jwH" id="31x-9L-sPB"/>
                         <outlet property="mapView" destination="8G7-rr-gBN" id="bGY-xT-16j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k0b-FI-cbT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="385" y="-1018"/>
+            <point key="canvasLocation" x="384" y="-1019"/>
+        </scene>
+        <!--Collection View Controller-->
+        <scene sceneID="RD2-NG-FXs">
+            <objects>
+                <viewController id="0Vr-b5-rlz" customClass="CollectionViewController" customModule="Frank_Lloyd_Wright_Trail" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TAP-Wq-Syg"/>
+                        <viewControllerLayoutGuide type="bottom" id="9An-e4-YS4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MgU-cQ-iSK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="131"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8yk-zY-5xL">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="106"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="MIa-l8-VVT">
+                                    <size key="itemSize" width="186" height="105"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="q5f-Kh-rpn" customClass="Cell" customModule="Frank_Lloyd_Wright_Trail" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="186" height="105"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="186" height="105"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bkk-qi-lPN">
+                                                    <rect key="frame" x="0.0" y="0.0" width="186" height="105"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Caption" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYd-LR-F4K">
+                                                    <rect key="frame" x="0.0" y="68" width="186" height="37"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="caption" destination="iYd-LR-F4K" id="66e-Pd-qvL"/>
+                                            <outlet property="image" destination="bkk-qi-lPN" id="qe7-mp-DUD"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="0Vr-b5-rlz" id="9X3-oJ-0Qr"/>
+                                    <outlet property="delegate" destination="0Vr-b5-rlz" id="NwS-3l-JtK"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8yk-zY-5xL" firstAttribute="top" secondItem="TAP-Wq-Syg" secondAttribute="bottom" constant="25" id="Qez-Lf-Mbj"/>
+                            <constraint firstItem="9An-e4-YS4" firstAttribute="top" secondItem="8yk-zY-5xL" secondAttribute="bottom" id="UgL-so-0cT"/>
+                            <constraint firstItem="8yk-zY-5xL" firstAttribute="leading" secondItem="MgU-cQ-iSK" secondAttribute="leading" id="aNI-UQ-rG7"/>
+                            <constraint firstAttribute="trailing" secondItem="8yk-zY-5xL" secondAttribute="trailing" id="k3j-ci-Rh4"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="vtq-UO-h9A"/>
+                    <connections>
+                        <outlet property="collectionView" destination="8yk-zY-5xL" id="PRx-2y-L5C"/>
+                        <segue destination="4BE-hu-fJY" kind="showDetail" identifier="mapView" animates="NO" action="showViewController:sender:" id="TA0-fn-5Ma"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oS1-tr-8ty" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="384" y="-553.5"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="9Hq-iO-UQi">
@@ -144,7 +206,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="a6o-HK-4j8" kind="relationship" relationship="viewControllers" id="aYp-Jl-laR"/>
-                        <segue destination="xbN-IM-spS" kind="relationship" relationship="viewControllers" id="rL2-Rt-pVw"/>
                         <segue destination="QAU-Lt-uxf" kind="relationship" relationship="viewControllers" id="LeU-Uk-JKx"/>
                     </connections>
                 </tabBarController>
@@ -155,13 +216,23 @@
         <!--Locations-->
         <scene sceneID="h4e-8V-neS">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="a6o-HK-4j8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Locations" id="C9V-XP-YVq"/>
+                <navigationController title="Locations" automaticallyAdjustsScrollViewInsets="NO" id="a6o-HK-4j8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Locations" image="1472176520_map-location-pin-map-marker-glyph" id="C9V-XP-YVq">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="keyPath">
+                                <color key="value" red="0.50196081400000003" green="0.0" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Na8-cX-Ycu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -173,4 +244,11 @@
             <point key="canvasLocation" x="-427" y="-1018"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="1472176520_map-location-pin-map-marker-glyph" width="24" height="24"/>
+        <image name="open-book" width="24" height="24"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="TA0-fn-5Ma"/>
+    </inferredMetricsTieBreakers>
 </document>

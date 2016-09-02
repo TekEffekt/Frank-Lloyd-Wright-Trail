@@ -8,13 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		3D968D3100D7715D8590C20E /* Pods_Frank_Lloyd_Wright_Trail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF68C79F7226D19F1DACC2B8 /* Pods_Frank_Lloyd_Wright_Trail.framework */; };
-		B6109D9A1D528DDE002A6D77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6109D991D528DDE002A6D77 /* AppDelegate.swift */; };
 		B6109DA11D528DDE002A6D77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6109D9F1D528DDE002A6D77 /* Main.storyboard */; };
 		B6109DA31D528DDE002A6D77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6109DA21D528DDE002A6D77 /* Assets.xcassets */; };
 		B6109DA61D528DDE002A6D77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6109DA41D528DDE002A6D77 /* LaunchScreen.storyboard */; };
 		FA38D3B81D6A4D7E00B8073E /* Site.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA38D3B71D6A4D7E00B8073E /* Site.swift */; };
-		FAD304B11D6CD80500D8CE2F /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD304B01D6CD80500D8CE2F /* Location.swift */; };
+		FAAF70C41D74A39400515DBD /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF70C31D74A39400515DBD /* Cell.swift */; };
+		FAAF70C81D7500A000515DBD /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF70C71D7500A000515DBD /* Item.swift */; };
+		FAAF70CC1D77675B00515DBD /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF70CB1D77675B00515DBD /* CollectionViewController.swift */; };
+		FAD304B11D6CD80500D8CE2F /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD304B01D6CD80500D8CE2F /* Pin.swift */; };
 		FAD304B31D6D28E800D8CE2F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD304B21D6D28E800D8CE2F /* DetailViewController.swift */; };
+		FAD304BB1D6F66B500D8CE2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD304BA1D6F66B500D8CE2F /* AppDelegate.swift */; };
+		FAD304C41D6F68C100D8CE2F /* locations.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAD304C31D6F68C100D8CE2F /* locations.plist */; };
 		FAEE90AE1D6771B5008264DC /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE90AD1D6771B5008264DC /* TabBarController.swift */; };
 		FAEE90B41D677EBB008264DC /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE90B31D677EBB008264DC /* LocationsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -23,15 +27,19 @@
 		46912E114CBBD62D92AB4CE3 /* Pods-Frank Lloyd Wright Trail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frank Lloyd Wright Trail.release.xcconfig"; path = "Pods/Target Support Files/Pods-Frank Lloyd Wright Trail/Pods-Frank Lloyd Wright Trail.release.xcconfig"; sourceTree = "<group>"; };
 		866A48BE69E58B36CE7AFA90 /* Pods-Frank Lloyd Wright Trail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frank Lloyd Wright Trail.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Frank Lloyd Wright Trail/Pods-Frank Lloyd Wright Trail.debug.xcconfig"; sourceTree = "<group>"; };
 		B6109D961D528DDD002A6D77 /* Frank Lloyd Wright Trail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Frank Lloyd Wright Trail.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B6109D991D528DDE002A6D77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6109DA01D528DDE002A6D77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B6109DA21D528DDE002A6D77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B6109DA51D528DDE002A6D77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B6109DA71D528DDE002A6D77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF68C79F7226D19F1DACC2B8 /* Pods_Frank_Lloyd_Wright_Trail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Frank_Lloyd_Wright_Trail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA38D3B71D6A4D7E00B8073E /* Site.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Site.swift; sourceTree = "<group>"; };
-		FAD304B01D6CD80500D8CE2F /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		FAAF70C31D74A39400515DBD /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		FAAF70C71D7500A000515DBD /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		FAAF70CB1D77675B00515DBD /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		FAD304B01D6CD80500D8CE2F /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		FAD304B21D6D28E800D8CE2F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		FAD304BA1D6F66B500D8CE2F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = App/AppDelegate.swift; sourceTree = "<group>"; };
+		FAD304C31D6F68C100D8CE2F /* locations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = locations.plist; sourceTree = "<group>"; };
 		FAEE90AD1D6771B5008264DC /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		FAEE90B31D677EBB008264DC /* LocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,16 +77,12 @@
 		B6109D981D528DDE002A6D77 /* Frank Lloyd Wright Trail */ = {
 			isa = PBXGroup;
 			children = (
-				B6109D991D528DDE002A6D77 /* AppDelegate.swift */,
-				FA38D3B71D6A4D7E00B8073E /* Site.swift */,
-				FAD304B01D6CD80500D8CE2F /* Location.swift */,
-				FAEE90AD1D6771B5008264DC /* TabBarController.swift */,
-				FAEE90B31D677EBB008264DC /* LocationsViewController.swift */,
-				FAD304B21D6D28E800D8CE2F /* DetailViewController.swift */,
-				B6109D9F1D528DDE002A6D77 /* Main.storyboard */,
-				B6109DA21D528DDE002A6D77 /* Assets.xcassets */,
-				B6109DA41D528DDE002A6D77 /* LaunchScreen.storyboard */,
-				B6109DA71D528DDE002A6D77 /* Info.plist */,
+				FAD304C31D6F68C100D8CE2F /* locations.plist */,
+				FAD304BC1D6F670C00D8CE2F /* App */,
+				FAD304BD1D6F672C00D8CE2F /* Model */,
+				FAD304BE1D6F673E00D8CE2F /* Controller */,
+				FAD304C01D6F677D00D8CE2F /* Resources */,
+				FAD304BF1D6F676500D8CE2F /* Supporting Files */,
 			);
 			path = "Frank Lloyd Wright Trail";
 			sourceTree = "<group>";
@@ -98,6 +102,54 @@
 				46912E114CBBD62D92AB4CE3 /* Pods-Frank Lloyd Wright Trail.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		FAD304BC1D6F670C00D8CE2F /* App */ = {
+			isa = PBXGroup;
+			children = (
+				FAD304BA1D6F66B500D8CE2F /* AppDelegate.swift */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		FAD304BD1D6F672C00D8CE2F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FA38D3B71D6A4D7E00B8073E /* Site.swift */,
+				FAD304B01D6CD80500D8CE2F /* Pin.swift */,
+				FAAF70C31D74A39400515DBD /* Cell.swift */,
+				FAAF70C71D7500A000515DBD /* Item.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		FAD304BE1D6F673E00D8CE2F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FAEE90AD1D6771B5008264DC /* TabBarController.swift */,
+				FAEE90B31D677EBB008264DC /* LocationsViewController.swift */,
+				FAD304B21D6D28E800D8CE2F /* DetailViewController.swift */,
+				FAAF70CB1D77675B00515DBD /* CollectionViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		FAD304BF1D6F676500D8CE2F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B6109DA71D528DDE002A6D77 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FAD304C01D6F677D00D8CE2F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B6109D9F1D528DDE002A6D77 /* Main.storyboard */,
+				B6109DA21D528DDE002A6D77 /* Assets.xcassets */,
+				B6109DA41D528DDE002A6D77 /* LaunchScreen.storyboard */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6109DA61D528DDE002A6D77 /* LaunchScreen.storyboard in Resources */,
+				FAD304C41D6F68C100D8CE2F /* locations.plist in Resources */,
 				B6109DA31D528DDE002A6D77 /* Assets.xcassets in Resources */,
 				B6109DA11D528DDE002A6D77 /* Main.storyboard in Resources */,
 			);
@@ -222,11 +275,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6109D9A1D528DDE002A6D77 /* AppDelegate.swift in Sources */,
+				FAD304BB1D6F66B500D8CE2F /* AppDelegate.swift in Sources */,
+				FAAF70C81D7500A000515DBD /* Item.swift in Sources */,
+				FAAF70CC1D77675B00515DBD /* CollectionViewController.swift in Sources */,
 				FA38D3B81D6A4D7E00B8073E /* Site.swift in Sources */,
+				FAAF70C41D74A39400515DBD /* Cell.swift in Sources */,
 				FAEE90AE1D6771B5008264DC /* TabBarController.swift in Sources */,
 				FAEE90B41D677EBB008264DC /* LocationsViewController.swift in Sources */,
-				FAD304B11D6CD80500D8CE2F /* Location.swift in Sources */,
+				FAD304B11D6CD80500D8CE2F /* Pin.swift in Sources */,
 				FAD304B31D6D28E800D8CE2F /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

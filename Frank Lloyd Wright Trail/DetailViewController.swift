@@ -13,15 +13,11 @@ class DetailViewController: UIViewController {
     }
 
     
-    @IBOutlet weak var siteDetails: UITextView!
-    @IBOutlet weak var siteSubtitle: UILabel!
-    @IBOutlet weak var siteTitle: UILabel!
-    @IBOutlet weak var siteImage: UIImageView!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        let image: UIImage = UIImage(named: "")
+        //let image: UIImage = UIImage(named: "")
 
         // Do any additional setup after loading the view.
     }
