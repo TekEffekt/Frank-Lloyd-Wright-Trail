@@ -9,12 +9,11 @@
 import UIKit
 import MapKit
 
-class LocationsViewController: UIViewController, MKMapViewDelegate {
+class LocationsViewController: UIViewController, MKMapViewDelegate, LocationCollectionDelegate {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var mapView: MKMapView!
-    
+    var locationCollectionVc: CollectionViewController!
     let center = CLLocation(latitude: 43.105304, longitude: -89.046729)
-    var annotations: Array = [Pin]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,29 +22,19 @@ class LocationsViewController: UIViewController, MKMapViewDelegate {
         centerMapOnLocation(center)
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        locationCollectionVc = childViewControllers.first as! CollectionViewController
+        locationCollectionVc.delegate = self
+    }
 
     func loadPins(){
-        
-        
-        //load plist file
-        
-        var locations: NSArray?
-        if let path = NSBundle.mainBundle().pathForResource("locations", ofType: "plist") {
-            locations = NSArray(contentsOfFile: path)
+        let sites = Site.getSites()
+        for site in sites {
+            let annotation = Pin(lat: site.lat, long: site.lon)
+            annotation.title = site.title
+            mapView.addAnnotation(annotation)
         }
-        if let items = locations {
-            // adds each location to an array of type Pin
-            for item in items {
-                let lat = item.valueForKey("lat") as! Double
-                let long = item.valueForKey("long")as! Double
-                let annotation = Pin(lat: lat, long: long)
-                annotation.title = item.valueForKey("title") as? String
-                self.annotations.append(annotation)
-            }
-            // put the pins on the map
-            mapView.addAnnotations(self.annotations)
-        }
-        
     }
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
@@ -62,18 +51,10 @@ class LocationsViewController: UIViewController, MKMapViewDelegate {
             return pin
         }
         return nil
-        
-    }
-    
-    func panIn(index: Int){
-        
-        print("Number passed: \(index)")
-        print(self.annotations.count)
     }
     
     // centers the map on a specific point
     func centerMapOnLocation(location : CLLocation){
-        
         let span = MKCoordinateSpanMake(3.5, 2.0)
         let region = MKCoordinateRegion(center: location.coordinate, span: span)
         
@@ -95,9 +76,11 @@ class LocationsViewController: UIViewController, MKMapViewDelegate {
 //        }
 //    }
 
-
-    
-
-
-
+    func cellTapped(withSite site: Site) {
+        for pin in mapView.annotations {
+            if pin.title! == site.title {
+                mapView.selectAnnotation(pin, animated: true)
+            }
+        }
+    }
 }

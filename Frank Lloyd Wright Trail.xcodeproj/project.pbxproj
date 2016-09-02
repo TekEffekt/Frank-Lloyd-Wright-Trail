@@ -11,11 +11,12 @@
 		B6109DA11D528DDE002A6D77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6109D9F1D528DDE002A6D77 /* Main.storyboard */; };
 		B6109DA31D528DDE002A6D77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6109DA21D528DDE002A6D77 /* Assets.xcassets */; };
 		B6109DA61D528DDE002A6D77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6109DA41D528DDE002A6D77 /* LaunchScreen.storyboard */; };
-		FA38D3B81D6A4D7E00B8073E /* Site.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA38D3B71D6A4D7E00B8073E /* Site.swift */; };
+		B6DB3BBA1D7A100200FC737D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DB3BB71D7A100200FC737D /* Item.swift */; };
+		B6DB3BBB1D7A100200FC737D /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DB3BB81D7A100200FC737D /* Pin.swift */; };
+		B6DB3BBC1D7A100200FC737D /* Site.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DB3BB91D7A100200FC737D /* Site.swift */; };
+		B6DB3BBF1D7A104900FC737D /* LocationCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DB3BBE1D7A104900FC737D /* LocationCollectionDelegate.swift */; };
 		FAAF70C41D74A39400515DBD /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF70C31D74A39400515DBD /* Cell.swift */; };
-		FAAF70C81D7500A000515DBD /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF70C71D7500A000515DBD /* Item.swift */; };
 		FAAF70CC1D77675B00515DBD /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF70CB1D77675B00515DBD /* CollectionViewController.swift */; };
-		FAD304B11D6CD80500D8CE2F /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD304B01D6CD80500D8CE2F /* Pin.swift */; };
 		FAD304B31D6D28E800D8CE2F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD304B21D6D28E800D8CE2F /* DetailViewController.swift */; };
 		FAD304BB1D6F66B500D8CE2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD304BA1D6F66B500D8CE2F /* AppDelegate.swift */; };
 		FAD304C41D6F68C100D8CE2F /* locations.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAD304C31D6F68C100D8CE2F /* locations.plist */; };
@@ -31,12 +32,13 @@
 		B6109DA21D528DDE002A6D77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B6109DA51D528DDE002A6D77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B6109DA71D528DDE002A6D77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6DB3BB71D7A100200FC737D /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = Model/Item.swift; sourceTree = "<group>"; };
+		B6DB3BB81D7A100200FC737D /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pin.swift; path = Model/Pin.swift; sourceTree = "<group>"; };
+		B6DB3BB91D7A100200FC737D /* Site.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Site.swift; path = Model/Site.swift; sourceTree = "<group>"; };
+		B6DB3BBE1D7A104900FC737D /* LocationCollectionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCollectionDelegate.swift; sourceTree = "<group>"; };
 		DF68C79F7226D19F1DACC2B8 /* Pods_Frank_Lloyd_Wright_Trail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Frank_Lloyd_Wright_Trail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA38D3B71D6A4D7E00B8073E /* Site.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Site.swift; sourceTree = "<group>"; };
 		FAAF70C31D74A39400515DBD /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
-		FAAF70C71D7500A000515DBD /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		FAAF70CB1D77675B00515DBD /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
-		FAD304B01D6CD80500D8CE2F /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		FAD304B21D6D28E800D8CE2F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FAD304BA1D6F66B500D8CE2F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = App/AppDelegate.swift; sourceTree = "<group>"; };
 		FAD304C31D6F68C100D8CE2F /* locations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = locations.plist; sourceTree = "<group>"; };
@@ -87,6 +89,15 @@
 			path = "Frank Lloyd Wright Trail";
 			sourceTree = "<group>";
 		};
+		B6DB3BBD1D7A101000FC737D /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				B6DB3BBE1D7A104900FC737D /* LocationCollectionDelegate.swift */,
+			);
+			name = Delegates;
+			path = Model/Delegates;
+			sourceTree = "<group>";
+		};
 		E49F468231079B747BE7186B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,10 +126,11 @@
 		FAD304BD1D6F672C00D8CE2F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FA38D3B71D6A4D7E00B8073E /* Site.swift */,
-				FAD304B01D6CD80500D8CE2F /* Pin.swift */,
+				B6DB3BBD1D7A101000FC737D /* Delegates */,
+				B6DB3BB71D7A100200FC737D /* Item.swift */,
+				B6DB3BB81D7A100200FC737D /* Pin.swift */,
+				B6DB3BB91D7A100200FC737D /* Site.swift */,
 				FAAF70C31D74A39400515DBD /* Cell.swift */,
-				FAAF70C71D7500A000515DBD /* Item.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -276,13 +288,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAD304BB1D6F66B500D8CE2F /* AppDelegate.swift in Sources */,
-				FAAF70C81D7500A000515DBD /* Item.swift in Sources */,
 				FAAF70CC1D77675B00515DBD /* CollectionViewController.swift in Sources */,
-				FA38D3B81D6A4D7E00B8073E /* Site.swift in Sources */,
 				FAAF70C41D74A39400515DBD /* Cell.swift in Sources */,
+				B6DB3BBB1D7A100200FC737D /* Pin.swift in Sources */,
+				B6DB3BBC1D7A100200FC737D /* Site.swift in Sources */,
 				FAEE90AE1D6771B5008264DC /* TabBarController.swift in Sources */,
+				B6DB3BBA1D7A100200FC737D /* Item.swift in Sources */,
 				FAEE90B41D677EBB008264DC /* LocationsViewController.swift in Sources */,
-				FAD304B11D6CD80500D8CE2F /* Pin.swift in Sources */,
+				B6DB3BBF1D7A104900FC737D /* LocationCollectionDelegate.swift in Sources */,
 				FAD304B31D6D28E800D8CE2F /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

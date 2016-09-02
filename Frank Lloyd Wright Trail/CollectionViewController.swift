@@ -8,32 +8,20 @@
 
 import UIKit
 
-class CollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
+class CollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    weak var delegate: LocationCollectionDelegate?
     
     @IBOutlet weak var collectionView: UICollectionView!
+    var sites: [Site]!
     // array that holds the image and captions for all the cells
-    let items = [Item(caption: "SC Johnson Administration Building", image: "scjohnson"), Item(caption: "Wingspread", image: "wingspread"), Item(caption: "Monona Terrace", image: "mononaterrace"), Item(caption: "First Unitarian Society Meeting House", image: "meetinghouse"), Item(caption: "Talisesin and Frank Lloyd Wright Visiting Center", image: "visitorcenter"), Item(caption: "A.D. German Warehouse", image: "warehouse")]
+//    let items = [Item(caption: "SC Johnson Administration Building", image: "scjohnson"), Item(caption: "Wingspread", image: "wingspread"), Item(caption: "Monona Terrace", image: "mononaterrace"), Item(caption: "First Unitarian Society Meeting House", image: "meetinghouse"), Item(caption: "Talisesin and Frank Lloyd Wright Visiting Center", image: "visitorcenter"), Item(caption: "A.D. German Warehouse", image: "warehouse")]
    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.reloadData()
-
+        sites = Site.getSites()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "mapView" {
-            let destination = segue.destinationViewController as? LocationsViewController
-            let indexPath = sender as? NSIndexPath
-            let index = indexPath?.row
-            destination?.panIn(index!)
-        }
-    }
-    
 
     // DataSource
     // ---------------------------
@@ -43,16 +31,18 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! Cell
-        let item = items[indexPath.row]
+        let site = sites[indexPath.row]
         // Sets the caption and image at based on the corresponding object in the array
-        cell.image.image = item.image
-        cell.caption.text = item.caption
+        cell.image.image = UIImage(named: site.imageName ?? "") ?? UIImage()
+        cell.image.backgroundColor = UIColor.redColor()
+        cell.caption.text = site.title
+        cell.caption.textColor = UIColor.blackColor()
         
         return cell
     }
     // number of cells
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        return sites.count
     }
 
     
@@ -61,9 +51,8 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
 
     // Does something when that cell is clicked
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print("Selected \(items[indexPath.row].caption!) at index \(indexPath.row)")
-        // work on the seugue
-        self.performSegueWithIdentifier("mapView", sender: indexPath)
+        let site = sites[indexPath.row]
+        delegate?.cellTapped(withSite: site)
     }
     
 }
