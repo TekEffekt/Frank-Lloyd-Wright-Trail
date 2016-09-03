@@ -14,8 +14,6 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     
     @IBOutlet weak var collectionView: UICollectionView!
     var sites: [Site]!
-    // array that holds the image and captions for all the cells
-//    let items = [Item(caption: "SC Johnson Administration Building", image: "scjohnson"), Item(caption: "Wingspread", image: "wingspread"), Item(caption: "Monona Terrace", image: "mononaterrace"), Item(caption: "First Unitarian Society Meeting House", image: "meetinghouse"), Item(caption: "Talisesin and Frank Lloyd Wright Visiting Center", image: "visitorcenter"), Item(caption: "A.D. German Warehouse", image: "warehouse")]
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +34,8 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         cell.image.image = UIImage(named: site.imageName ?? "") ?? UIImage()
         cell.image.backgroundColor = UIColor.redColor()
         cell.caption.text = site.title
-        cell.caption.textColor = UIColor.blackColor()
-        
+        cell.makeCircle()
+        cell.color(site.title)
         return cell
     }
     // number of cells

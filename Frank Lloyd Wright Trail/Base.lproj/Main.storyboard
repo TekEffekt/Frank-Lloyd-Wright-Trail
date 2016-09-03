@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cc9-cf-jen">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cc9-cf-jen">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
@@ -47,7 +47,7 @@
                                     <rect key="frame" x="0.0" y="97" width="600" height="654"/>
                                 </variation>
                             </mapView>
-                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xit-Bo-jwH">
+                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xit-Bo-jwH">
                                 <rect key="frame" x="0.0" y="420" width="600" height="131"/>
                                 <connections>
                                     <segue destination="0Vr-b5-rlz" kind="embed" identifier="mapView" id="MJu-wc-hLP"/>
@@ -105,18 +105,27 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bkk-qi-lPN">
                                                     <rect key="frame" x="0.0" y="0.0" width="186" height="105"/>
                                                 </imageView>
+                                                <view alpha="0.25" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DRa-1M-ZSN">
+                                                    <rect key="frame" x="0.0" y="0.0" width="186" height="105"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Caption" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYd-LR-F4K">
                                                     <rect key="frame" x="0.0" y="68" width="186" height="37"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yAd-R1-KB4">
+                                                    <rect key="frame" x="162" y="8" width="16" height="15"/>
+                                                    <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="caption" destination="iYd-LR-F4K" id="66e-Pd-qvL"/>
+                                            <outlet property="circleColor" destination="yAd-R1-KB4" id="ve6-Er-fDW"/>
                                             <outlet property="image" destination="bkk-qi-lPN" id="qe7-mp-DUD"/>
                                         </connections>
                                     </collectionViewCell>
@@ -138,7 +147,6 @@
                     <navigationItem key="navigationItem" id="vtq-UO-h9A"/>
                     <connections>
                         <outlet property="collectionView" destination="8yk-zY-5xL" id="PRx-2y-L5C"/>
-                        <segue destination="4BE-hu-fJY" kind="showDetail" identifier="mapView" animates="NO" action="showViewController:sender:" id="TA0-fn-5Ma"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oS1-tr-8ty" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -248,7 +256,4 @@
         <image name="1472176520_map-location-pin-map-marker-glyph" width="24" height="24"/>
         <image name="open-book" width="24" height="24"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="TA0-fn-5Ma"/>
-    </inferredMetricsTieBreakers>
 </document>

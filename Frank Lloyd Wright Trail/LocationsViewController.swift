@@ -12,6 +12,7 @@ import MapKit
 class LocationsViewController: UIViewController, MKMapViewDelegate, LocationCollectionDelegate {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var mapView: MKMapView!
+    
     var locationCollectionVc: CollectionViewController!
     let center = CLLocation(latitude: 43.105304, longitude: -89.046729)
     
@@ -24,6 +25,7 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        // setting up the delegate
         locationCollectionVc = childViewControllers.first as! CollectionViewController
         locationCollectionVc.delegate = self
     }
@@ -57,7 +59,6 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
     func centerMapOnLocation(location : CLLocation){
         let span = MKCoordinateSpanMake(3.5, 2.0)
         let region = MKCoordinateRegion(center: location.coordinate, span: span)
-        
         mapView.setRegion(region, animated: true)
     }
     

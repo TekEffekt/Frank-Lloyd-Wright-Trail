@@ -18,4 +18,6 @@ class Item: NSObject{
         self.caption = caption
         self.image = UIImage(named: image)
     }
+    
+    
 }

@@ -30,12 +30,15 @@ struct Site {
                 let lat = item.valueForKey("lat") as! Double
                 let long = item.valueForKey("long")as! Double
                 let title = item.valueForKey("title") as! String
-                let site = Site(lon: long, lat: lat, title: title, subtitle: "", imageName: nil, hasBeenVisited: false)
+                let imageName = item.valueForKey("imageName") as! String
+                let site = Site(lon: long, lat: lat, title: title, subtitle: "", imageName: imageName, hasBeenVisited: false)
                 sites.append(site)
             }
         }
         
         return sites
     }
+    
+
 
 }
