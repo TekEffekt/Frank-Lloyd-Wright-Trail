@@ -19,6 +19,8 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         super.viewDidLoad()
         collectionView.reloadData()
         sites = Site.getSites()
+        self.automaticallyAdjustsScrollViewInsets = false
+        collectionView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
     }
 
     // DataSource

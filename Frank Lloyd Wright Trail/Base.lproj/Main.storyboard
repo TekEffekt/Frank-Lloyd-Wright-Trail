@@ -47,8 +47,8 @@
                                     <rect key="frame" x="0.0" y="97" width="600" height="654"/>
                                 </variation>
                             </mapView>
-                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xit-Bo-jwH">
-                                <rect key="frame" x="0.0" y="420" width="600" height="131"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xit-Bo-jwH">
+                                <rect key="frame" x="0.0" y="378" width="600" height="173"/>
                                 <connections>
                                     <segue destination="0Vr-b5-rlz" kind="embed" identifier="mapView" id="MJu-wc-hLP"/>
                                 </connections>
@@ -59,7 +59,6 @@
                             <constraint firstItem="8G7-rr-gBN" firstAttribute="height" secondItem="x77-s5-c5o" secondAttribute="height" id="7dV-zo-sEV"/>
                             <constraint firstItem="8G7-rr-gBN" firstAttribute="width" secondItem="x77-s5-c5o" secondAttribute="width" id="Pll-eo-W3T"/>
                             <constraint firstItem="xit-Bo-jwH" firstAttribute="width" secondItem="x77-s5-c5o" secondAttribute="width" id="QWu-rB-itX"/>
-                            <constraint firstItem="xit-Bo-jwH" firstAttribute="top" secondItem="BVr-Ba-l6L" secondAttribute="bottom" constant="356" id="ZyJ-On-1T3"/>
                             <constraint firstAttribute="bottom" secondItem="xit-Bo-jwH" secondAttribute="bottom" constant="49" id="qvy-NP-iIs"/>
                         </constraints>
                     </view>
@@ -76,17 +75,17 @@
         <!--Collection View Controller-->
         <scene sceneID="RD2-NG-FXs">
             <objects>
-                <viewController id="0Vr-b5-rlz" customClass="CollectionViewController" customModule="Frank_Lloyd_Wright_Trail" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="0Vr-b5-rlz" customClass="CollectionViewController" customModule="Frank_Lloyd_Wright_Trail" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TAP-Wq-Syg"/>
                         <viewControllerLayoutGuide type="bottom" id="9An-e4-YS4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="MgU-cQ-iSK">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="131"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="173"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8yk-zY-5xL">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="106"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="148"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="MIa-l8-VVT">
                                     <size key="itemSize" width="186" height="105"/>
@@ -151,7 +150,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oS1-tr-8ty" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="384" y="-553.5"/>
+            <point key="canvasLocation" x="384" y="-473.5"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="9Hq-iO-UQi">
