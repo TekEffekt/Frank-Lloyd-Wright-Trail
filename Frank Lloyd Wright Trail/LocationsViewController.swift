@@ -41,15 +41,15 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         let identifier = "pin"
-        if let annotation = annotation as? Pin {
+        if let customAnnotation = annotation as? Pin {
+            // How the pin itself is going to look
             let pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            
             //Shows title and detail button when user clicks on the pin
-            pin.canShowCallout = true
             pin.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure) as UIView
             // Color of the pin
-            pin.pinTintColor = annotation.newPinColor()
+            pin.pinTintColor = customAnnotation.newPinColor()
             pin.animatesDrop = true
+            pin.canShowCallout = true
             return pin
         }
         return nil

@@ -48,4 +48,5 @@ class Pin: NSObject, MKAnnotation {
             return UIColor.redColor()
         }
     }
+    
 }
