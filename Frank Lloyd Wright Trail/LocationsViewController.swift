@@ -21,6 +21,7 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
         self.mapView.delegate = self
         loadPins()
         centerMapOnLocation(center)
+        mapView.showsUserLocation = true
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -45,7 +46,7 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
             // How the pin itself is going to look
             let pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             //Shows title and detail button when user clicks on the pin
-            pin.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure) as UIView
+            //pin.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure) as UIView
             // Color of the pin
             pin.pinTintColor = customAnnotation.newPinColor()
             pin.animatesDrop = true
@@ -57,7 +58,7 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
     
     // centers the map on a specific point
     func centerMapOnLocation(location : CLLocation){
-        let span = MKCoordinateSpanMake(3.5, 2.0)
+        let span = MKCoordinateSpanMake(2.0, 2.0)
         let region = MKCoordinateRegion(center: location.coordinate, span: span)
         mapView.setRegion(region, animated: true)
     }

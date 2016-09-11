@@ -7,23 +7,46 @@
 //
 
 import UIKit
+import CoreLocation
 
-class CollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class CollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, CLLocationManagerDelegate {
     
     weak var delegate: LocationCollectionDelegate?
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var milesAway: UILabel!
     var sites: [Site]!
-   
+    var locationManager = CLLocationManager()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.reloadData()
         sites = Site.getSites()
         self.automaticallyAdjustsScrollViewInsets = false
         collectionView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        // Ask for Authorisation from the User.
+        self.locationManager.requestAlwaysAuthorization()
+        
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        milesAway.textColor = UIColor.blackColor()
+        milesAway.textAlignment = .Right
+        milesAway.text = "0 miles away"
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+            if let currentlocation = locationManager.location {
+                sites = SiteSorter.sortSitesByDistance(currentlocation)
+            }
+        }
     }
+    
 
-    // DataSource
+
+    // DataSource for Collection View
     // ---------------------------
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
@@ -46,12 +69,14 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     }
 
     
-    // Delegate
+    // Delegate for Collection View
     // ---------------------------
 
     // Does something when that cell is clicked
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let site = sites[indexPath.row]
+        milesAway.text! = "\(site.distance) miles away"
+        print("\(site.distance) miles away")
         delegate?.cellTapped(withSite: site)
     }
     

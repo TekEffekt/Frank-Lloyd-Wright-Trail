@@ -15,6 +15,7 @@
 		B6DB3BBC1D7A100200FC737D /* Site.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DB3BB91D7A100200FC737D /* Site.swift */; };
 		B6DB3BBF1D7A104900FC737D /* LocationCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DB3BBE1D7A104900FC737D /* LocationCollectionDelegate.swift */; };
 		FA5AB5AF1D7E744D005CFBD4 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5AB5AE1D7E744D005CFBD4 /* Item.swift */; };
+		FA6143921D81FD6300E3A076 /* SiteSorter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6143911D81FD6300E3A076 /* SiteSorter.swift */; };
 		FA7B5BB51D7F40C000CB218B /* CalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7B5BB41D7F40C000CB218B /* CalloutView.swift */; };
 		FAAF70C41D74A39400515DBD /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF70C31D74A39400515DBD /* Cell.swift */; };
 		FAAF70CC1D77675B00515DBD /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF70CB1D77675B00515DBD /* CollectionViewController.swift */; };
@@ -23,6 +24,7 @@
 		FAD304C41D6F68C100D8CE2F /* locations.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAD304C31D6F68C100D8CE2F /* locations.plist */; };
 		FAEE90AE1D6771B5008264DC /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE90AD1D6771B5008264DC /* TabBarController.swift */; };
 		FAEE90B41D677EBB008264DC /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE90B31D677EBB008264DC /* LocationsViewController.swift */; };
+		FAF922811D834E8D001B1D55 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF922801D834E8D001B1D55 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,7 @@
 		B6DB3BBE1D7A104900FC737D /* LocationCollectionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCollectionDelegate.swift; sourceTree = "<group>"; };
 		DF68C79F7226D19F1DACC2B8 /* Pods_Frank_Lloyd_Wright_Trail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Frank_Lloyd_Wright_Trail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA5AB5AE1D7E744D005CFBD4 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = View/Item.swift; sourceTree = "<group>"; };
+		FA6143911D81FD6300E3A076 /* SiteSorter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteSorter.swift; sourceTree = "<group>"; };
 		FA7B5BB41D7F40C000CB218B /* CalloutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalloutView.swift; sourceTree = "<group>"; };
 		FAAF70C31D74A39400515DBD /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Cell.swift; path = ../Cell.swift; sourceTree = "<group>"; };
 		FAAF70CB1D77675B00515DBD /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
@@ -46,6 +49,7 @@
 		FAD304C31D6F68C100D8CE2F /* locations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = locations.plist; sourceTree = "<group>"; };
 		FAEE90AD1D6771B5008264DC /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		FAEE90B31D677EBB008264DC /* LocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
+		FAF922801D834E8D001B1D55 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAF922811D834E8D001B1D55 /* CoreLocation.framework in Frameworks */,
 				3D968D3100D7715D8590C20E /* Pods_Frank_Lloyd_Wright_Trail.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -104,6 +109,7 @@
 		E49F468231079B747BE7186B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FAF922801D834E8D001B1D55 /* CoreLocation.framework */,
 				DF68C79F7226D19F1DACC2B8 /* Pods_Frank_Lloyd_Wright_Trail.framework */,
 			);
 			name = Frameworks;
@@ -142,6 +148,7 @@
 				B6DB3BB81D7A100200FC737D /* Pin.swift */,
 				B6DB3BB91D7A100200FC737D /* Site.swift */,
 				FA5AB5AE1D7E744D005CFBD4 /* Item.swift */,
+				FA6143911D81FD6300E3A076 /* SiteSorter.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -299,6 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA7B5BB51D7F40C000CB218B /* CalloutView.swift in Sources */,
+				FA6143921D81FD6300E3A076 /* SiteSorter.swift in Sources */,
 				FAD304BB1D6F66B500D8CE2F /* AppDelegate.swift in Sources */,
 				FAAF70CC1D77675B00515DBD /* CollectionViewController.swift in Sources */,
 				FAAF70C41D74A39400515DBD /* Cell.swift in Sources */,

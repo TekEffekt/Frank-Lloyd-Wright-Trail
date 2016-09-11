@@ -10,4 +10,5 @@ import Foundation
 
 protocol LocationCollectionDelegate: class {
     func cellTapped(withSite site: Site)
+    
 }
