@@ -11,11 +11,15 @@
 import Foundation
 import CoreLocation
 
+// This class is in charge of sorting the array of Sites by distance, name, and visited sites
 class SiteSorter{
     
+    // Sorts the sites based on the distance in miles from the user's current location from closests to farthest
     static func sortSitesByDistance(location: CLLocation) -> [Site] {
         let sites = Site.getSites()
         var myNewArray = [Site]()
+        
+        // manipulating the distance variable of each site so that the distance
         for var site in sites{
             let distanceInMeters = location.distanceFromLocation(CLLocation(latitude: site.lat, longitude: site.lon))
             let distanceInMiles = round(distanceInMeters / 1609.344)
@@ -23,8 +27,9 @@ class SiteSorter{
             myNewArray.append(site)
         }
         
-        
+        // sorting the array from closest to farthest
         myNewArray.sortInPlace({ (obj1: Site, obj2: Site) -> Bool in return obj1.distance < obj2.distance })
+        
         return myNewArray
     }
 }

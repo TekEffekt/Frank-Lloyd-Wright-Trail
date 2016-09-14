@@ -25,21 +25,24 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         sites = Site.getSites()
         self.automaticallyAdjustsScrollViewInsets = false
         collectionView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
-        // Ask for Authorisation from the User.
+        
+        // Ask for Authorisation from the User
         self.locationManager.requestAlwaysAuthorization()
         
         // For use in foreground
         self.locationManager.requestWhenInUseAuthorization()
         
-        milesAway.textColor = UIColor.blackColor()
         milesAway.textAlignment = .Right
         milesAway.text = "0 miles away"
+        
+        // Gets the current user's current location and passes that location to SiteSorter
+        // to get sort the distance from that location to other sites.
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
-            if let currentlocation = locationManager.location {
-                sites = SiteSorter.sortSitesByDistance(currentlocation)
+            if let userLocation = locationManager.location {
+                sites = SiteSorter.sortSitesByDistance(userLocation)
             }
         }
     }
@@ -59,6 +62,8 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         cell.image.image = UIImage(named: site.imageName ?? "") ?? UIImage()
         cell.image.backgroundColor = UIColor.redColor()
         cell.caption.text = site.title
+        
+        // Creates the colored circle on the top right corner of the cell
         cell.makeCircle()
         cell.color(site.title)
         return cell
@@ -74,9 +79,11 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
 
     // Does something when that cell is clicked
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
         let site = sites[indexPath.row]
+        
+        // Updates the label with the distance from the selected site to the user
         milesAway.text! = "\(site.distance) miles away"
-        print("\(site.distance) miles away")
         delegate?.cellTapped(withSite: site)
     }
     
