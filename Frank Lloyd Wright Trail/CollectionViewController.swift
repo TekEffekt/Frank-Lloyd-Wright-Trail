@@ -21,7 +21,6 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.reloadData()
         sites = Site.getSites()
         self.automaticallyAdjustsScrollViewInsets = false
         collectionView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
@@ -58,21 +57,25 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! Cell
         let site = sites[indexPath.row]
+        cell.makeCircle()
+        cell.color(site.title)
         // Sets the caption and image at based on the corresponding object in the array
         cell.image.image = UIImage(named: site.imageName ?? "") ?? UIImage()
         cell.image.backgroundColor = UIColor.redColor()
         cell.caption.text = site.title
         
-        // Creates the colored circle on the top right corner of the cell
-        cell.makeCircle()
-        cell.color(site.title)
         return cell
     }
     // number of cells
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return sites.count
     }
-
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let width = (collectionView.bounds.width - 2) / 2
+        let height = 0.6 * width
+        return CGSizeMake(width, height)
+    }
     
     // Delegate for Collection View
     // ---------------------------
@@ -86,6 +89,9 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         milesAway.text! = "\(site.distance) miles away"
         delegate?.cellTapped(withSite: site)
     }
+    
+
+    
     
 }
 

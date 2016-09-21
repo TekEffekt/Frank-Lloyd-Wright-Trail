@@ -16,7 +16,7 @@ class CalloutView: UIView {
             
             let isInsideView = pointInside(viewPoint, withEvent: event)
             
-            var view = super.hitTest(viewPoint, withEvent: event)
+            let view = super.hitTest(viewPoint, withEvent: event)
             
             return view
         }
