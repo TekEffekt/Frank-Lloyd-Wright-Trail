@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>lat</key>
+		<real>42.7152375</real>
+		<key>long</key>
+		<real>-87.79288560000001</real>
+		<key>title</key>
+		<string>SC Johnson Administration Building and Research Tower</string>
+		<key>details</key>
+		<string>Far outside the corridors of high-tech industry and startup spaces, the SC Johnson company headquarters in Racine, Wisconsin, still provides a dashing vision of the modern American workplace, despite having recently celebrated its 75th anniversary. The SC Johnson Administration Building, designed by Frank Lloyd Wright in 1936, eschews business clichés: workers are greeted by a streamlined, muscular exterior made from ribbons of glass and brick, more campus than corporate, before entering a light-filled interior, with rows of organic, curved columns creating an abstract forest surrounding the secretary pool. The 15-story Research Tower, completed in 1950, was built on a &quot;taproot&quot; system. A core of elevators, heating, and ductwork formed a spine at the center on the tower, supported by a foundation sunk 54-feet-deep into the ground. Disc-shaped mezzanines branched off the core, alternating with full sized, 40-foot wide floors. Walls of horizontal Pyrex tubes, the same used in the Administration Building, let in sunlight but block the view. The effect is of a tree enclosed in glass.</string>
+		<key>imageName</key>
+		<string>scjohnson</string>
+	</dict>
+	<dict>
+		<key>lat</key>
+		<real>42.784472</real>
+		<key>long</key>
+		<real>-87.7737877</real>
+		<key>title</key>
+		<string>Wingspread</string>
+		<key>details</key>
+		<string>A private residence Wright designed for SC Johnson owner Herbert Fisk Johnson, Jr. in 1936, Wingspread lives up to its names, a low-slung streamlined brick home with four wings spreading across the property. The central living room, a dome-shaped room, features a 30-foot-tall vertical fireplace and original furniture designed by Wright. Considered the last of the Prairie Houses, it’s filled with unique touches, including a dramatic “Romeo and Juliet” balcony that cantilevers over the landscape and a crow’s nest lookout built above the home, a favorite play place for the Johnson children.</string>
+		<key>imageName</key>
+		<string>wingspread</string>
+	</dict>
+	<dict>
+		<key>lat</key>
+		<real>43.0717445</real>
+		<key>long</key>
+		<real>-89.38259050000001</real>
+		<key>title</key>
+		<string>Monona Terrace</string>
+		<key>details</key>
+		<string>A sprawling, curved convention center on the shores of Lake Monona in Madison, this building was a posthumous addition to the Wright canon, rejected by officials during the architect’s lifetime, but finally approved via a referendum put local voters in the early ‘90s. The curvilinear “dream civic center,” which recalls the shape of the Guggenheim, was first proposed by Wright in 1938, and was a project he constantly altered and updated throughout his life. His former apprentice Anthony Puttnam would finish the designs for the interior before it was finally completed in 1997.</string>
+		<key>imageName</key>
+		<string>mononaterrace</string>
+	</dict>
+	<dict>
+		<key>lat</key>
+		<real>43.0757361</real>
+		<key>long</key>
+		<real>-89.43752550000001</real>
+		<key>title</key>
+		<string>First Unitatrian Society Meeting House</string>
+		<key>details</key>
+		<string>A landmark in church architecture from 1951, Wright’s ship-like design for the First Unitarian Society, with a sharp prow jutting out from the earth towards the sky, offers a sense of transcendence, one he would often enjoy as a member of the congregation. His extensive use of copper and glass throughout the building provide a timeless feel to the unorthodox house of worship.</string>
+		<key>imageName</key>
+		<string>meetinghouse</string>
+	</dict>
+	<dict>
+		<key>lat</key>
+		<real>43.1439006</real>
+		<key>long</key>
+		<real>-90.0617113</real>
+		<key>title</key>
+		<string>Talisesin and Frank Lloyd Wright Visitor Center</string>
+		<key>details</key>
+		<string>Wright’s longtime home and studio, named after a Welsh term that means “Shining Brow,” is an icon of Prairie School design that saw numerous tragedies and rebirths over the decades as the architect continually renovated, rebuilt and expanded. Set on a 700-acre estate in the rolling hills of Spring Green where he grew up, it was the site where he created and designed many of his masterpieces beginning in 1911 and contains a collection of Wright-designed structures.</string>
+		<key>imageName</key>
+		<string>visitorcenter</string>
+	</dict>
+	<dict>
+		<key>lat</key>
+		<real>43.3334718</real>
+		<key>long</key>
+		<real>-90.38655610000001</real>
+		<key>title</key>
+		<string>A.D. German Warehouse</string>
+		<key>details</key>
+		<string>A small brick structure used by a local commodity wholesaler, Albert Dell German, this warehouse, finished in 1921, features an elaborate Mayan Revival exterior. Built in the town of Richland Center, where Wright was born, this offers a rare example of a project the architect designed in the late 1910’s that’s still standing.</string>
+		<key>imageName</key>
+		<string>warehouse</string>
+	</dict>
+</array>
+</plist>
