@@ -7,21 +7,23 @@
 //
 
 import UIKit
-import MapKit
 
-class CalloutView: MKAnnotationView {
-    var label: UILabel
-    var button: UIButton
+class CalloutView: UIView {
     
-
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    class MapPinCallout: UIView {
+        override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
+            let viewPoint = superview?.convertPoint(point, toView: self) ?? point
+            
+            let isInsideView = pointInside(viewPoint, withEvent: event)
+            
+            let view = super.hitTest(viewPoint, withEvent: event)
+            
+            return view
+        }
+        
+        override func pointInside(point: CGPoint, withEvent event: UIEvent?) -> Bool {
+            return CGRectContainsPoint(bounds, point)
+        }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
- 
-
 }

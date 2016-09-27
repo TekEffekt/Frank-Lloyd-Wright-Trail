@@ -15,6 +15,7 @@ import MapKit
 class Pin: NSObject, MKAnnotation {
     
     var title: String?
+    var subtitle: String?
     var lat: Double
     var long: Double
     var coordinate: CLLocationCoordinate2D {
