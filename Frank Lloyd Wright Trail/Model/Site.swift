@@ -15,8 +15,9 @@ struct Site {
     let title: String
     let subtitle: String
     let imageName: String?
-    let details = ""
+    let details: String?
     var hasBeenVisited = false
+    let images: [String]
     
     static func getSites() -> [Site] {
         var locations: NSArray?
@@ -31,7 +32,10 @@ struct Site {
                 let long = item.valueForKey("long")as! Double
                 let title = item.valueForKey("title") as! String
                 let imageName = item.valueForKey("imageName") as! String
-                let site = Site(lon: long, lat: lat, title: title, subtitle: "", imageName: imageName, hasBeenVisited: false)
+                let subtitle = item.valueForKey("subtitle") as! String
+                let details = item.valueForKey("details") as! String
+                let images = item.valueForKey("images") as! [String]
+                let site = Site(lon: long, lat: lat, title: title, subtitle: subtitle, imageName: imageName, details: details, hasBeenVisited: false, images: images)
                 sites.append(site)
             }
         }
@@ -39,6 +43,7 @@ struct Site {
         return sites
     }
     
-
-
+    
+    
 }
+

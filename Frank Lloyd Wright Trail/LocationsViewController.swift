@@ -29,7 +29,7 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
         locationCollectionVc = childViewControllers.first as! CollectionViewController
         locationCollectionVc.delegate = self
     }
-
+    
     func loadPins(){
         let sites = Site.getSites()
         for site in sites {
@@ -70,13 +70,27 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
         let region = MKCoordinateRegion(center: pin!.coordinate, span: span)
         mapView.setRegion(region, animated: true)
     }
-    // This is the function that is used when the detail button is pressed it will transition to another view.
-//    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-//        if control == view.rightCalloutAccessoryView {
-//            performSegueWithIdentifier("details", sender: view)
-//        }
-//    }
-
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if control == view.rightCalloutAccessoryView {
+            self.performSegueWithIdentifier("details", sender: view)
+        }
+    }
+    
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        //         Get the new view controller using segue.destinationViewController.
+        //         Pass the selected object to the new view controller.
+        
+        if (segue.identifier == "details" ){
+            // segue into DetailViewController and pass through the slected pin's MKPinAnnotaion
+            let blank = segue.destinationViewController as! DetailViewController
+            blank.viaSegue = sender as! MKPinAnnotationView
+        }
+    }
+    
     func cellTapped(withSite site: Site) {
         for pin in mapView.annotations {
             if pin.title! == site.title {
