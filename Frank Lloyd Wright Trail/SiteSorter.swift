@@ -22,7 +22,8 @@ class SiteSorter{
         // manipulating the distance variable of each site so that the distance
         for var site in sites{
             let distanceInMeters = location.distanceFromLocation(CLLocation(latitude: site.lat, longitude: site.lon))
-            let distanceInMiles = round(distanceInMeters / 1609.344)
+            let num = (distanceInMeters / 1609.344) * 100
+            let distanceInMiles = round(num) / 100
             site.distance = distanceInMiles
             myNewArray.append(site)
         }
