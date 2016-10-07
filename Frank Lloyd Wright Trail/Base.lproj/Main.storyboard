@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Scrapbook-->
+        <!--Trip Planner-->
         <scene sceneID="gX6-1R-4nf">
             <objects>
-                <viewController id="QAU-Lt-uxf" sceneMemberID="viewController">
+                <viewController title="Trip Planner" id="QAU-Lt-uxf" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2ER-Tb-Yip"/>
                         <viewControllerLayoutGuide type="bottom" id="rNC-gy-dS6"/>
@@ -20,11 +20,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Scrapbook" image="open-book" id="BjM-SI-FMt"/>
+                    <tabBarItem key="tabBarItem" title="Trip Planner" image="open-book" id="BjM-SI-FMt"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qC-Z4-soF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-435" y="281"/>
+            <point key="canvasLocation" x="-262" y="320"/>
         </scene>
         <!--Location-->
         <scene sceneID="W6Z-WJ-Lei">

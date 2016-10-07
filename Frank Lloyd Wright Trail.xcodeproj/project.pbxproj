@@ -232,7 +232,6 @@
 				TargetAttributes = {
 					B6109D951D528DDD002A6D77 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 7KDLJ86653;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -452,7 +451,7 @@
 			baseConfigurationReference = 866A48BE69E58B36CE7AFA90 /* Pods-Frank Lloyd Wright Trail.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7KDLJ86653;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -471,7 +470,7 @@
 			baseConfigurationReference = 46912E114CBBD62D92AB4CE3 /* Pods-Frank Lloyd Wright Trail.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7KDLJ86653;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
