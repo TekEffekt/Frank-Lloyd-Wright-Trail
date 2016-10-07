@@ -13,7 +13,6 @@
 		847AE4BA1DA720AA0056B6D7 /* LocationGalleryPageControlller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AE4B91DA720AA0056B6D7 /* LocationGalleryPageControlller.swift */; };
 		847AE4BC1DA720B30056B6D7 /* LocationGalleryImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AE4BB1DA720B30056B6D7 /* LocationGalleryImageController.swift */; };
 		847AE4BE1DA723450056B6D7 /* locations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 847AE4BD1DA723450056B6D7 /* locations.plist */; };
-		B6109DA11D528DDE002A6D77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6109D9F1D528DDE002A6D77 /* Main.storyboard */; };
 		B6109DA31D528DDE002A6D77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6109DA21D528DDE002A6D77 /* Assets.xcassets */; };
 		B6109DA61D528DDE002A6D77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6109DA41D528DDE002A6D77 /* LaunchScreen.storyboard */; };
 		B6DB3BBB1D7A100200FC737D /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DB3BB81D7A100200FC737D /* Pin.swift */; };
@@ -25,6 +24,10 @@
 		FA982F401D85D6AF005AF97C /* Callout.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA982F3F1D85D6AF005AF97C /* Callout.xib */; };
 		FAAF70C41D74A39400515DBD /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF70C31D74A39400515DBD /* Cell.swift */; };
 		FAAF70CC1D77675B00515DBD /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF70CB1D77675B00515DBD /* CollectionViewController.swift */; };
+		FAC91F821DA84699002B368E /* LocationDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC91F801DA84699002B368E /* LocationDetails.storyboard */; };
+		FAC91F841DA84797002B368E /* LocationSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC91F831DA84797002B368E /* LocationSelection.storyboard */; };
+		FAC91F871DA84A2E002B368E /* TripPlanner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC91F851DA84A2E002B368E /* TripPlanner.storyboard */; };
+		FAC91F891DA84A71002B368E /* Base.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC91F881DA84A71002B368E /* Base.storyboard */; };
 		FAD304B31D6D28E800D8CE2F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD304B21D6D28E800D8CE2F /* DetailViewController.swift */; };
 		FAD304BB1D6F66B500D8CE2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD304BA1D6F66B500D8CE2F /* AppDelegate.swift */; };
 		FAEE90AE1D6771B5008264DC /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE90AD1D6771B5008264DC /* TabBarController.swift */; };
@@ -41,7 +44,6 @@
 		847AE4BD1DA723450056B6D7 /* locations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = locations.plist; sourceTree = "<group>"; };
 		866A48BE69E58B36CE7AFA90 /* Pods-Frank Lloyd Wright Trail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frank Lloyd Wright Trail.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Frank Lloyd Wright Trail/Pods-Frank Lloyd Wright Trail.debug.xcconfig"; sourceTree = "<group>"; };
 		B6109D961D528DDD002A6D77 /* Frank Lloyd Wright Trail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Frank Lloyd Wright Trail.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B6109DA01D528DDE002A6D77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B6109DA21D528DDE002A6D77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B6109DA51D528DDE002A6D77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B6109DA71D528DDE002A6D77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -55,6 +57,10 @@
 		FA982F3F1D85D6AF005AF97C /* Callout.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Callout.xib; sourceTree = "<group>"; };
 		FAAF70C31D74A39400515DBD /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Cell.swift; path = ../Cell.swift; sourceTree = "<group>"; };
 		FAAF70CB1D77675B00515DBD /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		FAC91F811DA84699002B368E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LocationDetails.storyboard; sourceTree = "<group>"; };
+		FAC91F831DA84797002B368E /* LocationSelection.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LocationSelection.storyboard; sourceTree = "<group>"; };
+		FAC91F861DA84A2E002B368E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TripPlanner.storyboard; sourceTree = "<group>"; };
+		FAC91F881DA84A71002B368E /* Base.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Base.storyboard; sourceTree = "<group>"; };
 		FAD304B21D6D28E800D8CE2F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FAD304BA1D6F66B500D8CE2F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = App/AppDelegate.swift; sourceTree = "<group>"; };
 		FAEE90AD1D6771B5008264DC /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -189,7 +195,10 @@
 		FAD304C01D6F677D00D8CE2F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B6109D9F1D528DDE002A6D77 /* Main.storyboard */,
+				FAC91F881DA84A71002B368E /* Base.storyboard */,
+				FAC91F851DA84A2E002B368E /* TripPlanner.storyboard */,
+				FAC91F831DA84797002B368E /* LocationSelection.storyboard */,
+				FAC91F801DA84699002B368E /* LocationDetails.storyboard */,
 				B6109DA21D528DDE002A6D77 /* Assets.xcassets */,
 				B6109DA41D528DDE002A6D77 /* LaunchScreen.storyboard */,
 				FA982F3F1D85D6AF005AF97C /* Callout.xib */,
@@ -232,7 +241,6 @@
 				TargetAttributes = {
 					B6109D951D528DDD002A6D77 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 7KDLJ86653;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -261,9 +269,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6109DA61D528DDE002A6D77 /* LaunchScreen.storyboard in Resources */,
+				FAC91F821DA84699002B368E /* LocationDetails.storyboard in Resources */,
 				847AE4BE1DA723450056B6D7 /* locations.plist in Resources */,
 				B6109DA31D528DDE002A6D77 /* Assets.xcassets in Resources */,
-				B6109DA11D528DDE002A6D77 /* Main.storyboard in Resources */,
+				FAC91F871DA84A2E002B368E /* TripPlanner.storyboard in Resources */,
+				FAC91F841DA84797002B368E /* LocationSelection.storyboard in Resources */,
+				FAC91F891DA84A71002B368E /* Base.storyboard in Resources */,
 				FA982F401D85D6AF005AF97C /* Callout.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,20 +356,28 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B6109D9F1D528DDE002A6D77 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B6109DA01D528DDE002A6D77 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B6109DA41D528DDE002A6D77 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B6109DA51D528DDE002A6D77 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		FAC91F801DA84699002B368E /* LocationDetails.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAC91F811DA84699002B368E /* Base */,
+			);
+			name = LocationDetails.storyboard;
+			sourceTree = "<group>";
+		};
+		FAC91F851DA84A2E002B368E /* TripPlanner.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAC91F861DA84A2E002B368E /* Base */,
+			);
+			name = TripPlanner.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -452,7 +471,7 @@
 			baseConfigurationReference = 866A48BE69E58B36CE7AFA90 /* Pods-Frank Lloyd Wright Trail.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7KDLJ86653;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -471,7 +490,7 @@
 			baseConfigurationReference = 46912E114CBBD62D92AB4CE3 /* Pods-Frank Lloyd Wright Trail.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7KDLJ86653;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

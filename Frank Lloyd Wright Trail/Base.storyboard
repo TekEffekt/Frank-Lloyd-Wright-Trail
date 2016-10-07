@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cc9-cf-jen">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="GCG-JD-6K0">
+            <objects>
+                <tabBarController storyboardIdentifier="Initial Tab Bar" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cc9-cf-jen" customClass="TabBarController" customModule="Frank_Lloyd_Wright_Trail" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="ciS-68-rUh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="kfR-qo-VHq" kind="relationship" relationship="viewControllers" id="aYp-Jl-laR"/>
+                        <segue destination="wNE-ER-x4E" kind="relationship" relationship="viewControllers" id="LeU-Uk-JKx"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vqn-rP-4IQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1631" y="-215"/>
+        </scene>
+        <!--Location Navigation Controller-->
+        <scene sceneID="cjd-FO-1Wb">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LocationSelection" referencedIdentifier="Location Navigation Controller" id="kfR-qo-VHq" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="9T8-vs-uq2"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D02-6X-2HD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-650" y="-503"/>
+        </scene>
+        <!--Trip Planner View Controller-->
+        <scene sceneID="tIb-BQ-cOZ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TripPlanner" referencedIdentifier="Trip Planner View Controller" id="wNE-ER-x4E" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="W6g-WV-U2j"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wEc-9n-YeJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-650" y="28"/>
+        </scene>
+    </scenes>
+</document>
