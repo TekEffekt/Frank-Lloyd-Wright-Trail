@@ -3,6 +3,8 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>subtitle</key>
+		<string>The SC Johnson Administration Building was the first Frank Lloyd Wright designed for SC Johnson. The Research Tower opened in 1950.</string>
 		<key>lat</key>
 		<real>42.7152375</real>
 		<key>long</key>
@@ -15,6 +17,8 @@
 		<string>scjohnson</string>
 	</dict>
 	<dict>
+		<key>subtitle</key>
+		<string>Third generation SC Johnson leader H.F. Johnson Jr. commissioned with Frank Lloyd Wright in 1936.</string>
 		<key>lat</key>
 		<real>42.784472</real>
 		<key>long</key>
@@ -22,11 +26,13 @@
 		<key>title</key>
 		<string>Wingspread</string>
 		<key>details</key>
-		<string>A private residence Wright designed for SC Johnson owner Herbert Fisk Johnson, Jr. in 1936, Wingspread lives up to its names, a low-slung streamlined brick home with four wings spreading across the property. The central living room, a dome-shaped room, features a 30-foot-tall vertical fireplace and original furniture designed by Wright. Considered the last of the Prairie Houses, it’s filled with unique touches, including a dramatic “Romeo and Juliet” balcony that cantilevers over the landscape and a crow’s nest lookout built above the home, a favorite play place for the Johnson children.</string>
+		<string>In 1936, Herbert Fisk Johnson, Jr. (1899-1978) commissioned Frank Lloyd Wright to design a new administration building for S.C. Johnson &amp; Son, Inc., (also known as Johnson Wax), the family business which has since been renamed SC Johnson, A Family Company.  Johnson loved the plan so much he later commissioned Wright to design his new home. Completed in 1939, Wright called the 14,000-foot creation Wingspread, because its four wings embrace the prairie, while the roof over the central Great Hall soars skyward.</string>
 		<key>imageName</key>
 		<string>wingspread</string>
 	</dict>
 	<dict>
+		<key>subtitle</key>
+		<string>Creatively charged by the architecture and the natural landscape. Monona Terrace is truly the product of our community and culture.</string>
 		<key>lat</key>
 		<real>43.0717445</real>
 		<key>long</key>
@@ -39,6 +45,8 @@
 		<string>mononaterrace</string>
 	</dict>
 	<dict>
+		<key>subtitle</key>
+		<string>Since 1879 First Unitarian Society of Madison has been a liberal religious presence in Madison, providing a welcoming alternative religious community.</string>
 		<key>lat</key>
 		<real>43.0757361</real>
 		<key>long</key>
@@ -51,6 +59,8 @@
 		<string>meetinghouse</string>
 	</dict>
 	<dict>
+		<key>subtitle</key>
+		<string>Taliesin Preservation offers a variety of tours of the Taliesin estate in Spring Green, Wisconsin.</string>
 		<key>lat</key>
 		<real>43.1439006</real>
 		<key>long</key>
@@ -63,6 +73,8 @@
 		<string>visitorcenter</string>
 	</dict>
 	<dict>
+		<key>subtitle</key>
+		<string>Frank Lloyd Wright designed the A.D. German Warehouse that was constructed in 1915.</string>
 		<key>lat</key>
 		<real>43.3334718</real>
 		<key>long</key>

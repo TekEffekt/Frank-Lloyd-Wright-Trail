@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		3D968D3100D7715D8590C20E /* Pods_Frank_Lloyd_Wright_Trail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF68C79F7226D19F1DACC2B8 /* Pods_Frank_Lloyd_Wright_Trail.framework */; };
+		847AE4B61DA71FFA0056B6D7 /* PhotosProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AE4B51DA71FFA0056B6D7 /* PhotosProvider.swift */; };
+		847AE4B81DA720010056B6D7 /* ExamplePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AE4B71DA720010056B6D7 /* ExamplePhoto.swift */; };
+		847AE4BA1DA720AA0056B6D7 /* LocationGalleryPageControlller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AE4B91DA720AA0056B6D7 /* LocationGalleryPageControlller.swift */; };
+		847AE4BC1DA720B30056B6D7 /* LocationGalleryImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AE4BB1DA720B30056B6D7 /* LocationGalleryImageController.swift */; };
+		847AE4BE1DA723450056B6D7 /* locations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 847AE4BD1DA723450056B6D7 /* locations.plist */; };
 		B6109DA11D528DDE002A6D77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6109D9F1D528DDE002A6D77 /* Main.storyboard */; };
 		B6109DA31D528DDE002A6D77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6109DA21D528DDE002A6D77 /* Assets.xcassets */; };
 		B6109DA61D528DDE002A6D77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6109DA41D528DDE002A6D77 /* LaunchScreen.storyboard */; };
@@ -22,7 +27,6 @@
 		FAAF70CC1D77675B00515DBD /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF70CB1D77675B00515DBD /* CollectionViewController.swift */; };
 		FAD304B31D6D28E800D8CE2F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD304B21D6D28E800D8CE2F /* DetailViewController.swift */; };
 		FAD304BB1D6F66B500D8CE2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD304BA1D6F66B500D8CE2F /* AppDelegate.swift */; };
-		FAD304C41D6F68C100D8CE2F /* locations.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAD304C31D6F68C100D8CE2F /* locations.plist */; };
 		FAEE90AE1D6771B5008264DC /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE90AD1D6771B5008264DC /* TabBarController.swift */; };
 		FAEE90B41D677EBB008264DC /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE90B31D677EBB008264DC /* LocationsViewController.swift */; };
 		FAF922811D834E8D001B1D55 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF922801D834E8D001B1D55 /* CoreLocation.framework */; };
@@ -30,6 +34,11 @@
 
 /* Begin PBXFileReference section */
 		46912E114CBBD62D92AB4CE3 /* Pods-Frank Lloyd Wright Trail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frank Lloyd Wright Trail.release.xcconfig"; path = "Pods/Target Support Files/Pods-Frank Lloyd Wright Trail/Pods-Frank Lloyd Wright Trail.release.xcconfig"; sourceTree = "<group>"; };
+		847AE4B51DA71FFA0056B6D7 /* PhotosProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosProvider.swift; sourceTree = "<group>"; };
+		847AE4B71DA720010056B6D7 /* ExamplePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamplePhoto.swift; sourceTree = "<group>"; };
+		847AE4B91DA720AA0056B6D7 /* LocationGalleryPageControlller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationGalleryPageControlller.swift; sourceTree = "<group>"; };
+		847AE4BB1DA720B30056B6D7 /* LocationGalleryImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationGalleryImageController.swift; sourceTree = "<group>"; };
+		847AE4BD1DA723450056B6D7 /* locations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = locations.plist; sourceTree = "<group>"; };
 		866A48BE69E58B36CE7AFA90 /* Pods-Frank Lloyd Wright Trail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frank Lloyd Wright Trail.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Frank Lloyd Wright Trail/Pods-Frank Lloyd Wright Trail.debug.xcconfig"; sourceTree = "<group>"; };
 		B6109D961D528DDD002A6D77 /* Frank Lloyd Wright Trail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Frank Lloyd Wright Trail.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6109DA01D528DDE002A6D77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -48,7 +57,6 @@
 		FAAF70CB1D77675B00515DBD /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		FAD304B21D6D28E800D8CE2F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FAD304BA1D6F66B500D8CE2F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = App/AppDelegate.swift; sourceTree = "<group>"; };
-		FAD304C31D6F68C100D8CE2F /* locations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = locations.plist; sourceTree = "<group>"; };
 		FAEE90AD1D6771B5008264DC /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		FAEE90B31D677EBB008264DC /* LocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
 		FAF922801D834E8D001B1D55 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -88,7 +96,7 @@
 		B6109D981D528DDE002A6D77 /* Frank Lloyd Wright Trail */ = {
 			isa = PBXGroup;
 			children = (
-				FAD304C31D6F68C100D8CE2F /* locations.plist */,
+				847AE4BD1DA723450056B6D7 /* locations.plist */,
 				FAD304BC1D6F670C00D8CE2F /* App */,
 				FAD304BD1D6F672C00D8CE2F /* Model */,
 				FA5AB5AB1D7E6A9D005CFBD4 /* View */,
@@ -161,7 +169,11 @@
 				FAEE90AD1D6771B5008264DC /* TabBarController.swift */,
 				FAEE90B31D677EBB008264DC /* LocationsViewController.swift */,
 				FAD304B21D6D28E800D8CE2F /* DetailViewController.swift */,
+				847AE4B91DA720AA0056B6D7 /* LocationGalleryPageControlller.swift */,
+				847AE4BB1DA720B30056B6D7 /* LocationGalleryImageController.swift */,
 				FAAF70CB1D77675B00515DBD /* CollectionViewController.swift */,
+				847AE4B71DA720010056B6D7 /* ExamplePhoto.swift */,
+				847AE4B51DA71FFA0056B6D7 /* PhotosProvider.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -249,7 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6109DA61D528DDE002A6D77 /* LaunchScreen.storyboard in Resources */,
-				FAD304C41D6F68C100D8CE2F /* locations.plist in Resources */,
+				847AE4BE1DA723450056B6D7 /* locations.plist in Resources */,
 				B6109DA31D528DDE002A6D77 /* Assets.xcassets in Resources */,
 				B6109DA11D528DDE002A6D77 /* Main.storyboard in Resources */,
 				FA982F401D85D6AF005AF97C /* Callout.xib in Resources */,
@@ -314,15 +326,19 @@
 				FA7B5BB51D7F40C000CB218B /* CalloutView.swift in Sources */,
 				FA6143921D81FD6300E3A076 /* SiteSorter.swift in Sources */,
 				FAD304BB1D6F66B500D8CE2F /* AppDelegate.swift in Sources */,
+				847AE4BA1DA720AA0056B6D7 /* LocationGalleryPageControlller.swift in Sources */,
 				FAAF70CC1D77675B00515DBD /* CollectionViewController.swift in Sources */,
 				FAAF70C41D74A39400515DBD /* Cell.swift in Sources */,
 				B6DB3BBB1D7A100200FC737D /* Pin.swift in Sources */,
 				FA5AB5AF1D7E744D005CFBD4 /* Item.swift in Sources */,
+				847AE4B81DA720010056B6D7 /* ExamplePhoto.swift in Sources */,
 				B6DB3BBC1D7A100200FC737D /* Site.swift in Sources */,
 				FAEE90AE1D6771B5008264DC /* TabBarController.swift in Sources */,
 				FAEE90B41D677EBB008264DC /* LocationsViewController.swift in Sources */,
 				B6DB3BBF1D7A104900FC737D /* LocationCollectionDelegate.swift in Sources */,
 				FAD304B31D6D28E800D8CE2F /* DetailViewController.swift in Sources */,
+				847AE4B61DA71FFA0056B6D7 /* PhotosProvider.swift in Sources */,
+				847AE4BC1DA720B30056B6D7 /* LocationGalleryImageController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

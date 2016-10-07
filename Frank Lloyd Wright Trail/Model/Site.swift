@@ -15,8 +15,8 @@ struct Site {
     let title: String
     let subtitle: String
     let imageName: String?
-    let details = ""
-    var distance: Double 
+    let details: String?
+    var distance: Double
     var hasBeenVisited = false
     
     
@@ -33,7 +33,9 @@ struct Site {
                 let long = item.valueForKey("long")as! Double
                 let title = item.valueForKey("title") as! String
                 let imageName = item.valueForKey("imageName") as! String
-                let site = Site(lon: long, lat: lat, title: title, subtitle: "", imageName: imageName, distance: 0.0,hasBeenVisited: false)
+                let subtitle = item.valueForKey("subtitle") as! String
+                let details = item.valueForKey("details") as! String
+                let site = Site(lon: long, lat: lat, title: title, subtitle: subtitle, imageName: imageName,details: details,  distance: 0.0,hasBeenVisited: false)
                 sites.append(site)
             }
         }
@@ -41,6 +43,6 @@ struct Site {
         return sites
     }
     
-
-
+    
+    
 }
