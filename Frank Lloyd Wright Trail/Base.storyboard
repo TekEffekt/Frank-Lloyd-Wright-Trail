@@ -33,10 +33,10 @@
             </objects>
             <point key="canvasLocation" x="-650" y="-503"/>
         </scene>
-        <!--Trip Planner View Controller-->
+        <!--Choose Destination-->
         <scene sceneID="tIb-BQ-cOZ">
             <objects>
-                <viewControllerPlaceholder storyboardName="TripPlanner" referencedIdentifier="Trip Planner View Controller" id="wNE-ER-x4E" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="TripPlanner" referencedIdentifier="Choose Destination" id="wNE-ER-x4E" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="W6g-WV-U2j"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wEc-9n-YeJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
