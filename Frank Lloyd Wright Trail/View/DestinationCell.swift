@@ -15,6 +15,16 @@ class DestinationCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        let view = UIView()
+        view.frame = self.frame
+        view.backgroundColor = UIColor.blackColor()
+        view.alpha = 0.25
+        
+        selectedBackgroundView = view
+        selectedBackgroundView!.userInteractionEnabled = true
+        selectedBackgroundView?.backgroundColor = UIColor(white: 0.7, alpha: 0.9)
+
+        
         self.layer.cornerRadius = 2
     }
     

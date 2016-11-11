@@ -8,13 +8,28 @@
 
 import UIKit
 
-class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     @IBOutlet weak var collectionView: UICollectionView!
     let sites = Site.getSites()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 5, bottom: 0, right: 5)
+        
+        let width = (collectionView.bounds.width - 45) / 2
+        let height = 0.9 * width
+        layout.itemSize = CGSize(width: width, height: height)
+
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        collectionView!.collectionViewLayout = layout
+        
+        
         // Do any additional setup after loading the view.
     }
 
@@ -42,21 +57,37 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
         return sites.count
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let width = (collectionView.bounds.width - 15) / 2
-        let height = 0.9 * width
-        return CGSizeMake(width, height)
-    }
     
     // Delegate for Collection View
     // ---------------------------
-    
+    var selected = false
     // Does something when that cell is clicked
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
+        selected = !selected
+        print("Selected item: \(indexPath.row)")
     }
     
+    // Flowlayout
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let width = (collectionView.bounds.width - 15) / 2
+        let height = 0.9 * width
+        return CGSize(width: width, height: height)
+    }
 
+    
+//    //3
+//    func collectionView(collectionView: UICollectionView,
+//                          layout collectionViewLayout: UICollectionViewLayout,
+//                                 insetForSectionAt section: Int) -> UIEdgeInsets {
+//        return nil
+//    }
+//    
+//    // 4
+//    func collectionView(collectionView: UICollectionView,
+//                          layout collectionViewLayout: UICollectionViewLayout,
+//                                 minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return nil
+//    }
     /*
     // MARK: - Navigation
 
