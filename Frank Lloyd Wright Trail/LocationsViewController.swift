@@ -63,7 +63,6 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
         mapView.setRegion(region, animated: true)
     }
     
-    
     // when an annotation is selected map pans into that certain point
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
         let pin = view.annotation
@@ -95,4 +94,5 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
             }
         }
     }
+    
 }
