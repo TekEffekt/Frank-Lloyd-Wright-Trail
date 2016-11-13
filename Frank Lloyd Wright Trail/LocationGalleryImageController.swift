@@ -19,6 +19,8 @@ class LocationGalleryImageController: UIViewController, NYTPhotoViewControllerDe
     let photos4 = PhotosProvider().photos4
     let photos5 = PhotosProvider().photos5
     let photos6 = PhotosProvider().photos6
+    let photos7 = PhotosProvider().photos7
+    let photos8 = PhotosProvider().photos8
     
     @IBOutlet weak var galleryImage: UIImageView!
     
@@ -41,6 +43,12 @@ class LocationGalleryImageController: UIViewController, NYTPhotoViewControllerDe
     // switch statment to select correct photos
     func tapped(){
         switch  nytphoto!{
+        case 43.0105838:
+            let photosViewController = NYTPhotosViewController(photos: self.photos7)
+            presentViewController(photosViewController, animated: true, completion: nil)
+        case 43.1192397:
+            let photosViewController = NYTPhotosViewController(photos: self.photos8)
+            presentViewController(photosViewController, animated: true, completion: nil)
         case 42.7152375:
             let photosViewController = NYTPhotosViewController(photos: self.photos1)
                 presentViewController(photosViewController, animated: true, completion: nil)

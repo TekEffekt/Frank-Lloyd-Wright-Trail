@@ -26,6 +26,8 @@ class LocationGalleryPageControlller: UIPageViewController, UIPageViewController
     var site4:[UIImage] = [UIImage(named: "meetinghouse")!, UIImage(named: "meetinghouse2")!, UIImage(named: "meetinghouse3")!]
     var site5:[UIImage] = [UIImage(named: "visitorcenter")!, UIImage(named: "visitorcenter2")!, UIImage(named: "visitorcenter3")!]
     var site6:[UIImage] = [UIImage(named: "warehouse")!, UIImage(named: "warehouse2")!, UIImage(named: "warehouse3")!]
+    var site7:[UIImage] = [UIImage(named: "asbh")!, UIImage(named: "asbh2")!, UIImage(named: "asbh3")!]
+    var site8:[UIImage] = [UIImage(named: "wyoming")!, UIImage(named: "wyoming2")!, UIImage(named: "wyoming3")!]
 
     
     override func viewDidAppear(animated: Bool) {
@@ -36,6 +38,14 @@ class LocationGalleryPageControlller: UIPageViewController, UIPageViewController
             let controller = storyboard?.instantiateViewControllerWithIdentifier("LocationGalleryImageController") as! LocationGalleryImageController
             
             switch  picture.annotation!.coordinate.latitude{
+            case 43.1192397:
+                controller.nytphoto = 43.1192397
+                controller.image = site8[i]
+                imageControllers.append(controller)
+            case 43.0105838:
+                controller.nytphoto = 43.0105838
+                controller.image = site7[i]
+                imageControllers.append(controller)
             case 42.7152375:
                 controller.nytphoto = 42.7152375
                 controller.image = site1[i]
