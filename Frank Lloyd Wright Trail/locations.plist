@@ -4,13 +4,42 @@
 <array>
 	<dict>
 		<key>subtitle</key>
+		<string>subtitle coming soon</string>
+		<key>lat</key>
+		<real>43.1192397</real>
+		<key>long</key>
+		<real>-90.11706479999999</real>
+		<key>title</key>
+		<string>Wyoming Valley School</string>
+		<key>details</key>
+		<string>Wyoming Valley School, designed by Frank Lloyd Wright, is listed on the state and national register of historic places and is located three miles from Wright&apos;s home, Taliesin, in rural Spring Green, Wisconsin. \n
+Wyoming Valley School Cultural Arts Center is a nonprofit organization that promotes the arts and culture of the surrounding region by opening the dynamic architecture of Wyoming Valley School to provide incomparable spaces for workshops, performances, lectures, and exhibits for all ages. It also offers space for private functions such as weddings, banquets, business meetings, or other events. Its mission is to maintain and preserve this architectural gem for the continued benefit of and use by the community.</string>
+		<key>imageName</key>
+		<string>wyoming</string>
+	</dict>
+	<dict>
+		<key>subtitle</key>
+		<string>subtitle coming soon</string>
+		<key>lat</key>
+		<real>43.0105838</real>
+		<key>long</key>
+		<real>-87.9507275</real>
+		<key>title</key>
+		<string>American System Built Homes</string>
+		<key>details</key>
+		<string>In a career spanning seven decades, Frank Lloyd Wright took special interest in creating architect-designed homes for moderate and low income families.  In the January 1938 issue of “Architectural Forum,” he commented, “I would rather solve the small house problem than build anything else I can think of…” Using his own criteria, these small homes designed for clients who could afford little, are among Wright’s greatest masterpieces. \n To promote, protect and preserve the heritage of Frank Lloyd Wright in his native state of Wisconsin, is the mission of Frank Lloyd Wright® Wisconsin. Since its inception in 1990, the organization has worked tirelessly to honor that statement. For all who value the legacy of Wright’s architecture we know you will agree with our mission. Now more than ever, we need your support, in order to continue to fulfill our mission. Please consider a contribution to our Annual Appeal.</string>
+		<key>imageName</key>
+		<string>asbh</string>
+	</dict>
+	<dict>
+		<key>subtitle</key>
 		<string>The SC Johnson Administration Building was the first Frank Lloyd Wright designed for SC Johnson. The Research Tower opened in 1950.</string>
 		<key>lat</key>
 		<real>42.7152375</real>
 		<key>long</key>
 		<real>-87.79288560000001</real>
 		<key>title</key>
-		<string>SC Johnson Administration Building and Research Tower</string>
+		<string>SC Johnson Head Quarters</string>
 		<key>details</key>
 		<string>Far outside the corridors of high-tech industry and startup spaces, the SC Johnson company headquarters in Racine, Wisconsin, still provides a dashing vision of the modern American workplace, despite having recently celebrated its 75th anniversary. The SC Johnson Administration Building, designed by Frank Lloyd Wright in 1936, eschews business clichés: workers are greeted by a streamlined, muscular exterior made from ribbons of glass and brick, more campus than corporate, before entering a light-filled interior, with rows of organic, curved columns creating an abstract forest surrounding the secretary pool. The 15-story Research Tower, completed in 1950, was built on a &quot;taproot&quot; system. A core of elevators, heating, and ductwork formed a spine at the center on the tower, supported by a foundation sunk 54-feet-deep into the ground. Disc-shaped mezzanines branched off the core, alternating with full sized, 40-foot wide floors. Walls of horizontal Pyrex tubes, the same used in the Administration Building, let in sunlight but block the view. The effect is of a tree enclosed in glass.</string>
 		<key>imageName</key>
