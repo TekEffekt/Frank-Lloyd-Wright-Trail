@@ -126,12 +126,12 @@ class LocationGalleryPageControlller: UIPageViewController, UIPageViewController
         return imageControllers[nextIndex]
     }
     
-    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return imageControllers.count
-    }
+    ///func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+    ///    return imageControllers.count
+    ///}
     
-    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return 0
-    }
-   }
+    ///func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
+    ///    return 0
+    ///}
+}
 
