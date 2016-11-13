@@ -31,7 +31,7 @@ class LocationGalleryImageController: UIViewController, NYTPhotoViewControllerDe
         super.viewWillAppear(animated)
         
         // UITapGestureRecognizer to display the correct [Example] photo
-        var imageTapped = UITapGestureRecognizer(target: self, action: "tapped")
+        let imageTapped = UITapGestureRecognizer(target: self, action: #selector(LocationGalleryImageController.tapped))
         self.galleryImage.addGestureRecognizer(imageTapped)
         if let image = image {
             galleryImage.image = image
@@ -46,7 +46,7 @@ class LocationGalleryImageController: UIViewController, NYTPhotoViewControllerDe
                 presentViewController(photosViewController, animated: true, completion: nil)
         case 42.784472:
             let photosViewController = NYTPhotosViewController(photos: self.photos2)
-                       presentViewController(photosViewController, animated: true, completion: nil)
+            presentViewController(photosViewController, animated: true, completion: nil)
         case 43.0717445:
             let photosViewController = NYTPhotosViewController(photos: self.photos3)
             presentViewController(photosViewController, animated: true, completion: nil)

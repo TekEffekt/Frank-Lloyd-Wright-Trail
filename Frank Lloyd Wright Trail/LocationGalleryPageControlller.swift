@@ -68,7 +68,7 @@ class LocationGalleryPageControlller: UIPageViewController, UIPageViewController
         if let firstViewController = imageControllers.first {
             setViewControllers([firstViewController],
                                direction: .Forward,
-                               animated: true,
+                               animated: false,
                                completion: nil)
         }
         
