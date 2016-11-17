@@ -16,12 +16,46 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
     var locationCollectionVc: CollectionViewController!
     let center = CLLocation(latitude: 43.105304, longitude: -89.046729)
     
+    
+    func directionAPITest() {
+        
+        let directionURL = "https://maps.googleapis.com/maps/api/directions/json?origin=42.715237,-87.790697&destination=43.33472,-90.384367&waypoints=optimize:true%7C43.143901,-90.059523%7C42.784472,-87.771599&key=AIzaSyD99efuqx7jK3bOi7txWUDRZNlh-G50b0w"
+        let request = NSURLRequest(URL: NSURL(string:directionURL)!)
+        let session = NSURLSession.sharedSession()
+        session.dataTaskWithRequest(request,
+                                    completionHandler: {(data: NSData?, response: NSURLResponse?, error: NSError?)-> Void in
+                                        
+                                        if error == nil {
+                                            do {
+                                            let object = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as! NSDictionary
+                                            //print(object)
+                                            
+                                            let routes = object["routes"] as! [NSDictionary]
+                                            for route in routes {
+                                                print(route["legs"])
+                                                
+                                            }
+                                            }catch let error as NSError {
+                                                print(error)
+                                            }
+                                            
+                                            dispatch_async(dispatch_get_main_queue()) {
+                                                //update your UI here 
+                                            }
+                                        }
+                                        else {
+                                            print("Direction API error")
+                                        }
+                                        
+        }).resume()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mapView.delegate = self
         loadPins()
         centerMapOnLocation(center)
         mapView.showsUserLocation = true
+        directionAPITest()
     }
     
     override func viewWillAppear(animated: Bool) {
