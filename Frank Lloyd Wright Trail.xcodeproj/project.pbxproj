@@ -26,6 +26,7 @@
 		FA982F401D85D6AF005AF97C /* Callout.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA982F3F1D85D6AF005AF97C /* Callout.xib */; };
 		FAAF70C41D74A39400515DBD /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF70C31D74A39400515DBD /* Cell.swift */; };
 		FAAF70CC1D77675B00515DBD /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF70CB1D77675B00515DBD /* CollectionViewController.swift */; };
+		FAB740D01DDE728D00BA859F /* TripTimeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB740CF1DDE728D00BA859F /* TripTimeVC.swift */; };
 		FAC91F821DA84699002B368E /* LocationDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC91F801DA84699002B368E /* LocationDetails.storyboard */; };
 		FAC91F841DA84797002B368E /* LocationSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC91F831DA84797002B368E /* LocationSelection.storyboard */; };
 		FAC91F871DA84A2E002B368E /* TripPlanner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC91F851DA84A2E002B368E /* TripPlanner.storyboard */; };
@@ -61,6 +62,7 @@
 		FA982F3F1D85D6AF005AF97C /* Callout.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Callout.xib; sourceTree = "<group>"; };
 		FAAF70C31D74A39400515DBD /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Cell.swift; path = ../Cell.swift; sourceTree = "<group>"; };
 		FAAF70CB1D77675B00515DBD /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		FAB740CF1DDE728D00BA859F /* TripTimeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTimeVC.swift; sourceTree = "<group>"; };
 		FAC91F811DA84699002B368E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LocationDetails.storyboard; sourceTree = "<group>"; };
 		FAC91F831DA84797002B368E /* LocationSelection.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LocationSelection.storyboard; sourceTree = "<group>"; };
 		FAC91F861DA84A2E002B368E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TripPlanner.storyboard; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			children = (
 				FA3829481DBAE7E3003A4BFA /* ChooseDestinationVC.swift */,
 				FA1334741DBFEF3500976585 /* TimeTableVC.swift */,
+				FAB740CF1DDE728D00BA859F /* TripTimeVC.swift */,
 			);
 			name = "Trip Planner";
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA1334751DBFEF3500976585 /* TimeTableVC.swift in Sources */,
+				FAB740D01DDE728D00BA859F /* TripTimeVC.swift in Sources */,
 				FA6143921D81FD6300E3A076 /* SiteSorter.swift in Sources */,
 				FAD304BB1D6F66B500D8CE2F /* AppDelegate.swift in Sources */,
 				847AE4BA1DA720AA0056B6D7 /* LocationGalleryPageControlller.swift in Sources */,
