@@ -125,6 +125,9 @@
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="b2H-lh-NYu" kind="show" id="H3G-1j-xpb"/>
+                                </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8FB-ey-Mci">
                                 <rect key="frame" x="0.0" y="64" width="375" height="492"/>
@@ -139,7 +142,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vyH-YZ-bd0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3124" y="320"/>
+            <point key="canvasLocation" x="2705" y="320"/>
+        </scene>
+        <!--TimelineVC-->
+        <scene sceneID="yPv-LF-Up2">
+            <objects>
+                <viewController id="b2H-lh-NYu" customClass="TimelineVC" customModule="Frank_Lloyd_Wright_Trail" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tLv-VX-07m"/>
+                        <viewControllerLayoutGuide type="bottom" id="pmE-Nw-xhC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cch-x8-UHx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fgy-k0-eLp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3689" y="320"/>
         </scene>
         <!--Trip Planner-->
         <scene sceneID="pZN-aD-3Xb">
@@ -596,7 +617,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B41-AG-Qqs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3124" y="1043"/>
+            <point key="canvasLocation" x="2705" y="1046"/>
         </scene>
         <!--Trip TimeVC-->
         <scene sceneID="hrZ-Fd-CkP">
