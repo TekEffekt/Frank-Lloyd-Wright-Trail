@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3D968D3100D7715D8590C20E /* Pods_Frank_Lloyd_Wright_Trail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF68C79F7226D19F1DACC2B8 /* Pods_Frank_Lloyd_Wright_Trail.framework */; };
-		8472EF721DDE4C3E009386C4 /* CreateTripPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472EF711DDE4C3E009386C4 /* CreateTripPlan.swift */; };
 		847AE4B61DA71FFA0056B6D7 /* PhotosProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AE4B51DA71FFA0056B6D7 /* PhotosProvider.swift */; };
 		847AE4B81DA720010056B6D7 /* ExamplePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AE4B71DA720010056B6D7 /* ExamplePhoto.swift */; };
 		847AE4BA1DA720AA0056B6D7 /* LocationGalleryPageControlller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AE4B91DA720AA0056B6D7 /* LocationGalleryPageControlller.swift */; };
@@ -36,7 +35,6 @@
 
 /* Begin PBXFileReference section */
 		46912E114CBBD62D92AB4CE3 /* Pods-Frank Lloyd Wright Trail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frank Lloyd Wright Trail.release.xcconfig"; path = "Pods/Target Support Files/Pods-Frank Lloyd Wright Trail/Pods-Frank Lloyd Wright Trail.release.xcconfig"; sourceTree = "<group>"; };
-		8472EF711DDE4C3E009386C4 /* CreateTripPlan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTripPlan.swift; sourceTree = "<group>"; };
 		847AE4B51DA71FFA0056B6D7 /* PhotosProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosProvider.swift; sourceTree = "<group>"; };
 		847AE4B71DA720010056B6D7 /* ExamplePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamplePhoto.swift; sourceTree = "<group>"; };
 		847AE4B91DA720AA0056B6D7 /* LocationGalleryPageControlller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationGalleryPageControlller.swift; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 				FAAF70CB1D77675B00515DBD /* CollectionViewController.swift */,
 				847AE4B71DA720010056B6D7 /* ExamplePhoto.swift */,
 				847AE4B51DA71FFA0056B6D7 /* PhotosProvider.swift */,
-				8472EF711DDE4C3E009386C4 /* CreateTripPlan.swift */,
 				8493937A1DDE568C00BB7220 /* TripOrder.swift */,
 			);
 			name = Controller;
@@ -344,7 +341,6 @@
 				FAEE90B41D677EBB008264DC /* LocationsViewController.swift in Sources */,
 				B6DB3BBF1D7A104900FC737D /* LocationCollectionDelegate.swift in Sources */,
 				FAD304B31D6D28E800D8CE2F /* DetailViewController.swift in Sources */,
-				8472EF721DDE4C3E009386C4 /* CreateTripPlan.swift in Sources */,
 				847AE4B61DA71FFA0056B6D7 /* PhotosProvider.swift in Sources */,
 				847AE4BC1DA720B30056B6D7 /* LocationGalleryImageController.swift in Sources */,
 			);

@@ -7,6 +7,19 @@
 //
 
 import Foundation
-class TripOrder {
-
+class TripObject: NSObject {
+    
+    var startPoint: String?
+    var endPoint: String?
+    var timeText: String?
+    var timeValue: Int?
+    
+    init(startPoint: String, endPoint: String, timeText: String, timeValue: Int) {
+        self.startPoint = startPoint
+        self.endPoint = endPoint
+        self.timeText = timeText
+        self.timeValue = timeValue
+    }
+    
 }
+
