@@ -15,7 +15,7 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
     
     var locationCollectionVc: CollectionViewController!
     let center = CLLocation(latitude: 43.105304, longitude: -89.046729)
-    
+    private let key = "AIzaSyD99efuqx7jK3bOi7txWUDRZNlh-G50b0w"
     
     
     override func viewDidLoad() {
@@ -24,7 +24,7 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
         loadPins()
         centerMapOnLocation(center)
         mapView.showsUserLocation = true
-        //directionAPI()
+        orderOfLocations(<#T##locations: [Site]##[Site]#>)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -126,7 +126,6 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
         }// else here
     }
     
-    ////////////////////////
     var locManager = CLLocationManager()
     
     func getLatLong (sites: [Site], index: Int) -> String {
@@ -149,7 +148,7 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
         return -1
     }
     
-    func orderOfLocations(locations: [Site]){
+    func orderOfLocations(locations: [Site]) -> [TripObject]{
         var startLatLong: String
         var endLatLong: String
         var startLoc: Int
@@ -232,12 +231,16 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
             
             startLatLong = String(locationA.lat) + ","
             startLatLong += String(locationA.lon)
+            endLatLong = String(locationB.lat) + ","
+            endLatLong += String(locationB.lon)
             startLoc = aLocation
             endLoc = bLocation
         }
         else {
             startLatLong = String(locationB.lat) + ","
             startLatLong += String(locationB.lon)
+            endLatLong = String(locationA.lat) + ","
+            endLatLong += String(locationA.lon)
             startLoc = bLocation
             endLoc = aLocation
             
@@ -246,7 +249,7 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
         for i in 0...locations.count {
             if(startLoc != i && endLoc != i) {
                 middleLocations[j] = getLatLong(locations, index: i)
-                j++
+                j += 1
             }
         }
         for i in 0...middleLocations.count {
@@ -259,15 +262,10 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
             }
         }
         
-    }
-    
-    
-    
-    func directionAPI(start: String, end: String, middle: String) {
         
         
-        
-        let directionURL = "https://maps.googleapis.com/maps/api/directions/json?origin="+start+"&destination="+end+"&waypoints=optimize:true"+middle+"&key=AIzaSyD99efuqx7jK3bOi7txWUDRZNlh-G50b0w"
+        var listOfTrips = [TripObject]()
+        let directionURL = "https://maps.googleapis.com/maps/api/directions/json?origin="+startLatLong+"&destination="+endLatLong+"&waypoints=optimize:true"+middleLatLong+"&key=" + key
         let request = NSURLRequest(URL: NSURL(string:directionURL)!)
         let session = NSURLSession.sharedSession()
         session.dataTaskWithRequest(request,
@@ -281,8 +279,16 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
                                                 let routes = object["routes"] as! [NSDictionary]
                                                 
                                                 for route in routes {
-                                                    print(route["legs"])
-                                                    
+                                                    for i in 0...routes.count{
+                                                        var distance = route["legs"]![i]["distance"]!!["value"] as! Int
+                                                        var time = route["legs"]![i]["distance"]!!["text"] as! String
+                                                        var start = String(route["legs"]![i]["start_location"]!!["lat"])
+                                                        start += String(route["legs"]![i]["start_location"]!!["lng"])
+                                                        var end = String(route["legs"]![i]["end_location"]!!["lat"])
+                                                        end += String(route["legs"]![i]["end_location"]!!["lng"])
+                                                        var trip = TripObject.init(startPoint: start, endPoint: end, timeText: time, timeValue: distance)
+                                                        listOfTrips.append(trip)
+                                                    }
                                                 }
                                             }catch let error as NSError {
                                                 print(error)
@@ -297,5 +303,5 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
                                         }
                                         
         }).resume()
-    }
+   return listOfTrips }
 }

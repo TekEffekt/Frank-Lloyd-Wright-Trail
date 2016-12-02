@@ -161,6 +161,7 @@
 				B6DB3BB91D7A100200FC737D /* Site.swift */,
 				FA5AB5AE1D7E744D005CFBD4 /* Item.swift */,
 				FA6143911D81FD6300E3A076 /* SiteSorter.swift */,
+				8493937A1DDE568C00BB7220 /* TripOrder.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -176,7 +177,6 @@
 				FAAF70CB1D77675B00515DBD /* CollectionViewController.swift */,
 				847AE4B71DA720010056B6D7 /* ExamplePhoto.swift */,
 				847AE4B51DA71FFA0056B6D7 /* PhotosProvider.swift */,
-				8493937A1DDE568C00BB7220 /* TripOrder.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
