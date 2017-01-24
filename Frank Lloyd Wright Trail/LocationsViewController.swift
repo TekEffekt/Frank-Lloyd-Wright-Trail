@@ -16,6 +16,7 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
     var locationCollectionVc: CollectionViewController!
     let center = CLLocation(latitude: 43.105304, longitude: -89.046729)
     private let key = "AIzaSyD99efuqx7jK3bOi7txWUDRZNlh-G50b0w"
+    var sites = Site.getSites()
     
     
     override func viewDidLoad() {
@@ -24,7 +25,18 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
         loadPins()
         centerMapOnLocation(center)
         mapView.showsUserLocation = true
-        orderOfLocations(<#T##locations: [Site]##[Site]#>)
+        var testSites = [Site]()
+        var counter = 4
+        var i = 0
+        for elements in sites {
+            if(i < counter) {
+                testSites.append(elements)
+                i += 1
+            }
+            
+        
+        }
+        orderOfLocations(testSites)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -139,13 +151,13 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
     
     func findLocation(title: String, sites: [Site])-> Int {
         
-        for i in 0...sites.count {
-            if(title == sites[i].title) {
+        for i in 0...sites.count - 1 {
+            
+            if(title == sites[i].imageName) {
                 return i
-            }else if (title != sites[i].title) {
-                return -1}
+            }
         }
-        return -1
+return -1
     }
     
     func orderOfLocations(locations: [Site]) -> [TripObject]{
@@ -160,7 +172,7 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
         
         var middleLocations = [String]()
         
-        index = findLocation("scjhonson", sites: locations)
+        index = findLocation("scjohnson", sites: locations)
         if(index == -1)
         {
             index = findLocation("wingspread",sites: locations)
@@ -279,7 +291,7 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
                                                 let routes = object["routes"] as! [NSDictionary]
                                                 
                                                 for route in routes {
-                                                    for i in 0...routes.count{
+                                                    for i in 0...routes.count - 1{
                                                         var distance = route["legs"]![i]["distance"]!!["value"] as! Int
                                                         var time = route["legs"]![i]["distance"]!!["text"] as! String
                                                         var start = String(route["legs"]![i]["start_location"]!!["lat"])
