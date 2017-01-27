@@ -280,7 +280,7 @@ return -1
             
         }
         var j = 0
-        for i in 0...locations.count {
+        for i in 0...locations.count-1 {
             if(startLoc != i && endLoc != i) {
                 middleLocations.insert(getLatLong(locations, index: i), atIndex: j)
                 j += 1
@@ -288,11 +288,12 @@ return -1
         }
         for i in 0...middleLocations.count {
             
-            if(i != middleLocations.count-1) {
+            if(i != middleLocations.count) {
                 
                 middleLatLong +=  "," + middleLocations[i] + "%7C"
             } else {
-                middleLatLong += middleLocations[i]
+                var minus = i - 1
+                middleLatLong += middleLocations[minus]
             }
         }
         
@@ -322,6 +323,7 @@ return -1
                                                         end += String(route["legs"]![i]["end_location"]!!["lng"])
                                                         var trip = TripObject.init(startPoint: start, endPoint: end, timeText: time, timeValue: distance)
                                                         listOfTrips.append(trip)
+                                                        print(listOfTrips)
                                                     }
                                                 }
                                             }catch let error as NSError {
