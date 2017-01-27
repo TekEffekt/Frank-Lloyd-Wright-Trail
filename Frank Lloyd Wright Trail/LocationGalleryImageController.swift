@@ -33,7 +33,9 @@ class LocationGalleryImageController: UIViewController, NYTPhotoViewControllerDe
         super.viewWillAppear(animated)
         
         // UITapGestureRecognizer to display the correct [Example] photo
-        let imageTapped = UITapGestureRecognizer(target: self, action: #selector(LocationGalleryImageController.tapped))
+
+        let imageTapped = UITapGestureRecognizer(target: self, action: "tapped")
+
         self.galleryImage.addGestureRecognizer(imageTapped)
         if let image = image {
             galleryImage.image = image

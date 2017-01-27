@@ -19,11 +19,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8G7-rr-gBN">
-                                <frame key="frameInset" minY="64" width="600" height="307"/>
-                            </mapView>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xit-Bo-jwH">
-                                <frame key="frameInset" minY="371" width="600" height="180"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8G7-rr-gBN"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xit-Bo-jwH">
                                 <connections>
                                     <segue destination="0Vr-b5-rlz" kind="embed" identifier="mapView" id="MJu-wc-hLP"/>
                                 </connections>
@@ -31,16 +28,16 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="8G7-rr-gBN" firstAttribute="leading" secondItem="x77-s5-c5o" secondAttribute="leadingMargin" constant="-20" id="19g-w3-1oe"/>
+                            <constraint firstItem="8G7-rr-gBN" firstAttribute="leading" secondItem="x77-s5-c5o" secondAttribute="leadingMargin" constant="-16" id="19g-w3-1oe"/>
                             <constraint firstItem="8G7-rr-gBN" firstAttribute="height" secondItem="x77-s5-c5o" secondAttribute="height" id="7dV-zo-sEV"/>
                             <constraint firstItem="8G7-rr-gBN" firstAttribute="top" secondItem="BVr-Ba-l6L" secondAttribute="bottom" id="A0T-BE-9MG"/>
                             <constraint firstItem="8G7-rr-gBN" firstAttribute="width" secondItem="x77-s5-c5o" secondAttribute="width" id="Pll-eo-W3T"/>
-                            <constraint firstItem="xit-Bo-jwH" firstAttribute="height" secondItem="x77-s5-c5o" secondAttribute="height" multiplier="0.3" id="UMI-i7-Cv5"/>
-                            <constraint firstItem="CAE-Pi-Mjk" firstAttribute="top" secondItem="xit-Bo-jwH" secondAttribute="bottom" id="YNa-oE-zZm"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="8G7-rr-gBN" secondAttribute="trailing" constant="-20" id="gdQ-c3-KQ7"/>
+                            <constraint firstItem="xit-Bo-jwH" firstAttribute="height" secondItem="x77-s5-c5o" secondAttribute="height" multiplier="0.3" constant="30.900000000000006" id="UMI-i7-Cv5"/>
+                            <constraint firstItem="CAE-Pi-Mjk" firstAttribute="top" secondItem="xit-Bo-jwH" secondAttribute="bottom" constant="8" id="YNa-oE-zZm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8G7-rr-gBN" secondAttribute="trailing" constant="-16" id="gdQ-c3-KQ7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xit-Bo-jwH" secondAttribute="trailing" constant="-20" id="ghe-fR-XTS"/>
                             <constraint firstItem="xit-Bo-jwH" firstAttribute="leading" secondItem="x77-s5-c5o" secondAttribute="leadingMargin" constant="-20" id="h65-3W-73P"/>
-                            <constraint firstItem="xit-Bo-jwH" firstAttribute="top" secondItem="8G7-rr-gBN" secondAttribute="bottom" id="uOO-H6-yCE"/>
+                            <constraint firstItem="xit-Bo-jwH" firstAttribute="top" secondItem="8G7-rr-gBN" secondAttribute="bottom" constant="-1" id="uOO-H6-yCE"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -58,7 +55,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k0b-FI-cbT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="384" y="-1019"/>
+            <point key="canvasLocation" x="383.19999999999999" y="-1019.640179910045"/>
         </scene>
         <!--Collection View Controller-->
         <scene sceneID="RD2-NG-FXs">
@@ -69,7 +66,7 @@
                         <viewControllerLayoutGuide type="bottom" id="9An-e4-YS4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="MgU-cQ-iSK">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="180"/>
+                        <rect key="frame" x="0.0" y="0.0" width="383" height="231"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8yk-zY-5xL">
@@ -178,11 +175,10 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Na8-cX-Ycu">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Na8-cX-Ycu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.41960784313725491" green="0.0" blue="0.0078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
