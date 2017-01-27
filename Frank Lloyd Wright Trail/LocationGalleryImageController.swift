@@ -19,6 +19,8 @@ class LocationGalleryImageController: UIViewController, NYTPhotoViewControllerDe
     let photos4 = PhotosProvider().photos4
     let photos5 = PhotosProvider().photos5
     let photos6 = PhotosProvider().photos6
+    let photos7 = PhotosProvider().photos7
+    let photos8 = PhotosProvider().photos8
     
     @IBOutlet weak var galleryImage: UIImageView!
     
@@ -31,7 +33,9 @@ class LocationGalleryImageController: UIViewController, NYTPhotoViewControllerDe
         super.viewWillAppear(animated)
         
         // UITapGestureRecognizer to display the correct [Example] photo
+
         let imageTapped = UITapGestureRecognizer(target: self, action: "tapped")
+
         self.galleryImage.addGestureRecognizer(imageTapped)
         if let image = image {
             galleryImage.image = image
@@ -41,12 +45,18 @@ class LocationGalleryImageController: UIViewController, NYTPhotoViewControllerDe
     // switch statment to select correct photos
     func tapped(){
         switch  nytphoto!{
+        case 43.0105838:
+            let photosViewController = NYTPhotosViewController(photos: self.photos7)
+            presentViewController(photosViewController, animated: true, completion: nil)
+        case 43.1192397:
+            let photosViewController = NYTPhotosViewController(photos: self.photos8)
+            presentViewController(photosViewController, animated: true, completion: nil)
         case 42.7152375:
             let photosViewController = NYTPhotosViewController(photos: self.photos1)
                 presentViewController(photosViewController, animated: true, completion: nil)
         case 42.784472:
             let photosViewController = NYTPhotosViewController(photos: self.photos2)
-                       presentViewController(photosViewController, animated: true, completion: nil)
+            presentViewController(photosViewController, animated: true, completion: nil)
         case 43.0717445:
             let photosViewController = NYTPhotosViewController(photos: self.photos3)
             presentViewController(photosViewController, animated: true, completion: nil)

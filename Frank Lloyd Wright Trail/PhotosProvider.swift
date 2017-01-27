@@ -165,6 +165,54 @@ class PhotosProvider: NSObject {
         
         return mutablePhotos
     }()
+    let photos7: [ExamplePhoto] = {
+        var arrayPic: [UIImage] = [UIImage(named: "asbh")!, UIImage(named: "asbh2")!, UIImage(named: "asbh3")!]
+        var mutablePhotos: [ExamplePhoto] = []
+        var image = UIImage(named: "scjohnson")
+        let NumberOfPhotos = 3
+        
+        func shouldSetImageOnIndex(photoIndex: Int) -> Bool {
+            return photoIndex != CustomEverythingPhotoIndex && photoIndex != DefaultLoadingSpinnerPhotoIndex
+        }
+        
+        for photoIndex in 0 ..< arrayPic.capacity {
+            let title = NSAttributedString(string: "\(photoIndex + 1)", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+            
+            let photo = shouldSetImageOnIndex(photoIndex) ? ExamplePhoto(image: arrayPic[photoIndex], attributedCaptionTitle: title) : ExamplePhoto(attributedCaptionTitle: title)
+            
+            if photoIndex == CustomEverythingPhotoIndex {
+                photo.placeholderImage = UIImage(named: PlaceholderImageName)
+            }
+            
+            mutablePhotos.append(photo)
+        }
+        
+        return mutablePhotos
+    }()
+    let photos8: [ExamplePhoto] = {
+        var arrayPic: [UIImage] = [UIImage(named: "wyoming")!, UIImage(named: "wyoming2")!, UIImage(named: "wyoming3")!]
+        var mutablePhotos: [ExamplePhoto] = []
+        var image = UIImage(named: "scjohnson")
+        let NumberOfPhotos = 3
+        
+        func shouldSetImageOnIndex(photoIndex: Int) -> Bool {
+            return photoIndex != CustomEverythingPhotoIndex && photoIndex != DefaultLoadingSpinnerPhotoIndex
+        }
+        
+        for photoIndex in 0 ..< arrayPic.capacity {
+            let title = NSAttributedString(string: "\(photoIndex + 1)", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+            
+            let photo = shouldSetImageOnIndex(photoIndex) ? ExamplePhoto(image: arrayPic[photoIndex], attributedCaptionTitle: title) : ExamplePhoto(attributedCaptionTitle: title)
+            
+            if photoIndex == CustomEverythingPhotoIndex {
+                photo.placeholderImage = UIImage(named: PlaceholderImageName)
+            }
+            
+            mutablePhotos.append(photo)
+        }
+        
+        return mutablePhotos
+    }()
 
 }
 

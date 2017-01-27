@@ -13,6 +13,8 @@
 		847AE4BA1DA720AA0056B6D7 /* LocationGalleryPageControlller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AE4B91DA720AA0056B6D7 /* LocationGalleryPageControlller.swift */; };
 		847AE4BC1DA720B30056B6D7 /* LocationGalleryImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AE4BB1DA720B30056B6D7 /* LocationGalleryImageController.swift */; };
 		847AE4BE1DA723450056B6D7 /* locations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 847AE4BD1DA723450056B6D7 /* locations.plist */; };
+		84B1F0361E3941C00048986C /* Timeline-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = FAB740D21DDEAF7900BA859F /* Timeline-Bridging-Header.h */; };
+		84B1F0381E3BCC9E0048986C /* LocationDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B1F0371E3BCC9E0048986C /* LocationDetails.storyboard */; };
 		B6109DA31D528DDE002A6D77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6109DA21D528DDE002A6D77 /* Assets.xcassets */; };
 		B6109DA61D528DDE002A6D77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6109DA41D528DDE002A6D77 /* LaunchScreen.storyboard */; };
 		B6DB3BBB1D7A100200FC737D /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DB3BB81D7A100200FC737D /* Pin.swift */; };
@@ -35,7 +37,6 @@
 		FAB740E41DDEB14A00BA859F /* UIImage+JTSImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB740DE1DDEB14A00BA859F /* UIImage+JTSImageEffects.m */; };
 		FAB740E61DDEB1AB00BA859F /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB740E51DDEB1AB00BA859F /* TimelineView.swift */; };
 		FAB740E81DDEB21B00BA859F /* TimelineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB740E71DDEB21B00BA859F /* TimelineVC.swift */; };
-		FAC91F821DA84699002B368E /* LocationDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC91F801DA84699002B368E /* LocationDetails.storyboard */; };
 		FAC91F841DA84797002B368E /* LocationSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC91F831DA84797002B368E /* LocationSelection.storyboard */; };
 		FAC91F871DA84A2E002B368E /* TripPlanner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC91F851DA84A2E002B368E /* TripPlanner.storyboard */; };
 		FAC91F891DA84A71002B368E /* Base.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC91F881DA84A71002B368E /* Base.storyboard */; };
@@ -53,6 +54,7 @@
 		847AE4B91DA720AA0056B6D7 /* LocationGalleryPageControlller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationGalleryPageControlller.swift; sourceTree = "<group>"; };
 		847AE4BB1DA720B30056B6D7 /* LocationGalleryImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationGalleryImageController.swift; sourceTree = "<group>"; };
 		847AE4BD1DA723450056B6D7 /* locations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = locations.plist; sourceTree = "<group>"; };
+		84B1F0371E3BCC9E0048986C /* LocationDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LocationDetails.storyboard; sourceTree = "<group>"; };
 		866A48BE69E58B36CE7AFA90 /* Pods-Frank Lloyd Wright Trail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frank Lloyd Wright Trail.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Frank Lloyd Wright Trail/Pods-Frank Lloyd Wright Trail.debug.xcconfig"; sourceTree = "<group>"; };
 		B6109D961D528DDD002A6D77 /* Frank Lloyd Wright Trail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Frank Lloyd Wright Trail.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6109DA21D528DDE002A6D77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -86,7 +88,6 @@
 		FAB740DE1DDEB14A00BA859F /* UIImage+JTSImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JTSImageEffects.m"; sourceTree = "<group>"; };
 		FAB740E51DDEB1AB00BA859F /* TimelineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 		FAB740E71DDEB21B00BA859F /* TimelineVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineVC.swift; sourceTree = "<group>"; };
-		FAC91F811DA84699002B368E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LocationDetails.storyboard; sourceTree = "<group>"; };
 		FAC91F831DA84797002B368E /* LocationSelection.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LocationSelection.storyboard; sourceTree = "<group>"; };
 		FAC91F861DA84A2E002B368E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TripPlanner.storyboard; sourceTree = "<group>"; };
 		FAC91F881DA84A71002B368E /* Base.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Base.storyboard; sourceTree = "<group>"; };
@@ -132,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				847AE4BD1DA723450056B6D7 /* locations.plist */,
+				FAB740D21DDEAF7900BA859F /* Timeline-Bridging-Header.h */,
 				FAD304BC1D6F670C00D8CE2F /* App */,
 				FAD304BD1D6F672C00D8CE2F /* Model */,
 				FA5AB5AB1D7E6A9D005CFBD4 /* View */,
@@ -208,7 +210,6 @@
 		FAB740D11DDEAF6300BA859F /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
-				FAB740D21DDEAF7900BA859F /* Timeline-Bridging-Header.h */,
 				FAB740D31DDEB14A00BA859F /* JTSAnimatedGIFUtility.h */,
 				FAB740D41DDEB14A00BA859F /* JTSAnimatedGIFUtility.m */,
 				FAB740D51DDEB14A00BA859F /* JTSImageInfo.h */,
@@ -269,7 +270,7 @@
 				FAC91F881DA84A71002B368E /* Base.storyboard */,
 				FAC91F851DA84A2E002B368E /* TripPlanner.storyboard */,
 				FAC91F831DA84797002B368E /* LocationSelection.storyboard */,
-				FAC91F801DA84699002B368E /* LocationDetails.storyboard */,
+				84B1F0371E3BCC9E0048986C /* LocationDetails.storyboard */,
 				B6109DA21D528DDE002A6D77 /* Assets.xcassets */,
 				B6109DA41D528DDE002A6D77 /* LaunchScreen.storyboard */,
 				FA982F3F1D85D6AF005AF97C /* Callout.xib */,
@@ -340,8 +341,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84B1F0381E3BCC9E0048986C /* LocationDetails.storyboard in Resources */,
 				B6109DA61D528DDE002A6D77 /* LaunchScreen.storyboard in Resources */,
-				FAC91F821DA84699002B368E /* LocationDetails.storyboard in Resources */,
 				847AE4BE1DA723450056B6D7 /* locations.plist in Resources */,
 				B6109DA31D528DDE002A6D77 /* Assets.xcassets in Resources */,
 				FAC91F871DA84A2E002B368E /* TripPlanner.storyboard in Resources */,
@@ -406,6 +407,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84B1F0361E3941C00048986C /* Timeline-Bridging-Header.h in Sources */,
 				FAB740E11DDEB14A00BA859F /* JTSImageViewController.m in Sources */,
 				FAB740E31DDEB14A00BA859F /* UIApplication+JTSImageViewController.m in Sources */,
 				FAB740E41DDEB14A00BA859F /* UIImage+JTSImageEffects.m in Sources */,
@@ -420,6 +422,7 @@
 				FA38294B1DBAEB94003A4BFA /* DestinationCell.swift in Sources */,
 				FAAF70C41D74A39400515DBD /* Cell.swift in Sources */,
 				B6DB3BBB1D7A100200FC737D /* Pin.swift in Sources */,
+				FAB740E61DDEB1AB00BA859F /* TimelineView.swift in Sources */,
 				FAB740E21DDEB14A00BA859F /* JTSSimpleImageDownloader.m in Sources */,
 				FA5AB5AF1D7E744D005CFBD4 /* Item.swift in Sources */,
 				847AE4B81DA720010056B6D7 /* ExamplePhoto.swift in Sources */,
@@ -432,7 +435,6 @@
 				FAB740E81DDEB21B00BA859F /* TimelineVC.swift in Sources */,
 				847AE4B61DA71FFA0056B6D7 /* PhotosProvider.swift in Sources */,
 				847AE4BC1DA720B30056B6D7 /* LocationGalleryImageController.swift in Sources */,
-				FAB740E61DDEB1AB00BA859F /* TimelineView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,14 +447,6 @@
 				B6109DA51D528DDE002A6D77 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		FAC91F801DA84699002B368E /* LocationDetails.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FAC91F811DA84699002B368E /* Base */,
-			);
-			name = LocationDetails.storyboard;
 			sourceTree = "<group>";
 		};
 		FAC91F851DA84A2E002B368E /* TripPlanner.storyboard */ = {
@@ -562,9 +556,9 @@
 				INFOPLIST_FILE = "Frank Lloyd Wright Trail/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "uwp.edu.appFactory.Frank-Lloyd-Wright-Trail";
+				PRODUCT_BUNDLE_IDENTIFIER = "uwp.edu.appFactory.Frank-Lloyd-Wright";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/alex/Documents/Frank-Lloyd-Wright-Trail/Frank Lloyd Wright Trail/Timeline-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Frank Lloyd Wright Trail/Timeline-Bridging-Header.h";
 				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
@@ -582,9 +576,9 @@
 				INFOPLIST_FILE = "Frank Lloyd Wright Trail/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "uwp.edu.appFactory.Frank-Lloyd-Wright-Trail";
+				PRODUCT_BUNDLE_IDENTIFIER = "uwp.edu.appFactory.Frank-Lloyd-Wright";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/alex/Documents/Frank-Lloyd-Wright-Trail/Frank Lloyd Wright Trail/Timeline-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Frank Lloyd Wright Trail/Timeline-Bridging-Header.h";
 				SWIFT_VERSION = 2.3;
 			};
 			name = Release;

@@ -32,6 +32,10 @@ class Cell: UICollectionViewCell {
             circleColor.backgroundColor = UIColor.blueColor()
         case "A.D. German Warehouse" :
             circleColor.backgroundColor = UIColor.purpleColor()
+        case "American System Built Homes" :
+            circleColor.backgroundColor = UIColor.cyanColor()
+        case "Wyoming Valley School" :
+            circleColor.backgroundColor = UIColor.yellowColor()
         default :
             circleColor.backgroundColor = UIColor.redColor()
         }
