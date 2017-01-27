@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class LocationsViewController: UIViewController, MKMapViewDelegate, LocationCollectionDelegate {
+class LocationsViewController: UIViewController, MKMapViewDelegate, LocationCollectionDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var mapView: MKMapView!
     
@@ -17,7 +17,7 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
     let center = CLLocation(latitude: 43.105304, longitude: -89.046729)
     private let key = "AIzaSyD99efuqx7jK3bOi7txWUDRZNlh-G50b0w"
     var sites = Site.getSites()
-    
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +25,20 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
         loadPins()
         centerMapOnLocation(center)
         mapView.showsUserLocation = true
+        
+        
+        self.locationManager.requestAlwaysAuthorization()
+        
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+
+        
         var testSites = [Site]()
         var counter = 4
         var i = 0
@@ -160,6 +174,10 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
 return -1
     }
     
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        var locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        
+    }
     func orderOfLocations(locations: [Site]) -> [TripObject]{
         var startLatLong: String
         var endLatLong: String
@@ -230,6 +248,12 @@ return -1
         
         var locationB = locations[index]
         bLocation = index
+        
+        func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])-> CLLocationCoordinate2D {
+            var locValue:CLLocationCoordinate2D = manager.location!.coordinate
+            return locValue
+        }
+        
         locManager.requestWhenInUseAuthorization()
         var currentLocation = CLLocation()
         if( CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse ||
@@ -238,7 +262,7 @@ return -1
             currentLocation = locManager.location!
             
         }
-        
+        //var currentLocal
         if(currentLocation.distanceFromLocation(CLLocation(latitude: locationA.lat, longitude: locationA.lon))<currentLocation.distanceFromLocation(CLLocation(latitude: locationB.lat, longitude: locationB.lon))) {
             
             startLatLong = String(locationA.lat) + ","
