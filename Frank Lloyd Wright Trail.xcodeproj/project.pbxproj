@@ -13,13 +13,9 @@
 		847AE4BA1DA720AA0056B6D7 /* LocationGalleryPageControlller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AE4B91DA720AA0056B6D7 /* LocationGalleryPageControlller.swift */; };
 		847AE4BC1DA720B30056B6D7 /* LocationGalleryImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AE4BB1DA720B30056B6D7 /* LocationGalleryImageController.swift */; };
 		847AE4BE1DA723450056B6D7 /* locations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 847AE4BD1DA723450056B6D7 /* locations.plist */; };
-<<<<<<< HEAD
 		8493937B1DDE568C00BB7220 /* TripOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493937A1DDE568C00BB7220 /* TripOrder.swift */; };
-		B6109DA11D528DDE002A6D77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6109D9F1D528DDE002A6D77 /* Main.storyboard */; };
-=======
 		84B1F0361E3941C00048986C /* Timeline-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = FAB740D21DDEAF7900BA859F /* Timeline-Bridging-Header.h */; };
 		84B1F0381E3BCC9E0048986C /* LocationDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B1F0371E3BCC9E0048986C /* LocationDetails.storyboard */; };
->>>>>>> master
 		B6109DA31D528DDE002A6D77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6109DA21D528DDE002A6D77 /* Assets.xcassets */; };
 		B6109DA61D528DDE002A6D77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6109DA41D528DDE002A6D77 /* LaunchScreen.storyboard */; };
 		B6DB3BBB1D7A100200FC737D /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DB3BB81D7A100200FC737D /* Pin.swift */; };
@@ -59,11 +55,8 @@
 		847AE4B91DA720AA0056B6D7 /* LocationGalleryPageControlller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationGalleryPageControlller.swift; sourceTree = "<group>"; };
 		847AE4BB1DA720B30056B6D7 /* LocationGalleryImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationGalleryImageController.swift; sourceTree = "<group>"; };
 		847AE4BD1DA723450056B6D7 /* locations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = locations.plist; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		8493937A1DDE568C00BB7220 /* TripOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripOrder.swift; sourceTree = "<group>"; };
-=======
 		84B1F0371E3BCC9E0048986C /* LocationDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LocationDetails.storyboard; sourceTree = "<group>"; };
->>>>>>> master
 		866A48BE69E58B36CE7AFA90 /* Pods-Frank Lloyd Wright Trail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frank Lloyd Wright Trail.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Frank Lloyd Wright Trail/Pods-Frank Lloyd Wright Trail.debug.xcconfig"; sourceTree = "<group>"; };
 		B6109D961D528DDD002A6D77 /* Frank Lloyd Wright Trail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Frank Lloyd Wright Trail.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6109DA21D528DDE002A6D77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -323,7 +316,6 @@
 				TargetAttributes = {
 					B6109D951D528DDD002A6D77 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = UTH2FJ9ZL4;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -417,10 +409,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
-				FA7B5BB51D7F40C000CB218B /* CalloutView.swift in Sources */,
 				8493937B1DDE568C00BB7220 /* TripOrder.swift in Sources */,
-=======
 				84B1F0361E3941C00048986C /* Timeline-Bridging-Header.h in Sources */,
 				FAB740E11DDEB14A00BA859F /* JTSImageViewController.m in Sources */,
 				FAB740E31DDEB14A00BA859F /* UIApplication+JTSImageViewController.m in Sources */,
@@ -428,7 +417,6 @@
 				FA1334751DBFEF3500976585 /* TimeTableVC.swift in Sources */,
 				FAB740D01DDE728D00BA859F /* TripTimeVC.swift in Sources */,
 				FAB740E01DDEB14A00BA859F /* JTSImageInfo.m in Sources */,
->>>>>>> master
 				FA6143921D81FD6300E3A076 /* SiteSorter.swift in Sources */,
 				FAD304BB1D6F66B500D8CE2F /* AppDelegate.swift in Sources */,
 				847AE4BA1DA720AA0056B6D7 /* LocationGalleryPageControlller.swift in Sources */,
@@ -563,7 +551,7 @@
 			baseConfigurationReference = 866A48BE69E58B36CE7AFA90 /* Pods-Frank Lloyd Wright Trail.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = UTH2FJ9ZL4;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -583,7 +571,7 @@
 			baseConfigurationReference = 46912E114CBBD62D92AB4CE3 /* Pods-Frank Lloyd Wright Trail.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = UTH2FJ9ZL4;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

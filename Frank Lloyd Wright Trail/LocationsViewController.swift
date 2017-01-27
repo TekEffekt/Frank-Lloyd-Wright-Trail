@@ -124,8 +124,6 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
         }
     }
     
-<<<<<<< HEAD
-    
     
     
     func createTripPlanner(tripOrder: [TripObject]) {
@@ -340,6 +338,4 @@ return -1
                                         
         }).resume()
    return listOfTrips }
-=======
->>>>>>> master
 }
