@@ -282,7 +282,7 @@ return -1
         var j = 0
         for i in 0...locations.count {
             if(startLoc != i && endLoc != i) {
-                middleLocations[j] = getLatLong(locations, index: i)
+                middleLocations.insert(getLatLong(locations, index: i), atIndex: j)
                 j += 1
             }
         }
