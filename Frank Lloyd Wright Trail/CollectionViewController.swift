@@ -32,7 +32,8 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         self.locationManager.requestWhenInUseAuthorization()
         
         milesAway.textAlignment = .Right
-        milesAway.text = "0 miles away"
+        //milesAway.text = "0 miles away"
+        milesAway.text = ""
         
         // Gets the current user's current location and passes that location to SiteSorter
         // to get sort the distance from that location to other sites.

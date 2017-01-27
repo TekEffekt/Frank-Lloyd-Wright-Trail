@@ -45,6 +45,10 @@ class Pin: NSObject, MKAnnotation {
             return UIColor.blueColor()
         case "A.D. German Warehouse" :
             return UIColor.purpleColor()
+        case "American System Built Homes" :
+            return UIColor.cyanColor()
+        case "Wyoming Valley School" :
+            return UIColor.yellowColor()
         default :
             return UIColor.redColor()
         }
