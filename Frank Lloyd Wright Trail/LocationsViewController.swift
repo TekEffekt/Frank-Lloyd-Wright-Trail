@@ -279,22 +279,22 @@ return -1
             endLoc = aLocation
             
         }
-        var j = 0
-        for i in 0...locations.count {
-            if(startLoc != i && endLoc != i) {
-                middleLocations[j] = getLatLong(locations, index: i)
-                j += 1
-            }
-        }
-        for i in 0...middleLocations.count {
-            
-            if(i != middleLocations.count-1) {
-                
-                middleLatLong +=  "," + middleLocations[i] + "%7C"
-            } else {
-                middleLatLong += middleLocations[i]
-            }
-        }
+//        var j = 0
+//        for i in 0...locations.count {
+//            if(startLoc != i && endLoc != i) {
+//                middleLocations[j] = getLatLong(locations, index: i)
+//                j += 1
+//            }
+//        }
+//        for i in 0...middleLocations.count {
+//            
+//            if(i != middleLocations.count-1) {
+//                
+//                middleLatLong +=  "," + middleLocations[i] + "%7C"
+//            } else {
+//                middleLatLong += middleLocations[i]
+//            }
+//        }
         
         
         

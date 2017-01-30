@@ -14,8 +14,8 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
     @IBOutlet weak var continueButton: UIButton!
     
     let sites = Site.getSites()
-    var sitesArray = [Site]()
     var sitesSelected = 0
+    var trip = TripModel()
     
     
     override func viewDidLoad() {
@@ -46,6 +46,11 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let tripTime:TripTimeVC = segue.destinationViewController as? TripTimeVC{
+            tripTime.trip = trip
+        }
+    }
     
     
     // DataSource for Collection View
@@ -76,7 +81,7 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Destination", forIndexPath: indexPath) as! DestinationCell
         let imageView = cell.siteImage
         visuallySelectSurface(imageView, withAnimation: true)
-        sitesArray.append(sites[indexPath.row])
+        trip.addSite(sites[indexPath.row])
         sitesSelected += 1
         disableButton()
         
@@ -86,18 +91,12 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
         print ("Deselected item \(indexPath.row)")
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Destination", forIndexPath: indexPath) as! DestinationCell
         let imageView = cell.siteImage
-        let siteDeselected = sites[indexPath.row]
-        removeSite(siteDeselected)
+        trip.removeSite(indexPath.row)
         visuallyUnSelectSurface(imageView)
         sitesSelected -= 1
         disableButton()
     }
     
-    func removeSite(site: Site){
-//        if let index = sitesArray.indexOf({ $0 === site }){
-//            sitesArray.removeAtIndex(index)
-//        }
-    }
     
     // Flowlayout
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
@@ -155,8 +154,9 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
             view.removeFromSuperview()
         }
     }
-    @IBAction func `continue`(sender: AnyObject) {
     
+    @IBAction func `continue`(sender: AnyObject) {
+        
     }
-
+    
 }

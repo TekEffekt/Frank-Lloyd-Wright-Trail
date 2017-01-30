@@ -13,14 +13,18 @@ class TripTimeVC: UITableViewController {
     @IBOutlet weak var endTimeLabel: UILabel!
     @IBOutlet weak var startTimePicker: UIDatePicker!
     @IBOutlet weak var endTimePicker: UIDatePicker!
-
+    
+    var trip: TripModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let date = NSDate()
         startTimeLabel.text = NSDateFormatter.localizedStringFromDate(date, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
         endTimeLabel.text = NSDateFormatter.localizedStringFromDate(date, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
-
+        
+          print("\(trip!.getSites())")
     }
+    
 
     @IBAction func startTimeChanged(sender: AnyObject) {
         startTimeLabel.text = NSDateFormatter.localizedStringFromDate(startTimePicker.date, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle)

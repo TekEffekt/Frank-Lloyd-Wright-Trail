@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		218502C01E3EC86400CAFE6D /* TripModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218502BF1E3EC86400CAFE6D /* TripModel.swift */; };
 		3D968D3100D7715D8590C20E /* Pods_Frank_Lloyd_Wright_Trail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF68C79F7226D19F1DACC2B8 /* Pods_Frank_Lloyd_Wright_Trail.framework */; };
 		847AE4B61DA71FFA0056B6D7 /* PhotosProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AE4B51DA71FFA0056B6D7 /* PhotosProvider.swift */; };
 		847AE4B81DA720010056B6D7 /* ExamplePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AE4B71DA720010056B6D7 /* ExamplePhoto.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		218502BF1E3EC86400CAFE6D /* TripModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TripModel.swift; path = Model/TripModel.swift; sourceTree = "<group>"; };
 		46912E114CBBD62D92AB4CE3 /* Pods-Frank Lloyd Wright Trail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frank Lloyd Wright Trail.release.xcconfig"; path = "Pods/Target Support Files/Pods-Frank Lloyd Wright Trail/Pods-Frank Lloyd Wright Trail.release.xcconfig"; sourceTree = "<group>"; };
 		847AE4B51DA71FFA0056B6D7 /* PhotosProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosProvider.swift; sourceTree = "<group>"; };
 		847AE4B71DA720010056B6D7 /* ExamplePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamplePhoto.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				FA5AB5AE1D7E744D005CFBD4 /* Item.swift */,
 				FA6143911D81FD6300E3A076 /* SiteSorter.swift */,
 				8493937A1DDE568C00BB7220 /* TripOrder.swift */,
+				218502BF1E3EC86400CAFE6D /* TripModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				FA1334751DBFEF3500976585 /* TimeTableVC.swift in Sources */,
 				FAB740D01DDE728D00BA859F /* TripTimeVC.swift in Sources */,
 				FAB740E01DDEB14A00BA859F /* JTSImageInfo.m in Sources */,
+				218502C01E3EC86400CAFE6D /* TripModel.swift in Sources */,
 				FA6143921D81FD6300E3A076 /* SiteSorter.swift in Sources */,
 				FAD304BB1D6F66B500D8CE2F /* AppDelegate.swift in Sources */,
 				847AE4BA1DA720AA0056B6D7 /* LocationGalleryPageControlller.swift in Sources */,
