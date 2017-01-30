@@ -17,8 +17,8 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
     let center = CLLocation(latitude: 43.105304, longitude: -89.046729)
     private let key = "AIzaSyD99efuqx7jK3bOi7txWUDRZNlh-G50b0w"
     var sites = Site.getSites()
-    let locationManager = CLLocationManager()
-    
+    var locationManager: CLLocationManager!
+    var currentLocation: CLLocation?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mapView.delegate = self
@@ -27,15 +27,13 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
         mapView.showsUserLocation = true
         
         
-        self.locationManager.requestAlwaysAuthorization()
-        
-        // For use in foreground
-        self.locationManager.requestWhenInUseAuthorization()
-        
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.requestAlwaysAuthorization()
         if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
+            currentLocation = locationManager.location!
         }
 
         
@@ -150,12 +148,10 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
         }// else here
     }
     
-    var locManager = CLLocationManager()
-    
     func getLatLong (sites: [Site], index: Int) -> String {
         
         var latLong = String(sites[index].lat)
-        latLong += String(sites[index].lon)
+        latLong += "," + String(sites[index].lon)
         return latLong
         
         
@@ -247,21 +243,10 @@ return -1
         var locationB = locations[index]
         bLocation = index
         
-        func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])-> CLLocationCoordinate2D {
-            var locValue:CLLocationCoordinate2D = manager.location!.coordinate
-            return locValue
-        }
+    
+
         
-        locManager.requestWhenInUseAuthorization()
-        var currentLocation = CLLocation()
-        if( CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse ||
-            CLLocationManager.authorizationStatus() == CLAuthorizationStatus.Authorized){
-            
-            currentLocation = locManager.location!
-            
-        }
-        //var currentLocal
-        if(currentLocation.distanceFromLocation(CLLocation(latitude: locationA.lat, longitude: locationA.lon))<currentLocation.distanceFromLocation(CLLocation(latitude: locationB.lat, longitude: locationB.lon))) {
+        if(self.currentLocation!.distanceFromLocation(CLLocation(latitude: locationA.lat, longitude: locationA.lon))<self.currentLocation!.distanceFromLocation(CLLocation(latitude: locationB.lat, longitude: locationB.lon))) {
             
             startLatLong = String(locationA.lat) + ","
             startLatLong += String(locationA.lon)
@@ -282,6 +267,7 @@ return -1
         var j = 0
         for i in 0...locations.count-1 {
             if(startLoc != i && endLoc != i) {
+                
                 middleLocations.insert(getLatLong(locations, index: i), atIndex: j)
                 j += 1
             }
@@ -290,7 +276,7 @@ return -1
             
             if(i != middleLocations.count) {
                 
-                middleLatLong +=  "," + middleLocations[i] + "%7C"
+                middleLatLong += middleLocations[i] + "%7C"
             } else {
                 var minus = i - 1
                 middleLatLong += middleLocations[minus]
@@ -322,8 +308,7 @@ return -1
                                                         var end = String(route["legs"]![i]["end_location"]!!["lat"])
                                                         end += String(route["legs"]![i]["end_location"]!!["lng"])
                                                         var trip = TripObject.init(startPoint: start, endPoint: end, timeText: time, timeValue: distance)
-                                                        listOfTrips.append(trip)
-                                                        print(listOfTrips)
+                                                        listOfTrips.append(trip)                                                    
                                                     }
                                                 }
                                             }catch let error as NSError {
