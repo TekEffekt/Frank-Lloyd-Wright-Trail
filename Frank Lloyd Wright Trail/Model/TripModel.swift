@@ -8,28 +8,51 @@
 
 import Foundation
 
-struct TripModel{
-    private var sites = [Site]()
-    private var startTime: String
-    private var endTime: String
+struct TripModel {
     
-    mutating func addSite(site : Site){
-        sites.append(site)
+    static var shared = TripModel()
+    let sitesAvailable = Site.getSites()
+    private var sitesSelected : [Site?] = Array<Site?>(count: 10, repeatedValue: nil)
+    private var startTime: String?
+    private var endTime: String?
+    
+    
+    mutating func addSite(site : Site, index : Int){
+        sitesSelected[index]=site
 //        print("Added" + "\(site)")
-//        print("List = " + "\(sites)")
+//        print("List = " + "\(sitesSelected.count)")
+//        print("\(sitesSelected[index]?.title)")
     }
     
-    mutating func removeSite(index: Int){
-//        print("Removed" + "\(sites[index])")
-        if index > 0{
-            sites.removeAtIndex(index)
-        }
-//        print("List = " + "\(sites)")
+    mutating func removeSite(index : Int){
+        
+        //print("Removed" + "\(sitesSelected[index])")
+        sitesSelected[index] = nil
+        //print("\(sitesSelected[index]?.title)")
     }
     
-    func getSites() -> Array<Site>{
-        return sites
+    func getSites() -> Array<Site?>{
+        return sitesSelected
     }
     
-    //mutating func editStartTime()
+    //can't filter until we know user won't press back button
+    mutating func filterArray(){
+        sitesSelected = sitesSelected.filter{ $0 != nil }
+    }
+    
+    mutating func editStartTime(time : String){
+        startTime = time
+    }
+    
+    mutating func editEndTime(time : String){
+        endTime = time
+    }
+    
+    func getStartTime()-> String{
+        return startTime!
+    }
+    
+    func getEndTime()->String{
+        return endTime!
+    }
 }

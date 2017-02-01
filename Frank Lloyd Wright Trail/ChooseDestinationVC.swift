@@ -1,7 +1,7 @@
 //
 //  ChooseDestinationVC.swift
 //  Frank Lloyd Wright Trail
-//
+// 
 //  Created by Alex on 10/21/16.
 //  Copyright © 2016 App Factory. All rights reserved.
 //
@@ -15,7 +15,6 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
     
     let sites = Site.getSites()
     var sitesSelected = 0
-    var trip = TripModel()
     
     
     override func viewDidLoad() {
@@ -44,12 +43,6 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let tripTime:TripTimeVC = segue.destinationViewController as? TripTimeVC{
-            tripTime.trip = trip
-        }
     }
     
     
@@ -81,7 +74,7 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Destination", forIndexPath: indexPath) as! DestinationCell
         let imageView = cell.siteImage
         visuallySelectSurface(imageView, withAnimation: true)
-        trip.addSite(sites[indexPath.row])
+        TripModel.shared.addSite(sites[indexPath.row], index: indexPath.row)
         sitesSelected += 1
         disableButton()
         
@@ -91,7 +84,7 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
         print ("Deselected item \(indexPath.row)")
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Destination", forIndexPath: indexPath) as! DestinationCell
         let imageView = cell.siteImage
-        trip.removeSite(indexPath.row)
+        TripModel.shared.removeSite(indexPath.row)
         visuallyUnSelectSurface(imageView)
         sitesSelected -= 1
         disableButton()
@@ -156,7 +149,7 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
     }
     
     @IBAction func `continue`(sender: AnyObject) {
-        
+    
     }
     
 }

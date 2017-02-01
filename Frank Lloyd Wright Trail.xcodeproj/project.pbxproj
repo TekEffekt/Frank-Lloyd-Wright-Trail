@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		218502C01E3EC86400CAFE6D /* TripModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218502BF1E3EC86400CAFE6D /* TripModel.swift */; };
+		218502C41E3EF84700CAFE6D /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218502C31E3EF84700CAFE6D /* Timeline.swift */; };
+		218503001E4198D000CAFE6D /* Date+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218502FF1E4198D000CAFE6D /* Date+Comparable.swift */; };
 		3D968D3100D7715D8590C20E /* Pods_Frank_Lloyd_Wright_Trail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF68C79F7226D19F1DACC2B8 /* Pods_Frank_Lloyd_Wright_Trail.framework */; };
 		847AE4B61DA71FFA0056B6D7 /* PhotosProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AE4B51DA71FFA0056B6D7 /* PhotosProvider.swift */; };
 		847AE4B81DA720010056B6D7 /* ExamplePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AE4B71DA720010056B6D7 /* ExamplePhoto.swift */; };
@@ -51,6 +53,8 @@
 
 /* Begin PBXFileReference section */
 		218502BF1E3EC86400CAFE6D /* TripModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TripModel.swift; path = Model/TripModel.swift; sourceTree = "<group>"; };
+		218502C31E3EF84700CAFE6D /* Timeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
+		218502FF1E4198D000CAFE6D /* Date+Comparable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Comparable.swift"; sourceTree = "<group>"; };
 		46912E114CBBD62D92AB4CE3 /* Pods-Frank Lloyd Wright Trail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frank Lloyd Wright Trail.release.xcconfig"; path = "Pods/Target Support Files/Pods-Frank Lloyd Wright Trail/Pods-Frank Lloyd Wright Trail.release.xcconfig"; sourceTree = "<group>"; };
 		847AE4B51DA71FFA0056B6D7 /* PhotosProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosProvider.swift; sourceTree = "<group>"; };
 		847AE4B71DA720010056B6D7 /* ExamplePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamplePhoto.swift; sourceTree = "<group>"; };
@@ -249,6 +253,8 @@
 				FA6143911D81FD6300E3A076 /* SiteSorter.swift */,
 				8493937A1DDE568C00BB7220 /* TripOrder.swift */,
 				218502BF1E3EC86400CAFE6D /* TripModel.swift */,
+				218502C31E3EF84700CAFE6D /* Timeline.swift */,
+				218502FF1E4198D000CAFE6D /* Date+Comparable.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -415,6 +421,7 @@
 				8493937B1DDE568C00BB7220 /* TripOrder.swift in Sources */,
 				84B1F0361E3941C00048986C /* Timeline-Bridging-Header.h in Sources */,
 				FAB740E11DDEB14A00BA859F /* JTSImageViewController.m in Sources */,
+				218502C41E3EF84700CAFE6D /* Timeline.swift in Sources */,
 				FAB740E31DDEB14A00BA859F /* UIApplication+JTSImageViewController.m in Sources */,
 				FAB740E41DDEB14A00BA859F /* UIImage+JTSImageEffects.m in Sources */,
 				FA1334751DBFEF3500976585 /* TimeTableVC.swift in Sources */,
@@ -426,6 +433,7 @@
 				847AE4BA1DA720AA0056B6D7 /* LocationGalleryPageControlller.swift in Sources */,
 				FA3829491DBAE7E3003A4BFA /* ChooseDestinationVC.swift in Sources */,
 				FAAF70CC1D77675B00515DBD /* CollectionViewController.swift in Sources */,
+				218503001E4198D000CAFE6D /* Date+Comparable.swift in Sources */,
 				FA38294B1DBAEB94003A4BFA /* DestinationCell.swift in Sources */,
 				FAAF70C41D74A39400515DBD /* Cell.swift in Sources */,
 				B6DB3BBB1D7A100200FC737D /* Pin.swift in Sources */,
