@@ -33,6 +33,20 @@ Wyoming Valley School Cultural Arts Center is a nonprofit organization that prom
 	</dict>
 	<dict>
 		<key>subtitle</key>
+		<string>Since 1879 First Unitarian Society of Madison has been a liberal religious presence in Madison, providing a welcoming alternative religious community.</string>
+		<key>lat</key>
+		<real>43.0757361</real>
+		<key>long</key>
+		<real>-89.43752550000001</real>
+		<key>title</key>
+		<string>First Unitatrian Society Meeting House</string>
+		<key>details</key>
+		<string>A landmark in church architecture from 1951, Wright’s ship-like design for the First Unitarian Society, with a sharp prow jutting out from the earth towards the sky, offers a sense of transcendence, one he would often enjoy as a member of the congregation. His extensive use of copper and glass throughout the building provide a timeless feel to the unorthodox house of worship.</string>
+		<key>imageName</key>
+		<string>meetinghouse</string>
+	</dict>
+	<dict>
+		<key>subtitle</key>
 		<string>The SC Johnson Administration Building was the first Frank Lloyd Wright designed for SC Johnson. The Research Tower opened in 1950.</string>
 		<key>lat</key>
 		<real>42.7152375</real>
@@ -44,6 +58,20 @@ Wyoming Valley School Cultural Arts Center is a nonprofit organization that prom
 		<string>Far outside the corridors of high-tech industry and startup spaces, the SC Johnson company headquarters in Racine, Wisconsin, still provides a dashing vision of the modern American workplace, despite having recently celebrated its 75th anniversary. The SC Johnson Administration Building, designed by Frank Lloyd Wright in 1936, eschews business clichés: workers are greeted by a streamlined, muscular exterior made from ribbons of glass and brick, more campus than corporate, before entering a light-filled interior, with rows of organic, curved columns creating an abstract forest surrounding the secretary pool. The 15-story Research Tower, completed in 1950, was built on a &quot;taproot&quot; system. A core of elevators, heating, and ductwork formed a spine at the center on the tower, supported by a foundation sunk 54-feet-deep into the ground. Disc-shaped mezzanines branched off the core, alternating with full sized, 40-foot wide floors. Walls of horizontal Pyrex tubes, the same used in the Administration Building, let in sunlight but block the view. The effect is of a tree enclosed in glass.</string>
 		<key>imageName</key>
 		<string>scjohnson</string>
+	</dict>
+	<dict>
+		<key>subtitle</key>
+		<string>Taliesin Preservation offers a variety of tours of the Taliesin estate in Spring Green, Wisconsin.</string>
+		<key>lat</key>
+		<real>43.1439006</real>
+		<key>long</key>
+		<real>-90.0617113</real>
+		<key>title</key>
+		<string>Talisesin and Frank Lloyd Wright Visitor Center</string>
+		<key>details</key>
+		<string>Wright’s longtime home and studio, named after a Welsh term that means “Shining Brow,” is an icon of Prairie School design that saw numerous tragedies and rebirths over the decades as the architect continually renovated, rebuilt and expanded. Set on a 700-acre estate in the rolling hills of Spring Green where he grew up, it was the site where he created and designed many of his masterpieces beginning in 1911 and contains a collection of Wright-designed structures.</string>
+		<key>imageName</key>
+		<string>visitorcenter</string>
 	</dict>
 	<dict>
 		<key>subtitle</key>
@@ -72,34 +100,6 @@ Wyoming Valley School Cultural Arts Center is a nonprofit organization that prom
 		<string>A sprawling, curved convention center on the shores of Lake Monona in Madison, this building was a posthumous addition to the Wright canon, rejected by officials during the architect’s lifetime, but finally approved via a referendum put local voters in the early ‘90s. The curvilinear “dream civic center,” which recalls the shape of the Guggenheim, was first proposed by Wright in 1938, and was a project he constantly altered and updated throughout his life. His former apprentice Anthony Puttnam would finish the designs for the interior before it was finally completed in 1997.</string>
 		<key>imageName</key>
 		<string>mononaterrace</string>
-	</dict>
-	<dict>
-		<key>subtitle</key>
-		<string>Since 1879 First Unitarian Society of Madison has been a liberal religious presence in Madison, providing a welcoming alternative religious community.</string>
-		<key>lat</key>
-		<real>43.0757361</real>
-		<key>long</key>
-		<real>-89.43752550000001</real>
-		<key>title</key>
-		<string>First Unitatrian Society Meeting House</string>
-		<key>details</key>
-		<string>A landmark in church architecture from 1951, Wright’s ship-like design for the First Unitarian Society, with a sharp prow jutting out from the earth towards the sky, offers a sense of transcendence, one he would often enjoy as a member of the congregation. His extensive use of copper and glass throughout the building provide a timeless feel to the unorthodox house of worship.</string>
-		<key>imageName</key>
-		<string>meetinghouse</string>
-	</dict>
-	<dict>
-		<key>subtitle</key>
-		<string>Taliesin Preservation offers a variety of tours of the Taliesin estate in Spring Green, Wisconsin.</string>
-		<key>lat</key>
-		<real>43.1439006</real>
-		<key>long</key>
-		<real>-90.0617113</real>
-		<key>title</key>
-		<string>Talisesin and Frank Lloyd Wright Visitor Center</string>
-		<key>details</key>
-		<string>Wright’s longtime home and studio, named after a Welsh term that means “Shining Brow,” is an icon of Prairie School design that saw numerous tragedies and rebirths over the decades as the architect continually renovated, rebuilt and expanded. Set on a 700-acre estate in the rolling hills of Spring Green where he grew up, it was the site where he created and designed many of his masterpieces beginning in 1911 and contains a collection of Wright-designed structures.</string>
-		<key>imageName</key>
-		<string>visitorcenter</string>
 	</dict>
 	<dict>
 		<key>subtitle</key>

@@ -26,7 +26,7 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
         centerMapOnLocation(center)
         mapView.showsUserLocation = true
         
-        
+        // requesting and using user location
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
@@ -36,9 +36,9 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
             currentLocation = locationManager.location!
         }
 
-        
+        // array of sites to test
         var testSites = [Site]()
-        var counter = 4
+        var counter = 8
         var i = 0
         for elements in sites {
             if(i < counter) {
@@ -48,6 +48,7 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
             
         
         }
+        // use of function
         orderOfLocations(testSites)
     }
     
@@ -123,7 +124,7 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
     }
     
     
-    
+    // func to create objects to be used for the data for the cards
     func createTripPlanner(tripOrder: [TripObject]) {
         
         var breakfast = 3600
@@ -148,15 +149,17 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
         }// else here
     }
     
+    // get the lat and long of site and convert to string
     func getLatLong (sites: [Site], index: Int) -> String {
         
-        var latLong = String(sites[index].lat)
-        latLong += "," + String(sites[index].lon)
+        var latLong = String(sites[index].lat) + ","
+        latLong += String(sites[index].lon)
         return latLong
         
         
     }
     
+    // compares string and image name to return the index
     func findLocation(title: String, sites: [Site])-> Int {
         
         for i in 0...sites.count - 1 {
@@ -167,11 +170,8 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
         }
 return -1
     }
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        var locValue:CLLocationCoordinate2D = manager.location!.coordinate
-        
-    }
+ 
+    // takes an array of sites, returns data and order into an array of TripIbjects
     func orderOfLocations(locations: [Site]) -> [TripObject]{
         var startLatLong: String
         var endLatLong: String
@@ -183,6 +183,7 @@ return -1
         var middleLatLong = ""
         
         var middleLocations = [String]()
+        
         
         index = findLocation("scjohnson", sites: locations)
         if(index == -1)
@@ -245,48 +246,52 @@ return -1
         
     
 
-        
+        // check the closest location, covert current loction and end location into string
         if(self.currentLocation!.distanceFromLocation(CLLocation(latitude: locationA.lat, longitude: locationA.lon))<self.currentLocation!.distanceFromLocation(CLLocation(latitude: locationB.lat, longitude: locationB.lon))) {
-            
-            startLatLong = String(locationA.lat) + ","
-            startLatLong += String(locationA.lon)
+            var numLat = Double((self.currentLocation?.coordinate.latitude)!)
+            var numLong = Double((self.currentLocation?.coordinate.longitude)!)
+
+
+            startLatLong = String(numLat) + ","
+            startLatLong += String(numLong)
             endLatLong = String(locationB.lat) + ","
             endLatLong += String(locationB.lon)
-            startLoc = aLocation
             endLoc = bLocation
         }
         else {
-            startLatLong = String(locationB.lat) + ","
-            startLatLong += String(locationB.lon)
+            var numLat = Double((self.currentLocation?.coordinate.latitude)!)
+            var numLong = Double((self.currentLocation?.coordinate.longitude)!)
+
+            startLatLong = String(numLat) + ","
+            startLatLong += String(numLong)
             endLatLong = String(locationA.lat) + ","
             endLatLong += String(locationA.lon)
-            startLoc = bLocation
             endLoc = aLocation
             
         }
         var j = 0
         for i in 0...locations.count-1 {
-            if(startLoc != i && endLoc != i) {
+            if(endLoc != i) {
                 
                 middleLocations.insert(getLatLong(locations, index: i), atIndex: j)
                 j += 1
             }
         }
-        for i in 0...middleLocations.count {
+        for i in 0...middleLocations.count-1{
             
-            if(i != middleLocations.count) {
+            if(i != middleLocations.count-1) {
                 
                 middleLatLong += middleLocations[i] + "%7C"
             } else {
-                var minus = i - 1
-                middleLatLong += middleLocations[minus]
+                
+                middleLatLong += middleLocations[i]
             }
         }
         
         
         
         var listOfTrips = [TripObject]()
-        let directionURL = "https://maps.googleapis.com/maps/api/directions/json?origin="+startLatLong+"&destination="+endLatLong+"&waypoints=optimize:true"+middleLatLong+"&key=" + key
+        let directionURL = "https://maps.googleapis.com/maps/api/directions/json?origin="+startLatLong+"&destination="+endLatLong+"&waypoints=optimize:true%7C"+middleLatLong+"&key=" + key
         let request = NSURLRequest(URL: NSURL(string:directionURL)!)
         let session = NSURLSession.sharedSession()
         session.dataTaskWithRequest(request,
@@ -295,20 +300,25 @@ return -1
                                         if error == nil {
                                             do {
                                                 let object = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as! NSDictionary
-                                                //print(object)
                                                 
                                                 let routes = object["routes"] as! [NSDictionary]
                                                 
                                                 for route in routes {
-                                                    for i in 0...routes.count - 1{
-                                                        var distance = route["legs"]![i]["distance"]!!["value"] as! Int
-                                                        var time = route["legs"]![i]["distance"]!!["text"] as! String
+                                                    for i in 0..<route["waypoint_order"]!.count {
+                                    
+                                                        var distanceValue = route["legs"]![i]["distance"]!!["value"] as! Int
+                                                        var distanceText = route["legs"]![i]["distance"]!!["text"] as! String
+                                                        var timeText = route["legs"]![i]["duration"]!!["text"] as! String
+                                                        var timeValue = route["legs"]![i]["duration"]!!["value"] as! Int
+                                                        
                                                         var start = String(route["legs"]![i]["start_location"]!!["lat"])
                                                         start += String(route["legs"]![i]["start_location"]!!["lng"])
                                                         var end = String(route["legs"]![i]["end_location"]!!["lat"])
                                                         end += String(route["legs"]![i]["end_location"]!!["lng"])
-                                                        var trip = TripObject.init(startPoint: start, endPoint: end, timeText: time, timeValue: distance)
-                                                        listOfTrips.append(trip)                                                    
+                                                        var trip = TripObject.init(startPoint: start, endPoint: end, timeText: timeText, timeValue: timeValue, distanceText: distanceText, distanceValue: distanceValue)
+                                                        
+                                                        listOfTrips.append(trip)
+                                                        
                                                     }
                                                 }
                                             }catch let error as NSError {
