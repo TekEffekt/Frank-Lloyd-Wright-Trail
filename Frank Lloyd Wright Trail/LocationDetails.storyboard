@@ -33,7 +33,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="173"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pWh-YV-VB1">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pWh-YV-VB1">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="173"/>
                                 <gestureRecognizers/>
                             </imageView>
@@ -111,7 +111,7 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cXc-E1-wZL">
+                            <containerView opaque="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="cXc-E1-wZL">
                                 <rect key="frame" x="0.0" y="64" width="375" height="173"/>
                                 <connections>
                                     <segue destination="WpZ-yH-zSS" kind="embed" identifier="container" id="X28-3P-tHr"/>
