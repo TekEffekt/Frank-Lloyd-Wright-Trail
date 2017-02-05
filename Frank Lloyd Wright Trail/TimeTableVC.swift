@@ -36,6 +36,10 @@ class TimeTableVC: UITableViewController {
     @IBOutlet weak var dinnerEndTime: UILabel!
     @IBOutlet weak var dinnerEndPicker: UIDatePicker!
     
+    //continue button
+    @IBOutlet weak var continueButton: UIButton!
+    
+    
     var lunch = false
 
     
@@ -87,34 +91,52 @@ class TimeTableVC: UITableViewController {
         
     }
     
+    
+    private func checkTime(start : UIDatePicker, end : UIDatePicker) {
+        if start.date.isLessThanDate(end.date) {
+            continueButton.userInteractionEnabled = true
+            //continueButton.backgroundColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
+            continueButton.backgroundColor = UIColor.orangeColor()
+        } else {
+            continueButton.userInteractionEnabled = false
+            continueButton.backgroundColor = UIColor.lightGrayColor()
+        }
+    }
+    
     /// These methods update the text field if the date picker has been changed
     ///
     /// - Parameter sender: date picker changed
     /// -----------------------------------------------------------------------
     @IBAction func breakfastStartValue(sender: AnyObject) {
         breakfastStartTime.text = NSDateFormatter.localizedStringFromDate(breakfastStartPicker.date, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        checkTime(breakfastStartPicker, end: breakfastEndPicker)
     }
     
     @IBAction func breakfastEndValue(sender: AnyObject) {
         breakfastEndTime.text = NSDateFormatter.localizedStringFromDate(breakfastEndPicker.date, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        checkTime(breakfastStartPicker, end: breakfastEndPicker)
     }
     
     
     @IBAction func lunchStartValue(sender: AnyObject) {
         lunchStartTime.text = NSDateFormatter.localizedStringFromDate(lunchStartPicker.date, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        checkTime(lunchStartPicker, end: lunchEndPicker)
     }
     
     
     @IBAction func lunchEndValue(sender: AnyObject) {
         lunchEndTime.text = NSDateFormatter.localizedStringFromDate(lunchEndPicker.date, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        checkTime(lunchStartPicker, end: lunchEndPicker)
     }
 
     @IBAction func dinnerStartValue(sender: AnyObject) {
         dinnerStartTime.text = NSDateFormatter.localizedStringFromDate(dinnerStartPicker.date, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        checkTime(dinnerStartPicker, end: dinnerEndPicker)
     }
     
     @IBAction func dinnerEndValue(sender: AnyObject) {
         dinnerEndTime.text = NSDateFormatter.localizedStringFromDate(dinnerEndPicker.date, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+         checkTime(dinnerStartPicker, end: dinnerEndPicker)
     }
     /// -----------------------------------------------------------------------
     
@@ -215,6 +237,12 @@ class TimeTableVC: UITableViewController {
             }
 
         }
+        
+        else if section == 3 {
+            return 43
+            
+        }
+        
         
         return 0
     }
