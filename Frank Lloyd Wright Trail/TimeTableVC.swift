@@ -93,6 +93,7 @@ class TimeTableVC: UITableViewController {
     
     
     private func checkTime(start : UIDatePicker, end : UIDatePicker) {
+        //check times for single start/end time within one section (breakfast,lunch or dinner)
         if start.date.isLessThanDate(end.date) {
             continueButton.userInteractionEnabled = true
             //continueButton.backgroundColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
@@ -101,6 +102,12 @@ class TimeTableVC: UITableViewController {
             continueButton.userInteractionEnabled = false
             continueButton.backgroundColor = UIColor.lightGrayColor()
         }
+        //check that start time is within start time of overall trip time
+        
+        
+        //check that end time is within end time of overall trip time
+        
+        //check breakfast/lunch/dinner times logic relative to eachother
     }
     
     /// These methods update the text field if the date picker has been changed
@@ -110,33 +117,39 @@ class TimeTableVC: UITableViewController {
     @IBAction func breakfastStartValue(sender: AnyObject) {
         breakfastStartTime.text = NSDateFormatter.localizedStringFromDate(breakfastStartPicker.date, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
         checkTime(breakfastStartPicker, end: breakfastEndPicker)
+        TripModel.shared.editBreakfastStartTime(breakfastStartTime.text!)
     }
     
     @IBAction func breakfastEndValue(sender: AnyObject) {
         breakfastEndTime.text = NSDateFormatter.localizedStringFromDate(breakfastEndPicker.date, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
         checkTime(breakfastStartPicker, end: breakfastEndPicker)
+        TripModel.shared.editBreakfastEndTime(breakfastEndTime.text!)
     }
     
     
     @IBAction func lunchStartValue(sender: AnyObject) {
         lunchStartTime.text = NSDateFormatter.localizedStringFromDate(lunchStartPicker.date, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
         checkTime(lunchStartPicker, end: lunchEndPicker)
+        TripModel.shared.editLunchStartTime(lunchStartTime.text!)
     }
     
     
     @IBAction func lunchEndValue(sender: AnyObject) {
         lunchEndTime.text = NSDateFormatter.localizedStringFromDate(lunchEndPicker.date, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
         checkTime(lunchStartPicker, end: lunchEndPicker)
+        TripModel.shared.editLunchEndTime(lunchEndTime.text!)
     }
 
     @IBAction func dinnerStartValue(sender: AnyObject) {
         dinnerStartTime.text = NSDateFormatter.localizedStringFromDate(dinnerStartPicker.date, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
         checkTime(dinnerStartPicker, end: dinnerEndPicker)
+        TripModel.shared.editDinnerStartTime(dinnerStartTime.text!)
     }
     
     @IBAction func dinnerEndValue(sender: AnyObject) {
         dinnerEndTime.text = NSDateFormatter.localizedStringFromDate(dinnerEndPicker.date, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
          checkTime(dinnerStartPicker, end: dinnerEndPicker)
+        TripModel.shared.editDinnerEndTime(dinnerEndTime.text!)
     }
     /// -----------------------------------------------------------------------
     

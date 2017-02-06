@@ -15,7 +15,12 @@ struct TripModel {
     private var sitesSelected : [Site?] = Array<Site?>(count: 10, repeatedValue: nil)
     private var startTime: String?
     private var endTime: String?
-    
+    private var breakfastStartTime: String?
+    private var breakfastEndTime: String?
+    private var lunchStartTime: String?
+    private var lunchEndTime: String?
+    private var dinnerStartTime: String?
+    private var dinnerEndTime: String?
     
     mutating func addSite(site : Site, index : Int){
         sitesSelected[index]=site
@@ -54,5 +59,29 @@ struct TripModel {
     
     func getEndTime()->String{
         return endTime!
+    }
+    
+    mutating func editBreakfastStartTime(time : String){
+        breakfastStartTime = time
+    }
+    
+    mutating func editBreakfastEndTime(time : String){
+        breakfastEndTime = time
+    }
+    
+    mutating func editLunchStartTime(time : String){
+        lunchStartTime = time
+    }
+    
+    mutating func editLunchEndTime(time : String){
+        lunchEndTime = time
+    }
+    
+    mutating func editDinnerStartTime(time : String){
+        dinnerStartTime = time
+    }
+    
+    mutating func editDinnerEndTime(time : String){
+        dinnerEndTime = time
     }
 }
