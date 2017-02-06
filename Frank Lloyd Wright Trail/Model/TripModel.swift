@@ -21,6 +21,7 @@ struct TripModel {
     private var lunchEndTime: String?
     private var dinnerStartTime: String?
     private var dinnerEndTime: String?
+    private var sitesInfo = [TripObject]()
     
     mutating func addSite(site : Site, index : Int){
         sitesSelected[index]=site
@@ -36,8 +37,12 @@ struct TripModel {
         //print("\(sitesSelected[index]?.title)")
     }
     
-    func getSites() -> Array<Site?>{
+    func getSites() -> [Site?]{
         return sitesSelected
+    }
+    
+    func getSitesInfo() -> [TripObject]{
+        return sitesInfo
     }
     
     //can't filter until we know user won't press back button
@@ -61,27 +66,34 @@ struct TripModel {
         return endTime!
     }
     
-    mutating func editBreakfastStartTime(time : String){
+    mutating func setBreakfastStartTime(time : String){
         breakfastStartTime = time
     }
     
-    mutating func editBreakfastEndTime(time : String){
+    mutating func setBreakfastEndTime(time : String){
         breakfastEndTime = time
     }
     
-    mutating func editLunchStartTime(time : String){
+    mutating func setLunchStartTime(time : String){
         lunchStartTime = time
     }
     
-    mutating func editLunchEndTime(time : String){
+    mutating func setLunchEndTime(time : String){
         lunchEndTime = time
     }
     
-    mutating func editDinnerStartTime(time : String){
+    mutating func setDinnerStartTime(time : String){
         dinnerStartTime = time
     }
     
-    mutating func editDinnerEndTime(time : String){
+    mutating func setDinnerEndTime(time : String){
         dinnerEndTime = time
     }
+    
+    mutating func setTripInfo(sites : [TripObject]){
+        sitesInfo=sites
+    }
+    
+    
+    
 }
