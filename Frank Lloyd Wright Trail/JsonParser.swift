@@ -155,10 +155,11 @@ class JsonParser: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
         
         // check the closest location, covert current loction and end location into string
         if(self.currentLocation!.distanceFromLocation(CLLocation(latitude: locationA.lat, longitude: locationA.lon))<self.currentLocation!.distanceFromLocation(CLLocation(latitude: locationB.lat, longitude: locationB.lon))) {
+            // user location converted to doubles
             var numLat = Double((self.currentLocation?.coordinate.latitude)!)
             var numLong = Double((self.currentLocation?.coordinate.longitude)!)
             
-            
+            // convert the double into a string and add commas where they need to be
             startLatLong = String(numLat) + ","
             startLatLong += String(numLong)
             endLatLong = String(locationB.lat) + ","
@@ -166,9 +167,11 @@ class JsonParser: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
             endLoc = bLocation
         }
         else {
+            // user location converted to doubles
             var numLat = Double((self.currentLocation?.coordinate.latitude)!)
             var numLong = Double((self.currentLocation?.coordinate.longitude)!)
             
+            // convert the double into a string and add commas where they need to be
             startLatLong = String(numLat) + ","
             startLatLong += String(numLong)
             endLatLong = String(locationA.lat) + ","
