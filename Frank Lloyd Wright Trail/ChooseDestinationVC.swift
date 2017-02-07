@@ -150,12 +150,17 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
     }
     
     @IBAction func `continue`(sender: AnyObject) {
-//        if let sites = parser.orderOfLocations(TripModel.shared.getSites()!){
-//            TripModel.shared.setTripInfo(sites)
-//        }
-//        
-//        TripModel.shared.setTripInfo(parser.orderOfLocations(TripModel.shared.getSites()!))
-//        print("\(TripModel.shared.getSitesInfo())")
+        //remove nil sites so can send actual values into parse method
+        let sites: [Site?] = TripModel.shared.getSites()
+        var array: [Site] = []
+        for s in sites{
+            if(s != nil){
+                array.append(s!)
+            }
+        }
+        
+        TripModel.shared.setTripInfo(parser.orderOfLocations(array))
+        print("\(TripModel.shared.getSitesInfo())")
     }
     
 }

@@ -12,7 +12,7 @@ struct TripModel {
     
     static var shared = TripModel()
     let sitesAvailable = Site.getSites()
-    private var sitesSelected : [Site?] = Array<Site?>(count: 10, repeatedValue: nil)
+    private var sitesSelected : [Site?]
     private var startTime: String?
     private var endTime: String?
     private var breakfastStartTime: String?
@@ -23,6 +23,12 @@ struct TripModel {
     private var dinnerEndTime: String?
     private var sitesInfo = [TripObject]()
     
+    
+    init(){
+        let count = sitesAvailable.count
+        sitesSelected = Array<Site?>(count: count, repeatedValue: nil)
+    }
+    
     mutating func addSite(site : Site, index : Int){
         sitesSelected[index]=site
 //        print("Added" + "\(site)")
@@ -31,7 +37,6 @@ struct TripModel {
     }
     
     mutating func removeSite(index : Int){
-        
         //print("Removed" + "\(sitesSelected[index])")
         sitesSelected[index] = nil
         //print("\(sitesSelected[index]?.title)")

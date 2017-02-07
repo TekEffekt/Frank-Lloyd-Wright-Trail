@@ -78,7 +78,7 @@ class JsonParser: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
         return -1
     }
     
-    //MAX
+    
     //Use this function to retrieve the array of trip objects to create timeline objects from
     // takes an array of sites, returns data and order into an array of TripIbjects
     func orderOfLocations(locations: [Site]) -> [TripObject]{
@@ -156,6 +156,7 @@ class JsonParser: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
         
         
         // check the closest location, covert current loction and end location into string
+        print("FUCKING SHIT, \(self.currentLocation.debugDescription)       _)_)_)(()()(")
         if(self.currentLocation!.distanceFromLocation(CLLocation(latitude: locationA.lat, longitude: locationA.lon))<self.currentLocation!.distanceFromLocation(CLLocation(latitude: locationB.lat, longitude: locationB.lon))) {
             // user location converted to doubles
             var numLat = Double((self.currentLocation?.coordinate.latitude)!)
@@ -199,8 +200,7 @@ class JsonParser: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
                 middleLatLong += middleLocations[i]
             }
         }
-        
-        //MAX
+       
         //API uses startLatLong (user location), endLatLong (last site), and middleLatLong, ( all sites inbetween)
         var listOfTrips = [TripObject]()
         let directionURL = "https://maps.googleapis.com/maps/api/directions/json?origin="+startLatLong+"&destination="+endLatLong+"&waypoints=optimize:true%7C"+middleLatLong+"&key=" + key
