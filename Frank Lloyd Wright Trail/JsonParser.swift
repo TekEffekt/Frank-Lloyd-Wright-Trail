@@ -19,7 +19,11 @@ class JsonParser: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // requesting and using user location
+            }
+    
+    
+    // requesting and using user location
+    func userLocation() {
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
@@ -30,6 +34,7 @@ class JsonParser: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
             locationManager.startUpdatingLocation()
             currentLocation = locationManager.location!
         }
+
     }
     // func to create objects to be used for the data for the cards
     func createTripPlanner(tripOrder: [TripObject]) {
@@ -90,8 +95,14 @@ class JsonParser: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
         var aLocation: Int
         var bLocation: Int
         var middleLatLong = ""
+        //var newLocations: [Site]
         
         var middleLocations = [String]()
+        //for i in 0..<locations.count {
+            //if(locations[i] != nil){
+            //newLocations.append(i)
+            //}
+            //}
         
         
         index = findLocation("scjohnson", sites: locations)

@@ -22,7 +22,6 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
         loadPins()
         centerMapOnLocation(center)
         mapView.showsUserLocation = true
-
     }
     
     override func viewWillAppear(animated: Bool) {
