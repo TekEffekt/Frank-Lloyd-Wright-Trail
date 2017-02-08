@@ -156,7 +156,7 @@ class JsonParser: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
         
         
         // check the closest location, covert current loction and end location into string
-        print("FUCKING SHIT, \(self.currentLocation.debugDescription)       _)_)_)(()()(")
+        print("CURRENT LOCATION: \(self.currentLocation.debugDescription)       _)_)_)(()()(")
         if(self.currentLocation!.distanceFromLocation(CLLocation(latitude: locationA.lat, longitude: locationA.lon))<self.currentLocation!.distanceFromLocation(CLLocation(latitude: locationB.lat, longitude: locationB.lon))) {
             // user location converted to doubles
             var numLat = Double((self.currentLocation?.coordinate.latitude)!)
