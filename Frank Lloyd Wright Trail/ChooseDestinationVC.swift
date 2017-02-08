@@ -158,7 +158,7 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
                 array.append(s!)
             }
         }
-        
+        parser.userLocation()
         TripModel.shared.setTripInfo(parser.orderOfLocations(array))
         print("\(TripModel.shared.getSitesInfo())")
     }

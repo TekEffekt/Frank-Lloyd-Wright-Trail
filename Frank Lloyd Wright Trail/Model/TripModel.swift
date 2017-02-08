@@ -46,6 +46,7 @@ struct TripModel {
         return sitesSelected
     }
     
+    
     func getSitesInfo() -> [TripObject]{
         return sitesInfo
     }
