@@ -11,7 +11,7 @@ import MapKit
 class JsonParser: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate{
 
     // var to use the usr location
-    var locationManager: CLLocationManager!
+    let locationManager = CLLocationManager()
     var currentLocation: CLLocation?
     // access key for google direction API
     private let key = "AIzaSyD99efuqx7jK3bOi7txWUDRZNlh-G50b0w"
@@ -24,7 +24,7 @@ class JsonParser: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
     
     // requesting and using user location
     func userLocation() {
-        locationManager = CLLocationManager()
+        
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.requestAlwaysAuthorization()
@@ -96,12 +96,17 @@ class JsonParser: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
         //var newLocations: [Site]
         
         var middleLocations = [String]()
-        //for i in 0..<locations.count {
-            //if(locations[i] != nil){
-            //newLocations.append(i)
-            //}
-            //}
         
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.requestAlwaysAuthorization()
+        
+        // if user location is enabled then set currentlocation to user location
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.startUpdatingLocation()
+            currentLocation = locationManager.location!
+        }
+
         
         index = findLocation("scjohnson", sites: locations)
         if(index == -1)

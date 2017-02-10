@@ -22,6 +22,10 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
         loadPins()
         centerMapOnLocation(center)
         mapView.showsUserLocation = true
+        
+        var obj = JsonParser()
+        var obj2 = obj.orderOfLocations(sites)
+        print(obj2.count)
     }
     
     override func viewWillAppear(animated: Bool) {
