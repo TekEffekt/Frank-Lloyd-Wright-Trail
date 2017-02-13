@@ -9,19 +9,26 @@
 import UIKit
 import MapKit
 
-class LocationsViewController: UIViewController, MKMapViewDelegate, LocationCollectionDelegate, CLLocationManagerDelegate {
+class LocationsViewController: UIViewController, MKMapViewDelegate, LocationCollectionDelegate, CLLocationManagerDelegate, TripJsonDelegate {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var mapView: MKMapView!
     
     var locationCollectionVc: CollectionViewController!
     let center = CLLocation(latitude: 43.105304, longitude: -89.046729)
     var sites = Site.getSites()
+    
+    // use the TripJsinDelegate after the class name
+    //var parser: JsonParser!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mapView.delegate = self
         loadPins()
         centerMapOnLocation(center)
         mapView.showsUserLocation = true
+        
+        // use this
+        //parser = JsonParser(withDelegate: self, locations: sites)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -29,6 +36,12 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
         // setting up the delegate
         locationCollectionVc = childViewControllers.first as! CollectionViewController
         locationCollectionVc.delegate = self
+    }
+    
+    
+    // use this func to get data and set it
+    func getTripData(objects: [TripObject]) {
+       
     }
     
     func loadPins(){

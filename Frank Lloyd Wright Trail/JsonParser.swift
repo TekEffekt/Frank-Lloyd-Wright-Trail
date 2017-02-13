@@ -8,34 +8,26 @@
 
 import UIKit
 import MapKit
-class JsonParser: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate{
+
+protocol TripJsonDelegate: class {
+    func getTripData(objects: [TripObject])
+}
+
+class JsonParser: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
 
     // var to use the usr location
-    var locationManager: CLLocationManager!
+    let locationManager = CLLocationManager()
     var currentLocation: CLLocation?
     // access key for google direction API
     private let key = "AIzaSyD99efuqx7jK3bOi7txWUDRZNlh-G50b0w"
+    weak var delegate: TripJsonDelegate!
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-            }
-    
-    
-    // requesting and using user location
-    func userLocation() {
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.requestAlwaysAuthorization()
-        
-        // if user location is enabled then set currentlocation to user location
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.startUpdatingLocation()
-            currentLocation = locationManager.location!
-        }
-
+    init(withDelegate delegate: TripJsonDelegate, locations: [Site]) {
+        self.delegate = delegate
+        super.init()
+        orderOfLocations(locations)
     }
+    
     // func to create objects to be used for the data for the cards
     func createTripPlanner(tripOrder: [TripObject]) {
         
@@ -98,12 +90,17 @@ class JsonParser: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
         //var newLocations: [Site]
         
         var middleLocations = [String]()
-        //for i in 0..<locations.count {
-            //if(locations[i] != nil){
-            //newLocations.append(i)
-            //}
-            //}
         
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.requestAlwaysAuthorization()
+        
+        // if user location is enabled then set currentlocation to user location
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.startUpdatingLocation()
+            currentLocation = locationManager.location!
+        }
+
         
         index = findLocation("scjohnson", sites: locations)
         if(index == -1)
@@ -233,7 +230,6 @@ class JsonParser: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
                                                         var distanceText = route["legs"]![i]["distance"]!!["text"] as! String
                                                         var timeText = route["legs"]![i]["duration"]!!["text"] as! String
                                                         var timeValue = route["legs"]![i]["duration"]!!["value"] as! Int
-                                                        
                                                         var start = String(route["legs"]![i]["start_location"]!!["lat"])
                                                         start += String(route["legs"]![i]["start_location"]!!["lng"])
                                                         var end = String(route["legs"]![i]["end_location"]!!["lat"])
@@ -248,9 +244,9 @@ class JsonParser: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate
                                                 print(error)
                                             }
                                             
-                                            dispatch_async(dispatch_get_main_queue()) {
-                                                //update your UI here
-                                            }
+                                            NSOperationQueue.mainQueue().addOperationWithBlock({ 
+                                                self.delegate?.getTripData(listOfTrips)
+                                            })
                                         }
                                         else {
                                             print("Direction API error")
