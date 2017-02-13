@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		217503521E4BBB0300EC9693 /* UWParkside.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 217503511E4BBB0300EC9693 /* UWParkside.gpx */; };
+		218502C01E3EC86400CAFE6D /* TripModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218502BF1E3EC86400CAFE6D /* TripModel.swift */; };
+		218502C41E3EF84700CAFE6D /* TimelineCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218502C31E3EF84700CAFE6D /* TimelineCardModel.swift */; };
+		218503001E4198D000CAFE6D /* Date+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218502FF1E4198D000CAFE6D /* Date+Comparable.swift */; };
 		3D968D3100D7715D8590C20E /* Pods_Frank_Lloyd_Wright_Trail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF68C79F7226D19F1DACC2B8 /* Pods_Frank_Lloyd_Wright_Trail.framework */; };
 		847AE4B61DA71FFA0056B6D7 /* PhotosProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AE4B51DA71FFA0056B6D7 /* PhotosProvider.swift */; };
 		847AE4B81DA720010056B6D7 /* ExamplePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AE4B71DA720010056B6D7 /* ExamplePhoto.swift */; };
@@ -16,6 +20,7 @@
 		8493937B1DDE568C00BB7220 /* TripOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493937A1DDE568C00BB7220 /* TripOrder.swift */; };
 		84B1F0361E3941C00048986C /* Timeline-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = FAB740D21DDEAF7900BA859F /* Timeline-Bridging-Header.h */; };
 		84B1F0381E3BCC9E0048986C /* LocationDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B1F0371E3BCC9E0048986C /* LocationDetails.storyboard */; };
+		84EF3A561E44EE0E00A8B00A /* JsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EF3A551E44EE0E00A8B00A /* JsonParser.swift */; };
 		B6109DA31D528DDE002A6D77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6109DA21D528DDE002A6D77 /* Assets.xcassets */; };
 		B6109DA61D528DDE002A6D77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6109DA41D528DDE002A6D77 /* LaunchScreen.storyboard */; };
 		B6DB3BBB1D7A100200FC737D /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DB3BB81D7A100200FC737D /* Pin.swift */; };
@@ -49,6 +54,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		217503511E4BBB0300EC9693 /* UWParkside.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UWParkside.gpx; sourceTree = "<group>"; };
+		218502BF1E3EC86400CAFE6D /* TripModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TripModel.swift; path = Model/TripModel.swift; sourceTree = "<group>"; };
+		218502C31E3EF84700CAFE6D /* TimelineCardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineCardModel.swift; sourceTree = "<group>"; };
+		218502FF1E4198D000CAFE6D /* Date+Comparable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Comparable.swift"; sourceTree = "<group>"; };
 		46912E114CBBD62D92AB4CE3 /* Pods-Frank Lloyd Wright Trail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frank Lloyd Wright Trail.release.xcconfig"; path = "Pods/Target Support Files/Pods-Frank Lloyd Wright Trail/Pods-Frank Lloyd Wright Trail.release.xcconfig"; sourceTree = "<group>"; };
 		847AE4B51DA71FFA0056B6D7 /* PhotosProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosProvider.swift; sourceTree = "<group>"; };
 		847AE4B71DA720010056B6D7 /* ExamplePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamplePhoto.swift; sourceTree = "<group>"; };
@@ -57,6 +66,7 @@
 		847AE4BD1DA723450056B6D7 /* locations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = locations.plist; sourceTree = "<group>"; };
 		8493937A1DDE568C00BB7220 /* TripOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripOrder.swift; sourceTree = "<group>"; };
 		84B1F0371E3BCC9E0048986C /* LocationDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LocationDetails.storyboard; sourceTree = "<group>"; };
+		84EF3A551E44EE0E00A8B00A /* JsonParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonParser.swift; sourceTree = "<group>"; };
 		866A48BE69E58B36CE7AFA90 /* Pods-Frank Lloyd Wright Trail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frank Lloyd Wright Trail.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Frank Lloyd Wright Trail/Pods-Frank Lloyd Wright Trail.debug.xcconfig"; sourceTree = "<group>"; };
 		B6109D961D528DDD002A6D77 /* Frank Lloyd Wright Trail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Frank Lloyd Wright Trail.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6109DA21D528DDE002A6D77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -180,6 +190,7 @@
 				FA1334741DBFEF3500976585 /* TimeTableVC.swift */,
 				FAB740CF1DDE728D00BA859F /* TripTimeVC.swift */,
 				FAB740E71DDEB21B00BA859F /* TimelineVC.swift */,
+				84EF3A551E44EE0E00A8B00A /* JsonParser.swift */,
 			);
 			name = "Trip Planner";
 			sourceTree = "<group>";
@@ -246,6 +257,9 @@
 				FA5AB5AE1D7E744D005CFBD4 /* Item.swift */,
 				FA6143911D81FD6300E3A076 /* SiteSorter.swift */,
 				8493937A1DDE568C00BB7220 /* TripOrder.swift */,
+				218502BF1E3EC86400CAFE6D /* TripModel.swift */,
+				218502C31E3EF84700CAFE6D /* TimelineCardModel.swift */,
+				218502FF1E4198D000CAFE6D /* Date+Comparable.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -262,6 +276,7 @@
 		FAD304BF1D6F676500D8CE2F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				217503511E4BBB0300EC9693 /* UWParkside.gpx */,
 				B6109DA71D528DDE002A6D77 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -345,6 +360,7 @@
 			files = (
 				84B1F0381E3BCC9E0048986C /* LocationDetails.storyboard in Resources */,
 				B6109DA61D528DDE002A6D77 /* LaunchScreen.storyboard in Resources */,
+				217503521E4BBB0300EC9693 /* UWParkside.gpx in Resources */,
 				847AE4BE1DA723450056B6D7 /* locations.plist in Resources */,
 				B6109DA31D528DDE002A6D77 /* Assets.xcassets in Resources */,
 				FAC91F871DA84A2E002B368E /* TripPlanner.storyboard in Resources */,
@@ -412,16 +428,19 @@
 				8493937B1DDE568C00BB7220 /* TripOrder.swift in Sources */,
 				84B1F0361E3941C00048986C /* Timeline-Bridging-Header.h in Sources */,
 				FAB740E11DDEB14A00BA859F /* JTSImageViewController.m in Sources */,
+				218502C41E3EF84700CAFE6D /* TimelineCardModel.swift in Sources */,
 				FAB740E31DDEB14A00BA859F /* UIApplication+JTSImageViewController.m in Sources */,
 				FAB740E41DDEB14A00BA859F /* UIImage+JTSImageEffects.m in Sources */,
 				FA1334751DBFEF3500976585 /* TimeTableVC.swift in Sources */,
 				FAB740D01DDE728D00BA859F /* TripTimeVC.swift in Sources */,
 				FAB740E01DDEB14A00BA859F /* JTSImageInfo.m in Sources */,
+				218502C01E3EC86400CAFE6D /* TripModel.swift in Sources */,
 				FA6143921D81FD6300E3A076 /* SiteSorter.swift in Sources */,
 				FAD304BB1D6F66B500D8CE2F /* AppDelegate.swift in Sources */,
 				847AE4BA1DA720AA0056B6D7 /* LocationGalleryPageControlller.swift in Sources */,
 				FA3829491DBAE7E3003A4BFA /* ChooseDestinationVC.swift in Sources */,
 				FAAF70CC1D77675B00515DBD /* CollectionViewController.swift in Sources */,
+				218503001E4198D000CAFE6D /* Date+Comparable.swift in Sources */,
 				FA38294B1DBAEB94003A4BFA /* DestinationCell.swift in Sources */,
 				FAAF70C41D74A39400515DBD /* Cell.swift in Sources */,
 				B6DB3BBB1D7A100200FC737D /* Pin.swift in Sources */,
@@ -435,6 +454,7 @@
 				FAEE90B41D677EBB008264DC /* LocationsViewController.swift in Sources */,
 				B6DB3BBF1D7A104900FC737D /* LocationCollectionDelegate.swift in Sources */,
 				FAD304B31D6D28E800D8CE2F /* DetailViewController.swift in Sources */,
+				84EF3A561E44EE0E00A8B00A /* JsonParser.swift in Sources */,
 				FAB740E81DDEB21B00BA859F /* TimelineVC.swift in Sources */,
 				847AE4B61DA71FFA0056B6D7 /* PhotosProvider.swift in Sources */,
 				847AE4BC1DA720B30056B6D7 /* LocationGalleryImageController.swift in Sources */,

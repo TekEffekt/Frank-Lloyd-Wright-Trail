@@ -58,35 +58,35 @@ class DetailViewController: UIViewController,NYTPhotosViewControllerDelegate
     func displayDetailAnnotation (viaSegue: MKAnnotationView){
         
         switch  viaSegue.annotation!.coordinate.latitude{
-        case 43.1192397:
+        case 42.7152375:
             siteDetails.text = sites[0].details
             siteSubtitle.text = sites[0].subtitle
             siteTitle.text = sites[0].title
-        case 43.0105838:
+        case 42.784472:
             siteDetails.text = sites[1].details
             siteSubtitle.text = sites[1].subtitle
             siteTitle.text = sites[1].title
-        case 42.7152375:
+        case 43.0105838:
             siteDetails.text = sites[2].details
             siteSubtitle.text = sites[2].subtitle
             siteTitle.text = sites[2].title
             
-        case 42.784472:
+        case 43.0717445:
             siteDetails.text = sites[3].details
             siteSubtitle.text = sites[3].subtitle
             siteTitle.text = sites[3].title
             
-        case 43.0717445:
+        case 43.0757361:
             siteDetails.text = sites[4].details
             siteSubtitle.text = sites[4].subtitle
             siteTitle.text = sites[4].title
             
-        case 43.0757361:
+        case 43.1439006:
             siteDetails.text = sites[5].details
             siteSubtitle.text = sites[5].subtitle
             siteTitle.text = sites[5].title
             
-        case 43.1439006:
+        case 43.1192397:
             siteDetails.text = sites[6].details
             siteSubtitle.text = sites[6].subtitle
             siteTitle.text = sites[6].title

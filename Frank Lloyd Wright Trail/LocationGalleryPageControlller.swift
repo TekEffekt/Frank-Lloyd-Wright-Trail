@@ -22,12 +22,12 @@ class LocationGalleryPageControlller: UIPageViewController, UIPageViewController
     // organize the site photos for displaying
     var site1:[UIImage] = [UIImage(named: "scjohnson")!, UIImage(named: "scjohnson2")!, UIImage(named: "scjohnson3")!]
     var site2:[UIImage] = [UIImage(named: "wingspread")!, UIImage(named: "wingspread2")!, UIImage(named: "wingspread3")!]
-    var site3:[UIImage] = [UIImage(named: "mononaterrace")!, UIImage(named: "mononaterrace2")!, UIImage(named: "mononaterrace3")!]
-    var site4:[UIImage] = [UIImage(named: "meetinghouse")!, UIImage(named: "meetinghouse2")!, UIImage(named: "meetinghouse3")!]
-    var site5:[UIImage] = [UIImage(named: "visitorcenter")!, UIImage(named: "visitorcenter2")!, UIImage(named: "visitorcenter3")!]
-    var site6:[UIImage] = [UIImage(named: "warehouse")!, UIImage(named: "warehouse2")!, UIImage(named: "warehouse3")!]
-    var site7:[UIImage] = [UIImage(named: "asbh")!, UIImage(named: "asbh2")!, UIImage(named: "asbh3")!]
-    var site8:[UIImage] = [UIImage(named: "wyoming")!, UIImage(named: "wyoming2")!, UIImage(named: "wyoming3")!]
+    var site4:[UIImage] = [UIImage(named: "mononaterrace")!, UIImage(named: "mononaterrace2")!, UIImage(named: "mononaterrace3")!]
+    var site5:[UIImage] = [UIImage(named: "meetinghouse")!, UIImage(named: "meetinghouse2")!, UIImage(named: "meetinghouse3")!]
+    var site6:[UIImage] = [UIImage(named: "visitorcenter")!, UIImage(named: "visitorcenter2")!, UIImage(named: "visitorcenter3")!]
+    var site8:[UIImage] = [UIImage(named: "warehouse")!, UIImage(named: "warehouse2")!, UIImage(named: "warehouse3")!]
+    var site3:[UIImage] = [UIImage(named: "asbh")!, UIImage(named: "asbh2")!, UIImage(named: "asbh3")!]
+    var site7:[UIImage] = [UIImage(named: "wyoming")!, UIImage(named: "wyoming2")!, UIImage(named: "wyoming3")!]
 
     
     override func viewDidAppear(animated: Bool) {
@@ -38,12 +38,12 @@ class LocationGalleryPageControlller: UIPageViewController, UIPageViewController
             let controller = storyboard?.instantiateViewControllerWithIdentifier("LocationGalleryImageController") as! LocationGalleryImageController
             
             switch  picture.annotation!.coordinate.latitude{
-            case 43.1192397:
-                controller.nytphoto = 43.1192397
+            case 43.3334718:
+                controller.nytphoto = 43.3334718
                 controller.image = site8[i]
                 imageControllers.append(controller)
-            case 43.0105838:
-                controller.nytphoto = 43.0105838
+            case 43.1192397:
+                controller.nytphoto = 43.1192397
                 controller.image = site7[i]
                 imageControllers.append(controller)
             case 42.7152375:
@@ -54,20 +54,20 @@ class LocationGalleryPageControlller: UIPageViewController, UIPageViewController
                 controller.nytphoto = 42.784472
             controller.image = site2[i]
                 imageControllers.append(controller)
+            case 43.0105838:
+                controller.nytphoto = 43.0105838
+            controller.image = site3[i]
+                imageControllers.append(controller)
             case 43.0717445:
                 controller.nytphoto = 43.0717445
-            controller.image = site3[i]
+            controller.image = site4[i]
                 imageControllers.append(controller)
             case 43.0757361:
                 controller.nytphoto = 43.0757361
-            controller.image = site4[i]
+            controller.image = site5[i]
                 imageControllers.append(controller)
             case 43.1439006:
                 controller.nytphoto = 43.1439006
-            controller.image = site5[i]
-                imageControllers.append(controller)
-            case 43.3334718:
-                controller.nytphoto = 43.3334718
             controller.image = site6[i]
                 imageControllers.append(controller)
             default:break
