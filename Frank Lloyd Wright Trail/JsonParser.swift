@@ -22,10 +22,22 @@ class JsonParser: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
     private let key = "AIzaSyD99efuqx7jK3bOi7txWUDRZNlh-G50b0w"
     weak var delegate: TripJsonDelegate!
     
-    init(withDelegate delegate: TripJsonDelegate, locations: [Site]) {
+    init(withDelegate delegate: TripJsonDelegate, locations: [Site?]) {
         self.delegate = delegate
         super.init()
         orderOfLocations(locations)
+    }
+    
+    func userLocation(){
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.requestAlwaysAuthorization()
+        
+        // if user location is enabled then set currentlocation to user location
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.startUpdatingLocation()
+            currentLocation = locationManager.location!
+        }
     }
     
     // func to create objects to be used for the data for the cards
@@ -54,21 +66,21 @@ class JsonParser: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
     }
     
     // get the lat and long of site and convert to string
-    func getLatLong (sites: [Site], index: Int) -> String {
+    func getLatLong (sites: [Site?], index: Int) -> String {
         
-        var latLong = String(sites[index].lat) + ","
-        latLong += String(sites[index].lon)
+        var latLong = String(sites[index]!.lat) + ","
+        latLong += String(sites[index]!.lon)
         return latLong
         
         
     }
     
     // compares string and image name to return the index
-    func findLocation(title: String, sites: [Site])-> Int {
+    func findLocation(title: String, sites: [Site?])-> Int {
         
         for i in 0..<sites.count {
             
-            if(title == sites[i].imageName) {
+            if(title == sites[i]!.imageName) {
                 return i
             }
         }
@@ -78,7 +90,7 @@ class JsonParser: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
     
     //Use this function to retrieve the array of trip objects to create timeline objects from
     // takes an array of sites, returns data and order into an array of TripIbjects
-    func orderOfLocations(locations: [Site]) -> [TripObject]{
+    func orderOfLocations(locations2: [Site?]) -> [TripObject]{
         var startLatLong: String
         var endLatLong: String
         var startLoc: Int
@@ -87,7 +99,12 @@ class JsonParser: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
         var aLocation: Int
         var bLocation: Int
         var middleLatLong = ""
-        //var newLocations: [Site]
+        var locations: [Site?] = []
+        for i in 0..<locations2.count {
+            if (locations2[i]?.imageName != nil){
+            locations.append(locations2[i])
+            }
+        }
         
         var middleLocations = [String]()
         
@@ -165,7 +182,7 @@ class JsonParser: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
         
         // check the closest location, covert current loction and end location into string
         print("CURRENT LOCATION: \(self.currentLocation.debugDescription)       _)_)_)(()()(")
-        if(self.currentLocation!.distanceFromLocation(CLLocation(latitude: locationA.lat, longitude: locationA.lon))<self.currentLocation!.distanceFromLocation(CLLocation(latitude: locationB.lat, longitude: locationB.lon))) {
+        if(self.currentLocation!.distanceFromLocation(CLLocation(latitude: locationA!.lat, longitude: locationA!.lon))<self.currentLocation!.distanceFromLocation(CLLocation(latitude: locationB!.lat, longitude: locationB!.lon))) {
             // user location converted to doubles
             var numLat = Double((self.currentLocation?.coordinate.latitude)!)
             var numLong = Double((self.currentLocation?.coordinate.longitude)!)
@@ -173,8 +190,8 @@ class JsonParser: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
             // convert the double into a string and add commas where they need to be
             startLatLong = String(numLat) + ","
             startLatLong += String(numLong)
-            endLatLong = String(locationB.lat) + ","
-            endLatLong += String(locationB.lon)
+            endLatLong = String(locationB!.lat) + ","
+            endLatLong += String(locationB!.lon)
             endLoc = bLocation
         }
         else {
@@ -185,8 +202,8 @@ class JsonParser: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
             // convert the double into a string and add commas where they need to be
             startLatLong = String(numLat) + ","
             startLatLong += String(numLong)
-            endLatLong = String(locationA.lat) + ","
-            endLatLong += String(locationA.lon)
+            endLatLong = String(locationA!.lat) + ","
+            endLatLong += String(locationA!.lon)
             endLoc = aLocation
             
         }

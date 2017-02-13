@@ -41,7 +41,7 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
     
     // use this func to get data and set it
     func getTripData(objects: [TripObject]) {
-       
+    
     }
     
     func loadPins(){
