@@ -17,7 +17,7 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
     let center = CLLocation(latitude: 43.105304, longitude: -89.046729)
     var sites = Site.getSites()
     
-    // use this var
+    // use the TripJsinDelegate after the class name
     //var parser: JsonParser!
     
     override func viewDidLoad() {
