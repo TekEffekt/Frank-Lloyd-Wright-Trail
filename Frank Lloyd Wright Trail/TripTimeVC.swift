@@ -29,18 +29,18 @@ class TripTimeVC: UITableViewController {
 
     @IBAction func startTimeChanged(sender: AnyObject) {
         startTimeLabel.text = NSDateFormatter.localizedStringFromDate(startTimePicker.date, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
-        TripModel.shared.editStartTime(startTimeLabel.text!)
+        //TripModel.shared.editStartTime(startTimeLabel.text!)
         
         checkTime()
         
-        print("Start Time =   \(TripModel.shared.getStartTime())")
+     //   print("Start Time =   \(TripModel.shared.getStartTime())")
     }
 
     @IBAction func endTimeChanged(sender: AnyObject) {
         endTimeLabel.text = NSDateFormatter.localizedStringFromDate(endTimePicker.date, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
-        TripModel.shared.editEndTime(endTimeLabel.text!)
+        //TripModel.shared.editEndTime(endTimeLabel.text!)
         checkTime()
-        print("End Time =   \(TripModel.shared.getEndTime())")
+        //print("End Time =   \(TripModel.shared.getEndTime())")
         print()
     }
     
