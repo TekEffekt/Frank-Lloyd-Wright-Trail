@@ -13,7 +13,8 @@ class CreateTripVC : UITableViewController {
     let section = ["STOPS", "TRIP START", "TRIP END"]
     var labels = [["Add Stop"], ["Start Date", " ", "Start Time"], ["End Date", " ", "End Time"]]
     private var pickerVisible = false
-    
+    var tappedStopType: StopActions?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,16 @@ class CreateTripVC : UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         self.navigationItem.title = "Create Trip"
+        let button = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(doneSelected))
+        
+        self.navigationItem.rightBarButtonItem = button
+        self.navigationItem.title = ""
+        tableView.reloadData()
+    }
+    
+    func doneSelected(sender: UIBarButtonItem){
+        //segue to sign up website menu
+        print("Done button pressed")
     }
     
     override func didReceiveMemoryWarning() {
@@ -37,7 +48,7 @@ class CreateTripVC : UITableViewController {
     //number of rows in each section
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
-            return labels[0].count
+            return TripModel.shared.stops.count + 1
         }
         else {
             return 4
@@ -54,10 +65,15 @@ class CreateTripVC : UITableViewController {
         //add stop cell
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! AddStopCell
-            cell.stopName.text! = labels[0][indexPath.row]
-            return cell
+            if indexPath.row == TripModel.shared.stops.count{
+            cell.stopName.text! = "Add Stop"
+                return cell
+            }
+            else{
+                cell.stopName.text! = TripModel.shared.stops[indexPath.row].name
+                return cell
+            }
         }
-            //date picker cell
         else if(indexPath.row == 1 || indexPath.row == 3){
             let cell = tableView.dequeueReusableCellWithIdentifier("dateCell") as! DatePickCell
             self.dateHelper(cell, indexPath: indexPath)
@@ -75,6 +91,12 @@ class CreateTripVC : UITableViewController {
     //cell is selected
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if (indexPath.section == 0){
+            if(indexPath.row == TripModel.shared.stops.count){
+                actionSheet()
+            }
+            else{
+                alertPopUp(indexPath)
+            }
             
         }
         else{
@@ -87,6 +109,9 @@ class CreateTripVC : UITableViewController {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if (!pickerVisible && indexPath.section != 0 && (indexPath.row == 1 || indexPath.row == 3)){
             return 0
+        }
+        else if (pickerVisible && indexPath.section != 0 && (indexPath.row == 1 || indexPath.row == 3)){
+            return 75
         }
         else{
             return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
@@ -136,10 +161,95 @@ class CreateTripVC : UITableViewController {
         
     }
     
+    //action sheet button clicked
+    private func actionPressed(stopAction:StopActions, indexPath : NSIndexPath?) {
+        
+        switch stopAction {
+        case .location:
+            performSegueWithIdentifier("AddLocation", sender: nil)
+        case .meal:
+            tappedStopType = .meal
+            performSegueWithIdentifier("AddStop", sender: nil)
+        case .generic:
+            tappedStopType = .generic
+            performSegueWithIdentifier("AddStop", sender: nil)
+        case .cancel:
+            dismissViewControllerAnimated(true, completion: nil)
+        case .delete:
+            let indexPath = indexPath
+            TripModel.shared.stops.removeAtIndex(indexPath!.row)
+            tableView.reloadData()
+            dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let stopVC =  segue.destinationViewController as? AddStopVC {
+            stopVC.type = tappedStopType
+        }
+    }
+    
+    
+    //create alert popup
+    private func alertPopUp(indexPath: NSIndexPath){
+        
+        let popUpController: UIAlertController = UIAlertController(title: "Delete Stop?", message: "", preferredStyle: .Alert)
+        
+        let cancelButton: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel){
+            action -> Void in
+            self.actionPressed(.cancel, indexPath: indexPath)
+        }
+        popUpController.addAction(cancelButton)
+        
+        let deleteButton : UIAlertAction = UIAlertAction(title: "Delete", style: .Default){
+            action -> Void in
+            self.actionPressed(.delete, indexPath: indexPath)
+        }
+        popUpController.addAction(deleteButton)
+        
+        self.presentViewController(popUpController, animated: true, completion: nil)
+        
+    }
     
     
     
-    
-    
-    
+    //create action sheet
+    private func actionSheet(){
+        let actionSheetController: UIAlertController = UIAlertController(title: "Choose a Type of Stop", message: "", preferredStyle: .ActionSheet)
+        
+        //Create and add the "Cancel" action
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+            //Just dismiss the action sheet
+            self.actionPressed(.cancel, indexPath: nil)
+        }
+        actionSheetController.addAction(cancelAction)
+        
+        //Create and add location action
+        let locationStop: UIAlertAction = UIAlertAction(title: "Add Location Stop", style: .Default) { action -> Void in
+            //The user just pressed the location button.
+            self.actionPressed(.location, indexPath: nil)
+        }
+        actionSheetController.addAction(locationStop)
+        
+        let mealStop: UIAlertAction = UIAlertAction(title: "Add Meal Stop", style: .Default) { action -> Void in
+            //The user just pressed the meal button.
+            self.actionPressed(.meal, indexPath: nil)
+        }
+        actionSheetController.addAction(mealStop)
+        
+        let genericStop: UIAlertAction = UIAlertAction(title: "Add Generic Stop", style: .Default) { action -> Void in
+            //The user just pressed the meal button.
+            self.actionPressed(.generic, indexPath: nil)
+        }
+        actionSheetController.addAction(genericStop)
+        
+        //Present the AlertController
+        self.presentViewController(actionSheetController, animated: true, completion: nil)
+    }
+
+}
+
+enum StopActions {
+    case location, meal, generic, cancel, delete
 }

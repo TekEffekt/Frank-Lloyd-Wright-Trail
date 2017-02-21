@@ -12,6 +12,12 @@
 		213757071E56412000C21415 /* AddStopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213757061E56412000C21415 /* AddStopCell.swift */; };
 		2137570F1E56A0F700C21415 /* DatePickCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2137570E1E56A0F700C21415 /* DatePickCell.swift */; };
 		213757111E56A3DF00C21415 /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213757101E56A3DF00C21415 /* LabelCell.swift */; };
+		21492FCD1E5A3DF2005660F3 /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21492FCC1E5A3DF2005660F3 /* Stop.swift */; };
+		21492FCF1E5A3EF9005660F3 /* SiteStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21492FCE1E5A3EF9005660F3 /* SiteStop.swift */; };
+		21492FD11E5A3F51005660F3 /* MealStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21492FD01E5A3F51005660F3 /* MealStop.swift */; };
+		21492FD31E5A3F8E005660F3 /* GenericStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21492FD21E5A3F8E005660F3 /* GenericStop.swift */; };
+		21492FD71E5A46E8005660F3 /* AddStopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21492FD61E5A46E8005660F3 /* AddStopVC.swift */; };
+		21492FDB1E5A4C81005660F3 /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21492FDA1E5A4C81005660F3 /* NameCell.swift */; };
 		217503521E4BBB0300EC9693 /* UWParkside.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 217503511E4BBB0300EC9693 /* UWParkside.gpx */; };
 		218502C01E3EC86400CAFE6D /* TripModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218502BF1E3EC86400CAFE6D /* TripModel.swift */; };
 		218502C41E3EF84700CAFE6D /* TimelineCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218502C31E3EF84700CAFE6D /* TimelineCardModel.swift */; };
@@ -64,6 +70,12 @@
 		213757061E56412000C21415 /* AddStopCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStopCell.swift; sourceTree = "<group>"; };
 		2137570E1E56A0F700C21415 /* DatePickCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickCell.swift; sourceTree = "<group>"; };
 		213757101E56A3DF00C21415 /* LabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
+		21492FCC1E5A3DF2005660F3 /* Stop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stop.swift; path = Model/Stop.swift; sourceTree = "<group>"; };
+		21492FCE1E5A3EF9005660F3 /* SiteStop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SiteStop.swift; path = Model/SiteStop.swift; sourceTree = "<group>"; };
+		21492FD01E5A3F51005660F3 /* MealStop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MealStop.swift; path = Model/MealStop.swift; sourceTree = "<group>"; };
+		21492FD21E5A3F8E005660F3 /* GenericStop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericStop.swift; sourceTree = "<group>"; };
+		21492FD61E5A46E8005660F3 /* AddStopVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStopVC.swift; sourceTree = "<group>"; };
+		21492FDA1E5A4C81005660F3 /* NameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameCell.swift; sourceTree = "<group>"; };
 		217503511E4BBB0300EC9693 /* UWParkside.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UWParkside.gpx; sourceTree = "<group>"; };
 		218502BF1E3EC86400CAFE6D /* TripModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TripModel.swift; path = Model/TripModel.swift; sourceTree = "<group>"; };
 		218502C31E3EF84700CAFE6D /* TimelineCardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineCardModel.swift; sourceTree = "<group>"; };
@@ -203,6 +215,7 @@
 				FAB740CF1DDE728D00BA859F /* TripTimeVC.swift */,
 				FAB740E71DDEB21B00BA859F /* TimelineVC.swift */,
 				84EF3A551E44EE0E00A8B00A /* JsonParser.swift */,
+				21492FD61E5A46E8005660F3 /* AddStopVC.swift */,
 			);
 			name = "Trip Planner";
 			sourceTree = "<group>";
@@ -231,6 +244,7 @@
 				FAB740E51DDEB1AB00BA859F /* TimelineView.swift */,
 				2137570E1E56A0F700C21415 /* DatePickCell.swift */,
 				213757101E56A3DF00C21415 /* LabelCell.swift */,
+				21492FDA1E5A4C81005660F3 /* NameCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -275,6 +289,10 @@
 				218502BF1E3EC86400CAFE6D /* TripModel.swift */,
 				218502C31E3EF84700CAFE6D /* TimelineCardModel.swift */,
 				218502FF1E4198D000CAFE6D /* Date+Comparable.swift */,
+				21492FCC1E5A3DF2005660F3 /* Stop.swift */,
+				21492FCE1E5A3EF9005660F3 /* SiteStop.swift */,
+				21492FD01E5A3F51005660F3 /* MealStop.swift */,
+				21492FD21E5A3F8E005660F3 /* GenericStop.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -441,6 +459,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8493937B1DDE568C00BB7220 /* TripOrder.swift in Sources */,
+				21492FD11E5A3F51005660F3 /* MealStop.swift in Sources */,
 				84B1F0361E3941C00048986C /* Timeline-Bridging-Header.h in Sources */,
 				213757071E56412000C21415 /* AddStopCell.swift in Sources */,
 				FAB740E11DDEB14A00BA859F /* JTSImageViewController.m in Sources */,
@@ -448,10 +467,12 @@
 				FAB740E31DDEB14A00BA859F /* UIApplication+JTSImageViewController.m in Sources */,
 				FAB740E41DDEB14A00BA859F /* UIImage+JTSImageEffects.m in Sources */,
 				FA1334751DBFEF3500976585 /* TimeTableVC.swift in Sources */,
+				21492FCD1E5A3DF2005660F3 /* Stop.swift in Sources */,
 				FAB740D01DDE728D00BA859F /* TripTimeVC.swift in Sources */,
 				FAB740E01DDEB14A00BA859F /* JTSImageInfo.m in Sources */,
 				218502C01E3EC86400CAFE6D /* TripModel.swift in Sources */,
 				FA6143921D81FD6300E3A076 /* SiteSorter.swift in Sources */,
+				21492FDB1E5A4C81005660F3 /* NameCell.swift in Sources */,
 				FAD304BB1D6F66B500D8CE2F /* AppDelegate.swift in Sources */,
 				847AE4BA1DA720AA0056B6D7 /* LocationGalleryPageControlller.swift in Sources */,
 				2137570F1E56A0F700C21415 /* DatePickCell.swift in Sources */,
@@ -459,6 +480,7 @@
 				FAAF70CC1D77675B00515DBD /* CollectionViewController.swift in Sources */,
 				213757031E52D65000C21415 /* CreateTripVC.swift in Sources */,
 				218503001E4198D000CAFE6D /* Date+Comparable.swift in Sources */,
+				21492FD71E5A46E8005660F3 /* AddStopVC.swift in Sources */,
 				FA38294B1DBAEB94003A4BFA /* DestinationCell.swift in Sources */,
 				FAAF70C41D74A39400515DBD /* Cell.swift in Sources */,
 				B6DB3BBB1D7A100200FC737D /* Pin.swift in Sources */,
@@ -467,6 +489,7 @@
 				FAB740E21DDEB14A00BA859F /* JTSSimpleImageDownloader.m in Sources */,
 				FA5AB5AF1D7E744D005CFBD4 /* Item.swift in Sources */,
 				847AE4B81DA720010056B6D7 /* ExamplePhoto.swift in Sources */,
+				21492FCF1E5A3EF9005660F3 /* SiteStop.swift in Sources */,
 				FAB740DF1DDEB14A00BA859F /* JTSAnimatedGIFUtility.m in Sources */,
 				B6DB3BBC1D7A100200FC737D /* Site.swift in Sources */,
 				213757011E52D38A00C21415 /* TripsVC.swift in Sources */,
@@ -478,6 +501,7 @@
 				FAB740E81DDEB21B00BA859F /* TimelineVC.swift in Sources */,
 				847AE4B61DA71FFA0056B6D7 /* PhotosProvider.swift in Sources */,
 				847AE4BC1DA720B30056B6D7 /* LocationGalleryImageController.swift in Sources */,
+				21492FD31E5A3F8E005660F3 /* GenericStop.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
