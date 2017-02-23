@@ -241,7 +241,7 @@ class JsonParser: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
                                                 let routes = object["routes"] as! [NSDictionary]
                                                 
                                                 for route in routes {
-                                                    for i in 0..<route["waypoint_order"]!.count {
+                                                    for i in 0...route["waypoint_order"]!.count {
                                                         
                                                         var distanceValue = route["legs"]![i]["distance"]!!["value"] as! Int
                                                         var distanceText = route["legs"]![i]["distance"]!!["text"] as! String
