@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddStopVC: UITableViewController {
+class AddStopVC: UITableViewController, UIPickerViewDelegate{
     private var pickerVisible = false
     var type: StopActions?
     
@@ -24,6 +24,7 @@ class AddStopVC: UITableViewController {
         // self.navigationItem.rightBarButtonItem
     }
     override func viewWillAppear(animated: Bool) {
+        self.navigationItem.title = "Add Stops"
         let button = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(doneSelected))
         
         self.navigationItem.rightBarButtonItem = button
@@ -58,7 +59,6 @@ class AddStopVC: UITableViewController {
         switch (indexPath.section, indexPath.row) {
         case (0,0):
             let cell = tableView.dequeueReusableCellWithIdentifier("name") as! NameCell
-            cell.stopName.placeholder = "Name"
             return cell
         case (1,0):
             let cell = tableView.dequeueReusableCellWithIdentifier("label") as! LabelCell
@@ -66,7 +66,6 @@ class AddStopVC: UITableViewController {
             return cell
         case (1,1):
             let cell = tableView.dequeueReusableCellWithIdentifier("datePick") as! DatePickCell
-            cell.reuseIdentifier = "date"
             cell.datePicker.datePickerMode = .Date
             return cell
         case (2,0):
@@ -75,7 +74,6 @@ class AddStopVC: UITableViewController {
             return cell
         case (2,1):
             let cell = tableView.dequeueReusableCellWithIdentifier("datePick") as! DatePickCell
-            cell.reuseIdentifier = "startTime"
             cell.datePicker.datePickerMode = .Time
             return cell
         case (2,2):
@@ -84,7 +82,6 @@ class AddStopVC: UITableViewController {
             return cell
         case (2,3):
             let cell = tableView.dequeueReusableCellWithIdentifier("datePick") as! DatePickCell
-            cell.reuseIdentifier = "endTime"
             cell.datePicker.datePickerMode = .Time
             return cell
         default:
@@ -117,7 +114,6 @@ class AddStopVC: UITableViewController {
         }
         
         self.navigationController?.popViewControllerAnimated(true)
-        print("Done button pressed")
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -130,7 +126,7 @@ class AddStopVC: UITableViewController {
             case (2,3):
                 return 0
             default:
-                return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+                break
             }
         }
         
@@ -143,7 +139,7 @@ class AddStopVC: UITableViewController {
             case (2,3):
                 return 75
             default:
-                return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+                break
             }
         }
         return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
@@ -162,9 +158,6 @@ class AddStopVC: UITableViewController {
     }
     
     
-    @IBAction func dateChanged(sender: UIDatePicker) {
-        
-    }
     
     //toggle function
     private func togglePicker(){

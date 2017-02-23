@@ -50,6 +50,17 @@ class TimelineVC: UIViewController {
         view.sendSubviewToBack(scrollView)
     }
     
+    override func viewWillAppear(animated: Bool) {
+        self.navigationItem.title = "Suggested Trip"
+        let button = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(doneSelected))
+        
+        self.navigationItem.rightBarButtonItem = button
+    }
+    
+    func doneSelected(sender: UIBarButtonItem){
+        performSegueWithIdentifier("signup", sender: nil)
+    }
+    
 
     override func prefersStatusBarHidden() -> Bool {
         return true

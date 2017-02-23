@@ -22,7 +22,7 @@ class CreateTripVC : UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         self.navigationItem.title = "Create Trip"
-        let button = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(doneSelected))
+        let button = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(doneSelected))
         
         self.navigationItem.rightBarButtonItem = button
         self.navigationItem.title = ""
@@ -30,7 +30,7 @@ class CreateTripVC : UITableViewController {
     }
     
     func doneSelected(sender: UIBarButtonItem){
-        //segue to sign up website menu
+        performSegueWithIdentifier("suggestedTL", sender: nil)
         print("Done button pressed")
     }
     
@@ -65,15 +65,19 @@ class CreateTripVC : UITableViewController {
         //add stop cell
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! AddStopCell
+            //add stop cell
             if indexPath.row == TripModel.shared.stops.count{
             cell.stopName.text! = "Add Stop"
                 return cell
             }
+            //stop added cell
             else{
                 cell.stopName.text! = TripModel.shared.stops[indexPath.row].name
+                cell.stopName.adjustsFontSizeToFitWidth = true
                 return cell
             }
         }
+            //date pick cell
         else if(indexPath.row == 1 || indexPath.row == 3){
             let cell = tableView.dequeueReusableCellWithIdentifier("dateCell") as! DatePickCell
             self.dateHelper(cell, indexPath: indexPath)

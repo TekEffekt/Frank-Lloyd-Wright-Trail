@@ -19,6 +19,26 @@ struct TripModel {
     var sitesInfo = [TripObject]()
     var stops = [Stop]()
     var type : String?
+    
+    func getLocationCount() -> Int{
+        var count = 0
+        for stop in self.stops{
+            if stop is SiteStop{
+                count+=1
+            }
+        }
+        return count
+    }
+    
+    func getLocations() -> [SiteStop]?{
+        var sites = [SiteStop]()
+        for stop in self.stops{
+            if let loc = stop as? SiteStop{
+                sites.append(loc)
+            }
+        }
+        return sites
+    }
 
 }
 
