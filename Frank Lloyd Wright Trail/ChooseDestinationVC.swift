@@ -1,7 +1,7 @@
 //
 //  ChooseDestinationVC.swift
 //  Frank Lloyd Wright Trail
-// 
+//
 //  Created by Alex on 10/21/16.
 //  Copyright © 2016 App Factory. All rights reserved.
 //
@@ -14,8 +14,8 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
     @IBOutlet weak var continueButton: UIButton!
     
     let sites = Site.getSites()
+    var sitesArray = [Site]()
     var sitesSelected = 0
-    var parser = JsonParser!()
     
     
     override func viewDidLoad() {
@@ -47,6 +47,7 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
     }
     
     
+    
     // DataSource for Collection View
     // ---------------------------
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -75,7 +76,7 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Destination", forIndexPath: indexPath) as! DestinationCell
         let imageView = cell.siteImage
         visuallySelectSurface(imageView, withAnimation: true)
-        TripModel.shared.addSite(sites[indexPath.row], index: indexPath.row)
+        sitesArray.append(sites[indexPath.row])
         sitesSelected += 1
         disableButton()
         
@@ -85,12 +86,18 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
         print ("Deselected item \(indexPath.row)")
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Destination", forIndexPath: indexPath) as! DestinationCell
         let imageView = cell.siteImage
-        TripModel.shared.removeSite(indexPath.row)
+        let siteDeselected = sites[indexPath.row]
+        removeSite(siteDeselected)
         visuallyUnSelectSurface(imageView)
         sitesSelected -= 1
         disableButton()
     }
     
+    func removeSite(site: Site){
+//        if let index = sitesArray.indexOf({ $0 === site }){
+//            sitesArray.removeAtIndex(index)
+//        }
+    }
     
     // Flowlayout
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
@@ -148,19 +155,8 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
             view.removeFromSuperview()
         }
     }
-    
     @IBAction func `continue`(sender: AnyObject) {
-        //remove nil sites so can send actual values into parse method
-        let sites: [Site?] = TripModel.shared.getSites()
-        var array: [Site?] = []
-        for s in sites{
-            if(s != nil){
-                array.append(s!)
-            }
-        }
-        //parser.userLocation()
-        //TripModel.shared.setTripInfo(parser.orderOfLocations(array))
-        print("\(TripModel.shared.getSitesInfo())")
-    }
     
+    }
+
 }

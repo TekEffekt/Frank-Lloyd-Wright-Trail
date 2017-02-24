@@ -36,10 +36,6 @@ class TimeTableVC: UITableViewController {
     @IBOutlet weak var dinnerEndTime: UILabel!
     @IBOutlet weak var dinnerEndPicker: UIDatePicker!
     
-    //continue button
-    @IBOutlet weak var continueButton: UIButton!
-    
-    
     var lunch = false
 
     
@@ -91,65 +87,34 @@ class TimeTableVC: UITableViewController {
         
     }
     
-    
-    private func checkTime(start : UIDatePicker, end : UIDatePicker) {
-        //check times for single start/end time within one section (breakfast,lunch or dinner)
-        if start.date.isLessThanDate(end.date) {
-            continueButton.userInteractionEnabled = true
-            //continueButton.backgroundColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
-            continueButton.backgroundColor = UIColor.orangeColor()
-        } else {
-            continueButton.userInteractionEnabled = false
-            continueButton.backgroundColor = UIColor.lightGrayColor()
-        }
-        //check that start time is within start time of overall trip time
-        
-        
-        //check that end time is within end time of overall trip time
-        
-        //check breakfast/lunch/dinner times logic relative to eachother
-    }
-    
     /// These methods update the text field if the date picker has been changed
     ///
     /// - Parameter sender: date picker changed
     /// -----------------------------------------------------------------------
     @IBAction func breakfastStartValue(sender: AnyObject) {
         breakfastStartTime.text = NSDateFormatter.localizedStringFromDate(breakfastStartPicker.date, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
-        checkTime(breakfastStartPicker, end: breakfastEndPicker)
-        TripModel.shared.setBreakfastStartTime(breakfastStartTime.text!)
     }
     
     @IBAction func breakfastEndValue(sender: AnyObject) {
         breakfastEndTime.text = NSDateFormatter.localizedStringFromDate(breakfastEndPicker.date, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
-        checkTime(breakfastStartPicker, end: breakfastEndPicker)
-        TripModel.shared.setBreakfastEndTime(breakfastEndTime.text!)
     }
     
     
     @IBAction func lunchStartValue(sender: AnyObject) {
         lunchStartTime.text = NSDateFormatter.localizedStringFromDate(lunchStartPicker.date, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
-        checkTime(lunchStartPicker, end: lunchEndPicker)
-        TripModel.shared.setLunchStartTime(lunchStartTime.text!)
     }
     
     
     @IBAction func lunchEndValue(sender: AnyObject) {
         lunchEndTime.text = NSDateFormatter.localizedStringFromDate(lunchEndPicker.date, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
-        checkTime(lunchStartPicker, end: lunchEndPicker)
-        TripModel.shared.setLunchEndTime(lunchEndTime.text!)
     }
 
     @IBAction func dinnerStartValue(sender: AnyObject) {
         dinnerStartTime.text = NSDateFormatter.localizedStringFromDate(dinnerStartPicker.date, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
-        checkTime(dinnerStartPicker, end: dinnerEndPicker)
-        TripModel.shared.setDinnerStartTime(dinnerStartTime.text!)
     }
     
     @IBAction func dinnerEndValue(sender: AnyObject) {
         dinnerEndTime.text = NSDateFormatter.localizedStringFromDate(dinnerEndPicker.date, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
-         checkTime(dinnerStartPicker, end: dinnerEndPicker)
-        TripModel.shared.setDinnerEndTime(dinnerEndTime.text!)
     }
     /// -----------------------------------------------------------------------
     
@@ -250,12 +215,6 @@ class TimeTableVC: UITableViewController {
             }
 
         }
-        
-        else if section == 3 {
-            return 43
-            
-        }
-        
         
         return 0
     }

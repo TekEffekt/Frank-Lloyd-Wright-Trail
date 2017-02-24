@@ -8,13 +8,11 @@
 
 import UIKit
 
-class TimelineVC: UIViewController, TripJsonDelegate {
+class TimelineVC: UIViewController {
 
     
     var scrollView: UIScrollView!
     var timeline:   TimelineView!
-    var json: JsonParser!
-    var sites = TripModel.shared.getSites()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,36 +28,24 @@ class TimelineVC: UIViewController, TripJsonDelegate {
             NSLayoutConstraint(item: scrollView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: 0)
             ])
         
-        json = JsonParser(withDelegate: self, locations: sites)
-        getTripData(json.orderOfLocations(sites))
+        timeline = TimelineView(bulletType: .Circle, timeFrames: [])
+        scrollView.addSubview(timeline)
+        scrollView.addConstraints([
+            NSLayoutConstraint(item: timeline, attribute: .Left, relatedBy: .Equal, toItem: scrollView, attribute: .Left, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: timeline, attribute: .Bottom, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Bottom, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: timeline, attribute: .Top, relatedBy: .Equal, toItem: scrollView, attribute: .Top, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: timeline, attribute: .Right, relatedBy: .Equal, toItem: scrollView, attribute: .Right, multiplier: 1.0, constant: 0),
+            
+            NSLayoutConstraint(item: timeline, attribute: .Width, relatedBy: .Equal, toItem: scrollView, attribute: .Width, multiplier: 1.0, constant: 0)
+            ])
+        
+        view.sendSubviewToBack(scrollView)
     }
-
+    
 
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
 
-    func getTripData(objects: [TripObject]) {
-        var timeFrames: [TimeFrame] = []
-        for i in 0..<objects.count{
-        timeFrames.append(TimeFrame(text:"Travel distance is " + objects[i].distanceText! + " Travel time is " + objects[i].timeText!, date: "Name of site here", image: nil))
-           
-        }
-        
-            timeline = TimelineView(bulletType: .Circle, timeFrames: timeFrames)
-            
-            scrollView.addSubview(timeline)
-            scrollView.addConstraints([
-                NSLayoutConstraint(item: timeline, attribute: .Left, relatedBy: .Equal, toItem: scrollView, attribute: .Left, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: timeline, attribute: .Bottom, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Bottom, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: timeline, attribute: .Top, relatedBy: .Equal, toItem: scrollView, attribute: .Top, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: timeline, attribute: .Right, relatedBy: .Equal, toItem: scrollView, attribute: .Right, multiplier: 1.0, constant: 0),
-                
-                NSLayoutConstraint(item: timeline, attribute: .Width, relatedBy: .Equal, toItem: scrollView, attribute: .Width, multiplier: 1.0, constant: 0)
-                ])
-            
-            view.sendSubviewToBack(scrollView)
-        }
-    
 
 }
