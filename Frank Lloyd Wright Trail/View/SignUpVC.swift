@@ -9,7 +9,9 @@
 import UIKit
 
 class SignUpVC: UITableViewController {
-    private var pickerVisible = false
+    var cellTapped = false
+    var currentRow = -1
+    var currentSection = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,7 +19,7 @@ class SignUpVC: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        let button = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(doneSelected))
+        let button = UIBarButtonItem(title: "Confirm", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(doneSelected))
         
         self.navigationItem.title = "Signup"
         self.navigationItem.rightBarButtonItem = button
@@ -96,39 +98,43 @@ class SignUpVC: UITableViewController {
  
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if currentRow != indexPath.row{
+            cellTapped = true
+            currentRow = indexPath.row + 1
+            currentSection = indexPath.section
+        }
+        
+        else{
+            cellTapped = false
+            currentRow = -1
+            currentSection = -1
+        }
+       
+        
         switch indexPath.row {
         case 1:
             print("Go to signup website")
-        case 2:
-            togglePicker()
-        case 4:
-            togglePicker()
         default:
             break
         }
+        
+        tableView.beginUpdates()
+        tableView.endUpdates()
+        
+         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if(!pickerVisible){
-            switch indexPath.row {
-            case 3:
-                return 0
-            case 5:
-                return 0
-            default:
-                break
-            }
+    
+        if (indexPath.row == 3 || indexPath.row == 5){
+        if indexPath.row == currentRow && indexPath.section == currentSection && cellTapped {
+            return 75
         }
         
-        if(pickerVisible){
-            switch indexPath.row {
-            case 3:
-                return 75
-            case 5:
-                return 75
-            default:
-                break
-            }
+        else if (indexPath.row == 3 || indexPath.row == 5){
+            return 0
+        }
         }
         
          return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
@@ -137,7 +143,7 @@ class SignUpVC: UITableViewController {
 
     //toggle function
     private func togglePicker(){
-        pickerVisible = !pickerVisible
+        //pickerVisible = !pickerVisible
         tableView.beginUpdates()
         tableView.endUpdates()
     }

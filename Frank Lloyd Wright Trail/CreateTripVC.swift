@@ -12,8 +12,11 @@ class CreateTripVC : UITableViewController {
     
     let section = ["STOPS", "TRIP START", "TRIP END"]
     var labels = [["Add Stop"], ["Start Date", " ", "Start Time"], ["End Date", " ", "End Time"]]
-    private var pickerVisible = false
+  
     var tappedStopType: StopActions?
+    var cellTapped = false
+    var currentRow = -1
+    var currentSection = -1
 
     
     override func viewDidLoad() {
@@ -25,7 +28,6 @@ class CreateTripVC : UITableViewController {
         let button = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(doneSelected))
         
         self.navigationItem.rightBarButtonItem = button
-        self.navigationItem.title = ""
         tableView.reloadData()
     }
     
@@ -79,9 +81,31 @@ class CreateTripVC : UITableViewController {
         }
             //date pick cell
         else if(indexPath.row == 1 || indexPath.row == 3){
-            let cell = tableView.dequeueReusableCellWithIdentifier("dateCell") as! DatePickCell
-            self.dateHelper(cell, indexPath: indexPath)
-            return cell
+            switch (indexPath.section, indexPath.row) {
+            case (1,1):
+                let cell = tableView.dequeueReusableCellWithIdentifier("dateCell") as! DatePickCell
+                self.dateHelper(cell, indexPath: indexPath)
+                cell.datePicker.tag = 11
+                return cell
+            case (1,3):
+                let cell = tableView.dequeueReusableCellWithIdentifier("dateCell") as! DatePickCell
+                self.dateHelper(cell, indexPath: indexPath)
+                cell.datePicker.tag = 13
+                return cell
+            case (2,1):
+                let cell = tableView.dequeueReusableCellWithIdentifier("dateCell") as! DatePickCell
+                self.dateHelper(cell, indexPath: indexPath)
+                cell.datePicker.tag = 21
+                return cell
+            case (2,3):
+                let cell = tableView.dequeueReusableCellWithIdentifier("dateCell") as! DatePickCell
+                self.dateHelper(cell, indexPath: indexPath)
+                cell.datePicker.tag = 23
+                return cell
+            default:
+                break
+            }
+            
         }
             //label cell
         else{
@@ -90,6 +114,8 @@ class CreateTripVC : UITableViewController {
             cell.label.textColor = UIColor.lightGrayColor()
             return cell
         }
+        
+        return UITableViewCell()
     }
     
     //cell is selected
@@ -103,23 +129,52 @@ class CreateTripVC : UITableViewController {
             }
             
         }
+            
         else{
-            togglePicker()
+            if currentRow != indexPath.row{
+                cellTapped = true
+                currentRow = indexPath.row + 1
+                currentSection = indexPath.section
+            }
+            else{
+                cellTapped = false
+                currentRow = -1
+                currentSection = -1
+            }
         }
+        tableView.beginUpdates()
+        tableView.endUpdates()
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     //change cell height for datepicker when expanded
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if (!pickerVisible && indexPath.section != 0 && (indexPath.row == 1 || indexPath.row == 3)){
-            return 0
+        
+        if (indexPath.section != 0 && indexPath.row == 1 || indexPath.row == 3){
+            if indexPath.row == currentRow && indexPath.section == currentSection && cellTapped{
+                return 75
+            }
+            else if (indexPath.row == 1 || indexPath.row == 3){
+                return 0
+            }
+            
         }
-        else if (pickerVisible && indexPath.section != 0 && (indexPath.row == 1 || indexPath.row == 3)){
-            return 75
-        }
-        else{
-            return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
-        }
+        
+        
+        
+        
+        
+        return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+        
+//        if (!pickerVisible && indexPath.section != 0 && (indexPath.row == 1 || indexPath.row == 3)){
+//            return 0
+//        }
+//        else if (pickerVisible && indexPath.section != 0 && (indexPath.row == 1 || indexPath.row == 3)){
+//            return 75
+//        }
+//        else{
+//            return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+//        }
     }
     
 
@@ -157,13 +212,6 @@ class CreateTripVC : UITableViewController {
         
     }
     
-    //toggle function
-    private func togglePicker(){
-        pickerVisible = !pickerVisible
-        tableView.beginUpdates()
-        tableView.endUpdates()
-        
-    }
     
     //action sheet button clicked
     private func actionPressed(stopAction:StopActions, indexPath : NSIndexPath?) {
@@ -251,6 +299,28 @@ class CreateTripVC : UITableViewController {
         //Present the AlertController
         self.presentViewController(actionSheetController, animated: true, completion: nil)
     }
+    
+    //datepicker changed 
+    @IBAction func dateChanged(sender: UIDatePicker) {
+        switch sender.tag {
+        case 11:
+            TripModel.shared.startDate = sender.date
+            //print("Start date : \(TripModel.shared.startDate)")
+        case 13:
+            TripModel.shared.startTime = sender.date
+            //print("Start time : \(TripModel.shared.startTime)")
+        case 21:
+            TripModel.shared.endDate = sender.date
+            //print("End date : \(TripModel.shared.endDate)")
+        case 23:
+            TripModel.shared.endTime = sender.date
+            //print("End time : \(TripModel.shared.endTime)")
+        default:
+            break
+        }
+        
+    }
+    
 
 }
 

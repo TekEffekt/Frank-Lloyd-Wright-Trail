@@ -9,14 +9,21 @@
 import UIKit
 
 class AddStopVC: UITableViewController, UIPickerViewDelegate{
-    private var pickerVisible = false
+    var cellTapped = false
+    var currentRow = -1
+    var currentSection = -1
     var type: StopActions?
+    var genStop: GenericStop?
+    var mealStop: MealStop?
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        genStop = GenericStop(name : "")
+        mealStop = MealStop(name: "")
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -67,6 +74,7 @@ class AddStopVC: UITableViewController, UIPickerViewDelegate{
         case (1,1):
             let cell = tableView.dequeueReusableCellWithIdentifier("datePick") as! DatePickCell
             cell.datePicker.datePickerMode = .Date
+            cell.datePicker.tag = 11
             return cell
         case (2,0):
             let cell = tableView.dequeueReusableCellWithIdentifier("label") as! LabelCell
@@ -75,6 +83,7 @@ class AddStopVC: UITableViewController, UIPickerViewDelegate{
         case (2,1):
             let cell = tableView.dequeueReusableCellWithIdentifier("datePick") as! DatePickCell
             cell.datePicker.datePickerMode = .Time
+            cell.datePicker.tag = 21
             return cell
         case (2,2):
             let cell = tableView.dequeueReusableCellWithIdentifier("label") as! LabelCell
@@ -83,6 +92,7 @@ class AddStopVC: UITableViewController, UIPickerViewDelegate{
         case (2,3):
             let cell = tableView.dequeueReusableCellWithIdentifier("datePick") as! DatePickCell
             cell.datePicker.datePickerMode = .Time
+            cell.datePicker.tag = 23
             return cell
         default:
             return UITableViewCell()
@@ -90,9 +100,20 @@ class AddStopVC: UITableViewController, UIPickerViewDelegate{
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if (indexPath.section != 0){
-            togglePicker()
+        if currentRow != indexPath.row{
+        cellTapped = true
+            currentRow = indexPath.row + 1
+            currentSection = indexPath.section
         }
+        else{
+            cellTapped = false
+            currentRow = -1
+            currentSection = -1
+        }
+        
+        tableView.beginUpdates()
+        tableView.endUpdates()
+        
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
@@ -103,12 +124,20 @@ class AddStopVC: UITableViewController, UIPickerViewDelegate{
         if let name = cell.stopName.text{
             
             if type == .meal{
-                let meal = MealStop(name: name)
-                TripModel.shared.stops.append(meal)
+                mealStop?.name = name
+                TripModel.shared.stops.append(mealStop!)
+                print("Meal Name = \(mealStop?.name)")
+                print("Meal Date = \(mealStop?.date)")
+                print("Meal Start Time = \(mealStop?.startTime)")
+                print("Meal End Time = \(mealStop?.endTime)")
             }
             else {
-                let gen = GenericStop(name: name)
-                TripModel.shared.stops.append(gen)
+                genStop?.name = name
+                TripModel.shared.stops.append(genStop!)
+                print("Gen Name = \(genStop?.name)")
+                print("Gen Date = \(genStop?.date)")
+                print("Gen Start Time = \(genStop?.startTime)")
+                print("Gen End Time = \(genStop?.endTime)")
             }
             
         }
@@ -117,31 +146,19 @@ class AddStopVC: UITableViewController, UIPickerViewDelegate{
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if (!pickerVisible && indexPath.section != 0){
-            switch (indexPath.section, indexPath.row) {
-            case (1,1):
-                 return 0
-            case (2,1):
+        
+        
+        if indexPath.section != 0 && (indexPath.row == 1 || indexPath.row == 3) {
+            if indexPath.row == currentRow && indexPath.section == currentSection && cellTapped{
+                return 75
+            }
+            
+            else{
                 return 0
-            case (2,3):
-                return 0
-            default:
-                break
             }
         }
         
-        if (pickerVisible && indexPath.section != 0){
-            switch (indexPath.section, indexPath.row) {
-            case (1,1):
-                return 75
-            case (2,1):
-                return 75
-            case (2,3):
-                return 75
-            default:
-                break
-            }
-        }
+    
         return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
     }
     
@@ -158,12 +175,35 @@ class AddStopVC: UITableViewController, UIPickerViewDelegate{
     }
     
     
-    
-    //toggle function
-    private func togglePicker(){
-        pickerVisible = !pickerVisible
-        tableView.beginUpdates()
-        tableView.endUpdates()
+    // datechanged function
+    @IBAction func dateChanged(sender: UIDatePicker) {
+        if type == .meal{
+            switch sender.tag {
+                case 11:
+                mealStop!.date = sender.date
+                case 21:
+                mealStop!.startTime = sender.date
+                case 23:
+                mealStop!.endTime = sender.date
+                default:
+                break
+            }
+            
+        }
+        else{
+            switch sender.tag {
+            case 11:
+                genStop!.date = sender.date
+            case 21:
+                genStop!.startTime = sender.date
+            case 23:
+                genStop!.endTime = sender.date
+            default:
+                break
+            }
+        }
+        
+        
     }
 
  
