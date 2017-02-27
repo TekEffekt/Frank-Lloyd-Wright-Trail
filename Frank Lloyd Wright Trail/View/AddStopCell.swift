@@ -10,8 +10,8 @@ import UIKit
 
 class AddStopCell: UITableViewCell {
     @IBOutlet weak var stopName: UILabel!
+    @IBOutlet weak var modifyImage: UIImageView!
 
-    @IBOutlet weak var modifyButton: UIButton!
     
     
     override func awakeFromNib() {

@@ -14,6 +14,8 @@
 		213757071E56412000C21415 /* AddStopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213757061E56412000C21415 /* AddStopCell.swift */; };
 		2137570F1E56A0F700C21415 /* DatePickCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2137570E1E56A0F700C21415 /* DatePickCell.swift */; };
 		213757111E56A3DF00C21415 /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213757101E56A3DF00C21415 /* LabelCell.swift */; };
+		213FC8CC1E63828800BBEFE4 /* ButtonAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = 213FC8CA1E63828800BBEFE4 /* ButtonAdd.png */; };
+		213FC8CD1E63828800BBEFE4 /* ButtonDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = 213FC8CB1E63828800BBEFE4 /* ButtonDelete.png */; };
 		21492FCD1E5A3DF2005660F3 /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21492FCC1E5A3DF2005660F3 /* Stop.swift */; };
 		21492FCF1E5A3EF9005660F3 /* SiteStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21492FCE1E5A3EF9005660F3 /* SiteStop.swift */; };
 		21492FD11E5A3F51005660F3 /* MealStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21492FD01E5A3F51005660F3 /* MealStop.swift */; };
@@ -74,6 +76,8 @@
 		213757061E56412000C21415 /* AddStopCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStopCell.swift; sourceTree = "<group>"; };
 		2137570E1E56A0F700C21415 /* DatePickCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickCell.swift; sourceTree = "<group>"; };
 		213757101E56A3DF00C21415 /* LabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
+		213FC8CA1E63828800BBEFE4 /* ButtonAdd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonAdd.png; sourceTree = "<group>"; };
+		213FC8CB1E63828800BBEFE4 /* ButtonDelete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonDelete.png; sourceTree = "<group>"; };
 		21492FCC1E5A3DF2005660F3 /* Stop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stop.swift; path = Model/Stop.swift; sourceTree = "<group>"; };
 		21492FCE1E5A3EF9005660F3 /* SiteStop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SiteStop.swift; path = Model/SiteStop.swift; sourceTree = "<group>"; };
 		21492FD01E5A3F51005660F3 /* MealStop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MealStop.swift; path = Model/MealStop.swift; sourceTree = "<group>"; };
@@ -170,6 +174,8 @@
 		B6109D981D528DDE002A6D77 /* Frank Lloyd Wright Trail */ = {
 			isa = PBXGroup;
 			children = (
+				213FC8CA1E63828800BBEFE4 /* ButtonAdd.png */,
+				213FC8CB1E63828800BBEFE4 /* ButtonDelete.png */,
 				847AE4BD1DA723450056B6D7 /* locations.plist */,
 				FAB740D21DDEAF7900BA859F /* Timeline-Bridging-Header.h */,
 				FAD304BC1D6F670C00D8CE2F /* App */,
@@ -398,7 +404,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				84B1F0381E3BCC9E0048986C /* LocationDetails.storyboard in Resources */,
+				213FC8CC1E63828800BBEFE4 /* ButtonAdd.png in Resources */,
 				B6109DA61D528DDE002A6D77 /* LaunchScreen.storyboard in Resources */,
+				213FC8CD1E63828800BBEFE4 /* ButtonDelete.png in Resources */,
 				217503521E4BBB0300EC9693 /* UWParkside.gpx in Resources */,
 				847AE4BE1DA723450056B6D7 /* locations.plist in Resources */,
 				B6109DA31D528DDE002A6D77 /* Assets.xcassets in Resources */,

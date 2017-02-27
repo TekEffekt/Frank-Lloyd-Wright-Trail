@@ -50,6 +50,7 @@ class CreateTripVC : UITableViewController {
     //number of rows in each section
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
+            print("Number of rows: \(TripModel.shared.stops.count + 1)")
             return TripModel.shared.stops.count + 1
         }
         else {
@@ -69,13 +70,15 @@ class CreateTripVC : UITableViewController {
             let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! AddStopCell
             //add stop cell
             if indexPath.row == TripModel.shared.stops.count{
-            cell.stopName.text! = "Add Stop"
+                cell.stopName.text! = "Add Stop"
+                cell.modifyImage.image = UIImage(named: "ButtonAdd.png")
                 return cell
             }
             //stop added cell
             else{
                 cell.stopName.text! = TripModel.shared.stops[indexPath.row].name
                 cell.stopName.adjustsFontSizeToFitWidth = true
+                cell.modifyImage.image = UIImage(named: "ButtonDelete.png")
                 return cell
             }
         }
