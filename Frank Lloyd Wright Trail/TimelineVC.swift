@@ -15,6 +15,7 @@ class TimelineVC: UIViewController, TripJsonDelegate {
     var timeline:   TimelineView!
     var json: JsonParser!
     var sites = TripModel.shared.getSites()
+    var sitesImage = Site.getSites()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +42,15 @@ class TimelineVC: UIViewController, TripJsonDelegate {
 
     func getTripData(objects: [TripObject]) {
         var timeFrames: [TimeFrame] = []
+        
         for i in 0..<objects.count{
-        timeFrames.append(TimeFrame(text:"Travel distance is " + objects[i].distanceText! + " Travel time is " + objects[i].timeText!, date: "Name of site here", image: nil))
+            for j in 0..<sites.count{
+              Double(round(1000*objects[i].endPoint!)/100)
+              Double(round(1000*sitesImage[j].lat)/100)
+                if(Double(round(1000*objects[i].endPoint!)/1000) == Double(round(1000*sitesImage[j].lat)/1000)){
+                    timeFrames.append(TimeFrame(text:"Travel distance is " + objects[i].distanceText! + " Travel time is " + objects[i].timeText!, date: sitesImage[j].title, image: UIImage(named:sitesImage[j].imageName!)))
+            }
+            }
            
         }
         

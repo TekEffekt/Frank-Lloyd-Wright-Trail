@@ -247,11 +247,12 @@ class JsonParser: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
                                                         var distanceText = route["legs"]![i]["distance"]!!["text"] as! String
                                                         var timeText = route["legs"]![i]["duration"]!!["text"] as! String
                                                         var timeValue = route["legs"]![i]["duration"]!!["value"] as! Int
-                                                        var start = String(route["legs"]![i]["start_location"]!!["lat"])
-                                                        start += String(route["legs"]![i]["start_location"]!!["lng"])
-                                                        var end = String(route["legs"]![i]["end_location"]!!["lat"])
-                                                        end += String(route["legs"]![i]["end_location"]!!["lng"])
-                                                        var trip = TripObject.init(startPoint: start, endPoint: end, timeText: timeText, timeValue: timeValue, distanceText: distanceText, distanceValue: distanceValue)
+                                                        var start = route["legs"]![i]["start_location"]!!["lat"] as! Double
+                                                        //start += route["legs"]![i]["start_location"]!!["lng"] as! Double
+                                                        var end = route["legs"]![i]["end_location"]!!["lat"] as! Double
+                                                        //end += route["legs"]![i]["end_location"]!!["lng"] as! Double
+                                                        
+                                                        var trip = TripObject.init(startPoint: start, endPoint: end, timeText: timeText, timeValue: timeValue, distanceText: distanceText, distanceValue: distanceValue, image: nil)
                                                         
                                                         listOfTrips.append(trip)
                                                         

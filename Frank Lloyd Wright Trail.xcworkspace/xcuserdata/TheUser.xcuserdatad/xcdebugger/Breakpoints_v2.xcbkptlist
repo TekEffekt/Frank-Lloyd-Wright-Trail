@@ -31,7 +31,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "145"
             endingLineNumber = "145"
-            landmarkName = "orderOfLocations(locations:)"
+            landmarkName = "orderOfLocations(locations2:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,11 +42,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Frank Lloyd Wright Trail/JsonParser.swift"
-            timestampString = "509503678.337819"
+            timestampString = "509919357.6165"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "260"
-            endingLineNumber = "260">
+            startingLineNumber = "261"
+            endingLineNumber = "261"
+            landmarkName = "orderOfLocations(locations2:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -61,7 +63,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "248"
             endingLineNumber = "248"
-            landmarkName = "orderOfLocations(locations:)"
+            landmarkName = "orderOfLocations(locations2:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -72,11 +74,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Frank Lloyd Wright Trail/JsonParser.swift"
-            timestampString = "509503678.337819"
+            timestampString = "509919357.6165"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266">
+            startingLineNumber = "267"
+            endingLineNumber = "267"
+            landmarkName = "orderOfLocations(locations2:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -91,7 +95,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "151"
             endingLineNumber = "151"
-            landmarkName = "orderOfLocations(locations:)"
+            landmarkName = "orderOfLocations(locations2:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -102,11 +106,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Frank Lloyd Wright Trail/JsonParser.swift"
-            timestampString = "509503678.337819"
+            timestampString = "509919357.6165"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267">
+            startingLineNumber = "268"
+            endingLineNumber = "268"
+            landmarkName = "orderOfLocations(locations2:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -121,7 +127,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "123"
             endingLineNumber = "123"
-            landmarkName = "orderOfLocations(locations:)"
+            landmarkName = "orderOfLocations(locations2:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -137,7 +143,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "247"
             endingLineNumber = "247"
-            landmarkName = "orderOfLocations(locations:)"
+            landmarkName = "orderOfLocations(locations2:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -148,11 +154,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Frank Lloyd Wright Trail/JsonParser.swift"
-            timestampString = "509503678.337819"
+            timestampString = "509919357.6165"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "256"
-            endingLineNumber = "256">
+            startingLineNumber = "257"
+            endingLineNumber = "257"
+            landmarkName = "orderOfLocations(locations2:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -167,7 +175,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "130"
             endingLineNumber = "130"
-            landmarkName = "orderOfLocations(locations:)"
+            landmarkName = "orderOfLocations(locations2:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -222,11 +230,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Frank Lloyd Wright Trail/JsonParser.swift"
-            timestampString = "509503678.337819"
+            timestampString = "509919357.6165"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "264"
-            endingLineNumber = "264">
+            startingLineNumber = "265"
+            endingLineNumber = "265"
+            landmarkName = "orderOfLocations(locations2:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -236,11 +246,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Frank Lloyd Wright Trail/JsonParser.swift"
-            timestampString = "509503678.337819"
+            timestampString = "509919357.6165"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "263"
-            endingLineNumber = "263">
+            startingLineNumber = "264"
+            endingLineNumber = "264"
+            landmarkName = "orderOfLocations(locations2:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -393,7 +405,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "135"
             endingLineNumber = "135"
-            landmarkName = "orderOfLocations(locations:)"
+            landmarkName = "orderOfLocations(locations2:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -425,7 +437,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "37"
             endingLineNumber = "37"
-            landmarkName = "createTripPlanner(tripOrder:)"
+            landmarkName = "userLocation()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -441,7 +453,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "83"
             endingLineNumber = "83"
-            landmarkName = "orderOfLocations(locations:)"
+            landmarkName = "findLocation(title:sites:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -452,11 +464,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Frank Lloyd Wright Trail/TimelineVC.swift"
-            timestampString = "509503678.337819"
+            timestampString = "509921208.60397"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "TimelineVC"
             landmarkType = "3">
          </BreakpointContent>
@@ -473,7 +485,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "180"
             endingLineNumber = "180"
-            landmarkName = "orderOfLocations(locations:)"
+            landmarkName = "orderOfLocations(locations2:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -484,11 +496,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Frank Lloyd Wright Trail/TimelineVC.swift"
-            timestampString = "509503678.337819"
+            timestampString = "509919357.6165"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -505,7 +517,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "104"
             endingLineNumber = "104"
-            landmarkName = "orderOfLocations(locations:)"
+            landmarkName = "orderOfLocations(locations2:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -521,7 +533,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "172"
             endingLineNumber = "172"
-            landmarkName = "orderOfLocations(locations:)"
+            landmarkName = "orderOfLocations(locations2:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -537,8 +549,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "90"
             endingLineNumber = "90"
-            landmarkName = "orderOfLocations(locations:)"
-            landmarkType = "7">
+            landmarkName = "JsonParser"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -553,7 +565,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "111"
             endingLineNumber = "111"
-            landmarkName = "orderOfLocations(locations:)"
+            landmarkName = "orderOfLocations(locations2:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -569,7 +581,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "122"
             endingLineNumber = "122"
-            landmarkName = "orderOfLocations(locations:)"
+            landmarkName = "orderOfLocations(locations2:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -585,7 +597,55 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "116"
             endingLineNumber = "116"
-            landmarkName = "orderOfLocations(locations:)"
+            landmarkName = "orderOfLocations(locations2:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Frank Lloyd Wright Trail/TimelineVC.swift"
+            timestampString = "509921208.60397"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "getTripData(objects:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Frank Lloyd Wright Trail/TimelineVC.swift"
+            timestampString = "509921208.60397"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "getTripData(objects:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Frank Lloyd Wright Trail/TimelineVC.swift"
+            timestampString = "509921208.60397"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "getTripData(objects:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
