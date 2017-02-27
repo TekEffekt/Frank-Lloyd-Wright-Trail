@@ -15,7 +15,7 @@ class TimelineVC: UIViewController, TripJsonDelegate {
     var timeline:   TimelineView!
     var json: JsonParser!
     var sites = TripModel.shared.getSites()
-    var sitesImage = Site.getSites()
+    var allSites = Site.getSites()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,15 +40,15 @@ class TimelineVC: UIViewController, TripJsonDelegate {
         return true
     }
     
+    // func to get API object data
     func getTripData(objects: [TripObject]) {
         var timeFrames: [TimeFrame] = []
         
         for i in 0..<objects.count{
             for j in 0..<sites.count{
-                Double(round(100*objects[i].endPoint!)/100)
-                Double(round(100*sitesImage[j].lat)/100)
-                if(Double(round(100*objects[i].endPoint!)/100) == Double(round(100*sitesImage[j].lat)/100)){
-                    timeFrames.append(TimeFrame(text:"Travel distance is " + objects[i].distanceText! + " Travel time is " + objects[i].timeText!, date: sitesImage[j].title, image: UIImage(named:sitesImage[j].imageName!)))
+               // compare the objects to all the sites and if there is a match create card and add a picture from the list of all sites
+                if(Double(round(100*objects[i].endPoint!)/100) == Double(round(100*allSites[j].lat)/100)){
+                    timeFrames.append(TimeFrame(text:"Travel distance is " + objects[i].distanceText! + " Travel time is " + objects[i].timeText!, date: allSites[j].title, image: UIImage(named:allSites[j].imageName!)))
                 }
             }
             
