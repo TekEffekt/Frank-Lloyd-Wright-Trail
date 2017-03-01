@@ -17,7 +17,7 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
     let center = CLLocation(latitude: 43.105304, longitude: -89.046729)
     var sites = Site.getSites()
     
-    // use the TripJsinDelegate after the class name
+    // use this var
     //var parser: JsonParser!
     
     override func viewDidLoad() {
@@ -41,7 +41,7 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
     
     // use this func to get data and set it
     func getTripData(objects: [TripObject]) {
-       
+    
     }
     
     func loadPins(){
