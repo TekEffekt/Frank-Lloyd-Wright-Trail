@@ -16,7 +16,7 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
     let sites = Site.getSites()
     var sitesSelected = 0
     var parser = JsonParser!()
-    
+    var parser = JsonParser()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -160,7 +160,6 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
         }
         //parser.userLocation()
         //TripModel.shared.setTripInfo(parser.orderOfLocations(array))
-        print("\(TripModel.shared.getSitesInfo())")
     }
     
 }
