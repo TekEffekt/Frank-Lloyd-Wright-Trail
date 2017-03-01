@@ -11,12 +11,16 @@ import UIKit
 class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var continueButton: UIButton!
     
     let sites = Site.getSites()
     var sitesSelected = 0
+<<<<<<< HEAD
     var parser = JsonParser!()
    
+=======
+    //var parser = JsonParser()
+    
+>>>>>>> origin/ui-overhaul
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +43,19 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
         sitesSelected = 0
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        let button = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(doneSelected))
+        
+        self.navigationItem.rightBarButtonItem = button
+        self.navigationItem.title = ""
+    }
+    
+    func doneSelected(sender: UIBarButtonItem){
+        
+        self.navigationController?.popViewControllerAnimated(true)
+        print("Done button pressed")
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,25 +88,28 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
 
     // Does something when that cell is clicked
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print("Selected item: \(indexPath.row)")
+        //print("Selected item: \(indexPath.row)")
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Destination", forIndexPath: indexPath) as! DestinationCell
         let imageView = cell.siteImage
         visuallySelectSurface(imageView, withAnimation: true)
-        TripModel.shared.addSite(sites[indexPath.row], index: indexPath.row)
+        let location = sites[indexPath.row]
+        let stop = SiteStop(name: location.title, site: location)
+        TripModel.shared.stops.append(stop)
+        for place in TripModel.shared.stops{
+            print(place.name)
+        }
         sitesSelected += 1
-        disableButton()
-        
     }
     
-    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-        print ("Deselected item \(indexPath.row)")
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Destination", forIndexPath: indexPath) as! DestinationCell
-        let imageView = cell.siteImage
-        TripModel.shared.removeSite(indexPath.row)
-        visuallyUnSelectSurface(imageView)
-        sitesSelected -= 1
-        disableButton()
-    }
+//    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+//        print ("Deselected item \(indexPath.row)")
+//        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Destination", forIndexPath: indexPath) as! DestinationCell
+//        let imageView = cell.siteImage
+//        
+//        visuallyUnSelectSurface(imageView)
+//        sitesSelected -= 1
+//        disableButton()
+//    }
     
     
     // Flowlayout
@@ -99,14 +119,6 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
         return CGSize(width: width, height: height)
     }
     
-    func disableButton(){
-        if sitesSelected == 0 {
-            continueButton.enabled = false
-        }
-        else {
-            continueButton.enabled = true
-        }
-    }
 
     
     
@@ -149,6 +161,7 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
         }
     }
     
+<<<<<<< HEAD
     @IBAction func `continue`(sender: AnyObject) {
         //remove nil sites so can send actual values into parse method
         let sites: [Site?] = TripModel.shared.getSites()
@@ -162,4 +175,6 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
         //TripModel.shared.setTripInfo(parser.orderOfLocations(array))
     }
     
+=======
+>>>>>>> origin/ui-overhaul
 }
