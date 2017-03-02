@@ -71,14 +71,16 @@ class CreateTripVC : UITableViewController {
             //add stop cell
             if indexPath.row == TripModel.shared.stops.count{
                 cell.stopName.text! = "Add Stop"
-                cell.modifyImage.image = UIImage(named: "ButtonAdd.png")
+                cell.modifyImage.image = UIImage(named: "Add")
+                cell.stopName.textColor = UIColor(hexString: "#0073FF")
                 return cell
             }
             //stop added cell
             else{
                 cell.stopName.text! = TripModel.shared.stops[indexPath.row].name
                 cell.stopName.adjustsFontSizeToFitWidth = true
-                cell.modifyImage.image = UIImage(named: "ButtonDelete.png")
+                cell.modifyImage.image = UIImage(named: "Minus")
+                cell.stopName.textColor = UIColor.blackColor()
                 return cell
             }
         }
@@ -145,8 +147,11 @@ class CreateTripVC : UITableViewController {
                 currentSection = -1
             }
         }
+        
         tableView.beginUpdates()
         tableView.endUpdates()
+        
+        
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
@@ -190,28 +195,6 @@ class CreateTripVC : UITableViewController {
         else {
             cell.datePicker.datePickerMode = UIDatePickerMode.Time
         }
-        
-        //check trip type to decide where to start date at
-        //also check if it is a start date or end date
-        //        switch TripModel.shared.type! {
-        //        case "weekend":
-        //            break
-        //
-        //                //NSCalendar.currentCalendar().nextDateAfterDate(cell.datePick.date, matchingUnit: .Day, value: 6, options: [])!
-        //
-        //            //cell.datePick.date = date.nextDateAfterDate(cell.datePick.date, matchingUnit: .Day, value: 06, options: [])!
-        //
-        //        case "winter":
-        //            cell.datePick.date = NSCalendar.currentCalendar().nextDateAfterDate(cell.datePick.date, matchingUnit: .Month, value: 12, options: [])!
-        //            cell.datePick.date = NSCalendar.currentCalendar().nextDateAfterDate(cell.datePick.date, matchingUnit: .Day, value: 20, options: [])!
-        //
-        //        case "tomorrow":
-        //            let tomorrow = NSCalendar.currentCalendar().dateByAddingUnit(.Day, value: 1, toDate: cell.datePick.date, options: [])
-        //            cell.datePick.date = tomorrow!
-        //        default:
-        //            break
-        //        }
-        
         
     }
     

@@ -32,6 +32,7 @@ class AddStopVC: UITableViewController, UIPickerViewDelegate{
     }
     override func viewWillAppear(animated: Bool) {
         self.navigationItem.title = "Add Stops"
+        
         let button = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(doneSelected))
         
         self.navigationItem.rightBarButtonItem = button
@@ -66,6 +67,7 @@ class AddStopVC: UITableViewController, UIPickerViewDelegate{
         switch (indexPath.section, indexPath.row) {
         case (0,0):
             let cell = tableView.dequeueReusableCellWithIdentifier("name") as! NameCell
+            cell.stopName.placeholder = "Stop Name"
             return cell
         case (1,0):
             let cell = tableView.dequeueReusableCellWithIdentifier("label") as! LabelCell
