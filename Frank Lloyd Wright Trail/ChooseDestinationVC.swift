@@ -11,7 +11,7 @@ import UIKit
 class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    var selectedCells = [NSIndexPath]()
     let sites = Site.getSites()
     var sitesSelected = 0
     var parser = JsonParser!()
@@ -87,6 +87,8 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Destination", forIndexPath: indexPath) as! DestinationCell
         let imageView = cell.siteImage
         visuallySelectSurface(imageView, withAnimation: true)
+        cell.selected(true)
+        
         let location = sites[indexPath.row]
         let stop = SiteStop(name: location.title, site: location)
         TripModel.shared.stops.append(stop)
@@ -96,14 +98,24 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
         sitesSelected += 1
     }
     
+    //cells only selectable once
+    func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if self.selectedCells.contains(indexPath){
+            return false
+        }
+        else{
+            self.selectedCells.append(indexPath)
+            return true
+        }
+    }
+    
+    
 //    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
 //        print ("Deselected item \(indexPath.row)")
 //        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Destination", forIndexPath: indexPath) as! DestinationCell
 //        let imageView = cell.siteImage
 //        
-//        visuallyUnSelectSurface(imageView)
 //        sitesSelected -= 1
-//        disableButton()
 //    }
     
     
@@ -113,8 +125,6 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
         let height = 0.9 * width
         return CGSize(width: width, height: height)
     }
-    
-
     
     
     /// <#Description#>

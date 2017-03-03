@@ -14,20 +14,13 @@ class TripsVC : UITableViewController{
     super.viewDidLoad()
     }
     
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch indexPath.row {
-        case 0:
-             TripModel.shared.type = "weekend"
-             performSegueWithIdentifier("createTrip", sender: UIButton())
-        case 1:
-             TripModel.shared.type = "winter"
-             performSegueWithIdentifier("createTrip", sender: UIButton())
-        case 2:
-             TripModel.shared.type = "tomorrow"
-             performSegueWithIdentifier("createTrip", sender: UIButton())
-        default:
-            return
-        }
+    override func viewWillAppear(animated: Bool) {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addSelected))
     }
+    
+    func addSelected(sender : UIBarButtonItem){
+        performSegueWithIdentifier("createTrip", sender: UIBarButtonItem())
+    }
+    
+
 }

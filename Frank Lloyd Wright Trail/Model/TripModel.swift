@@ -12,6 +12,7 @@ struct TripModel {
     
     static var shared = TripModel()
     
+    var tripName: String?
     var startDate: NSDate?
     var startTime: NSDate?
     var endDate: NSDate?
@@ -39,6 +40,8 @@ struct TripModel {
         }
         return sites
     }
+    
+   
 
 }
 
