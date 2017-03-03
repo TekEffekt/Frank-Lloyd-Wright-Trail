@@ -19,6 +19,9 @@ class FinalTimelineVC: UIViewController, TripJsonDelegate {
     var allSites = Site.getSites()
     var sites2 = [Site?]()
     var stops = TripModel.shared.stops
+    var startTime = TripModel.shared.startTime
+    var endTime = TripModel.shared.endTime
+    var tripObj = [TripObject]()
     let date = NSDate()
     let calendar = NSCalendar.currentCalendar()
     
@@ -51,9 +54,47 @@ class FinalTimelineVC: UIViewController, TripJsonDelegate {
     // func to get API object data
     func getTripData(objects: [TripObject]) {
         var timeFrames: [TimeFrame] = []
-        //let components = calendar.components(.CalendarUnitHour | .CalendarUnitMinute, fromDate: date)
-        //let hour = components.hour
-        //let minutes = components.minute
+    
+        var tripTime = startTime?.timeIntervalSinceDate(endTime!)
+        var timeObject = 0.0
+        var timeStop = 0.0
+        var objectCounter = 0
+        //timeFrames.append(TimeFrame(text: Home, date: ))
+                for i in 0..<objects.count {
+                    timeObject = +objects[i].timeValue!
+                            }
+        
+                for i in 0..<stops.count {
+        
+                    timeStop = +(stops[i].startTime?.timeIntervalSinceDate(stops[i].endTime!))!
+        
+                }
+        
+                while (timeObject + timeStop > tripTime) {
+        
+        
+                for i in 0..<stops.count{
+        
+                    for j in 0..<objects.count{
+                        // compare the objects to all the sites and if there is a match create card and add a picture from the list of all sites
+                            for z in 0..<sites2.count {
+                                if(Double(round(100*objects[j].endPoint!)/100) == Double(round(100*allSites[z].lat)/100)){
+                                    if(stops[i].name == allSites[z].title) {
+        
+        
+                                         objects.reverse()
+                                    }
+        
+                                }
+                                
+                                
+                            }
+                            
+                        
+                    }
+                    
+                }
+            }
         
         //timeFrames.append(TimeFrame(text: Home, date: ))
         for i in 0..<objects.count{

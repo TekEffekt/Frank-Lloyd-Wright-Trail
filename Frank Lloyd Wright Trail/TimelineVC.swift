@@ -54,7 +54,7 @@ class TimelineVC: UIViewController, TripJsonDelegate {
     // func to get API object data
     func getTripData(objects: [TripObject]) {
         var timeFrames: [TimeFrame] = []
-        var tripTime = startTime?.timeIntervalSinceDate(endTime!)
+        //var tripTime = startTime?.timeIntervalSinceDate(endTime!)
         var timeObject = 0.0
         var timeStop = 0.0
         var objectCounter = 0
