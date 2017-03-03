@@ -657,10 +657,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lta-Fh-0ZU">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lta-Fh-0ZU">
                                             <rect key="frame" x="8" y="6" width="359" height="30"/>
                                             <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
@@ -841,7 +841,7 @@
                                                 <!--2017-02-17 03:22:54 +0000-->
                                             </date>
                                             <connections>
-                                                <action selector="dateChanged:" destination="xdu-bm-ZFg" eventType="valueChanged" id="CER-dx-HRs"/>
+                                                <action selector="dateChanged:" destination="xdu-bm-ZFg" eventType="valueChanged" id="hu2-IJ-Zix"/>
                                             </connections>
                                         </datePicker>
                                     </subviews>
@@ -865,7 +865,7 @@
                                             <rect key="frame" x="8" y="6" width="359" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>

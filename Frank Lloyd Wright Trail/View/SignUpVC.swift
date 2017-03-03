@@ -23,11 +23,14 @@ class SignUpVC: UITableViewController {
         
         self.navigationItem.title = "Signup"
         self.navigationItem.rightBarButtonItem = button
+        self.navigationItem.rightBarButtonItem?.title = "Next"
     }
     
     func doneSelected(sender: UIBarButtonItem){
         
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
