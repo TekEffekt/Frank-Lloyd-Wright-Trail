@@ -143,6 +143,7 @@ class CreateTripVC : UITableViewController {
         return UITableViewCell()
     }
     
+    
     //cell is selected
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
