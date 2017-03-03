@@ -9,20 +9,22 @@
 import Foundation
 class TripObject: NSObject {
     
-    var startPoint: String?
-    var endPoint: String?
+    var startPoint: Double
+    var endPoint: Double?
     var timeText: String?
-    var timeValue: Int?
+    var timeValue: Double?
     var distanceText: String?
     var distanceValue: Int?
+    var image: UIImage?
     
-    init(startPoint: String, endPoint: String, timeText: String, timeValue: Int, distanceText: String, distanceValue: Int) {
+    init(startPoint: Double, endPoint: Double, timeText: String, timeValue: Double, distanceText: String, distanceValue: Int, image: UIImage?) {
         self.startPoint = startPoint
         self.endPoint = endPoint
         self.timeText = timeText
         self.timeValue = timeValue
         self.distanceText = distanceText
         self.distanceValue = distanceValue
+        self.image = nil
     }
     
 }

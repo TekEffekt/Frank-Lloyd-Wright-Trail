@@ -14,8 +14,8 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
     var selectedCells = [NSIndexPath]()
     let sites = Site.getSites()
     var sitesSelected = 0
-    //var parser = JsonParser()
-    
+    var parser = JsonParser!()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
