@@ -40,30 +40,6 @@ class JsonParser: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
         }
     }
     
-    // func to create objects to be used for the data for the cards
-    func createTripPlanner(tripOrder: [TripObject]) {
-        
-        var breakfast = 3600
-        var lunch = 3600
-        var dinner = 3600
-        var startHour = 9
-        var startMin = 30
-        var endHour = 7
-        var endMin = 30
-        var totalTime = 36000
-        var time = 0
-        var mealTime = dinner + lunch + breakfast
-        
-        for i in 0..<tripOrder.count {
-            time += tripOrder[i].timeValue!/60+60
-        }
-        if (mealTime > totalTime) {
-            
-        }else if(mealTime + time > totalTime) {
-            //var newTripOrder = tripOrder[0..<tripOrder.capacity-1]
-            
-        }// else here
-    }
     
     // get the lat and long of site and convert to string
     func getLatLong (sites: [Site?], index: Int) -> String {
@@ -246,7 +222,7 @@ class JsonParser: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
                                                         var distanceValue = route["legs"]![i]["distance"]!!["value"] as! Int
                                                         var distanceText = route["legs"]![i]["distance"]!!["text"] as! String
                                                         var timeText = route["legs"]![i]["duration"]!!["text"] as! String
-                                                        var timeValue = route["legs"]![i]["duration"]!!["value"] as! Int
+                                                        var timeValue = route["legs"]![i]["duration"]!!["value"] as! Double
                                                         var start = route["legs"]![i]["start_location"]!!["lat"] as! Double
                                                         //start += route["legs"]![i]["start_location"]!!["lng"] as! Double
                                                         var end = route["legs"]![i]["end_location"]!!["lat"] as! Double

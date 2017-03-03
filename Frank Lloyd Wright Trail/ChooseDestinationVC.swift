@@ -14,13 +14,8 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
     
     let sites = Site.getSites()
     var sitesSelected = 0
-<<<<<<< HEAD
     var parser = JsonParser!()
-   
-=======
-    //var parser = JsonParser()
-    
->>>>>>> origin/ui-overhaul
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -161,20 +156,20 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
         }
     }
     
-<<<<<<< HEAD
-    @IBAction func `continue`(sender: AnyObject) {
-        //remove nil sites so can send actual values into parse method
-        let sites: [Site?] = TripModel.shared.getSites()
-        var array: [Site?] = []
-        for s in sites{
-            if(s != nil){
-                array.append(s!)
-            }
-        }
-        //parser.userLocation()
-        //TripModel.shared.setTripInfo(parser.orderOfLocations(array))
-    }
-    
-=======
->>>>>>> origin/ui-overhaul
+//<<<<<<< HEAD
+//    @IBAction func `continue`(sender: AnyObject) {
+//        //remove nil sites so can send actual values into parse method
+//        let sites: [Site?] = TripModel.shared.getSites()
+//        var array: [Site?] = []
+//        for s in sites{
+//            if(s != nil){
+//                array.append(s!)
+//            }
+//        }
+//        //parser.userLocation()
+//        //TripModel.shared.setTripInfo(parser.orderOfLocations(array))
+//    }
+//    
+//=======
+//>>>>>>> origin/ui-overhaul
 }

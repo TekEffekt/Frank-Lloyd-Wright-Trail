@@ -12,12 +12,12 @@ class TripObject: NSObject {
     var startPoint: Double
     var endPoint: Double?
     var timeText: String?
-    var timeValue: Int?
+    var timeValue: Double?
     var distanceText: String?
     var distanceValue: Int?
     var image: UIImage?
     
-    init(startPoint: Double, endPoint: Double, timeText: String, timeValue: Int, distanceText: String, distanceValue: Int, image: UIImage?) {
+    init(startPoint: Double, endPoint: Double, timeText: String, timeValue: Double, distanceText: String, distanceValue: Int, image: UIImage?) {
         self.startPoint = startPoint
         self.endPoint = endPoint
         self.timeText = timeText
