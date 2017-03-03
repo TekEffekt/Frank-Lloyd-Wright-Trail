@@ -59,41 +59,41 @@ class TimelineVC: UIViewController, TripJsonDelegate {
         var timeStop = 0.0
         var objectCounter = 0
         //timeFrames.append(TimeFrame(text: Home, date: ))
-        for i in 0..<objects.count {
-            timeObject = +objects[i].timeValue!
-                    }
+//        for i in 0..<objects.count {
+//            timeObject = +objects[i].timeValue!
+//                    }
+//        
+//        for i in 0..<stops.count {
+//        
+//            timeStop = +(stops[i].startTime?.timeIntervalSinceDate(stops[i].endTime!))!
+//            
+//        }
         
-        for i in 0..<stops.count {
-        
-            timeStop = +(stops[i].startTime?.timeIntervalSinceDate(stops[i].endTime!))!
-            
-        }
-        
-        while (timeObject + timeStop > tripTime) {
-        
-            
-        for i in 0..<stops.count{
-            
-            for j in 0..<objects.count{
-                // compare the objects to all the sites and if there is a match create card and add a picture from the list of all sites
-                    for z in 0..<sites2.count {
-                        if(Double(round(100*objects[j].endPoint!)/100) == Double(round(100*allSites[z].lat)/100)){
-                            if(stops[i].name == allSites[z].title) {
-                            
-                                
-                                 objects.reverse()
-                            }
-                            
-                        }
-                        
-                        
-                    }
-                    
-                
-            }
-            
-        }
-        }
+//        while (timeObject + timeStop > tripTime) {
+//        
+//            
+//        for i in 0..<stops.count{
+//            
+//            for j in 0..<objects.count{
+//                // compare the objects to all the sites and if there is a match create card and add a picture from the list of all sites
+//                    for z in 0..<sites2.count {
+//                        if(Double(round(100*objects[j].endPoint!)/100) == Double(round(100*allSites[z].lat)/100)){
+//                            if(stops[i].name == allSites[z].title) {
+//                            
+//                                
+//                                 objects.reverse()
+//                            }
+//                            
+//                        }
+//                        
+//                        
+//                    }
+//                    
+//                
+//            }
+//            
+//        }
+//    }
         
         
         // attach the correct image to the sites
