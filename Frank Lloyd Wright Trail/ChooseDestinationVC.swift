@@ -160,26 +160,4 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
         }
     }
     
-    func visuallyUnSelectSurface(surface: UIImageView) {
-        for view in surface.subviews {
-            view.removeFromSuperview()
-        }
-    }
-    
-//<<<<<<< HEAD
-//    @IBAction func `continue`(sender: AnyObject) {
-//        //remove nil sites so can send actual values into parse method
-//        let sites: [Site?] = TripModel.shared.getSites()
-//        var array: [Site?] = []
-//        for s in sites{
-//            if(s != nil){
-//                array.append(s!)
-//            }
-//        }
-//        //parser.userLocation()
-//        //TripModel.shared.setTripInfo(parser.orderOfLocations(array))
-//    }
-//    
-//=======
-//>>>>>>> origin/ui-overhaul
 }
