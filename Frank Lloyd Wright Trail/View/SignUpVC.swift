@@ -27,7 +27,7 @@ class SignUpVC: UITableViewController {
     }
     
     func doneSelected(sender: UIBarButtonItem){
-        
+         performSegueWithIdentifier("finalTL", sender: nil)
     }
     
     

@@ -170,10 +170,31 @@
                             <outlet property="delegate" destination="e16-jc-cMf" id="PHD-pR-ScQ"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="OjJ-Bz-lu9" kind="show" identifier="finalTL" id="18G-HS-tdv"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bEk-eQ-Enc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2193" y="2066"/>
+        </scene>
+        <!--Final TimelineVC-->
+        <scene sceneID="WQ9-hy-4Ng">
+            <objects>
+                <viewController id="OjJ-Bz-lu9" customClass="FinalTimelineVC" customModule="Frank_Lloyd_Wright_Trail" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aKJ-oI-HAC"/>
+                        <viewControllerLayoutGuide type="bottom" id="fWS-ck-sZB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Pi7-as-Dg3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iHI-rS-OM2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3436" y="2066"/>
         </scene>
         <!--Time TableVC-->
         <scene sceneID="SpK-6V-FYg">
