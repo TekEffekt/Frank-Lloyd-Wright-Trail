@@ -33,9 +33,10 @@ class CreateTripVC : UITableViewController {
     
     func doneSelected(sender: UIBarButtonItem){
         let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-        let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! NameCell
-        if let name = cell.stopName.text{
-            TripModel.shared.tripName = name
+        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? NameCell{
+            if let name = cell.stopName.text{
+                TripModel.shared.tripName = name
+            }
         }
         
         performSegueWithIdentifier("suggestedTL", sender: nil)
@@ -142,6 +143,7 @@ class CreateTripVC : UITableViewController {
         
         return UITableViewCell()
     }
+    
     
     //cell is selected
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
