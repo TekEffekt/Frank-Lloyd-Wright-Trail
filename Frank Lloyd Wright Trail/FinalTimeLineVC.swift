@@ -81,7 +81,7 @@ class FinalTimelineVC: UIViewController, TripJsonDelegate {
                                 if(Double(round(100*objects[j].endPoint!)/100) == Double(round(100*allSites[z].lat)/100)){
                                     if(stops[i].name == allSites[z].title) {
         
-        
+                                        
                                          objects.reverse()
                                     }
         
