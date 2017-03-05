@@ -111,22 +111,22 @@ class CreateTripVC : UITableViewController {
             case (2,1):
                 let cell = tableView.dequeueReusableCellWithIdentifier("dateCell") as! DatePickCell
                 self.dateHelper(cell, indexPath: indexPath)
-                cell.datePicker.tag = 11
+                cell.datePicker.tag = 21
                 return cell
             case (2,3):
                 let cell = tableView.dequeueReusableCellWithIdentifier("dateCell") as! DatePickCell
                 self.dateHelper(cell, indexPath: indexPath)
-                cell.datePicker.tag = 13
+                cell.datePicker.tag = 23
                 return cell
             case (3,1):
                 let cell = tableView.dequeueReusableCellWithIdentifier("dateCell") as! DatePickCell
                 self.dateHelper(cell, indexPath: indexPath)
-                cell.datePicker.tag = 21
+                cell.datePicker.tag = 31
                 return cell
             case (3,3):
                 let cell = tableView.dequeueReusableCellWithIdentifier("dateCell") as! DatePickCell
                 self.dateHelper(cell, indexPath: indexPath)
-                cell.datePicker.tag = 23
+                cell.datePicker.tag = 33
                 return cell
             default:
                 break
@@ -304,16 +304,16 @@ class CreateTripVC : UITableViewController {
         switch sender.tag {
         case 21:
             TripModel.shared.startDate = sender.date
-            //print("Start date : \(TripModel.shared.startDate)")
+            print("Start date : \(TripModel.shared.startDate)")
         case 23:
             TripModel.shared.startTime = sender.date
-            //print("Start time : \(TripModel.shared.startTime)")
+            print("Start time : \(TripModel.shared.startTime)")
         case 31:
             TripModel.shared.endDate = sender.date
-            //print("End date : \(TripModel.shared.endDate)")
+            print("End date : \(TripModel.shared.endDate)")
         case 33:
             TripModel.shared.endTime = sender.date
-            //print("End time : \(TripModel.shared.endTime)")
+            print("End time : \(TripModel.shared.endTime)")
         default:
             break
         }
