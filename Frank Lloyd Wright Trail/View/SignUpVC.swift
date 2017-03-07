@@ -26,7 +26,7 @@ class SignUpVC: UITableViewController {
     }
     
     func doneSelected(sender: UIBarButtonItem){
-        
+        performSegueWithIdentifier("segueToFinal", sender: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -147,5 +147,7 @@ class SignUpVC: UITableViewController {
         tableView.beginUpdates()
         tableView.endUpdates()
     }
+    
+    
 
 }

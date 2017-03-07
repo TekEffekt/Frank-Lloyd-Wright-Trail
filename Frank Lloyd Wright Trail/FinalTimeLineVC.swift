@@ -8,8 +8,8 @@
 
 import UIKit
 
-
-class FinalTimelineVC: UIViewController, TripJsonDelegate {
+//TripJsonDelegate
+class FinalTimelineVC: UIViewController,TripJsonDelegate {
     
     
     var scrollView: UIScrollView!
@@ -24,8 +24,6 @@ class FinalTimelineVC: UIViewController, TripJsonDelegate {
     var tripObj = [TripObject]()
     var newStops = [Stop]()
     var newTripObject = [TripObject]()
-    let date = NSDate()
-    let calendar = NSCalendar.currentCalendar()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,42 +49,50 @@ class FinalTimelineVC: UIViewController, TripJsonDelegate {
     }
     
     
-    
-    
     // func to get API object data
     func getTripData(objects: [TripObject]) {
         var timeFrames: [TimeFrame] = []
         
-        var tripTime = startTime?.timeIntervalSinceDate(endTime!)
+        var tripTime = endTime?.timeIntervalSinceDate(startTime!)
         var timeObject = 0.0
         var timeStop = 0.0
         var objectCounter = 0
         //timeFrames.append(TimeFrame(text: Home, date: ))
+        
+        for i in 0..<stops.count {
+            if(stops[i] is MealStop || stops[i] is GenericStop) {
+                
+                timeStop = +(stops[i].endTime?.timeIntervalSinceDate(stops[i].startTime!))!
+            }
+            
+        }
         for i in 0..<objects.count {
             timeObject = +objects[i].timeValue!
         }
-        
-        for i in 0..<stops.count {
-            
-            timeStop = +(stops[i].startTime?.timeIntervalSinceDate(stops[i].endTime!))!
-            
-        }
-        
-        
+        timeStop = +timeObject
         
         
         for i in 0..<stops.count{
             
             for j in 0..<objects.count{
                 // compare the objects to all the sites and if there is a match create card and add a picture from the list of all sites
-                var newStopTime = +(newStops[i].startTime?.timeIntervalSinceDate(newStops[i].endTime!))!
+                
+                var newStopTime = 0.0
                 while(newStopTime < tripTime){
                     newStops.append(stops[i])
                     
+                    if(stops[i] is SiteStop){
+                        
+                        newTripObject.append(objects[j])
+                    }
                     if(timeObject < newStopTime) {
                         
                         newTripObject.append(objects[j])
-                        
+                        if(stops[i] is MealStop || stops[i] is GenericStop) {
+                            newStopTime = +(newStops[i].startTime?.timeIntervalSinceDate(newStops[i].endTime!))!
+                            
+                            
+                        }
                     }
                     
                 }
@@ -96,7 +102,7 @@ class FinalTimelineVC: UIViewController, TripJsonDelegate {
         }
         
         
-        //timeFrames.append(TimeFrame(text: Home, date: ))
+        
         for i in 0..<newTripObject.count{
             for j in 0..<sites2.count{
                 // compare the objects to all the sites and if there is a match create card and add a picture from the list of all sites
@@ -124,15 +130,15 @@ class FinalTimelineVC: UIViewController, TripJsonDelegate {
     
     
     override func viewWillAppear(animated: Bool) {
-        self.navigationItem.title = "Suggested Trip"
-        let button = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(doneSelected))
+        self.navigationItem.title = "Trip"
+        //let button = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(doneSelected))
         
-        self.navigationItem.rightBarButtonItem = button
+        //self.navigationItem.rightBarButtonItem = button
     }
     
-    func doneSelected(sender: UIBarButtonItem){
-        performSegueWithIdentifier("signup", sender: nil)
-    }
+    //    func doneSelected(sender: UIBarButtonItem){
+    //        performSegueWithIdentifier("segueToFinal", sender: nil)
+    //    }
     
     
     override func prefersStatusBarHidden() -> Bool {

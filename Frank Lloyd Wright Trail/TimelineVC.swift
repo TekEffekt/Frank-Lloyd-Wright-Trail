@@ -19,7 +19,7 @@ class TimelineVC: UIViewController, TripJsonDelegate {
     var sites = TripModel.shared.getLocations()
     var allSites = Site.getSites()
     var sites2 = [Site?]()
-    
+    var sharedTripObject: [TripObject] = []
     
     var newStops = [Stop]()
     var newTripObject = [TripObject]()
@@ -49,12 +49,21 @@ class TimelineVC: UIViewController, TripJsonDelegate {
     }
     
     
-   
-    
+    func getTripObject() -> [TripObject]{
+        
+        return newTripObject
+    }
+
     // func to get API object data
     func getTripData(objects: [TripObject]) {
         var timeFrames: [TimeFrame] = []
-      
+        
+            for i in 0..<objects.count{
+            
+                self.newTripObject.append(objects[i])
+            }
+        
+        
         // attach the correct image to the sites
         for i in 0..<objects.count{
             for j in 0..<sites2.count{
@@ -84,6 +93,7 @@ class TimelineVC: UIViewController, TripJsonDelegate {
     }
     
 
+    
     override func viewWillAppear(animated: Bool) {
         self.navigationItem.title = "Suggested Trip"
         let button = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(doneSelected))
