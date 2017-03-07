@@ -12,6 +12,7 @@ class SignUpVC: UITableViewController {
     var cellTapped = false
     var currentRow = -1
     var currentSection = -1
+    var range = TripModel.shared.getLocations()?.count
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +41,12 @@ class SignUpVC: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return TripModel.shared.getLocationCount()
+        if let section = range{
+            return section
+        }
+        else{
+            return 0
+        }
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
