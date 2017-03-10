@@ -25,21 +25,45 @@ class CreateTripVC : UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         self.navigationItem.title = "Create Trip"
-        let button = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(doneSelected))
+        let button = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(nextSelected))
         
         self.navigationItem.rightBarButtonItem = button
         tableView.reloadData()
     }
     
-    func doneSelected(sender: UIBarButtonItem){
+    func nextSelected(sender: UIBarButtonItem){
+        
         let indexPath = NSIndexPath(forRow: 0, inSection: 0)
         if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? NameCell{
-            if let name = cell.stopName.text{
+            if let name = cell.stopName.text where !name.isEmpty{
                 TripModel.shared.tripName = name
             }
         }
+        let trip = TripModel.shared
         
+        if trip.tripName == nil{
+            print("No trip name")
+            return
+        }
+        else if trip.startDate == nil{
+            print("No start date")
+            return
+        }
+        else if trip.startTime == nil{
+            print("No start time")
+            return
+        }
+        else if trip.endDate == nil{
+            print("No end date")
+            return
+        }
+        else if trip.endTime == nil{
+            print ("No end time")
+            return
+        }
+        else{
         performSegueWithIdentifier("suggestedTL", sender: nil)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -59,7 +83,7 @@ class CreateTripVC : UITableViewController {
             return 1
         }
         else if section == 1{
-            print("Number of rows: \(TripModel.shared.stops.count + 1)")
+            print("NumRowsInSection: \(TripModel.shared.stops.count + 1)")
             return TripModel.shared.stops.count + 1
         }
         else {
@@ -88,6 +112,7 @@ class CreateTripVC : UITableViewController {
         }
         //add stop cell
         else if indexPath.section == 1 {
+             print("NumRowsCellFor: \(TripModel.shared.stops.count + 1)")
             let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! AddStopCell
             //add stop cell
             if indexPath.row == TripModel.shared.stops.count{

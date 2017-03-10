@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SDG-Af-1Jw">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SDG-Af-1Jw">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -171,30 +171,12 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <segue destination="OjJ-Bz-lu9" kind="show" identifier="finalTL" id="18G-HS-tdv"/>
+                        <segue destination="1zv-ye-Jji" kind="show" identifier="segueToFinal" id="ZMB-y5-zfD"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bEk-eQ-Enc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2193" y="2066"/>
-        </scene>
-        <!--Final TimelineVC-->
-        <scene sceneID="WQ9-hy-4Ng">
-            <objects>
-                <viewController id="OjJ-Bz-lu9" customClass="FinalTimelineVC" customModule="Frank_Lloyd_Wright_Trail" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="aKJ-oI-HAC"/>
-                        <viewControllerLayoutGuide type="bottom" id="fWS-ck-sZB"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Pi7-as-Dg3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iHI-rS-OM2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3436" y="2066"/>
         </scene>
         <!--Time TableVC-->
         <scene sceneID="SpK-6V-FYg">
@@ -678,10 +660,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lta-Fh-0ZU">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lta-Fh-0ZU">
                                             <rect key="frame" x="8" y="6" width="359" height="30"/>
                                             <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
@@ -862,7 +844,7 @@
                                                 <!--2017-02-17 03:22:54 +0000-->
                                             </date>
                                             <connections>
-                                                <action selector="dateChanged:" destination="xdu-bm-ZFg" eventType="valueChanged" id="hu2-IJ-Zix"/>
+                                                <action selector="dateChanged:" destination="xdu-bm-ZFg" eventType="valueChanged" id="yB8-WR-PeR"/>
                                             </connections>
                                         </datePicker>
                                     </subviews>
@@ -886,7 +868,7 @@
                                             <rect key="frame" x="8" y="6" width="359" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
@@ -1064,6 +1046,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A3c-Tf-lOd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3022" y="260"/>
+        </scene>
+        <!--Final TimelineVC-->
+        <scene sceneID="g4Z-TK-H0r">
+            <objects>
+                <viewController id="1zv-ye-Jji" customClass="FinalTimelineVC" customModule="Frank_Lloyd_Wright_Trail" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ntW-eH-zTW"/>
+                        <viewControllerLayoutGuide type="bottom" id="Bdd-l4-fwh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="luw-WR-uuh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oAV-1K-mS9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3300" y="2066"/>
         </scene>
     </scenes>
     <resources>

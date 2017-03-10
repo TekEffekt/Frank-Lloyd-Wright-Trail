@@ -15,6 +15,7 @@ class AddStopVC: UITableViewController, UIPickerViewDelegate{
     var type: StopActions?
     var genStop: GenericStop?
     var mealStop: MealStop?
+    var stop: Stop?
     
     
     
@@ -123,28 +124,42 @@ class AddStopVC: UITableViewController, UIPickerViewDelegate{
         
         let indexPath = NSIndexPath(forRow: 0, inSection: 0)
         let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! NameCell
-        if let name = cell.stopName.text{
+        
+        
+        if let name = cell.stopName.text where !name.isEmpty{
             
             if type == .meal{
                 mealStop?.name = name
                 TripModel.shared.stops.append(mealStop!)
-                print("Meal Name = \(mealStop?.name)")
-                print("Meal Date = \(mealStop?.date)")
-                print("Meal Start Time = \(mealStop?.startTime)")
-                print("Meal End Time = \(mealStop?.endTime)")
+                stop = mealStop
             }
             else {
                 genStop?.name = name
                 TripModel.shared.stops.append(genStop!)
-                print("Gen Name = \(genStop?.name)")
-                print("Gen Date = \(genStop?.date)")
-                print("Gen Start Time = \(genStop?.startTime)")
-                print("Gen End Time = \(genStop?.endTime)")
+                stop = genStop
             }
             
+        }else{
+            print("no stop name")
+            return
         }
         
+        
+        if stop!.date == nil{
+            print("No date")
+            return
+        }
+        else if stop!.startTime == nil{
+            print("No start time")
+            return
+        }
+        else if stop!.endTime == nil{
+            print("No end time")
+            return
+        }
+        else{
         self.navigationController?.popViewControllerAnimated(true)
+        }
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

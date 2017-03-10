@@ -12,7 +12,6 @@ class SignUpVC: UITableViewController {
     var cellTapped = false
     var currentRow = -1
     var currentSection = -1
-    var range = TripModel.shared.getLocations()?.count
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,14 +23,11 @@ class SignUpVC: UITableViewController {
         
         self.navigationItem.title = "Signup"
         self.navigationItem.rightBarButtonItem = button
-        self.navigationItem.rightBarButtonItem?.title = "Next"
     }
     
     func doneSelected(sender: UIBarButtonItem){
-         performSegueWithIdentifier("finalTL", sender: nil)
+        performSegueWithIdentifier("segueToFinal", sender: nil)
     }
-    
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -41,12 +37,7 @@ class SignUpVC: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if let section = range{
-            return section
-        }
-        else{
-            return 0
-        }
+        return TripModel.shared.getLocationCount()
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -156,5 +147,7 @@ class SignUpVC: UITableViewController {
         tableView.beginUpdates()
         tableView.endUpdates()
     }
+    
+    
 
 }

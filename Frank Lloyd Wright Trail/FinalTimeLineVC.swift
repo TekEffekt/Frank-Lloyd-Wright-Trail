@@ -8,8 +8,8 @@
 
 import UIKit
 
-
-class FinalTimelineVC: UIViewController, TripJsonDelegate {
+//TripJsonDelegate
+class FinalTimelineVC: UIViewController,TripJsonDelegate {
     
     
     var scrollView: UIScrollView!
@@ -19,8 +19,11 @@ class FinalTimelineVC: UIViewController, TripJsonDelegate {
     var allSites = Site.getSites()
     var sites2 = [Site?]()
     var stops = TripModel.shared.stops
-    let date = NSDate()
-    let calendar = NSCalendar.currentCalendar()
+    var startTime = TripModel.shared.startTime
+    var endTime = TripModel.shared.endTime
+    var tripObj = [TripObject]()
+    var newStops = [Stop]()
+    var newTripObject = [TripObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,21 +49,65 @@ class FinalTimelineVC: UIViewController, TripJsonDelegate {
     }
     
     
-    
-    
     // func to get API object data
     func getTripData(objects: [TripObject]) {
         var timeFrames: [TimeFrame] = []
-        //let components = calendar.components(.CalendarUnitHour | .CalendarUnitMinute, fromDate: date)
-        //let hour = components.hour
-        //let minutes = components.minute
         
+        var tripTime = endTime?.timeIntervalSinceDate(startTime!)
+        var timeObject = 0.0
+        var timeStop = 0.0
+        var objectCounter = 0
         //timeFrames.append(TimeFrame(text: Home, date: ))
-        for i in 0..<objects.count{
+        
+        for i in 0..<stops.count {
+            if(stops[i] is MealStop || stops[i] is GenericStop) {
+                
+                timeStop = +(stops[i].endTime?.timeIntervalSinceDate(stops[i].startTime!))!
+            }
+            
+        }
+        for i in 0..<objects.count {
+            timeObject = +objects[i].timeValue!
+        }
+        timeStop = +timeObject
+        
+        
+        for i in 0..<stops.count{
+            
+            for j in 0..<objects.count{
+                // compare the objects to all the sites and if there is a match create card and add a picture from the list of all sites
+                
+                var newStopTime = 0.0
+                while(newStopTime < tripTime){
+                    newStops.append(stops[i])
+                    
+                    if(stops[i] is SiteStop){
+                        
+                        newTripObject.append(objects[j])
+                    }
+                    if(timeObject < newStopTime) {
+                        
+                        newTripObject.append(objects[j])
+                        if(stops[i] is MealStop || stops[i] is GenericStop) {
+                            newStopTime = +(newStops[i].startTime?.timeIntervalSinceDate(newStops[i].endTime!))!
+                            
+                            
+                        }
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
+        
+        
+        for i in 0..<newTripObject.count{
             for j in 0..<sites2.count{
                 // compare the objects to all the sites and if there is a match create card and add a picture from the list of all sites
-                if(Double(round(100*objects[i].endPoint!)/100) == Double(round(100*allSites[j].lat)/100)){
-                    timeFrames.append(TimeFrame(text:"Travel distance is " + objects[i].distanceText! + " Travel time is " + objects[i].timeText!, date: allSites[j].title, image: UIImage(named:allSites[j].imageName!)))
+                if(Double(round(100*newTripObject[i].endPoint!)/100) == Double(round(100*allSites[j].lat)/100)){
+                    timeFrames.append(TimeFrame(text:"Travel distance is " + newTripObject[i].distanceText! + " Travel time is " + newTripObject[i].timeText!, date: allSites[j].title, image: UIImage(named:allSites[j].imageName!)))
                 }
             }
             
@@ -83,15 +130,15 @@ class FinalTimelineVC: UIViewController, TripJsonDelegate {
     
     
     override func viewWillAppear(animated: Bool) {
-        self.navigationItem.title = "Suggested Trip"
-        let button = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(doneSelected))
+        self.navigationItem.title = "Trip"
+        //let button = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(doneSelected))
         
-        self.navigationItem.rightBarButtonItem = button
+        //self.navigationItem.rightBarButtonItem = button
     }
     
-    func doneSelected(sender: UIBarButtonItem){
-        performSegueWithIdentifier("signup", sender: nil)
-    }
+    //    func doneSelected(sender: UIBarButtonItem){
+    //        performSegueWithIdentifier("segueToFinal", sender: nil)
+    //    }
     
     
     override func prefersStatusBarHidden() -> Bool {
@@ -99,5 +146,5 @@ class FinalTimelineVC: UIViewController, TripJsonDelegate {
     }
     
     
+    
 }
-
