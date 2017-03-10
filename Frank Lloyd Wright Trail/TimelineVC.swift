@@ -48,11 +48,18 @@ class TimelineVC: UIViewController, TripJsonDelegate {
         getTripData(json.orderOfLocations(sites2))
     }
     
-    
-    func getTripObject() -> [TripObject]{
+    func compareSites(site1:Site?, site2: [Site]) -> Int {
+
+  
+            for j in 0..<site2.count{
+            if ( Double(round(100*(site1?.lat)!)/100) == Double(round(100*site2[j].lat)/100)){
+                 return j
+            }
         
-        return newTripObject
+            }
+        return -1
     }
+    
 
     // func to get API object data
     func getTripData(objects: [TripObject]) {
@@ -65,12 +72,15 @@ class TimelineVC: UIViewController, TripJsonDelegate {
         
         
         // attach the correct image to the sites
+        var count = 0
         for i in 0..<objects.count{
             for j in 0..<sites2.count{
+               
                // compare the objects to all the sites and if there is a match create card and add a picture from the list of all sites
-                if(Double(round(100*objects[i].endPoint!)/100) == Double(round(100*allSites[j].lat)/100)){
-                    timeFrames.append(TimeFrame(text:"Travel distance is " + objects[i].distanceText! + " Travel time is " + objects[i].timeText!, date: allSites[j].title, image: UIImage(named:allSites[j].imageName!)))
+                if(Double(round(100*objects[i].endPoint!)/100) == Double(round(100*allSites[compareSites(sites2[j], site2: allSites)].lat)/100)){
+                    timeFrames.append(TimeFrame(text:"Travel distance is " + objects[i].distanceText! + " Travel time is " + objects[i].timeText!, date: allSites[compareSites(sites2[j], site2: allSites)].title, image: UIImage(named:allSites[compareSites(sites2[j], site2: allSites)].imageName!)))
                 }
+                
             }
         
         }

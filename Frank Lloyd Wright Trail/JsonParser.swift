@@ -247,5 +247,6 @@ class JsonParser: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
                                         }
                                         
         }).resume()
-        return listOfTrips }
+        return listOfTrips
+    }
 }
