@@ -20,7 +20,9 @@ class TimelineVC: UIViewController, TripJsonDelegate {
     var allSites = Site.getSites()
     var sites2 = [Site?]()
     var sharedTripObject: [TripObject] = []
-    
+    var stops = TripModel.shared.stops
+    var startTime = TripModel.shared.startTime
+    var endTime = TripModel.shared.endTime
     var newStops = [Stop]()
     var newTripObject = [TripObject]()
     
@@ -65,29 +67,43 @@ class TimelineVC: UIViewController, TripJsonDelegate {
     func getTripData(objects: [TripObject]) {
         var timeFrames: [TimeFrame] = []
         
-            for i in 0..<objects.count{
-            
-                self.newTripObject.append(objects[i])
+        var objectTime = 0.0
+        var tripTime = endTime?.timeIntervalSinceDate(startTime!)
+
+        for b in 0..<objects.count {
+            objectTime = +objects[b].timeValue!
+            if(objectTime < tripTime){
+                newTripObject.append(objects[b])
+                
+                
             }
-        
+        }
         
         // attach the correct image to the sites
         var count = 0
-        for i in 0..<objects.count{
+        
+        if(newTripObject.count < 0) {
+            timeFrames.append(TimeFrame(text: "Home", date: "9:00am", image: nil))}
+        if (newTripObject.count == 0){
+            timeFrames.append(TimeFrame(text: "It's not possible to visit the sites with the times you entered", date: "Not enough time given", image: nil))
+        } else{
+        for i in 0..<newTripObject.count{
             for j in 0..<sites2.count{
-               
+              
                // compare the objects to all the sites and if there is a match create card and add a picture from the list of all sites
-                if(Double(round(100*objects[i].endPoint!)/100) == Double(round(100*allSites[compareSites(sites2[j], site2: allSites)].lat)/100)){
-                    timeFrames.append(TimeFrame(text:"Travel distance is " + objects[i].distanceText! + " Travel time is " + objects[i].timeText!, date: allSites[compareSites(sites2[j], site2: allSites)].title, image: UIImage(named:allSites[compareSites(sites2[j], site2: allSites)].imageName!)))
-                }
+                 if (Double(round(100*newTripObject[i].endPoint!)/100) == Double(round(100*allSites[compareSites(sites2[j], site2: allSites)].lat)/100)){
+                     //timeFrames.append(TimeFrame(text: "Drive time" , date: "9:00am", image: nil))
+                    timeFrames.append(TimeFrame(text:"Travel distance is " + newTripObject[i].distanceText! + "iles" + ". Travel time is " + objects[i].timeText! + ".", date: allSites[compareSites(sites2[j], site2: allSites)].title, image: UIImage(named:allSites[compareSites(sites2[j], site2: allSites)].imageName!)))
                 
+                }
             }
         
         }
-        
-       
+    }
+    
         
         timeline = TimelineView(bulletType: .Circle, timeFrames: timeFrames)
+        
         
         scrollView.addSubview(timeline)
         scrollView.addConstraints([
@@ -107,7 +123,6 @@ class TimelineVC: UIViewController, TripJsonDelegate {
     override func viewWillAppear(animated: Bool) {
         self.navigationItem.title = "Suggested Trip"
         let button = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(doneSelected))
-        
         self.navigationItem.rightBarButtonItem = button
     }
     

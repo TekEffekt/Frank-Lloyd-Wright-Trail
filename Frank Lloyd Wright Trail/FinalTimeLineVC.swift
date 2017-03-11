@@ -25,6 +25,7 @@ class FinalTimelineVC: UIViewController,TripJsonDelegate {
     var newStops = [Stop]()
     var newTripObject = [TripObject]()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -60,56 +61,55 @@ class FinalTimelineVC: UIViewController,TripJsonDelegate {
         return -1
     }
 
-    
+
     // func to get API object data
     func getTripData(objects: [TripObject]) {
         var timeFrames: [TimeFrame] = []
-        var tripTime = endTime?.timeIntervalSinceDate(startTime!)
         var timeObject = 0.0
         var timeStop = 0.0
-        var objectCounter = 0
-        //timeFrames.append(TimeFrame(text: Home, date: ))
+        var tripTime = endTime?.timeIntervalSinceDate(startTime!)
         
-        for i in 0..<stops.count {
-            if(stops[i] is MealStop || stops[i] is GenericStop) {
+        for a in 0..<stops.count {
+            if(stops[a] is MealStop || stops[a] is GenericStop) {
                 
-                timeStop = +(stops[i].endTime?.timeIntervalSinceDate(stops[i].startTime!))!
+                timeStop = +(stops[a].endTime?.timeIntervalSinceDate(stops[a].startTime!))!
             }
             
         }
-        for i in 0..<objects.count {
-            timeObject = +objects[i].timeValue!
+        for b in 0..<objects.count {
+            timeObject = +objects[b].timeValue!
         }
         
         
         
-        for i in 0..<stops.count{
-                
-                var newStopTime = 0.0
+        var newStopTime = 0.0
+        for c in 0..<stops.count{
+            
                 
                 if(newStopTime < tripTime){
-                    if(stops[i] is SiteStop){
+                    if(stops[c] is SiteStop){
                         if(newStopTime < timeObject){
-                        newStops.append(stops[i])
+                        self.newStops.append(stops[c])
                         newStopTime = +(timeObject/Double(objects.count))
                         }
                     }
         
-                        if(stops[i] is MealStop || stops[i] is GenericStop) {
-                            newStops.append(stops[i])
-                            newStopTime = +(newStops[i].startTime?.timeIntervalSinceDate(newStops[i].endTime!))!
+                        if(stops[c] is MealStop || stops[c] is GenericStop) {
+                            self.newStops.append(stops[c])
+                            newStopTime = +(newStops[c].startTime?.timeIntervalSinceDate(newStops[c].endTime!))!
                         }
                 }
         }
-        for i in 0..<newStops.count {
-            for x in 0..<sites!.count{
-                for y in 0..<objects.count{
-                if(newStops[i] is SiteStop){
-                    if(newStops[i].name == sites![x].name) {
-                        var num2 = Double(round(100*sites![x].site.lat)/100)
-                        var num1 = Double(round(100*objects[y].endPoint!)/100)
+        
+        for d in 0..<newStops.count {
+            for e in 0..<sites!.count{
+                for f in 0..<objects.count{
+                if(newStops[d] is SiteStop){
+                    if(newStops[d].name == sites![e].name) {
+                        var num2 = Double(round(100*sites![e].site.lat)/100)
+                        var num1 = Double(round(100*objects[f].endPoint!)/100)
                         if(num1 == num2){
-                        newTripObject.append(objects[y])                       
+                        self.newTripObject.append(objects[f])
                         }
                     
                     }
@@ -120,28 +120,19 @@ class FinalTimelineVC: UIViewController,TripJsonDelegate {
             
         }
         
-        var counter = 0
-        //for x in 0..<sites2.count {
-        
-        for i in 0..<newTripObject.count{
-            for j in 0..<newStops.count{
-                 if(newStops[j] is SiteStop){
-                    if(Double(round(100*newTripObject[i].endPoint!)/100) == Double(round(100*allSites[compareSites(newStops[j], site2: allSites)].lat)/100)){
-                        timeFrames.append(TimeFrame(text:"Travel distance is " + newTripObject[i].distanceText! + " Travel time is " + newTripObject[counter].timeText!, date: allSites[compareSites(newStops[j], site2: allSites)].title, image: UIImage(named:allSites[compareSites(newStops[j], site2: allSites)].imageName!)))
-                    }
+        for x in 0..<newTripObject.count{
+            for y in 0..<newStops.count{
                 
-                
+                // compare the objects to all the sites and if there is a match create card and add a picture from the list of all sites
+                if(Double(round(100*newTripObject[x].endPoint!)/100) == Double(round(100*allSites[compareSites(newStops[y], site2: allSites)].lat)/100)) {
+                   
+                    timeFrames.append(TimeFrame(text:"Travel distance is " + newTripObject[x].distanceText! + " Travel time is " + newTripObject[x].timeText!, date: allSites[compareSites(newStops[y], site2: allSites)].title, image: UIImage(named:allSites[compareSites(newStops[y], site2: allSites)].imageName!)))
                 }
-//                if(Double(round(100*newTripObject[i].endPoint!)/100) == Double(round(100*allSites[j].lat)/100)){
-//                    timeFrames.append(TimeFrame(text:"Travel distance is " + newTripObject[i].distanceText! + " Travel time is " + newTripObject[i].timeText!, date: allSites[j].title, image: UIImage(named:allSites[j].imageName!)))
-//                    }
                 
-                    
             }
             
         }
-            
-        //}
+
         timeline = TimelineView(bulletType: .Circle, timeFrames: timeFrames)
         
         scrollView.addSubview(timeline)
