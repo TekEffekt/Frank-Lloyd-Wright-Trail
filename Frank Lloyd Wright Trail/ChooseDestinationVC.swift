@@ -48,9 +48,7 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
     }
     
     func doneSelected(sender: UIBarButtonItem){
-        
         self.navigationController?.popViewControllerAnimated(true)
-        print("Done button pressed")
     }
 
     override func didReceiveMemoryWarning() {

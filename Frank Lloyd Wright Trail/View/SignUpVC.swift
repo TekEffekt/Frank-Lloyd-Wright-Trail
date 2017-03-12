@@ -12,7 +12,8 @@ class SignUpVC: UITableViewController {
     var cellTapped = false
     var currentRow = -1
     var currentSection = -1
-    
+    var dateTag = 0
+    var sites = TripModel.shared.getLocations()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,6 +24,8 @@ class SignUpVC: UITableViewController {
         
         self.navigationItem.title = "Signup"
         self.navigationItem.rightBarButtonItem = button
+       
+
     }
     
     func doneSelected(sender: UIBarButtonItem){
@@ -65,7 +68,7 @@ class SignUpVC: UITableViewController {
             case 2:
                 let cell = tableView.dequeueReusableCellWithIdentifier("label", forIndexPath: indexPath) as! LabelCell
                 
-                cell.label.text! = "Date"
+                cell.label.text! = "Tour Date"
                 cell.label.textColor = UIColor.lightGrayColor()
                 cell.accessoryType = .DisclosureIndicator
                 
@@ -73,12 +76,13 @@ class SignUpVC: UITableViewController {
             case 3:
                 let cell = tableView.dequeueReusableCellWithIdentifier("datepick", forIndexPath: indexPath) as! DatePickCell
                 cell.datePicker.datePickerMode = .Date
-                
+                cell.datePicker.tag = indexPath.section
+                addDateToLocation(cell.datePicker.tag, picker: cell.datePicker)
                 return cell
             case 4:
                 let cell = tableView.dequeueReusableCellWithIdentifier("label", forIndexPath: indexPath) as! LabelCell
                 
-                cell.label.text! = "Time"
+                cell.label.text! = "Tour Time"
                 cell.label.textColor = UIColor.lightGrayColor()
                 cell.accessoryType = .DisclosureIndicator
         
@@ -86,6 +90,8 @@ class SignUpVC: UITableViewController {
             case 5:
                 let cell = tableView.dequeueReusableCellWithIdentifier("datepick", forIndexPath: indexPath) as! DatePickCell
                 cell.datePicker.datePickerMode = .Time
+                cell.datePicker.tag = indexPath.section
+                addDateToLocation(cell.datePicker.tag, picker: cell.datePicker)
                 return cell
                 
             default:
@@ -140,7 +146,34 @@ class SignUpVC: UITableViewController {
          return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
     }
     
+    @IBAction func dateChanged(picker: UIDatePicker){
+        let tag = picker.tag
+        addDateToLocation(tag, picker: picker)
+    }
 
+    
+    func addDateToLocation(tag: Int, picker: UIDatePicker){
+        let stops = TripModel.shared.stops
+        if let locationName = sites?[tag].name{
+            if picker.datePickerMode == .Date{
+                for i in 0..<stops.count{
+                    if locationName == stops[i].name{
+                        TripModel.shared.stops[i].date = picker.date
+                    }
+                }
+                
+            }
+            else{
+                for i in 0..<stops.count{
+                    if locationName == stops[i].name{
+                        TripModel.shared.stops[i].startTime = picker.date
+                    }
+                }
+                
+            }
+        }
+    }
+    
     //toggle function
     private func togglePicker(){
         //pickerVisible = !pickerVisible

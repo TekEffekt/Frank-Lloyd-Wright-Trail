@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CreateTripVC : UITableViewController {
+class CreateTripVC : FormViewController {
     
     let section = ["TRIP", "STOPS", "TRIP START", "TRIP END"]
     var labels = [["TRIP"], ["Add Stop"], ["Start Date", " ", "Start Time"], ["End Date", " ", "End Time"]]
@@ -17,7 +17,6 @@ class CreateTripVC : UITableViewController {
     var cellTapped = false
     var currentRow = -1
     var currentSection = -1
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,37 +31,10 @@ class CreateTripVC : UITableViewController {
     }
     
     func nextSelected(sender: UIBarButtonItem){
-        
-        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-        if let cell = self.tableView.cellForRowAtIndexPath(indexPath) as? NameCell{
-            if let name = cell.stopName.text where !name.isEmpty{
-                TripModel.shared.tripName = name
-            }
-        }
-        let trip = TripModel.shared
-        
-        if trip.tripName == nil{
-            print("No trip name")
-            return
-        }
-        else if trip.startDate == nil{
-            print("No start date")
-            return
-        }
-        else if trip.startTime == nil{
-            print("No start time")
-            return
-        }
-        else if trip.endDate == nil{
-            print("No end date")
-            return
-        }
-        else if trip.endTime == nil{
-            print ("No end time")
-            return
-        }
-        else{
+        if TripModel.shared.getLocationCount()>0{
         performSegueWithIdentifier("suggestedTL", sender: nil)
+        }else{
+            print("No Location Stops Added")
         }
     }
     
@@ -81,16 +53,12 @@ class CreateTripVC : UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
             return 1
-        }
-        else if section == 1{
-            print("NumRowsInSection: \(TripModel.shared.stops.count + 1)")
+        }else if section == 1 {
             return TripModel.shared.stops.count + 1
-        }
-        else {
+        }else {
             return 4
         }
     }
-    
     
     
     //set header titles
@@ -107,12 +75,12 @@ class CreateTripVC : UITableViewController {
         //name cell
         if indexPath.section == 0{
             let cell = tableView.dequeueReusableCellWithIdentifier("nameCell") as! NameCell
+            cell.stopName.font = UIFont.systemFontOfSize(17)
             cell.stopName.placeholder = "Trip Name"
             return cell
         }
         //add stop cell
         else if indexPath.section == 1 {
-             print("NumRowsCellFor: \(TripModel.shared.stops.count + 1)")
             let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! AddStopCell
             //add stop cell
             if indexPath.row == TripModel.shared.stops.count{
@@ -137,21 +105,25 @@ class CreateTripVC : UITableViewController {
                 let cell = tableView.dequeueReusableCellWithIdentifier("dateCell") as! DatePickCell
                 self.dateHelper(cell, indexPath: indexPath)
                 cell.datePicker.tag = 21
+                TripModel.shared.startDate = cell.datePicker.date
                 return cell
             case (2,3):
                 let cell = tableView.dequeueReusableCellWithIdentifier("dateCell") as! DatePickCell
                 self.dateHelper(cell, indexPath: indexPath)
                 cell.datePicker.tag = 23
+                TripModel.shared.startTime = cell.datePicker.date
                 return cell
             case (3,1):
                 let cell = tableView.dequeueReusableCellWithIdentifier("dateCell") as! DatePickCell
                 self.dateHelper(cell, indexPath: indexPath)
                 cell.datePicker.tag = 31
+                TripModel.shared.endDate = cell.datePicker.date
                 return cell
             case (3,3):
                 let cell = tableView.dequeueReusableCellWithIdentifier("dateCell") as! DatePickCell
                 self.dateHelper(cell, indexPath: indexPath)
                 cell.datePicker.tag = 33
+                TripModel.shared.endTime = cell.datePicker.date
                 return cell
             default:
                 break
@@ -214,10 +186,9 @@ class CreateTripVC : UITableViewController {
             if indexPath.row == currentRow && indexPath.section == currentSection && cellTapped{
                 return 75
             }
-            else if (indexPath.row == 1 || indexPath.row == 3){
+            else if (indexPath.row == 1 || indexPath.row == 3 && indexPath.section != 1){
                 return 0
             }
-            
         }
         
         return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
@@ -233,7 +204,6 @@ class CreateTripVC : UITableViewController {
         else {
             cell.datePicker.datePickerMode = UIDatePickerMode.Time
         }
-        
     }
     
     
@@ -324,28 +294,29 @@ class CreateTripVC : UITableViewController {
         self.presentViewController(actionSheetController, animated: true, completion: nil)
     }
     
-    //datepicker changed 
-    @IBAction func dateChanged(sender: UIDatePicker) {
-        switch sender.tag {
+    @IBAction func dateChanged(picker: UIDatePicker){
+        switch picker.tag{
         case 21:
-            TripModel.shared.startDate = sender.date
-            print("Start date : \(TripModel.shared.startDate)")
+            TripModel.shared.startDate = picker.date
         case 23:
-            TripModel.shared.startTime = sender.date
-            print("Start time : \(TripModel.shared.startTime)")
+            TripModel.shared.startTime = picker.date
         case 31:
-            TripModel.shared.endDate = sender.date
-            print("End date : \(TripModel.shared.endDate)")
+            TripModel.shared.endDate = picker.date
         case 33:
-            TripModel.shared.endTime = sender.date
-            print("End time : \(TripModel.shared.endTime)")
+            TripModel.shared.endTime = picker.date
         default:
             break
         }
-        
     }
     
-
+    
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        if let name = textField.text {
+        TripModel.shared.tripName = name
+        }
+    }
+    
 }
 
 enum StopActions {
