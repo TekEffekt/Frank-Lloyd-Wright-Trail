@@ -103,7 +103,7 @@ class AddStopVC: FormViewController{
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if currentRow != indexPath.row{
+        if currentRow != indexPath.row + 1{
         cellTapped = true
             currentRow = indexPath.row + 1
             currentSection = indexPath.section

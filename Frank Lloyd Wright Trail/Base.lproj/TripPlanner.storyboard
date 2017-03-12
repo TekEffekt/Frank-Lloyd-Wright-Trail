@@ -248,6 +248,9 @@
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="FCo-FK-Shq" id="5IF-Tt-TJS"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                     <constraints>

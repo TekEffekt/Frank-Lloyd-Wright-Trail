@@ -25,8 +25,8 @@ class FormViewController: UITableViewController, UITextFieldDelegate {
     }
     
     private func subscribeToKeyBoardNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "textFieldPressed:", name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "textFieldHiding:", name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FormViewController.textFieldPressed(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FormViewController.textFieldHiding(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
     
     
