@@ -69,6 +69,7 @@ class FinalTimelineVC: UIViewController,TripJsonDelegate {
         var timeStop = 0.0
         var tripTime = endTime?.timeIntervalSinceDate(startTime!)
         
+        if(objects.count != 0 && newTripObject.count == 0){
         for a in 0..<stops.count {
             if(stops[a] is MealStop || stops[a] is GenericStop) {
                 
@@ -132,6 +133,7 @@ class FinalTimelineVC: UIViewController,TripJsonDelegate {
             }
             
         }
+    }
 
         timeline = TimelineView(bulletType: .Circle, timeFrames: timeFrames)
         

@@ -70,6 +70,7 @@ class TimelineVC: UIViewController, TripJsonDelegate {
         var objectTime = 0.0
         var tripTime = endTime?.timeIntervalSinceDate(startTime!)
 
+        if(objects.count != 0 && newTripObject.count == 0){
         for b in 0..<objects.count {
             objectTime = +objects[b].timeValue!
             if(objectTime < tripTime){
@@ -93,14 +94,14 @@ class TimelineVC: UIViewController, TripJsonDelegate {
                // compare the objects to all the sites and if there is a match create card and add a picture from the list of all sites
                  if (Double(round(100*newTripObject[i].endPoint!)/100) == Double(round(100*allSites[compareSites(sites2[j], site2: allSites)].lat)/100)){
                      //timeFrames.append(TimeFrame(text: "Drive time" , date: "9:00am", image: nil))
-                    timeFrames.append(TimeFrame(text:"Travel distance is " + newTripObject[i].distanceText! + "iles" + ". Travel time is " + objects[i].timeText! + ".", date: allSites[compareSites(sites2[j], site2: allSites)].title, image: UIImage(named:allSites[compareSites(sites2[j], site2: allSites)].imageName!)))
+                    timeFrames.append(TimeFrame(text:"Travel distance is " + newTripObject[i].distanceText! + "iles" + ". Travel time is " + newTripObject[i].timeText! + ".", date: allSites[compareSites(sites2[j], site2: allSites)].title, image: UIImage(named:allSites[compareSites(sites2[j], site2: allSites)].imageName!)))
                 
                 }
             }
         
         }
     }
-    
+        }
         
         timeline = TimelineView(bulletType: .Circle, timeFrames: timeFrames)
         
