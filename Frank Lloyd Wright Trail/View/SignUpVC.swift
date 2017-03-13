@@ -12,6 +12,8 @@ class SignUpVC: UITableViewController {
     var cellTapped = false
     var currentRow = -1
     var currentSection = -1
+    var dateTag = 0
+    var sites = TripModel.shared.getLocations()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,11 +23,24 @@ class SignUpVC: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         let button = UIBarButtonItem(title: "Confirm", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(doneSelected))
         
-        self.navigationItem.title = "Signup"
+        self.navigationItem.title = "Tours"
         self.navigationItem.rightBarButtonItem = button
+       
+
     }
     
     func doneSelected(sender: UIBarButtonItem){
+        for i in 0..<TripModel.shared.stops.count{
+            if TripModel.shared.stops[i].date == nil {
+                TripModel.shared.stops[i].date = NSDate()
+            }
+            if TripModel.shared.stops[i].startTime == nil {
+                TripModel.shared.stops[i].startTime = NSDate()
+            }
+            if TripModel.shared.stops[i].endTime == nil {
+                TripModel.shared.stops[i].endTime = NSDate()
+            }
+        }
         performSegueWithIdentifier("segueToFinal", sender: nil)
     }
 
@@ -65,7 +80,7 @@ class SignUpVC: UITableViewController {
             case 2:
                 let cell = tableView.dequeueReusableCellWithIdentifier("label", forIndexPath: indexPath) as! LabelCell
                 
-                cell.label.text! = "Date"
+                cell.label.text! = "Tour Date"
                 cell.label.textColor = UIColor.lightGrayColor()
                 cell.accessoryType = .DisclosureIndicator
                 
@@ -73,12 +88,15 @@ class SignUpVC: UITableViewController {
             case 3:
                 let cell = tableView.dequeueReusableCellWithIdentifier("datepick", forIndexPath: indexPath) as! DatePickCell
                 cell.datePicker.datePickerMode = .Date
-                
+                cell.datePicker.tag = indexPath.section
+                if let date = sites[indexPath.section].date{
+                cell.datePicker.date = date
+                }
                 return cell
             case 4:
                 let cell = tableView.dequeueReusableCellWithIdentifier("label", forIndexPath: indexPath) as! LabelCell
                 
-                cell.label.text! = "Time"
+                cell.label.text! = "Tour Time"
                 cell.label.textColor = UIColor.lightGrayColor()
                 cell.accessoryType = .DisclosureIndicator
         
@@ -86,6 +104,10 @@ class SignUpVC: UITableViewController {
             case 5:
                 let cell = tableView.dequeueReusableCellWithIdentifier("datepick", forIndexPath: indexPath) as! DatePickCell
                 cell.datePicker.datePickerMode = .Time
+                cell.datePicker.tag = indexPath.section
+                if let time = sites[indexPath.section].startTime{
+                    cell.datePicker.date = time
+                }
                 return cell
                 
             default:
@@ -99,7 +121,7 @@ class SignUpVC: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        if currentRow != indexPath.row{
+        if currentRow != indexPath.row + 1{
             cellTapped = true
             currentRow = indexPath.row + 1
             currentSection = indexPath.section
@@ -140,7 +162,37 @@ class SignUpVC: UITableViewController {
          return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
     }
     
+    @IBAction func dateChanged(picker: UIDatePicker){
+        let tag = picker.tag
+        addDateToLocation(tag, picker: picker)
+    }
 
+    
+    func addDateToLocation(tag: Int, picker: UIDatePicker){
+        let stops = TripModel.shared.stops
+        if let locationName = sites?[tag].name{
+            if picker.datePickerMode == .Date{
+                for i in 0..<stops.count{
+                    if locationName == stops[i].name{
+                        TripModel.shared.stops[i].date = picker.date
+                        sites = TripModel.shared.getLocations()
+                    }
+                }
+                
+            }
+            else{
+                for i in 0..<stops.count{
+                    if locationName == stops[i].name{
+                        TripModel.shared.stops[i].startTime = picker.date
+                        sites = TripModel.shared.getLocations()
+                    }
+                }
+                
+            }
+        }
+    }
+
+    
     //toggle function
     private func togglePicker(){
         //pickerVisible = !pickerVisible

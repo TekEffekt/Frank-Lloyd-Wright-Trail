@@ -8,13 +8,14 @@
 
 import UIKit
 
-class AddStopVC: UITableViewController, UIPickerViewDelegate{
+class AddStopVC: FormViewController{
     var cellTapped = false
     var currentRow = -1
     var currentSection = -1
     var type: StopActions?
     var genStop: GenericStop?
     var mealStop: MealStop?
+    var stop: Stop?
     
     
     
@@ -31,7 +32,7 @@ class AddStopVC: UITableViewController, UIPickerViewDelegate{
         // self.navigationItem.rightBarButtonItem
     }
     override func viewWillAppear(animated: Bool) {
-        self.navigationItem.title = "Add Stops"
+        self.navigationItem.title = "Add Stop"
         
         let button = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(doneSelected))
         
@@ -102,7 +103,7 @@ class AddStopVC: UITableViewController, UIPickerViewDelegate{
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if currentRow != indexPath.row{
+        if currentRow != indexPath.row + 1{
         cellTapped = true
             currentRow = indexPath.row + 1
             currentSection = indexPath.section
@@ -121,30 +122,49 @@ class AddStopVC: UITableViewController, UIPickerViewDelegate{
     
     func doneSelected(sender: UIBarButtonItem){
         
-        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+        var indexPath = NSIndexPath(forRow: 0, inSection: 0)
         let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! NameCell
-        if let name = cell.stopName.text{
+        
+        if let name = cell.stopName.text where !name.isEmpty{
             
             if type == .meal{
                 mealStop?.name = name
                 TripModel.shared.stops.append(mealStop!)
-                print("Meal Name = \(mealStop?.name)")
-                print("Meal Date = \(mealStop?.date)")
-                print("Meal Start Time = \(mealStop?.startTime)")
-                print("Meal End Time = \(mealStop?.endTime)")
+                stop = mealStop
             }
             else {
                 genStop?.name = name
                 TripModel.shared.stops.append(genStop!)
-                print("Gen Name = \(genStop?.name)")
-                print("Gen Date = \(genStop?.date)")
-                print("Gen Start Time = \(genStop?.startTime)")
-                print("Gen End Time = \(genStop?.endTime)")
+                stop = genStop
             }
             
+        }else{
+            print("no stop name")
+            return
         }
         
+        
+        indexPath = NSIndexPath(forRow: 1, inSection: 1)
+        let dateCell = tableView.cellForRowAtIndexPath(indexPath) as! DatePickCell
+        indexPath = NSIndexPath(forRow: 1, inSection: 2)
+        let startTimeCell = tableView.cellForRowAtIndexPath(indexPath) as! DatePickCell
+        indexPath = NSIndexPath(forRow: 3, inSection: 2)
+        let endTimeCell = tableView.cellForRowAtIndexPath(indexPath) as! DatePickCell
+        
+        
+        if type == .meal{
+            mealStop?.date = dateCell.datePicker.date
+            mealStop?.startTime = startTimeCell.datePicker.date
+            mealStop?.endTime = endTimeCell.datePicker.date
+        }else{
+            genStop?.date = dateCell.datePicker.date
+            genStop?.startTime = dateCell.datePicker.date
+            genStop?.endTime = endTimeCell.datePicker.date
+        }
+       
+        
         self.navigationController?.popViewControllerAnimated(true)
+        
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -175,39 +195,5 @@ class AddStopVC: UITableViewController, UIPickerViewDelegate{
         }
         return nil
     }
-    
-    
-    // datechanged function
-    @IBAction func dateChanged(sender: UIDatePicker) {
-        if type == .meal{
-            switch sender.tag {
-                case 11:
-                mealStop!.date = sender.date
-                case 21:
-                mealStop!.startTime = sender.date
-                case 23:
-                mealStop!.endTime = sender.date
-                default:
-                break
-            }
-            
-        }
-        else{
-            switch sender.tag {
-            case 11:
-                genStop!.date = sender.date
-            case 21:
-                genStop!.startTime = sender.date
-            case 23:
-                genStop!.endTime = sender.date
-            default:
-                break
-            }
-        }
-        
-        
-    }
-
- 
 
 }

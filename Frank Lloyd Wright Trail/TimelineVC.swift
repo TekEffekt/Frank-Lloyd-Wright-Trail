@@ -128,6 +128,7 @@ class TimelineVC: UIViewController, TripJsonDelegate {
     }
     
     func doneSelected(sender: UIBarButtonItem){
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
         performSegueWithIdentifier("signup", sender: nil)
     }
     
