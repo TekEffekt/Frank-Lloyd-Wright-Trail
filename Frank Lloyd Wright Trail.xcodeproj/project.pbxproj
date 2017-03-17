@@ -22,6 +22,7 @@
 		21492FD31E5A3F8E005660F3 /* GenericStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21492FD21E5A3F8E005660F3 /* GenericStop.swift */; };
 		21492FD71E5A46E8005660F3 /* AddStopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21492FD61E5A46E8005660F3 /* AddStopVC.swift */; };
 		21492FDB1E5A4C81005660F3 /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21492FDA1E5A4C81005660F3 /* NameCell.swift */; };
+		217164C71E7C36CE005EF679 /* CombineDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217164C61E7C36CE005EF679 /* CombineDates.swift */; };
 		217503521E4BBB0300EC9693 /* UWParkside.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 217503511E4BBB0300EC9693 /* UWParkside.gpx */; };
 		218502C01E3EC86400CAFE6D /* TripModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218502BF1E3EC86400CAFE6D /* TripModel.swift */; };
 		218502C41E3EF84700CAFE6D /* TimelineCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218502C31E3EF84700CAFE6D /* TimelineCardModel.swift */; };
@@ -75,7 +76,7 @@
 		213757061E56412000C21415 /* AddStopCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStopCell.swift; sourceTree = "<group>"; };
 		2137570E1E56A0F700C21415 /* DatePickCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickCell.swift; sourceTree = "<group>"; };
 		213757101E56A3DF00C21415 /* LabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
-		213FC9141E67B88400BBEFE4 /* UIColorExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExt.swift; sourceTree = "<group>"; };
+		213FC9141E67B88400BBEFE4 /* UIColorExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColorExt.swift; path = View/UIColorExt.swift; sourceTree = "<group>"; };
 		213FC9D81E73573C00BBEFE4 /* FormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
 		21492FCC1E5A3DF2005660F3 /* Stop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stop.swift; path = Model/Stop.swift; sourceTree = "<group>"; };
 		21492FCE1E5A3EF9005660F3 /* SiteStop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SiteStop.swift; path = Model/SiteStop.swift; sourceTree = "<group>"; };
@@ -83,6 +84,7 @@
 		21492FD21E5A3F8E005660F3 /* GenericStop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericStop.swift; sourceTree = "<group>"; };
 		21492FD61E5A46E8005660F3 /* AddStopVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStopVC.swift; sourceTree = "<group>"; };
 		21492FDA1E5A4C81005660F3 /* NameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameCell.swift; sourceTree = "<group>"; };
+		217164C61E7C36CE005EF679 /* CombineDates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombineDates.swift; sourceTree = "<group>"; };
 		217503511E4BBB0300EC9693 /* UWParkside.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UWParkside.gpx; sourceTree = "<group>"; };
 		218502BF1E3EC86400CAFE6D /* TripModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TripModel.swift; path = Model/TripModel.swift; sourceTree = "<group>"; };
 		218502C31E3EF84700CAFE6D /* TimelineCardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineCardModel.swift; sourceTree = "<group>"; };
@@ -151,6 +153,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		217164C81E7C36EC005EF679 /* Helper Classes */ = {
+			isa = PBXGroup;
+			children = (
+				213FC9141E67B88400BBEFE4 /* UIColorExt.swift */,
+				217164C61E7C36CE005EF679 /* CombineDates.swift */,
+			);
+			name = "Helper Classes";
+			sourceTree = "<group>";
+		};
 		B6109D8D1D528DDD002A6D77 = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +185,7 @@
 			children = (
 				847AE4BD1DA723450056B6D7 /* locations.plist */,
 				FAB740D21DDEAF7900BA859F /* Timeline-Bridging-Header.h */,
+				217164C81E7C36EC005EF679 /* Helper Classes */,
 				FAD304BC1D6F670C00D8CE2F /* App */,
 				FAD304BD1D6F672C00D8CE2F /* Model */,
 				FA5AB5AB1D7E6A9D005CFBD4 /* View */,
@@ -253,7 +265,6 @@
 				2137570E1E56A0F700C21415 /* DatePickCell.swift */,
 				213757101E56A3DF00C21415 /* LabelCell.swift */,
 				21492FDA1E5A4C81005660F3 /* NameCell.swift */,
-				213FC9141E67B88400BBEFE4 /* UIColorExt.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -479,6 +490,7 @@
 				21492FCD1E5A3DF2005660F3 /* Stop.swift in Sources */,
 				FAB740E01DDEB14A00BA859F /* JTSImageInfo.m in Sources */,
 				218502C01E3EC86400CAFE6D /* TripModel.swift in Sources */,
+				217164C71E7C36CE005EF679 /* CombineDates.swift in Sources */,
 				FA6143921D81FD6300E3A076 /* SiteSorter.swift in Sources */,
 				21492FDB1E5A4C81005660F3 /* NameCell.swift in Sources */,
 				FAD304BB1D6F66B500D8CE2F /* AppDelegate.swift in Sources */,

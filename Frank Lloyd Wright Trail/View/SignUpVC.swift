@@ -56,7 +56,7 @@ class SignUpVC: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 8
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -64,7 +64,7 @@ class SignUpVC: UITableViewController {
             switch indexPath.row {
             case 0:
                 let cell = tableView.dequeueReusableCellWithIdentifier("label", forIndexPath: indexPath) as! LabelCell
-                
+
                 cell.label.text! = sites[indexPath.section].name
                 cell.label.adjustsFontSizeToFitWidth = true
                 
@@ -96,7 +96,7 @@ class SignUpVC: UITableViewController {
             case 4:
                 let cell = tableView.dequeueReusableCellWithIdentifier("label", forIndexPath: indexPath) as! LabelCell
                 
-                cell.label.text! = "Tour Time"
+                cell.label.text! = "Tour Start"
                 cell.label.textColor = UIColor.lightGrayColor()
                 cell.accessoryType = .DisclosureIndicator
         
@@ -104,8 +104,24 @@ class SignUpVC: UITableViewController {
             case 5:
                 let cell = tableView.dequeueReusableCellWithIdentifier("datepick", forIndexPath: indexPath) as! DatePickCell
                 cell.datePicker.datePickerMode = .Time
-                cell.datePicker.tag = indexPath.section
+                cell.datePicker.tag = indexPath.section + 50
                 if let time = sites[indexPath.section].startTime{
+                    cell.datePicker.date = time
+                }
+                return cell
+            case 6:
+                let cell = tableView.dequeueReusableCellWithIdentifier("label", forIndexPath: indexPath) as! LabelCell
+                
+                cell.label.text! = "Tour End"
+                cell.label.textColor = UIColor.lightGrayColor()
+                cell.accessoryType = .DisclosureIndicator
+                
+                return cell
+            case 7:
+                let cell = tableView.dequeueReusableCellWithIdentifier("datepick", forIndexPath: indexPath) as! DatePickCell
+                cell.datePicker.datePickerMode = .Time
+                cell.datePicker.tag = indexPath.section
+                if let time = sites[indexPath.section].endTime{
                     cell.datePicker.date = time
                 }
                 return cell
@@ -115,10 +131,9 @@ class SignUpVC: UITableViewController {
             }
             
         }
-         return UITableViewCell()
+      return UITableViewCell()
     }
  
-    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         if currentRow != indexPath.row + 1{
@@ -144,17 +159,17 @@ class SignUpVC: UITableViewController {
         tableView.beginUpdates()
         tableView.endUpdates()
         
-         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
     
-        if (indexPath.row == 3 || indexPath.row == 5){
+        if indexPath.row == 3 || indexPath.row == 5 || indexPath.row == 7{
         if indexPath.row == currentRow && indexPath.section == currentSection && cellTapped {
             return 75
         }
         
-        else if (indexPath.row == 3 || indexPath.row == 5){
+        else if indexPath.row == 3 || indexPath.row == 5 || indexPath.row == 7{
             return 0
         }
         }
@@ -163,24 +178,11 @@ class SignUpVC: UITableViewController {
     }
     
     @IBAction func dateChanged(picker: UIDatePicker){
-        let tag = picker.tag
-        addDateToLocation(tag, picker: picker)
-    }
-
-    
-    func addDateToLocation(tag: Int, picker: UIDatePicker){
         let stops = TripModel.shared.stops
-        if let locationName = sites?[tag].name{
-            if picker.datePickerMode == .Date{
-                for i in 0..<stops.count{
-                    if locationName == stops[i].name{
-                        TripModel.shared.stops[i].date = picker.date
-                        sites = TripModel.shared.getLocations()
-                    }
-                }
-                
-            }
-            else{
+        
+        if picker.datePickerMode == .Time && picker.tag > 50{
+            let tag = picker.tag - 50
+            if let locationName = sites?[tag].name{
                 for i in 0..<stops.count{
                     if locationName == stops[i].name{
                         TripModel.shared.stops[i].startTime = picker.date
@@ -189,10 +191,28 @@ class SignUpVC: UITableViewController {
                 }
                 
             }
+        }else if let locationName = sites?[picker.tag].name{
+            if picker.datePickerMode == .Date{
+                for i in 0..<stops.count{
+                    if locationName == stops[i].name{
+                        TripModel.shared.stops[i].date = picker.date
+                        sites = TripModel.shared.getLocations()
+                    }
+                }
+                
+            }else if picker.datePickerMode == .Time{
+                for i in 0..<stops.count{
+                    if locationName == stops[i].name{
+                        TripModel.shared.stops[i].endTime = picker.date
+                        sites = TripModel.shared.getLocations()
+                    }
+                }
+                
+            }
         }
+        
     }
 
-    
     //toggle function
     private func togglePicker(){
         //pickerVisible = !pickerVisible
