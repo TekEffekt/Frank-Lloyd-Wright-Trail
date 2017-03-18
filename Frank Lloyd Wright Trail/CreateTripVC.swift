@@ -320,8 +320,6 @@ class CreateTripVC : FormViewController {
     }
     
     func validate(){
-        
-        
         if TripModel.shared.startDate == nil{
             TripModel.shared.startDate = NSDate()
         }

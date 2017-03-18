@@ -32,6 +32,8 @@ class FinalTimelineVC: UIViewController,TripJsonDelegate {
         scrollView = UIScrollView(frame: view.bounds)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scrollView)
+        let button = UIBarButtonItem(title: "Save Trip", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(saveSelected))
+        self.navigationItem.rightBarButtonItem = button
         
         view.addConstraints([
             NSLayoutConstraint(item: scrollView, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 0),
@@ -47,6 +49,10 @@ class FinalTimelineVC: UIViewController,TripJsonDelegate {
         }
         json = JsonParser(withDelegate: self, locations: sites2)
         json.orderOfLocations(sites2)
+    }
+    
+    func saveSelected(){
+        navigationController?.popToRootViewControllerAnimated(true)
     }
     
     func compareSites(site1:Stop, site2: [Site]) -> Int {

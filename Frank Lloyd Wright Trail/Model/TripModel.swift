@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TripModel {
+struct TripModel{
     
     static var shared = TripModel()
     

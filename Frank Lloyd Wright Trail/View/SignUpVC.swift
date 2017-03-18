@@ -64,7 +64,8 @@ class SignUpVC: UITableViewController {
             switch indexPath.row {
             case 0:
                 let cell = tableView.dequeueReusableCellWithIdentifier("label", forIndexPath: indexPath) as! LabelCell
-
+                cell.label.textColor = UIColor.blackColor()
+                cell.accessoryType = .None
                 cell.label.text! = sites[indexPath.section].name
                 cell.label.adjustsFontSizeToFitWidth = true
                 

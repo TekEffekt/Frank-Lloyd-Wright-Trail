@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 class TripsVC : UITableViewController{
    
     override func viewDidLoad() {
@@ -19,6 +20,9 @@ class TripsVC : UITableViewController{
     }
     
     func addSelected(sender : UIBarButtonItem){
+        
+        
+        
         performSegueWithIdentifier("createTrip", sender: UIBarButtonItem())
     }
     

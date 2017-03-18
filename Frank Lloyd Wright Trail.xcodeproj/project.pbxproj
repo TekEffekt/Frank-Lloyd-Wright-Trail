@@ -23,6 +23,8 @@
 		21492FD71E5A46E8005660F3 /* AddStopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21492FD61E5A46E8005660F3 /* AddStopVC.swift */; };
 		21492FDB1E5A4C81005660F3 /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21492FDA1E5A4C81005660F3 /* NameCell.swift */; };
 		217164C71E7C36CE005EF679 /* CombineDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217164C61E7C36CE005EF679 /* CombineDates.swift */; };
+		217164CA1E7DB59B005EF679 /* RealmWrite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217164C91E7DB59B005EF679 /* RealmWrite.swift */; };
+		217164CC1E7DB5B4005EF679 /* RealmQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217164CB1E7DB5B4005EF679 /* RealmQuery.swift */; };
 		217503521E4BBB0300EC9693 /* UWParkside.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 217503511E4BBB0300EC9693 /* UWParkside.gpx */; };
 		218502C01E3EC86400CAFE6D /* TripModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218502BF1E3EC86400CAFE6D /* TripModel.swift */; };
 		218502C41E3EF84700CAFE6D /* TimelineCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218502C31E3EF84700CAFE6D /* TimelineCardModel.swift */; };
@@ -85,6 +87,8 @@
 		21492FD61E5A46E8005660F3 /* AddStopVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStopVC.swift; sourceTree = "<group>"; };
 		21492FDA1E5A4C81005660F3 /* NameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameCell.swift; sourceTree = "<group>"; };
 		217164C61E7C36CE005EF679 /* CombineDates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombineDates.swift; sourceTree = "<group>"; };
+		217164C91E7DB59B005EF679 /* RealmWrite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmWrite.swift; sourceTree = "<group>"; };
+		217164CB1E7DB5B4005EF679 /* RealmQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmQuery.swift; sourceTree = "<group>"; };
 		217503511E4BBB0300EC9693 /* UWParkside.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UWParkside.gpx; sourceTree = "<group>"; };
 		218502BF1E3EC86400CAFE6D /* TripModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TripModel.swift; path = Model/TripModel.swift; sourceTree = "<group>"; };
 		218502C31E3EF84700CAFE6D /* TimelineCardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineCardModel.swift; sourceTree = "<group>"; };
@@ -227,14 +231,14 @@
 		FA3829461DBAE739003A4BFA /* Trip Planner */ = {
 			isa = PBXGroup;
 			children = (
-				211EB2E41E5E6FAB00176C13 /* SignUpVC.swift */,
-				FA3829481DBAE7E3003A4BFA /* ChooseDestinationVC.swift */,
 				213757001E52D38A00C21415 /* TripsVC.swift */,
 				213757021E52D65000C21415 /* CreateTripVC.swift */,
-				FAB740E71DDEB21B00BA859F /* TimelineVC.swift */,
-				84EF3A551E44EE0E00A8B00A /* JsonParser.swift */,
 				21492FD61E5A46E8005660F3 /* AddStopVC.swift */,
+				FA3829481DBAE7E3003A4BFA /* ChooseDestinationVC.swift */,
+				FAB740E71DDEB21B00BA859F /* TimelineVC.swift */,
+				211EB2E41E5E6FAB00176C13 /* SignUpVC.swift */,
 				84CBA0351E67BB83004398B7 /* FinalTimeLineVC.swift */,
+				84EF3A551E44EE0E00A8B00A /* JsonParser.swift */,
 			);
 			name = "Trip Planner";
 			sourceTree = "<group>";
@@ -313,6 +317,8 @@
 				21492FCE1E5A3EF9005660F3 /* SiteStop.swift */,
 				21492FD01E5A3F51005660F3 /* MealStop.swift */,
 				21492FD21E5A3F8E005660F3 /* GenericStop.swift */,
+				217164C91E7DB59B005EF679 /* RealmWrite.swift */,
+				217164CB1E7DB5B4005EF679 /* RealmQuery.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -453,7 +459,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		F4768C6FB32BE8CD8E06CFF2 /* [CP] Embed Pods Frameworks */ = {
@@ -500,6 +506,7 @@
 				FAAF70CC1D77675B00515DBD /* CollectionViewController.swift in Sources */,
 				213757031E52D65000C21415 /* CreateTripVC.swift in Sources */,
 				218503001E4198D000CAFE6D /* Date+Comparable.swift in Sources */,
+				217164CC1E7DB5B4005EF679 /* RealmQuery.swift in Sources */,
 				21492FD71E5A46E8005660F3 /* AddStopVC.swift in Sources */,
 				FA38294B1DBAEB94003A4BFA /* DestinationCell.swift in Sources */,
 				84CBA0361E67BB83004398B7 /* FinalTimeLineVC.swift in Sources */,
@@ -512,6 +519,7 @@
 				FAB740E21DDEB14A00BA859F /* JTSSimpleImageDownloader.m in Sources */,
 				FA5AB5AF1D7E744D005CFBD4 /* Item.swift in Sources */,
 				847AE4B81DA720010056B6D7 /* ExamplePhoto.swift in Sources */,
+				217164CA1E7DB59B005EF679 /* RealmWrite.swift in Sources */,
 				21492FCF1E5A3EF9005660F3 /* SiteStop.swift in Sources */,
 				FAB740DF1DDEB14A00BA859F /* JTSAnimatedGIFUtility.m in Sources */,
 				B6DB3BBC1D7A100200FC737D /* Site.swift in Sources */,
