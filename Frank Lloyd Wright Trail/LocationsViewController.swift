@@ -31,7 +31,7 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
         //parser = JsonParser(withDelegate: self, locations: sites)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // setting up the delegate
         locationCollectionVc = childViewControllers.first as! CollectionViewController
@@ -40,7 +40,7 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
     
     
     // use this func to get data and set it
-    func getTripData(objects: [TripObject]) {
+    func getTripData(_ objects: [TripObject]) {
     
     }
     
@@ -53,13 +53,13 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
         }
     }
     
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let identifier = "pin"
         if let customAnnotation = annotation as? Pin {
             // How the pin itself is going to look
             let pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             //Shows title and detail button when user clicks on the pin
-            pin.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure) as UIView
+            pin.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView
             // Color of the pin
             pin.pinTintColor = customAnnotation.newPinColor()
             pin.animatesDrop = true
@@ -70,32 +70,32 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
     }
     
     // centers the map on a specific point
-    func centerMapOnLocation(location : CLLocation){
+    func centerMapOnLocation(_ location : CLLocation){
         let span = MKCoordinateSpanMake(2.0, 2.0)
         let region = MKCoordinateRegion(center: location.coordinate, span: span)
         mapView.setRegion(region, animated: true)
     }
     
     // when an annotation is selected map pans into that certain point
-    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         let pin = view.annotation
         let span = MKCoordinateSpanMake(0.5, 0.5)
         let region = MKCoordinateRegion(center: pin!.coordinate, span: span)
         mapView.setRegion(region, animated: true)
     }
     
-    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
-            self.performSegueWithIdentifier("details", sender: view)
+            self.performSegue(withIdentifier: "details", sender: view)
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //         Get the new view controller using segue.destinationViewController.
         
         if (segue.identifier == "details" ){
             // segue into DetailViewController and pass through the slected pin's MKPinAnnotaion
-            let blank = segue.destinationViewController as! DetailViewController
+            let blank = segue.destination as! DetailViewController
             blank.viaSegue = sender as! MKPinAnnotationView
         }
     }

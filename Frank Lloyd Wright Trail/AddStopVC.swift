@@ -31,10 +31,10 @@ class AddStopVC: FormViewController{
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem
     }
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = "Add Stop"
         
-        let button = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(doneSelected))
+        let button = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(doneSelected))
         
         self.navigationItem.rightBarButtonItem = button
     }
@@ -46,11 +46,11 @@ class AddStopVC: FormViewController{
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
             return 1
@@ -64,37 +64,37 @@ class AddStopVC: FormViewController{
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch (indexPath.section, indexPath.row) {
         case (0,0):
-            let cell = tableView.dequeueReusableCellWithIdentifier("name") as! NameCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "name") as! NameCell
             cell.stopName.placeholder = "Stop Name"
             return cell
         case (1,0):
-            let cell = tableView.dequeueReusableCellWithIdentifier("label") as! LabelCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "label") as! LabelCell
             cell.label.text! = "Date"
             return cell
         case (1,1):
-            let cell = tableView.dequeueReusableCellWithIdentifier("datePick") as! DatePickCell
-            cell.datePicker.datePickerMode = .Date
+            let cell = tableView.dequeueReusableCell(withIdentifier: "datePick") as! DatePickCell
+            cell.datePicker.datePickerMode = .date
             cell.datePicker.tag = 11
             return cell
         case (2,0):
-            let cell = tableView.dequeueReusableCellWithIdentifier("label") as! LabelCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "label") as! LabelCell
             cell.label.text! = "Start Time"
             return cell
         case (2,1):
-            let cell = tableView.dequeueReusableCellWithIdentifier("datePick") as! DatePickCell
-            cell.datePicker.datePickerMode = .Time
+            let cell = tableView.dequeueReusableCell(withIdentifier: "datePick") as! DatePickCell
+            cell.datePicker.datePickerMode = .time
             cell.datePicker.tag = 21
             return cell
         case (2,2):
-            let cell = tableView.dequeueReusableCellWithIdentifier("label") as! LabelCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "label") as! LabelCell
             cell.label.text! = "End Time"
             return cell
         case (2,3):
-            let cell = tableView.dequeueReusableCellWithIdentifier("datePick") as! DatePickCell
-            cell.datePicker.datePickerMode = .Time
+            let cell = tableView.dequeueReusableCell(withIdentifier: "datePick") as! DatePickCell
+            cell.datePicker.datePickerMode = .time
             cell.datePicker.tag = 23
             return cell
         default:
@@ -102,7 +102,7 @@ class AddStopVC: FormViewController{
         }
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if currentRow != indexPath.row + 1{
         cellTapped = true
             currentRow = indexPath.row + 1
@@ -117,15 +117,15 @@ class AddStopVC: FormViewController{
         tableView.beginUpdates()
         tableView.endUpdates()
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func doneSelected(sender: UIBarButtonItem){
+    func doneSelected(_ sender: UIBarButtonItem){
         
-        var indexPath = NSIndexPath(forRow: 0, inSection: 0)
-        let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! NameCell
+        var indexPath = IndexPath(row: 0, section: 0)
+        let cell = self.tableView.cellForRow(at: indexPath) as! NameCell
         
-        if let name = cell.stopName.text where !name.isEmpty{
+        if let name = cell.stopName.text, !name.isEmpty{
             
             if type == .meal{
                 mealStop?.name = name
@@ -144,12 +144,12 @@ class AddStopVC: FormViewController{
         }
         
         
-        indexPath = NSIndexPath(forRow: 1, inSection: 1)
-        let dateCell = tableView.cellForRowAtIndexPath(indexPath) as! DatePickCell
-        indexPath = NSIndexPath(forRow: 1, inSection: 2)
-        let startTimeCell = tableView.cellForRowAtIndexPath(indexPath) as! DatePickCell
-        indexPath = NSIndexPath(forRow: 3, inSection: 2)
-        let endTimeCell = tableView.cellForRowAtIndexPath(indexPath) as! DatePickCell
+        indexPath = IndexPath(row: 1, section: 1)
+        let dateCell = tableView.cellForRow(at: indexPath) as! DatePickCell
+        indexPath = IndexPath(row: 1, section: 2)
+        let startTimeCell = tableView.cellForRow(at: indexPath) as! DatePickCell
+        indexPath = IndexPath(row: 3, section: 2)
+        let endTimeCell = tableView.cellForRow(at: indexPath) as! DatePickCell
         
         
         if type == .meal{
@@ -163,11 +163,11 @@ class AddStopVC: FormViewController{
         }
        
         
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
         
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         
         if indexPath.section != 0 && (indexPath.row == 1 || indexPath.row == 3) {
@@ -181,10 +181,10 @@ class AddStopVC: FormViewController{
         }
         
     
-        return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+        return super.tableView(tableView, heightForRowAt: indexPath)
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if  section == 2 {
             if type == .meal {
                  return "TIME FOR MEAL"

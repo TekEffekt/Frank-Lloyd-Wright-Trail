@@ -7,6 +7,19 @@
 //
 
 import UIKit
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
 
 //TripJsonDelegate
 class FinalTimelineVC: UIViewController,TripJsonDelegate {
@@ -32,14 +45,14 @@ class FinalTimelineVC: UIViewController,TripJsonDelegate {
         scrollView = UIScrollView(frame: view.bounds)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scrollView)
-        let button = UIBarButtonItem(title: "Save Trip", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(saveSelected))
+        let button = UIBarButtonItem(title: "Save Trip", style: UIBarButtonItemStyle.plain, target: self, action: #selector(saveSelected))
         self.navigationItem.rightBarButtonItem = button
         
         view.addConstraints([
-            NSLayoutConstraint(item: scrollView, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: scrollView, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: 29),
-            NSLayoutConstraint(item: scrollView, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: scrollView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: 0)
+            NSLayoutConstraint(item: scrollView, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: scrollView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 29),
+            NSLayoutConstraint(item: scrollView, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: scrollView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0)
             ])
         
         for i in 0..<sites!.count {
@@ -52,10 +65,10 @@ class FinalTimelineVC: UIViewController,TripJsonDelegate {
     }
     
     func saveSelected(){
-        navigationController?.popToRootViewControllerAnimated(true)
+        navigationController?.popToRootViewController(animated: true)
     }
     
-    func compareSites(site1:Stop, site2: [Site]) -> Int {
+    func compareSites(_ site1:Stop, site2: [Site]) -> Int {
         
         
         for j in 0..<site2.count{
@@ -69,17 +82,17 @@ class FinalTimelineVC: UIViewController,TripJsonDelegate {
 
 
     // func to get API object data
-    func getTripData(objects: [TripObject]) {
+    func getTripData(_ objects: [TripObject]) {
         var timeFrames: [TimeFrame] = []
         var timeObject = 0.0
         var timeStop = 0.0
-        var tripTime = endTime?.timeIntervalSinceDate(startTime!)
+        var tripTime = endTime?.timeIntervalSince(startTime! as Date)
         
         if(objects.count != 0 && newTripObject.count == 0){
         for a in 0..<stops.count {
             if(stops[a] is MealStop || stops[a] is GenericStop) {
                 
-                timeStop = +(stops[a].endTime?.timeIntervalSinceDate(stops[a].startTime!))!
+                timeStop = +(stops[a].endTime?.timeIntervalSince(stops[a].startTime! as Date))!
             }
             
         }
@@ -103,7 +116,7 @@ class FinalTimelineVC: UIViewController,TripJsonDelegate {
         
                         if(stops[c] is MealStop || stops[c] is GenericStop) {
                             self.newStops.append(stops[c])
-                            newStopTime = +(newStops[c].startTime?.timeIntervalSinceDate(newStops[c].endTime!))!
+                            newStopTime = +(newStops[c].startTime?.timeIntervalSince(newStops[c].endTime! as Date))!
                         }
                 }
         }
@@ -141,23 +154,23 @@ class FinalTimelineVC: UIViewController,TripJsonDelegate {
         }
     }
 
-        timeline = TimelineView(bulletType: .Circle, timeFrames: timeFrames)
+        timeline = TimelineView(bulletType: .circle, timeFrames: timeFrames)
         
         scrollView.addSubview(timeline)
         scrollView.addConstraints([
-            NSLayoutConstraint(item: timeline, attribute: .Left, relatedBy: .Equal, toItem: scrollView, attribute: .Left, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: timeline, attribute: .Bottom, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Bottom, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: timeline, attribute: .Top, relatedBy: .Equal, toItem: scrollView, attribute: .Top, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: timeline, attribute: .Right, relatedBy: .Equal, toItem: scrollView, attribute: .Right, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: timeline, attribute: .left, relatedBy: .equal, toItem: scrollView, attribute: .left, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: timeline, attribute: .bottom, relatedBy: .lessThanOrEqual, toItem: scrollView, attribute: .bottom, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: timeline, attribute: .top, relatedBy: .equal, toItem: scrollView, attribute: .top, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: timeline, attribute: .right, relatedBy: .equal, toItem: scrollView, attribute: .right, multiplier: 1.0, constant: 0),
             
-            NSLayoutConstraint(item: timeline, attribute: .Width, relatedBy: .Equal, toItem: scrollView, attribute: .Width, multiplier: 1.0, constant: 0)
+            NSLayoutConstraint(item: timeline, attribute: .width, relatedBy: .equal, toItem: scrollView, attribute: .width, multiplier: 1.0, constant: 0)
             ])
         
-        view.sendSubviewToBack(scrollView)
+        view.sendSubview(toBack: scrollView)
     }
     
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = "Trip"
         //let button = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(doneSelected))
         
@@ -169,7 +182,7 @@ class FinalTimelineVC: UIViewController,TripJsonDelegate {
     //    }
     
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     

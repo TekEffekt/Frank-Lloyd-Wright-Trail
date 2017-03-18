@@ -10,13 +10,13 @@ import Foundation
 
 class CombineDates {
     
-    static func combineDateWithTime(date: NSDate, time: NSDate) -> NSDate?{
-        let calendar = NSCalendar.currentCalendar()
+    static func combineDateWithTime(_ date: Date, time: Date) -> Date?{
+        let calendar = Calendar.current
         
-        let dateComponents = calendar.components([.Year, .Month, .Day], fromDate: date)
-        let timeComponenets = calendar.components([.Hour, .Minute, .Second], fromDate: time)
+        let dateComponents = (calendar as NSCalendar).components([.year, .month, .day], from: date)
+        let timeComponenets = (calendar as NSCalendar).components([.hour, .minute, .second], from: time)
         
-        let mergedComponents = NSDateComponents()
+        var mergedComponents = DateComponents()
         mergedComponents.year = dateComponents.year
         mergedComponents.month = dateComponents.month
         mergedComponents.day = dateComponents.day
@@ -24,7 +24,7 @@ class CombineDates {
         mergedComponents.minute = timeComponenets.minute
         mergedComponents.second = timeComponenets.second
         
-        return calendar.dateFromComponents(mergedComponents)
+        return calendar.date(from: mergedComponents)
     }
     
     

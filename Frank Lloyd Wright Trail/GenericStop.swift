@@ -10,41 +10,41 @@ import Foundation
 
 struct GenericStop: Stop {
     var name: String
-    var date: NSDate?{
+    var date: Date?{
         didSet{
             if let start = self.startTime{
                 self.startDate = CombineDates.combineDateWithTime(self.date!, time: start)
             }else{
-                self.startDate = CombineDates.combineDateWithTime(self.date!, time: NSDate())
+                self.startDate = CombineDates.combineDateWithTime(self.date!, time: Date())
             }
             if let end = self.endTime{
                 self.endDate = CombineDates.combineDateWithTime(self.date!, time: end)
             }else{
-                self.endDate = CombineDates.combineDateWithTime(self.date!, time: NSDate())
+                self.endDate = CombineDates.combineDateWithTime(self.date!, time: Date())
             }
         }
     }
     
-    var startTime: NSDate?{
+    var startTime: Date?{
         didSet{
             if let date = self.date{
                 self.startDate = CombineDates.combineDateWithTime(date, time: self.startTime!)
             }else{
-                self.startDate = CombineDates.combineDateWithTime(NSDate(), time: self.startTime!)
+                self.startDate = CombineDates.combineDateWithTime(Date(), time: self.startTime!)
             }
         }
     }
-    var endTime: NSDate?{
+    var endTime: Date?{
         didSet{
             if let date = self.date{
                 self.endDate = CombineDates.combineDateWithTime(date, time: self.endTime!)
             }else{
-                self.endDate = CombineDates.combineDateWithTime(NSDate(), time: self.endTime!)
+                self.endDate = CombineDates.combineDateWithTime(Date(), time: self.endTime!)
             }
         }
     }
-    var startDate: NSDate?
-    var endDate: NSDate?
+    var startDate: Date?
+    var endDate: Date?
     
     init(name: String){
         self.name = name

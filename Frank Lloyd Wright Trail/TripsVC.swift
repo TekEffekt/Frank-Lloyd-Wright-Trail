@@ -15,15 +15,15 @@ class TripsVC : UITableViewController{
     super.viewDidLoad()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addSelected))
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addSelected))
     }
     
-    func addSelected(sender : UIBarButtonItem){
+    func addSelected(_ sender : UIBarButtonItem){
         
         
         
-        performSegueWithIdentifier("createTrip", sender: UIBarButtonItem())
+        performSegue(withIdentifier: "createTrip", sender: UIBarButtonItem())
     }
     
 

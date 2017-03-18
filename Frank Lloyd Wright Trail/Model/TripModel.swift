@@ -13,45 +13,45 @@ struct TripModel{
     static var shared = TripModel()
     
     var tripName: String?
-    var startDate: NSDate?{
+    var startDate: Date?{
         didSet{
             if let start = self.startTime{
                 self.fullStartDate = CombineDates.combineDateWithTime(self.startDate!, time: start)
             }else{
-                self.fullStartDate = CombineDates.combineDateWithTime(self.startDate!, time: NSDate())
+                self.fullStartDate = CombineDates.combineDateWithTime(self.startDate!, time: Date())
             }
         }
     }
-    var startTime: NSDate?{
+    var startTime: Date?{
         didSet{
             if let startDay = self.startDate{
                 self.fullStartDate = CombineDates.combineDateWithTime(startDay, time: self.startTime!)
             }else{
-                self.fullStartDate = CombineDates.combineDateWithTime(NSDate(), time: self.startTime!)
+                self.fullStartDate = CombineDates.combineDateWithTime(Date(), time: self.startTime!)
             }
         }
     }
-    var fullStartDate: NSDate?
-    var endDate: NSDate?{
+    var fullStartDate: Date?
+    var endDate: Date?{
         didSet{
             if let end = self.endTime{
                 self.fullEndDate = CombineDates.combineDateWithTime(self.endDate!, time: end)
             }else{
-                self.fullEndDate = CombineDates.combineDateWithTime(self.endDate!, time: NSDate())
+                self.fullEndDate = CombineDates.combineDateWithTime(self.endDate!, time: Date())
             }
         }
     }
-    var endTime: NSDate?{
+    var endTime: Date?{
         didSet{
             if let endDay = self.endDate{
                 self.fullEndDate = CombineDates.combineDateWithTime(endDay, time: self.endTime!)
             }else{
-                self.fullEndDate = CombineDates.combineDateWithTime(NSDate(), time: self.endTime!)
+                self.fullEndDate = CombineDates.combineDateWithTime(Date(), time: self.endTime!)
             }
             
         }
     }
-    var fullEndDate: NSDate?
+    var fullEndDate: Date?
     var sitesInfo = [TripObject]()
     var stops = [Stop]()
     var type : String?

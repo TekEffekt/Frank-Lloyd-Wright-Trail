@@ -7,6 +7,19 @@
 //
 
 import UIKit
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
 
 
 
@@ -26,8 +39,8 @@ class TimelineVC: UIViewController, TripJsonDelegate {
     var newStops = [Stop]()
     var newTripObject = [TripObject]()
     
-    let date = NSDate()
-    let calendar = NSCalendar.currentCalendar()
+    let date = Date()
+    let calendar = Calendar.current
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,10 +50,10 @@ class TimelineVC: UIViewController, TripJsonDelegate {
         view.addSubview(scrollView)
         
         view.addConstraints([
-            NSLayoutConstraint(item: scrollView, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: scrollView, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: 29),
-            NSLayoutConstraint(item: scrollView, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: scrollView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: 0)
+            NSLayoutConstraint(item: scrollView, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: scrollView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 29),
+            NSLayoutConstraint(item: scrollView, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: scrollView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0)
             ])
         for i in 0..<sites!.count {
         
@@ -50,7 +63,7 @@ class TimelineVC: UIViewController, TripJsonDelegate {
         getTripData(json.orderOfLocations(sites2))
     }
     
-    func compareSites(site1:Site?, site2: [Site]) -> Int {
+    func compareSites(_ site1:Site?, site2: [Site]) -> Int {
 
   
             for j in 0..<site2.count{
@@ -64,11 +77,11 @@ class TimelineVC: UIViewController, TripJsonDelegate {
     
 
     // func to get API object data
-    func getTripData(objects: [TripObject]) {
+    func getTripData(_ objects: [TripObject]) {
         var timeFrames: [TimeFrame] = []
         
         var objectTime = 0.0
-        var tripTime = endTime?.timeIntervalSinceDate(startTime!)
+        var tripTime = endTime?.timeIntervalSince(startTime! as Date)
 
         if(objects.count != 0 && newTripObject.count == 0){
         for b in 0..<objects.count {
@@ -103,37 +116,37 @@ class TimelineVC: UIViewController, TripJsonDelegate {
     }
         }
         
-        timeline = TimelineView(bulletType: .Circle, timeFrames: timeFrames)
+        timeline = TimelineView(bulletType: .circle, timeFrames: timeFrames)
         
         
         scrollView.addSubview(timeline)
         scrollView.addConstraints([
-            NSLayoutConstraint(item: timeline, attribute: .Left, relatedBy: .Equal, toItem: scrollView, attribute: .Left, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: timeline, attribute: .Bottom, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Bottom, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: timeline, attribute: .Top, relatedBy: .Equal, toItem: scrollView, attribute: .Top, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: timeline, attribute: .Right, relatedBy: .Equal, toItem: scrollView, attribute: .Right, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: timeline, attribute: .left, relatedBy: .equal, toItem: scrollView, attribute: .left, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: timeline, attribute: .bottom, relatedBy: .lessThanOrEqual, toItem: scrollView, attribute: .bottom, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: timeline, attribute: .top, relatedBy: .equal, toItem: scrollView, attribute: .top, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: timeline, attribute: .right, relatedBy: .equal, toItem: scrollView, attribute: .right, multiplier: 1.0, constant: 0),
             
-            NSLayoutConstraint(item: timeline, attribute: .Width, relatedBy: .Equal, toItem: scrollView, attribute: .Width, multiplier: 1.0, constant: 0)
+            NSLayoutConstraint(item: timeline, attribute: .width, relatedBy: .equal, toItem: scrollView, attribute: .width, multiplier: 1.0, constant: 0)
             ])
         
-        view.sendSubviewToBack(scrollView)
+        view.sendSubview(toBack: scrollView)
     }
     
 
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = "Suggested Trip"
-        let button = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(doneSelected))
+        let button = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.plain, target: self, action: #selector(doneSelected))
         self.navigationItem.rightBarButtonItem = button
     }
     
-    func doneSelected(sender: UIBarButtonItem){
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
-        performSegueWithIdentifier("signup", sender: nil)
+    func doneSelected(_ sender: UIBarButtonItem){
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
+        performSegue(withIdentifier: "signup", sender: nil)
     }
     
 
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     

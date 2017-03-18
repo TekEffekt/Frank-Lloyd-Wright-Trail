@@ -29,12 +29,12 @@ class LocationGalleryImageController: UIViewController, NYTPhotoViewControllerDe
     // var from LocationGalleryPageController to use for correct site pictures
     var nytphoto: Double?
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // UITapGestureRecognizer to display the correct [Example] photo
 
-        let imageTapped = UITapGestureRecognizer(target: self, action: "tapped")
+        let imageTapped = UITapGestureRecognizer(target: self, action: #selector(LocationGalleryImageController.tapped))
 
         self.galleryImage.addGestureRecognizer(imageTapped)
         if let image = image {
@@ -47,28 +47,28 @@ class LocationGalleryImageController: UIViewController, NYTPhotoViewControllerDe
         switch  nytphoto!{
         case 43.0105838:
             let photosViewController = NYTPhotosViewController(photos: self.photos7)
-            presentViewController(photosViewController, animated: true, completion: nil)
+            present(photosViewController, animated: true, completion: nil)
         case 43.1192397:
             let photosViewController = NYTPhotosViewController(photos: self.photos8)
-            presentViewController(photosViewController, animated: true, completion: nil)
+            present(photosViewController, animated: true, completion: nil)
         case 42.7152375:
             let photosViewController = NYTPhotosViewController(photos: self.photos1)
-                presentViewController(photosViewController, animated: true, completion: nil)
+                present(photosViewController, animated: true, completion: nil)
         case 42.784472:
             let photosViewController = NYTPhotosViewController(photos: self.photos2)
-            presentViewController(photosViewController, animated: true, completion: nil)
+            present(photosViewController, animated: true, completion: nil)
         case 43.0717445:
             let photosViewController = NYTPhotosViewController(photos: self.photos3)
-            presentViewController(photosViewController, animated: true, completion: nil)
+            present(photosViewController, animated: true, completion: nil)
         case 43.0757361:
             let photosViewController = NYTPhotosViewController(photos: self.photos4)
-            presentViewController(photosViewController, animated: true, completion: nil)
+            present(photosViewController, animated: true, completion: nil)
         case 43.1439006:
             let photosViewController = NYTPhotosViewController(photos: self.photos5)
-            presentViewController(photosViewController, animated: true, completion: nil)
+            present(photosViewController, animated: true, completion: nil)
         case 43.3334718:
             let photosViewController = NYTPhotosViewController(photos: self.photos6)
-            presentViewController(photosViewController, animated: true, completion: nil)
+            present(photosViewController, animated: true, completion: nil)
         default :
             break
         }

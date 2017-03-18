@@ -22,15 +22,15 @@ class CreateTripVC : FormViewController {
         super.viewDidLoad()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = "Create Trip"
-        let button = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(nextSelected))
+        let button = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.plain, target: self, action: #selector(nextSelected))
         
         self.navigationItem.rightBarButtonItem = button
         tableView.reloadData()
     }
     
-    func nextSelected(sender: UIBarButtonItem){
+    func nextSelected(_ sender: UIBarButtonItem){
         validate()
     }
     
@@ -41,12 +41,12 @@ class CreateTripVC : FormViewController {
     
     
     // number of sections
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return self.section.count
     }
     
     //number of rows in each section
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
             return 1
         }else if section == 1 {
@@ -58,7 +58,7 @@ class CreateTripVC : FormViewController {
     
     
     //set header titles
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0{
             return nil
         }
@@ -67,17 +67,17 @@ class CreateTripVC : FormViewController {
     }
     
     //configure cells
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //name cell
         if indexPath.section == 0{
-            let cell = tableView.dequeueReusableCellWithIdentifier("nameCell") as! NameCell
-            cell.stopName.font = UIFont.systemFontOfSize(17)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "nameCell") as! NameCell
+            cell.stopName.font = UIFont.systemFont(ofSize: 17)
             cell.stopName.placeholder = "Trip Name"
             return cell
         }
         //add stop cell
         else if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! AddStopCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! AddStopCell
             //add stop cell
             if indexPath.row == TripModel.shared.stops.count{
                 cell.stopName.text! = "Add Stop"
@@ -90,7 +90,7 @@ class CreateTripVC : FormViewController {
                 cell.stopName.text! = TripModel.shared.stops[indexPath.row].name
                 cell.stopName.adjustsFontSizeToFitWidth = true
                 cell.modifyImage.image = UIImage(named: "Minus")
-                cell.stopName.textColor = UIColor.blackColor()
+                cell.stopName.textColor = UIColor.black
                 return cell
             }
         }
@@ -98,35 +98,35 @@ class CreateTripVC : FormViewController {
         else if(indexPath.row == 1 || indexPath.row == 3){
             switch (indexPath.section, indexPath.row) {
             case (2,1):
-                let cell = tableView.dequeueReusableCellWithIdentifier("dateCell") as! DatePickCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "dateCell") as! DatePickCell
                 self.dateHelper(cell, indexPath: indexPath)
                 cell.datePicker.tag = 21
                 if let date = TripModel.shared.startDate{
-                    cell.datePicker.date = date
+                    cell.datePicker.date = date as Date
                 }
                 return cell
             case (2,3):
-                let cell = tableView.dequeueReusableCellWithIdentifier("dateCell") as! DatePickCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "dateCell") as! DatePickCell
                 self.dateHelper(cell, indexPath: indexPath)
                 cell.datePicker.tag = 23
                 if let time = TripModel.shared.startTime{
-                    cell.datePicker.date = time
+                    cell.datePicker.date = time as Date
                 }
                 return cell
             case (3,1):
-                let cell = tableView.dequeueReusableCellWithIdentifier("dateCell") as! DatePickCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "dateCell") as! DatePickCell
                 self.dateHelper(cell, indexPath: indexPath)
                 cell.datePicker.tag = 31
                 if let date = TripModel.shared.endDate{
-                    cell.datePicker.date = date
+                    cell.datePicker.date = date as Date
                 }
                 return cell
             case (3,3):
-                let cell = tableView.dequeueReusableCellWithIdentifier("dateCell") as! DatePickCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "dateCell") as! DatePickCell
                 self.dateHelper(cell, indexPath: indexPath)
                 cell.datePicker.tag = 33
                 if let time = TripModel.shared.endTime{
-                    cell.datePicker.date = time
+                    cell.datePicker.date = time as Date
                 }
                 return cell
             default:
@@ -136,9 +136,9 @@ class CreateTripVC : FormViewController {
         }
             //label cell
         else{
-            let cell = tableView.dequeueReusableCellWithIdentifier("labelCell") as! LabelCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "labelCell") as! LabelCell
             cell.label.text! = labels[indexPath.section][indexPath.row]
-            cell.label.textColor = UIColor.lightGrayColor()
+            cell.label.textColor = UIColor.lightGray
             return cell
         }
         
@@ -147,7 +147,7 @@ class CreateTripVC : FormViewController {
     
     
     //cell is selected
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.section == 1{
             if(indexPath.row == TripModel.shared.stops.count){
@@ -176,12 +176,12 @@ class CreateTripVC : FormViewController {
         tableView.endUpdates()
         
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     
     //change cell height for datepicker when expanded
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if (indexPath.section != 0 && indexPath.section != 1 && indexPath.row == 1 || indexPath.row == 3){
             
@@ -193,110 +193,110 @@ class CreateTripVC : FormViewController {
             }
         }
         
-        return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+        return super.tableView(tableView, heightForRowAt: indexPath)
     }
     
 
     
     //to help format the datepicker
-    func dateHelper(cell: DatePickCell, indexPath: NSIndexPath){
+    func dateHelper(_ cell: DatePickCell, indexPath: IndexPath){
         if (indexPath.row == 1){
-            cell.datePicker.datePickerMode = UIDatePickerMode.Date
+            cell.datePicker.datePickerMode = UIDatePickerMode.date
         }
         else {
-            cell.datePicker.datePickerMode = UIDatePickerMode.Time
+            cell.datePicker.datePickerMode = UIDatePickerMode.time
         }
     }
     
     
     //action sheet button clicked
-    private func actionPressed(stopAction:StopActions, indexPath : NSIndexPath?) {
+    fileprivate func actionPressed(_ stopAction:StopActions, indexPath : IndexPath?) {
         
         switch stopAction {
         case .location:
-            performSegueWithIdentifier("AddLocation", sender: nil)
+            performSegue(withIdentifier: "AddLocation", sender: nil)
         case .meal:
             tappedStopType = .meal
-            performSegueWithIdentifier("AddStop", sender: nil)
+            performSegue(withIdentifier: "AddStop", sender: nil)
         case .generic:
             tappedStopType = .generic
-            performSegueWithIdentifier("AddStop", sender: nil)
+            performSegue(withIdentifier: "AddStop", sender: nil)
         case .cancel:
-            dismissViewControllerAnimated(true, completion: nil)
+            dismiss(animated: true, completion: nil)
         case .delete:
             let indexPath = indexPath
-            TripModel.shared.stops.removeAtIndex(indexPath!.row)
+            TripModel.shared.stops.remove(at: indexPath!.row)
             tableView.reloadData()
-            dismissViewControllerAnimated(true, completion: nil)
+            dismiss(animated: true, completion: nil)
         }
     }
     
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let stopVC =  segue.destinationViewController as? AddStopVC {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let stopVC =  segue.destination as? AddStopVC {
             stopVC.type = tappedStopType
         }
     }
     
     
     //create alert popup
-    private func alertPopUp(indexPath: NSIndexPath){
+    fileprivate func alertPopUp(_ indexPath: IndexPath){
         
-        let popUpController: UIAlertController = UIAlertController(title: "Delete Stop?", message: "", preferredStyle: .Alert)
+        let popUpController: UIAlertController = UIAlertController(title: "Delete Stop?", message: "", preferredStyle: .alert)
         
-        let cancelButton: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel){
+        let cancelButton: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel){
             action -> Void in
             self.actionPressed(.cancel, indexPath: indexPath)
         }
         popUpController.addAction(cancelButton)
         
-        let deleteButton : UIAlertAction = UIAlertAction(title: "Delete", style: .Default){
+        let deleteButton : UIAlertAction = UIAlertAction(title: "Delete", style: .default){
             action -> Void in
             self.actionPressed(.delete, indexPath: indexPath)
         }
         popUpController.addAction(deleteButton)
         
-        self.presentViewController(popUpController, animated: true, completion: nil)
+        self.present(popUpController, animated: true, completion: nil)
         
     }
     
     
     
     //create action sheet
-    private func actionSheet(){
-        let actionSheetController: UIAlertController = UIAlertController(title: "Choose a Type of Stop", message: "", preferredStyle: .ActionSheet)
+    fileprivate func actionSheet(){
+        let actionSheetController: UIAlertController = UIAlertController(title: "Choose a Type of Stop", message: "", preferredStyle: .actionSheet)
         
         //Create and add the "Cancel" action
-        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
             //Just dismiss the action sheet
             self.actionPressed(.cancel, indexPath: nil)
         }
         actionSheetController.addAction(cancelAction)
         
         //Create and add location action
-        let locationStop: UIAlertAction = UIAlertAction(title: "Add Location Stop", style: .Default) { action -> Void in
+        let locationStop: UIAlertAction = UIAlertAction(title: "Add Location Stop", style: .default) { action -> Void in
             //The user just pressed the location button.
             self.actionPressed(.location, indexPath: nil)
         }
         actionSheetController.addAction(locationStop)
         
-        let mealStop: UIAlertAction = UIAlertAction(title: "Add Meal Stop", style: .Default) { action -> Void in
+        let mealStop: UIAlertAction = UIAlertAction(title: "Add Meal Stop", style: .default) { action -> Void in
             //The user just pressed the meal button.
             self.actionPressed(.meal, indexPath: nil)
         }
         actionSheetController.addAction(mealStop)
         
-        let genericStop: UIAlertAction = UIAlertAction(title: "Add Generic Stop", style: .Default) { action -> Void in
+        let genericStop: UIAlertAction = UIAlertAction(title: "Add Generic Stop", style: .default) { action -> Void in
             //The user just pressed the meal button.
             self.actionPressed(.generic, indexPath: nil)
         }
         actionSheetController.addAction(genericStop)
         
         //Present the AlertController
-        self.presentViewController(actionSheetController, animated: true, completion: nil)
+        self.present(actionSheetController, animated: true, completion: nil)
     }
     
-    @IBAction func dateChanged(picker: UIDatePicker){
+    @IBAction func dateChanged(_ picker: UIDatePicker){
         switch picker.tag{
         case 21:
             TripModel.shared.startDate = picker.date
@@ -313,7 +313,7 @@ class CreateTripVC : FormViewController {
     
     
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         if let name = textField.text {
         TripModel.shared.tripName = name
         }
@@ -321,20 +321,20 @@ class CreateTripVC : FormViewController {
     
     func validate(){
         if TripModel.shared.startDate == nil{
-            TripModel.shared.startDate = NSDate()
+            TripModel.shared.startDate = Date()
         }
         if TripModel.shared.startTime == nil{
-            TripModel.shared.startTime = NSDate()
+            TripModel.shared.startTime = Date()
         }
         if TripModel.shared.endDate == nil{
-            TripModel.shared.endDate = NSDate()
+            TripModel.shared.endDate = Date()
         }
         if TripModel.shared.endDate == nil{
-            TripModel.shared.endDate = NSDate()
+            TripModel.shared.endDate = Date()
         }
         if TripModel.shared.getLocationCount()>0{
-            self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
-            performSegueWithIdentifier("suggestedTL", sender: nil)
+            self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
+            performSegue(withIdentifier: "suggestedTL", sender: nil)
         }else{
             print("No Location Stops Added")
         }

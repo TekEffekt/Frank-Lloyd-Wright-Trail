@@ -11,12 +11,10 @@ import UIKit
 class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    var selectedCells = [NSIndexPath]()
+    var selectedCells = [IndexPath]()
     let sites = Site.getSites()
     var sitesSelected = 0
-    var parser = JsonParser!()
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,15 +38,15 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(animated: Bool) {
-        let button = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(doneSelected))
+    override func viewWillAppear(_ animated: Bool) {
+        let button = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(doneSelected))
         
         self.navigationItem.rightBarButtonItem = button
         self.navigationItem.title = ""
     }
     
-    func doneSelected(sender: UIBarButtonItem){
-        self.navigationController?.popViewControllerAnimated(true)
+    func doneSelected(_ sender: UIBarButtonItem){
+        self.navigationController?.popViewController(animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,19 +57,19 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
     
     // DataSource for Collection View
     // ---------------------------
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Destination", forIndexPath: indexPath) as! DestinationCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Destination", for: indexPath) as! DestinationCell
         cell.siteImage.image = UIImage(named: sites[indexPath.row].imageName!)
         cell.siteName.text = sites[indexPath.row].title
         cell.selected(false)
         return cell
     }
     // number of cells
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return sites.count
     }
     
@@ -80,11 +78,11 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
     // ---------------------------
 
     // Does something when that cell is clicked
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //print("Selected item: \(indexPath.row)")
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Destination", forIndexPath: indexPath) as! DestinationCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Destination", for: indexPath) as! DestinationCell
         let imageView = cell.siteImage
-        visuallySelectSurface(imageView, withAnimation: true)
+        visuallySelectSurface(imageView!, withAnimation: true)
         cell.selected(true)
         
         let location = sites[indexPath.row]
@@ -97,7 +95,7 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
     }
     
     //cells only selectable once
-    func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         if self.selectedCells.contains(indexPath){
             return false
         }
@@ -118,7 +116,7 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
     
     
     // Flowlayout
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (collectionView.bounds.width - 15) / 2
         let height = 0.9 * width
         return CGSize(width: width, height: height)
@@ -130,10 +128,10 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
     /// - Parameters:
     ///   - surface: <#surface description#>
     ///   - animation: <#animation description#>
-    func visuallySelectSurface(surface: UIImageView, withAnimation animation: Bool) {
+    func visuallySelectSurface(_ surface: UIImageView, withAnimation animation: Bool) {
         let overlay = UIView(frame: CGRect(x: 0, y: 0,
             width: surface.frame.width, height: surface.frame.height))
-        overlay.backgroundColor = UIColor(red:0.20, green:0.55, blue:0.80, alpha:1.0).colorWithAlphaComponent(0.65)
+        overlay.backgroundColor = UIColor(red:0.20, green:0.55, blue:0.80, alpha:1.0).withAlphaComponent(0.65)
         surface.addSubview(overlay)
         
         let check = UIImageView(image: UIImage(named: "ic_done"))
@@ -144,15 +142,15 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
         overlay.addSubview(check)
         
         if animation {
-            check.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.001, 0.001)
+            check.transform = CGAffineTransform.identity.scaledBy(x: 0.001, y: 0.001)
             
-            UIView.animateWithDuration(0.3/1.5, delay: 0, options: [], animations: { () -> Void in
-                check.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.1, 1.1)
+            UIView.animate(withDuration: 0.3/1.5, delay: 0, options: [], animations: { () -> Void in
+                check.transform = CGAffineTransform.identity.scaledBy(x: 1.1, y: 1.1)
             }) { (Bool) -> Void in
-                UIView.animateWithDuration(0.3/2, animations: { () -> Void in
-                    check.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.9, 0.9)
+                UIView.animate(withDuration: 0.3/2, animations: { () -> Void in
+                    check.transform = CGAffineTransform.identity.scaledBy(x: 0.9, y: 0.9)
                     }, completion: { (Bool) -> Void in
-                        check.transform = CGAffineTransformIdentity
+                        check.transform = CGAffineTransform.identity
                 })
             }
         }

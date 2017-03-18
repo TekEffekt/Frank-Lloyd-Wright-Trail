@@ -26,12 +26,12 @@ class PhotosProvider: NSObject {
             var image = UIImage(named: "scjohnson")
             let NumberOfPhotos = 3
         
-        func shouldSetImageOnIndex(photoIndex: Int) -> Bool {
+        func shouldSetImageOnIndex(_ photoIndex: Int) -> Bool {
             return photoIndex != CustomEverythingPhotoIndex && photoIndex != DefaultLoadingSpinnerPhotoIndex
         }
         
         for photoIndex in 0 ..< arrayPic.capacity {
-            let title = NSAttributedString(string: "\(photoIndex + 1)", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+            let title = NSAttributedString(string: "\(photoIndex + 1)", attributes: [NSForegroundColorAttributeName: UIColor.white])
             
             let photo = shouldSetImageOnIndex(photoIndex) ? ExamplePhoto(image: arrayPic[photoIndex], attributedCaptionTitle: title) : ExamplePhoto(attributedCaptionTitle: title)
             
@@ -51,12 +51,12 @@ class PhotosProvider: NSObject {
         var image = UIImage(named: "scjohnson")
         let NumberOfPhotos = 3
         
-        func shouldSetImageOnIndex(photoIndex: Int) -> Bool {
+        func shouldSetImageOnIndex(_ photoIndex: Int) -> Bool {
             return photoIndex != CustomEverythingPhotoIndex && photoIndex != DefaultLoadingSpinnerPhotoIndex
         }
         
         for photoIndex in 0 ..< arrayPic.capacity {
-            let title = NSAttributedString(string: "\(photoIndex + 1)", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+            let title = NSAttributedString(string: "\(photoIndex + 1)", attributes: [NSForegroundColorAttributeName: UIColor.white])
             
             let photo = shouldSetImageOnIndex(photoIndex) ? ExamplePhoto(image: arrayPic[photoIndex], attributedCaptionTitle: title) : ExamplePhoto(attributedCaptionTitle: title)
             
@@ -75,12 +75,12 @@ class PhotosProvider: NSObject {
         var image = UIImage(named: "scjohnson")
         let NumberOfPhotos = 3
         
-        func shouldSetImageOnIndex(photoIndex: Int) -> Bool {
+        func shouldSetImageOnIndex(_ photoIndex: Int) -> Bool {
             return photoIndex != CustomEverythingPhotoIndex && photoIndex != DefaultLoadingSpinnerPhotoIndex
         }
         
         for photoIndex in 0 ..< arrayPic.capacity {
-            let title = NSAttributedString(string: "\(photoIndex + 1)", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+            let title = NSAttributedString(string: "\(photoIndex + 1)", attributes: [NSForegroundColorAttributeName: UIColor.white])
             
             let photo = shouldSetImageOnIndex(photoIndex) ? ExamplePhoto(image: arrayPic[photoIndex], attributedCaptionTitle: title) : ExamplePhoto(attributedCaptionTitle: title)
             
@@ -99,12 +99,12 @@ class PhotosProvider: NSObject {
         var image = UIImage(named: "scjohnson")
         let NumberOfPhotos = 3
         
-        func shouldSetImageOnIndex(photoIndex: Int) -> Bool {
+        func shouldSetImageOnIndex(_ photoIndex: Int) -> Bool {
             return photoIndex != CustomEverythingPhotoIndex && photoIndex != DefaultLoadingSpinnerPhotoIndex
         }
         
         for photoIndex in 0 ..< arrayPic.capacity {
-            let title = NSAttributedString(string: "\(photoIndex + 1)", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+            let title = NSAttributedString(string: "\(photoIndex + 1)", attributes: [NSForegroundColorAttributeName: UIColor.white])
             
             let photo = shouldSetImageOnIndex(photoIndex) ? ExamplePhoto(image: arrayPic[photoIndex], attributedCaptionTitle: title) : ExamplePhoto(attributedCaptionTitle: title)
             
@@ -123,12 +123,12 @@ class PhotosProvider: NSObject {
         var image = UIImage(named: "scjohnson")
         let NumberOfPhotos = 3
         
-        func shouldSetImageOnIndex(photoIndex: Int) -> Bool {
+        func shouldSetImageOnIndex(_ photoIndex: Int) -> Bool {
             return photoIndex != CustomEverythingPhotoIndex && photoIndex != DefaultLoadingSpinnerPhotoIndex
         }
         
         for photoIndex in 0 ..< arrayPic.capacity {
-            let title = NSAttributedString(string: "\(photoIndex + 1)", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+            let title = NSAttributedString(string: "\(photoIndex + 1)", attributes: [NSForegroundColorAttributeName: UIColor.white])
             
             let photo = shouldSetImageOnIndex(photoIndex) ? ExamplePhoto(image: arrayPic[photoIndex], attributedCaptionTitle: title) : ExamplePhoto(attributedCaptionTitle: title)
             
@@ -147,12 +147,12 @@ class PhotosProvider: NSObject {
         var image = UIImage(named: "scjohnson")
         let NumberOfPhotos = 3
         
-        func shouldSetImageOnIndex(photoIndex: Int) -> Bool {
+        func shouldSetImageOnIndex(_ photoIndex: Int) -> Bool {
             return photoIndex != CustomEverythingPhotoIndex && photoIndex != DefaultLoadingSpinnerPhotoIndex
         }
         
         for photoIndex in 0 ..< arrayPic.capacity {
-            let title = NSAttributedString(string: "\(photoIndex + 1)", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+            let title = NSAttributedString(string: "\(photoIndex + 1)", attributes: [NSForegroundColorAttributeName: UIColor.white])
             
             let photo = shouldSetImageOnIndex(photoIndex) ? ExamplePhoto(image: arrayPic[photoIndex], attributedCaptionTitle: title) : ExamplePhoto(attributedCaptionTitle: title)
             
@@ -171,12 +171,12 @@ class PhotosProvider: NSObject {
         var image = UIImage(named: "scjohnson")
         let NumberOfPhotos = 3
         
-        func shouldSetImageOnIndex(photoIndex: Int) -> Bool {
+        func shouldSetImageOnIndex(_ photoIndex: Int) -> Bool {
             return photoIndex != CustomEverythingPhotoIndex && photoIndex != DefaultLoadingSpinnerPhotoIndex
         }
         
         for photoIndex in 0 ..< arrayPic.capacity {
-            let title = NSAttributedString(string: "\(photoIndex + 1)", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+            let title = NSAttributedString(string: "\(photoIndex + 1)", attributes: [NSForegroundColorAttributeName: UIColor.white])
             
             let photo = shouldSetImageOnIndex(photoIndex) ? ExamplePhoto(image: arrayPic[photoIndex], attributedCaptionTitle: title) : ExamplePhoto(attributedCaptionTitle: title)
             
@@ -195,12 +195,12 @@ class PhotosProvider: NSObject {
         var image = UIImage(named: "scjohnson")
         let NumberOfPhotos = 3
         
-        func shouldSetImageOnIndex(photoIndex: Int) -> Bool {
+        func shouldSetImageOnIndex(_ photoIndex: Int) -> Bool {
             return photoIndex != CustomEverythingPhotoIndex && photoIndex != DefaultLoadingSpinnerPhotoIndex
         }
         
         for photoIndex in 0 ..< arrayPic.capacity {
-            let title = NSAttributedString(string: "\(photoIndex + 1)", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+            let title = NSAttributedString(string: "\(photoIndex + 1)", attributes: [NSForegroundColorAttributeName: UIColor.white])
             
             let photo = shouldSetImageOnIndex(photoIndex) ? ExamplePhoto(image: arrayPic[photoIndex], attributedCaptionTitle: title) : ExamplePhoto(attributedCaptionTitle: title)
             

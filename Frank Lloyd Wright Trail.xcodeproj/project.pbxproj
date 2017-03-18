@@ -390,7 +390,7 @@
 				TargetAttributes = {
 					B6109D951D528DDD002A6D77 = {
 						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
@@ -658,7 +658,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "uwp.edu.appFactory.Frank-Lloyd-Wright";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Frank Lloyd Wright Trail/Timeline-Bridging-Header.h";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -678,7 +678,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "uwp.edu.appFactory.Frank-Lloyd-Wright";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Frank Lloyd Wright Trail/Timeline-Bridging-Header.h";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
