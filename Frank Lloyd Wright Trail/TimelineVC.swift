@@ -38,6 +38,7 @@ class TimelineVC: UIViewController, TripJsonDelegate {
     var endTime = TripModel.shared.endTime
     var newStops = [Stop]()
     var newTripObject = [TripObject]()
+    var trip = Trip()
     
     let date = Date()
     let calendar = Calendar.current
@@ -138,6 +139,11 @@ class TimelineVC: UIViewController, TripJsonDelegate {
         self.navigationItem.title = "Suggested Trip"
         let button = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.plain, target: self, action: #selector(doneSelected))
         self.navigationItem.rightBarButtonItem = button
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let signupVC = segue.destination as! SignUpVC
+        signupVC.trip = self.trip
     }
     
     func doneSelected(_ sender: UIBarButtonItem){

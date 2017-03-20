@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import RealmSwift
+
 // FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
 // Consider refactoring the code to use the non-optional operators.
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+private func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
     return l < r
@@ -22,26 +24,33 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 
 
 //TripJsonDelegate
-class FinalTimelineVC: UIViewController,TripJsonDelegate {
+class FinalTimeLineVC: UIViewController,TripJsonDelegate {
     
     
     var scrollView: UIScrollView!
     var timeline:   TimelineView!
     var json: JsonParser!
-    var sites = TripModel.shared.getLocations()
+    var sites = List<SiteStops>()
     var allSites = Site.getSites()
     var sites2 = [Site?]()
-    var stops = TripModel.shared.stops
-    var startTime = TripModel.shared.startTime
-    var endTime = TripModel.shared.endTime
+    var stops = [Stop]()
+    var startTime = Date()
+    var endTime = Date()
     var tripObj = [TripObject]()
     var newStops = [Stop]()
     var newTripObject = [TripObject]()
+    var trip = Trip()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        sites = trip.siteStops
+        stops = trip.stops
+        startTime = trip.startTime
+        endTime = trip.endTime
+        
         scrollView = UIScrollView(frame: view.bounds)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scrollView)

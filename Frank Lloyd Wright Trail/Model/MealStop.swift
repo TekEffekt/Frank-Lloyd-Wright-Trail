@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct MealStop: Stop {
-    var name: String
-    var date: Date?{
+class MealStop: Object, Stop {
+    dynamic var name: String?
+    dynamic var date: Date?{
         didSet{
             if let start = self.startTime{
                 self.startDate = CombineDates.combineDateWithTime(self.date!, time: start)
@@ -25,7 +26,7 @@ struct MealStop: Stop {
         }
     }
     
-    var startTime: Date?{
+    dynamic var startTime: Date?{
         didSet{
             if let date = self.date{
                 self.startDate = CombineDates.combineDateWithTime(date, time: self.startTime!)
@@ -34,7 +35,7 @@ struct MealStop: Stop {
             }
         }
     }
-    var endTime: Date?{
+    dynamic var endTime: Date?{
         didSet{
             if let date = self.date{
                 self.endDate = CombineDates.combineDateWithTime(date, time: self.endTime!)
@@ -43,10 +44,11 @@ struct MealStop: Stop {
             }
         }
     }
-    var startDate: Date?
-    var endDate: Date?
+    dynamic var startDate: Date?
+    dynamic var endDate: Date?
     
-    init(name: String){
+    convenience init(name: String){
+        self.init()
         self.name = name
     }
     

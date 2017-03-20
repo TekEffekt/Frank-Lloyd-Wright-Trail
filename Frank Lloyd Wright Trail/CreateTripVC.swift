@@ -7,16 +7,18 @@
 //
 
 import Foundation
+import RealmSwift
 
 class CreateTripVC : FormViewController {
     
     let section = ["TRIP", "STOPS", "TRIP START", "TRIP END"]
     var labels = [["TRIP"], ["Add Stop"], ["Start Date", " ", "Start Time"], ["End Date", " ", "End Time"]]
-  
     var tappedStopType: StopActions?
     var cellTapped = false
     var currentRow = -1
     var currentSection = -1
+    var trip = Trip()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +33,7 @@ class CreateTripVC : FormViewController {
     }
     
     func nextSelected(_ sender: UIBarButtonItem){
-        validate()
+        validateAndSave()
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,7 +52,7 @@ class CreateTripVC : FormViewController {
         if section == 0{
             return 1
         }else if section == 1 {
-            return TripModel.shared.stops.count + 1
+            return trip.stops.count + 1
         }else {
             return 4
         }
@@ -79,7 +81,7 @@ class CreateTripVC : FormViewController {
         else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! AddStopCell
             //add stop cell
-            if indexPath.row == TripModel.shared.stops.count{
+            if indexPath.row == trip.stops.count{
                 cell.stopName.text! = "Add Stop"
                 cell.modifyImage.image = UIImage(named: "Add")
                 cell.stopName.textColor = UIColor(hexString: "#0073FF")
@@ -87,7 +89,9 @@ class CreateTripVC : FormViewController {
             }
             //stop added cell
             else{
-                cell.stopName.text! = TripModel.shared.stops[indexPath.row].name
+                if let name = trip.stops[indexPath.row].name{
+                    cell.stopName.text! = name
+                }
                 cell.stopName.adjustsFontSizeToFitWidth = true
                 cell.modifyImage.image = UIImage(named: "Minus")
                 cell.stopName.textColor = UIColor.black
@@ -101,7 +105,7 @@ class CreateTripVC : FormViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "dateCell") as! DatePickCell
                 self.dateHelper(cell, indexPath: indexPath)
                 cell.datePicker.tag = 21
-                if let date = TripModel.shared.startDate{
+                if let date = trip.startDate{
                     cell.datePicker.date = date as Date
                 }
                 return cell
@@ -109,7 +113,7 @@ class CreateTripVC : FormViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "dateCell") as! DatePickCell
                 self.dateHelper(cell, indexPath: indexPath)
                 cell.datePicker.tag = 23
-                if let time = TripModel.shared.startTime{
+                if let time = trip.startTime{
                     cell.datePicker.date = time as Date
                 }
                 return cell
@@ -117,7 +121,7 @@ class CreateTripVC : FormViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "dateCell") as! DatePickCell
                 self.dateHelper(cell, indexPath: indexPath)
                 cell.datePicker.tag = 31
-                if let date = TripModel.shared.endDate{
+                if let date = trip.endDate{
                     cell.datePicker.date = date as Date
                 }
                 return cell
@@ -125,7 +129,7 @@ class CreateTripVC : FormViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "dateCell") as! DatePickCell
                 self.dateHelper(cell, indexPath: indexPath)
                 cell.datePicker.tag = 33
-                if let time = TripModel.shared.endTime{
+                if let time = trip.endTime{
                     cell.datePicker.date = time as Date
                 }
                 return cell
@@ -150,7 +154,7 @@ class CreateTripVC : FormViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.section == 1{
-            if(indexPath.row == TripModel.shared.stops.count){
+            if(indexPath.row == trip.stops.count){
                 actionSheet()
             }
             else{
@@ -210,7 +214,7 @@ class CreateTripVC : FormViewController {
     
     
     //action sheet button clicked
-    fileprivate func actionPressed(_ stopAction:StopActions, indexPath : IndexPath?) {
+    private func actionPressed(_ stopAction:StopActions, indexPath : IndexPath?) {
         
         switch stopAction {
         case .location:
@@ -225,7 +229,31 @@ class CreateTripVC : FormViewController {
             dismiss(animated: true, completion: nil)
         case .delete:
             let indexPath = indexPath
-            TripModel.shared.stops.remove(at: indexPath!.row)
+            if let cell = tableView.cellForRow(at: indexPath!) as? AddStopCell{
+                let stopName = cell.stopName.text!
+                
+                for (index, stop) in trip.mealStops.enumerated(){
+                    if stop.name! == stopName{
+                        trip.siteStops.remove(objectAtIndex: index)
+                        break
+                    }
+                }
+                
+                for (index, stop) in trip.genericStops.enumerated(){
+                    if stop.name! == stopName{
+                        trip.genericStops.remove(objectAtIndex: index)
+                        break
+                    }
+                }
+                
+                for (index, stop) in trip.mealStops.enumerated(){
+                    if stop.name! == stopName{
+                        trip.mealStops.remove(objectAtIndex: index)
+                        break
+                    }
+                }
+                
+            }
             tableView.reloadData()
             dismiss(animated: true, completion: nil)
         }
@@ -235,12 +263,17 @@ class CreateTripVC : FormViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let stopVC =  segue.destination as? AddStopVC {
             stopVC.type = tappedStopType
+            stopVC.trip = self.trip
+        }else if let locationVC = segue.destination as? ChooseDestinationVC{
+            locationVC.trip = self.trip
+        }else if let suggestedTLVC = segue.destination as? TimelineVC{
+            suggestedTLVC.trip = self.trip
         }
     }
     
     
     //create alert popup
-    fileprivate func alertPopUp(_ indexPath: IndexPath){
+    private func alertPopUp(_ indexPath: IndexPath){
         
         let popUpController: UIAlertController = UIAlertController(title: "Delete Stop?", message: "", preferredStyle: .alert)
         
@@ -263,7 +296,7 @@ class CreateTripVC : FormViewController {
     
     
     //create action sheet
-    fileprivate func actionSheet(){
+    private func actionSheet(){
         let actionSheetController: UIAlertController = UIAlertController(title: "Choose a Type of Stop", message: "", preferredStyle: .actionSheet)
         
         //Create and add the "Cancel" action
@@ -299,13 +332,13 @@ class CreateTripVC : FormViewController {
     @IBAction func dateChanged(_ picker: UIDatePicker){
         switch picker.tag{
         case 21:
-            TripModel.shared.startDate = picker.date
+            trip.startDate = picker.date
         case 23:
-            TripModel.shared.startTime = picker.date
+            trip.startTime = picker.date
         case 31:
-            TripModel.shared.endDate = picker.date
+            trip.endDate = picker.date
         case 33:
-            TripModel.shared.endTime = picker.date
+            trip.endTime = picker.date
         default:
             break
         }
@@ -315,25 +348,43 @@ class CreateTripVC : FormViewController {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let name = textField.text {
-        TripModel.shared.tripName = name
+          trip.tripName = name
         }
     }
     
-    func validate(){
-        if TripModel.shared.startDate == nil{
-            TripModel.shared.startDate = Date()
+    func validateAndSave(){
+        if trip.startDate == nil{
+            trip.startDate = Date()
         }
-        if TripModel.shared.startTime == nil{
-            TripModel.shared.startTime = Date()
+        if trip.startTime == nil{
+            trip.startTime = Date()
         }
-        if TripModel.shared.endDate == nil{
-            TripModel.shared.endDate = Date()
+        if trip.endDate == nil{
+            trip.endDate = Date()
         }
-        if TripModel.shared.endDate == nil{
-            TripModel.shared.endDate = Date()
+        if trip.endDate == nil{
+            trip.endDate = Date()
         }
-        if TripModel.shared.getLocationCount()>0{
+        if trip.siteStops.count>0 && trip.tripName != nil{
             self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
+            
+            for i in 0..<trip.siteStops.count {
+                trip.siteStops[i].id = i
+                RealmWrite.add(siteStop: trip.siteStops[i], trip: self.trip)
+            }
+            
+            for meal in trip.mealStops{
+                RealmWrite.add(mealStop: meal, trip: self.trip)
+            }
+            for gen in trip.genericStops{
+                RealmWrite.add(genericStop: gen, trip: self.trip)
+            }
+            RealmWrite.writeTripName(tripName: trip.tripName!, trip: self.trip)
+            RealmWrite.writeStartDate(startDate: trip.startDate!, trip: self.trip)
+            RealmWrite.writeStartTime(startTime: trip.startTime!, trip: self.trip)
+            RealmWrite.writeEndDate(endDate: trip.endDate!, trip: self.trip)
+            RealmWrite.writeEndTime(endTime: trip.endTime!, trip: self.trip)
+            
             performSegue(withIdentifier: "suggestedTL", sender: nil)
         }else{
             print("No Location Stops Added")

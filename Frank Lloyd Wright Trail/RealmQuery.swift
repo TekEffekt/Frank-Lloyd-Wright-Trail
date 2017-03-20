@@ -7,3 +7,18 @@
 //
 
 import Foundation
+import RealmSwift
+
+class RealmQuery{
+    
+    static func queryTrips() -> Results<Trip>? {
+        do {
+            let realm = try Realm()
+            return realm.objects(Trip.self)
+        } catch let error {
+            print(error)
+        }
+        return nil
+    }
+    
+}

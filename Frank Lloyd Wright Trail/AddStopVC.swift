@@ -16,8 +16,7 @@ class AddStopVC: FormViewController{
     var genStop: GenericStop?
     var mealStop: MealStop?
     var stop: Stop?
-    
-    
+    var trip = Trip()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -129,12 +128,12 @@ class AddStopVC: FormViewController{
             
             if type == .meal{
                 mealStop?.name = name
-                TripModel.shared.stops.append(mealStop!)
+                trip.mealStops.append(mealStop!)
                 stop = mealStop
             }
             else {
                 genStop?.name = name
-                TripModel.shared.stops.append(genStop!)
+                trip.genericStops.append(genStop!)
                 stop = genStop
             }
             
@@ -161,15 +160,10 @@ class AddStopVC: FormViewController{
             genStop?.startTime = dateCell.datePicker.date
             genStop?.endTime = endTimeCell.datePicker.date
         }
-       
-        
         self.navigationController?.popViewController(animated: true)
-        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        
         if indexPath.section != 0 && (indexPath.row == 1 || indexPath.row == 3) {
             if indexPath.row == currentRow && indexPath.section == currentSection && cellTapped{
                 return 75
@@ -180,7 +174,6 @@ class AddStopVC: FormViewController{
             }
         }
         
-    
         return super.tableView(tableView, heightForRowAt: indexPath)
     }
     

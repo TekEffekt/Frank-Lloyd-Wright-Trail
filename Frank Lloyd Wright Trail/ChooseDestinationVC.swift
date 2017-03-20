@@ -14,6 +14,7 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
     var selectedCells = [IndexPath]()
     let sites = Site.getSites()
     var sitesSelected = 0
+    var trip = Trip()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,9 +87,9 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
         cell.selected(true)
         
         let location = sites[indexPath.row]
-        let stop = SiteStop(name: location.title, site: location)
-        TripModel.shared.stops.append(stop)
-        for place in TripModel.shared.stops{
+        let stop = SiteStop(name: location.title!, site: location)
+        trip.siteStops.append(stop)
+        for place in trip.siteStops{
             print(place.name)
         }
         sitesSelected += 1

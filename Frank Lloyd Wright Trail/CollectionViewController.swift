@@ -59,7 +59,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! Cell
         let site = sites[indexPath.row]
         cell.makeCircle()
-        cell.color(site.title)
+        cell.color(site.title!)
         // Sets the caption and image at based on the corresponding object in the array
         cell.image.image = UIImage(named: site.imageName ?? "") ?? UIImage()
         cell.image.backgroundColor = UIColor.red

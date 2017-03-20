@@ -9,7 +9,7 @@
 import Foundation
 
 protocol Stop {
-    var name : String { get set }
+    var name : String? { get set }
     var date: Date? { get set }
     var startTime : Date? { get set}
     var endTime: Date? { get set }
