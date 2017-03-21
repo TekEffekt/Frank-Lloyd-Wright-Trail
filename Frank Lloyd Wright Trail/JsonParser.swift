@@ -204,15 +204,10 @@ class JsonParser: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
        
         //API uses startLatLong (user location), endLatLong (last site), and middleLatLong, ( all sites inbetween)
         var listOfTrips = [TripObject]()
-        print("StartLatLong = \(startLatLong)")
-        print("MidLatLong = \(middleLatLong)")
-        print("EndLatLong = \(endLatLong)")
       
         
         let directionURL = "https://maps.googleapis.com/maps/api/directions/json?origin="+startLatLong+"&destination="+endLatLong+"&waypoints=optimize:true%7C"+middleLatLong+"&key=" + key
-        print("================================================================================")
-        print(directionURL)
-        print("================================================================================")
+
         let request = URLRequest(url: URL(string:directionURL)!)
         let session = URLSession.shared
         let task = session.dataTask(with: request,

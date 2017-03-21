@@ -98,6 +98,17 @@ class RealmWrite{
         }
     }
     
+    static func add(trip: Trip){
+        do {
+            let realm = try Realm()
+            try realm.write {
+                realm.add(trip)
+            }
+        } catch let error {
+            print(error)
+        }
+    }
+    
     
     
     

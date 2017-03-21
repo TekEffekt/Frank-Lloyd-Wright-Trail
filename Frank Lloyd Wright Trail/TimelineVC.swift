@@ -76,7 +76,7 @@ class TimelineVC: UIViewController, TripJsonDelegate {
     func compareSites(_ site1:Site?, site2: [Site]) -> Int {
         for j in 0..<site2.count{
             let latitude1 = Double(round(100*(site1?.lat.value!)!/100))
-            let latitude2 = Double(round(100*site2[j].lat.value!)/100)
+            let latitude2 = Double(round(100*site2[j].lat.value!/100))
             
             if (latitude1 == latitude2){
                 return j
@@ -113,9 +113,8 @@ class TimelineVC: UIViewController, TripJsonDelegate {
             } else{
                 for i in 0..<newTripObject.count{
                     for j in 0..<sites2.count{
-                        let sites2j = sites2[j]
                         // compare the objects to all the sites and if there is a match create card and add a picture from the list of all sites
-                        if (Double(round(100*newTripObject[i].endPoint!)/100) == Double(round(100*allSites[compareSites(sites2j!, site2: allSites)].lat.value!)/100)){
+                        if (Double(round(100*newTripObject[i].endPoint!)/100) == Double(round(100*allSites[compareSites(sites2[j]!, site2: allSites)].lat.value!)/100)){
                             //timeFrames.append(TimeFrame(text: "Drive time" , date: "9:00am", image: nil))
                             timeFrames.append(TimeFrame(text:"Travel distance is " + newTripObject[i].distanceText! + "iles" + ". Travel time is " + newTripObject[i].timeText! + ".", date: allSites[compareSites(sites2[j], site2: allSites)].title!, image: UIImage(named:allSites[compareSites(sites2[j], site2: allSites)].imageName!)))
                         }

@@ -47,9 +47,9 @@ class SignUpVC: UITableViewController {
             }
         }
         
-        for site in trip.siteStops{
-            RealmWrite.add(siteStop: site, trip: self.trip)
-        }
+//        for site in trip.siteStops{
+//            RealmWrite.add(siteStop: site, trip: self.trip)
+//        }
         
         performSegue(withIdentifier: "segueToFinal", sender: nil)
     }
@@ -114,7 +114,7 @@ class SignUpVC: UITableViewController {
             case 5:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "datepick", for: indexPath) as! DatePickCell
                 cell.datePicker.datePickerMode = .time
-                cell.datePicker.tag = indexPath.section + 50
+                cell.datePicker.tag = indexPath.section + 30
                 if let time = sites[indexPath.section].startTime{
                     cell.datePicker.date = time as Date
                 }
@@ -187,8 +187,8 @@ class SignUpVC: UITableViewController {
     
     @IBAction func dateChanged(_ picker: UIDatePicker){
         
-        if picker.datePickerMode == .time && picker.tag > 50{
-            let tag = picker.tag - 50
+        if picker.datePickerMode == .time && picker.tag >= 30{
+            let tag = picker.tag - 30
             if let locationName = sites[tag].name{
                 for i in 0..<sites.count{
                     if locationName == sites[i].name{

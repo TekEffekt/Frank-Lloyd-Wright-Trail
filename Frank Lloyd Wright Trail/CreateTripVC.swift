@@ -74,6 +74,9 @@ class CreateTripVC : FormViewController {
         if indexPath.section == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "nameCell") as! NameCell
             cell.stopName.font = UIFont.systemFont(ofSize: 17)
+            if let name = trip.tripName{
+                cell.stopName.text! = name
+            }
             cell.stopName.placeholder = "Trip Name"
             return cell
         }
@@ -89,6 +92,7 @@ class CreateTripVC : FormViewController {
             }
             //stop added cell
             else{
+                if trip.stops.count > 0{
                 if let name = trip.stops[indexPath.row].name{
                     cell.stopName.text! = name
                 }
@@ -96,6 +100,7 @@ class CreateTripVC : FormViewController {
                 cell.modifyImage.image = UIImage(named: "Minus")
                 cell.stopName.textColor = UIColor.black
                 return cell
+            }
             }
         }
             //date pick cell
@@ -365,15 +370,15 @@ class CreateTripVC : FormViewController {
         if trip.endTime == nil{
             trip.endTime = Date()
         }
-        if trip.siteStops.count>0 && trip.tripName != nil{
+        if trip.siteStops.count > 0 && trip.tripName != nil{
             self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
             
-            for meal in trip.mealStops{
-                RealmWrite.add(mealStop: meal, trip: self.trip)
-            }
-            for gen in trip.genericStops{
-                RealmWrite.add(genericStop: gen, trip: self.trip)
-            }
+//            for meal in trip.mealStops{
+//                RealmWrite.add(mealStop: meal, trip: self.trip)
+//            }
+//            for gen in trip.genericStops{
+//                RealmWrite.add(genericStop: gen, trip: self.trip)
+//            }
             RealmWrite.writeTripName(tripName: trip.tripName!, trip: self.trip)
             RealmWrite.writeStartDate(startDate: trip.startDate!, trip: self.trip)
             RealmWrite.writeStartTime(startTime: trip.startTime!, trip: self.trip)

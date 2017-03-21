@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		210D47711E81C3230031129A /* RealmDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210D47701E81C3230031129A /* RealmDelete.swift */; };
 		211EB2E31E5E6AF700176C13 /* SignUpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211EB2E21E5E6AF700176C13 /* SignUpCell.swift */; };
 		211EB2E51E5E6FAB00176C13 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211EB2E41E5E6FAB00176C13 /* SignUpVC.swift */; };
 		213757011E52D38A00C21415 /* TripsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213757001E52D38A00C21415 /* TripsVC.swift */; };
@@ -71,6 +72,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		210D47701E81C3230031129A /* RealmDelete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmDelete.swift; sourceTree = "<group>"; };
 		211EB2E21E5E6AF700176C13 /* SignUpCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpCell.swift; path = ../SignUpCell.swift; sourceTree = "<group>"; };
 		211EB2E41E5E6FAB00176C13 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpVC.swift; path = View/SignUpVC.swift; sourceTree = "<group>"; };
 		213757001E52D38A00C21415 /* TripsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsVC.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 				21492FD21E5A3F8E005660F3 /* GenericStop.swift */,
 				217164C91E7DB59B005EF679 /* RealmWrite.swift */,
 				217164CB1E7DB5B4005EF679 /* RealmQuery.swift */,
+				210D47701E81C3230031129A /* RealmDelete.swift */,
 				217164CD1E7DCD54005EF679 /* Trip.swift */,
 			);
 			name = Model;
@@ -524,6 +527,7 @@
 				FAB740DF1DDEB14A00BA859F /* JTSAnimatedGIFUtility.m in Sources */,
 				B6DB3BBC1D7A100200FC737D /* Site.swift in Sources */,
 				213757011E52D38A00C21415 /* TripsVC.swift in Sources */,
+				210D47711E81C3230031129A /* RealmDelete.swift in Sources */,
 				211EB2E51E5E6FAB00176C13 /* SignUpVC.swift in Sources */,
 				FAEE90AE1D6771B5008264DC /* TabBarController.swift in Sources */,
 				FAEE90B41D677EBB008264DC /* LocationsViewController.swift in Sources */,

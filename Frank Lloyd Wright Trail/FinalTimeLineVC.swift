@@ -74,8 +74,10 @@ class FinalTimeLineVC: UIViewController,TripJsonDelegate {
     }
     
     func saveSelected(){
+        RealmWrite.add(trip: self.trip)
         navigationController?.popToRootViewController(animated: true)
     }
+    
     
     func compareSites(_ site1:Stop, site2: [Site]) -> Int {
         
