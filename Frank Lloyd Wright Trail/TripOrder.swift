@@ -7,17 +7,20 @@
 //
 
 import Foundation
-class TripObject: NSObject {
+import RealmSwift
+
+class TripObject: Object {
     
-    var startPoint: Double
+    var startPoint: Double?
     var endPoint: Double?
     var timeText: String?
     var timeValue: Double?
     var distanceText: String?
     var distanceValue: Int?
-    var image: UIImage?
+    var image: String?
     
-    init(startPoint: Double, endPoint: Double, timeText: String, timeValue: Double, distanceText: String, distanceValue: Int, image: UIImage?) {
+    convenience init(startPoint: Double, endPoint: Double, timeText: String, timeValue: Double, distanceText: String, distanceValue: Int, image: String?) {
+        self.init()
         self.startPoint = startPoint
         self.endPoint = endPoint
         self.timeText = timeText

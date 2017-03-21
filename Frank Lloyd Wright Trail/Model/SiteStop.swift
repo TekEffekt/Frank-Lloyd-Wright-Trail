@@ -47,11 +47,6 @@ class SiteStop: Object, Stop {
     dynamic var startDate: Date?
     dynamic var endDate: Date?
     dynamic var site: Site?
-    dynamic var id = 0
-    
-    override static func primaryKey() -> String?{
-        return "id"
-    }
     
     convenience init(name: String, date: Date, startTime: Date, endTime: Date, startDate: Date, endDate: Date, site: Site){
         self.init()

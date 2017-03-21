@@ -30,7 +30,7 @@ class FinalTimeLineVC: UIViewController,TripJsonDelegate {
     var scrollView: UIScrollView!
     var timeline:   TimelineView!
     var json: JsonParser!
-    var sites = List<SiteStops>()
+    var sites = List<SiteStop>()
     var allSites = Site.getSites()
     var sites2 = [Site?]()
     var stops = [Stop]()
@@ -48,8 +48,8 @@ class FinalTimeLineVC: UIViewController,TripJsonDelegate {
         
         sites = trip.siteStops
         stops = trip.stops
-        startTime = trip.startTime
-        endTime = trip.endTime
+        startTime = trip.startTime!
+        endTime = trip.endTime!
         
         scrollView = UIScrollView(frame: view.bounds)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -64,9 +64,9 @@ class FinalTimeLineVC: UIViewController,TripJsonDelegate {
             NSLayoutConstraint(item: scrollView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0)
             ])
         
-        for i in 0..<sites!.count {
+        for i in 0..<sites.count {
             
-            sites2.append(sites![i].site)
+            sites2.append(sites[i].site)
             
         }
         json = JsonParser(withDelegate: self, locations: sites2)
@@ -95,7 +95,7 @@ class FinalTimeLineVC: UIViewController,TripJsonDelegate {
         var timeFrames: [TimeFrame] = []
         var timeObject = 0.0
         var timeStop = 0.0
-        var tripTime = endTime?.timeIntervalSince(startTime! as Date)
+        var tripTime = endTime.timeIntervalSince(startTime as Date)
         
         if(objects.count != 0 && newTripObject.count == 0){
         for a in 0..<stops.count {
@@ -131,11 +131,11 @@ class FinalTimeLineVC: UIViewController,TripJsonDelegate {
         }
         
         for d in 0..<newStops.count {
-            for e in 0..<sites!.count{
+            for e in 0..<sites.count{
                 for f in 0..<objects.count{
                 if(newStops[d] is SiteStop){
-                    if(newStops[d].name == sites![e].name) {
-                        var num2 = Double(round(100*sites![e].site.lat)/100)
+                    if(newStops[d].name == sites[e].name) {
+                        var num2 = Double(round(100*(sites[e].site?.lat.value!)!)/100)
                         var num1 = Double(round(100*objects[f].endPoint!)/100)
                         if(num1 == num2){
                         self.newTripObject.append(objects[f])
@@ -152,10 +152,11 @@ class FinalTimeLineVC: UIViewController,TripJsonDelegate {
         for x in 0..<newTripObject.count{
             for y in 0..<newStops.count{
                 
+                let newStopsY = newStops[y]
                 // compare the objects to all the sites and if there is a match create card and add a picture from the list of all sites
-                if(Double(round(100*newTripObject[x].endPoint!)/100) == Double(round(100*allSites[compareSites(newStops[y], site2: allSites)].lat)/100)) {
+                if(Double(round(100*newTripObject[x].endPoint!)/100) == Double(round(100*allSites[compareSites(newStopsY, site2: allSites)].lat.value!)/100)) {
                    
-                    timeFrames.append(TimeFrame(text:"Travel distance is " + newTripObject[x].distanceText! + " Travel time is " + newTripObject[x].timeText!, date: allSites[compareSites(newStops[y], site2: allSites)].title, image: UIImage(named:allSites[compareSites(newStops[y], site2: allSites)].imageName!)))
+                    timeFrames.append(TimeFrame(text:"Travel distance is " + newTripObject[x].distanceText! + " Travel time is " + newTripObject[x].timeText!, date: allSites[compareSites(newStops[y], site2: allSites)].title!, image: UIImage(named:allSites[compareSites(newStops[y], site2: allSites)].imageName!)))
                 }
                 
             }

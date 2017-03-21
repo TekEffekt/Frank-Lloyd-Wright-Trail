@@ -47,11 +47,10 @@ class SignUpVC: UITableViewController {
             }
         }
         
-        for i in 0..<trip.siteStops{
-            for site in trip.siteStops{
-                RealmWrite.add(siteStop: site, trip: self.trip)
-            }
+        for site in trip.siteStops{
+            RealmWrite.add(siteStop: site, trip: self.trip)
         }
+        
         performSegue(withIdentifier: "segueToFinal", sender: nil)
     }
     
@@ -201,14 +200,14 @@ class SignUpVC: UITableViewController {
         }else if let locationName = sites[picker.tag].name{
             if picker.datePickerMode == .date{
                 for i in 0..<sites.count{
-                    if locationName == stops[i].name{
+                    if locationName == sites[i].name{
                         trip.siteStops[i].date = picker.date
                     }
                 }
                 
             }else if picker.datePickerMode == .time{
-                for i in 0..<stops.count{
-                    if locationName == stops[i].name{
+                for i in 0..<sites.count{
+                    if locationName == sites[i].name{
                         trip.siteStops[i].endTime = picker.date
                     }
                 }

@@ -232,7 +232,7 @@ class CreateTripVC : FormViewController {
             if let cell = tableView.cellForRow(at: indexPath!) as? AddStopCell{
                 let stopName = cell.stopName.text!
                 
-                for (index, stop) in trip.mealStops.enumerated(){
+                for (index, stop) in trip.siteStops.enumerated(){
                     if stop.name! == stopName{
                         trip.siteStops.remove(objectAtIndex: index)
                         break
@@ -362,16 +362,11 @@ class CreateTripVC : FormViewController {
         if trip.endDate == nil{
             trip.endDate = Date()
         }
-        if trip.endDate == nil{
-            trip.endDate = Date()
+        if trip.endTime == nil{
+            trip.endTime = Date()
         }
         if trip.siteStops.count>0 && trip.tripName != nil{
             self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
-            
-            for i in 0..<trip.siteStops.count {
-                trip.siteStops[i].id = i
-                RealmWrite.add(siteStop: trip.siteStops[i], trip: self.trip)
-            }
             
             for meal in trip.mealStops{
                 RealmWrite.add(mealStop: meal, trip: self.trip)

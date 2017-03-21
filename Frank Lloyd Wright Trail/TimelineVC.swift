@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import RealmSwift
+
 // FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
 // Consider refactoring the code to use the non-optional operators.
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+private func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
     return l < r
@@ -29,13 +31,13 @@ class TimelineVC: UIViewController, TripJsonDelegate {
     var scrollView: UIScrollView!
     var timeline:   TimelineView!
     var json: JsonParser!
-    var sites = TripModel.shared.getLocations()
+    var sites = List<SiteStop>()
     var allSites = Site.getSites()
     var sites2 = [Site?]()
     var sharedTripObject: [TripObject] = []
-    var stops = TripModel.shared.stops
-    var startTime = TripModel.shared.startTime
-    var endTime = TripModel.shared.endTime
+    var stops = [Stop]()
+    var startTime = Date()
+    var endTime = Date()
     var newStops = [Stop]()
     var newTripObject = [TripObject]()
     var trip = Trip()
@@ -46,9 +48,16 @@ class TimelineVC: UIViewController, TripJsonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        sites = trip.siteStops
+        stops = trip.stops
+        startTime = trip.startTime!
+        endTime = trip.endTime!
+        
         scrollView = UIScrollView(frame: view.bounds)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scrollView)
+        
+        
         
         view.addConstraints([
             NSLayoutConstraint(item: scrollView, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 0),
@@ -56,65 +65,64 @@ class TimelineVC: UIViewController, TripJsonDelegate {
             NSLayoutConstraint(item: scrollView, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: 0),
             NSLayoutConstraint(item: scrollView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0)
             ])
-        for i in 0..<sites!.count {
+        for i in 0..<sites.count {
         
-            sites2.append(sites![i].site)
+            sites2.append(sites[i].site)
         }
         json = JsonParser(withDelegate: self, locations: sites2)
         getTripData(json.orderOfLocations(sites2))
     }
     
     func compareSites(_ site1:Site?, site2: [Site]) -> Int {
-
-  
-            for j in 0..<site2.count{
-            if ( Double(round(100*(site1?.lat)!)/100) == Double(round(100*site2[j].lat)/100)){
-                 return j
+        for j in 0..<site2.count{
+            let latitude1 = Double(round(100*(site1?.lat.value!)!/100))
+            let latitude2 = Double(round(100*site2[j].lat.value!)/100)
+            
+            if (latitude1 == latitude2){
+                return j
             }
-        
-            }
+        }
         return -1
     }
     
-
+    
     // func to get API object data
     func getTripData(_ objects: [TripObject]) {
         var timeFrames: [TimeFrame] = []
         
         var objectTime = 0.0
-        var tripTime = endTime?.timeIntervalSince(startTime! as Date)
-
+        var tripTime = endTime.timeIntervalSince(startTime)
+        
         if(objects.count != 0 && newTripObject.count == 0){
-        for b in 0..<objects.count {
-            objectTime = +objects[b].timeValue!
-            if(objectTime < tripTime){
-                newTripObject.append(objects[b])
-                
-                
-            }
-        }
-        
-        // attach the correct image to the sites
-        var count = 0
-        
-        if(newTripObject.count < 0) {
-            timeFrames.append(TimeFrame(text: "Home", date: "9:00am", image: nil))}
-        if (newTripObject.count == 0){
-            timeFrames.append(TimeFrame(text: "It's not possible to visit the sites with the times you entered", date: "Not enough time given", image: nil))
-        } else{
-        for i in 0..<newTripObject.count{
-            for j in 0..<sites2.count{
-              
-               // compare the objects to all the sites and if there is a match create card and add a picture from the list of all sites
-                 if (Double(round(100*newTripObject[i].endPoint!)/100) == Double(round(100*allSites[compareSites(sites2[j], site2: allSites)].lat)/100)){
-                     //timeFrames.append(TimeFrame(text: "Drive time" , date: "9:00am", image: nil))
-                    timeFrames.append(TimeFrame(text:"Travel distance is " + newTripObject[i].distanceText! + "iles" + ". Travel time is " + newTripObject[i].timeText! + ".", date: allSites[compareSites(sites2[j], site2: allSites)].title, image: UIImage(named:allSites[compareSites(sites2[j], site2: allSites)].imageName!)))
-                
+            for b in 0..<objects.count {
+                objectTime = +objects[b].timeValue!
+                if(objectTime < tripTime){
+                    newTripObject.append(objects[b])
+                    
+                    
                 }
             }
-        
-        }
-    }
+            
+            // attach the correct image to the sites
+            var count = 0
+            
+            if(newTripObject.count < 0) {
+                timeFrames.append(TimeFrame(text: "Home", date: "9:00am", image: nil))}
+            if (newTripObject.count == 0){
+                timeFrames.append(TimeFrame(text: "It's not possible to visit the sites with the times you entered", date: "Not enough time given", image: nil))
+            } else{
+                for i in 0..<newTripObject.count{
+                    for j in 0..<sites2.count{
+                        let sites2j = sites2[j]
+                        // compare the objects to all the sites and if there is a match create card and add a picture from the list of all sites
+                        if (Double(round(100*newTripObject[i].endPoint!)/100) == Double(round(100*allSites[compareSites(sites2j!, site2: allSites)].lat.value!)/100)){
+                            //timeFrames.append(TimeFrame(text: "Drive time" , date: "9:00am", image: nil))
+                            timeFrames.append(TimeFrame(text:"Travel distance is " + newTripObject[i].distanceText! + "iles" + ". Travel time is " + newTripObject[i].timeText! + ".", date: allSites[compareSites(sites2[j], site2: allSites)].title!, image: UIImage(named:allSites[compareSites(sites2[j], site2: allSites)].imageName!)))
+                        }
+                    }
+                    
+                }
+            }
         }
         
         timeline = TimelineView(bulletType: .circle, timeFrames: timeFrames)

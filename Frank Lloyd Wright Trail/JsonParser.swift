@@ -19,7 +19,7 @@ class JsonParser: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation?
     // access key for google direction API
-    fileprivate let key = "AIzaSyD99efuqx7jK3bOi7txWUDRZNlh-G50b0w"
+    private let key = "AIzaSyD99efuqx7jK3bOi7txWUDRZNlh-G50b0w"
     weak var delegate: TripJsonDelegate!
     
     init(withDelegate delegate: TripJsonDelegate, locations: [Site?]) {
@@ -44,8 +44,8 @@ class JsonParser: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
     // get the lat and long of site and convert to string
     func getLatLong (_ sites: [Site?], index: Int) -> String {
         
-        var latLong = String(sites[index]!.lat) + ","
-        latLong += String(sites[index]!.lon)
+        var latLong = String(describing: sites[index]!.lat.value!) + ","
+        latLong += String(describing: sites[index]!.lon.value!)
         return latLong
         
         
@@ -158,7 +158,7 @@ class JsonParser: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
         
         // check the closest location, covert current loction and end location into string
         print("CURRENT LOCATION: \(self.currentLocation.debugDescription)       _)_)_)(()()(")
-        if(self.currentLocation!.distance(from: CLLocation(latitude: locationA!.lat, longitude: locationA!.lon))<self.currentLocation!.distance(from: CLLocation(latitude: locationB!.lat, longitude: locationB!.lon))) {
+        if(self.currentLocation!.distance(from: CLLocation(latitude: locationA!.lat.value!, longitude: locationA!.lon.value!))<self.currentLocation!.distance(from: CLLocation(latitude: locationB!.lat.value!, longitude: locationB!.lon.value!))) {
             // user location converted to doubles
             var numLat = Double((self.currentLocation?.coordinate.latitude)!)
             var numLong = Double((self.currentLocation?.coordinate.longitude)!)
@@ -166,8 +166,8 @@ class JsonParser: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
             // convert the double into a string and add commas where they need to be
             startLatLong = String(numLat) + ","
             startLatLong += String(numLong)
-            endLatLong = String(locationB!.lat) + ","
-            endLatLong += String(locationB!.lon)
+            endLatLong = String(describing: locationB!.lat.value!) + ","
+            endLatLong += String(describing: locationB!.lon.value!)
             endLoc = bLocation
         }
         else {
@@ -178,8 +178,8 @@ class JsonParser: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
             // convert the double into a string and add commas where they need to be
             startLatLong = String(numLat) + ","
             startLatLong += String(numLong)
-            endLatLong = String(locationA!.lat) + ","
-            endLatLong += String(locationA!.lon)
+            endLatLong = String(describing: locationA!.lat.value!) + ","
+            endLatLong += String(describing: locationA!.lon.value!)
             endLoc = aLocation
             
         }
@@ -204,7 +204,15 @@ class JsonParser: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
        
         //API uses startLatLong (user location), endLatLong (last site), and middleLatLong, ( all sites inbetween)
         var listOfTrips = [TripObject]()
+        print("StartLatLong = \(startLatLong)")
+        print("MidLatLong = \(middleLatLong)")
+        print("EndLatLong = \(endLatLong)")
+      
+        
         let directionURL = "https://maps.googleapis.com/maps/api/directions/json?origin="+startLatLong+"&destination="+endLatLong+"&waypoints=optimize:true%7C"+middleLatLong+"&key=" + key
+        print("================================================================================")
+        print(directionURL)
+        print("================================================================================")
         let request = URLRequest(url: URL(string:directionURL)!)
         let session = URLSession.shared
         let task = session.dataTask(with: request,

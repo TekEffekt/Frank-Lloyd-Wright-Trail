@@ -50,7 +50,7 @@ class Trip: Object{
         }
     }
     dynamic var fullEndDate: Date?
-    dynamic var sitesInfo = [TripObject]()
+    let sitesInfo = List<TripObject>()
     let siteStops = List<SiteStop>()
     let genericStops = List<GenericStop>()
     let mealStops = List<MealStop>()

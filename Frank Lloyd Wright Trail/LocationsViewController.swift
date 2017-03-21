@@ -47,7 +47,7 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
     func loadPins(){
         let sites = Site.getSites()
         for site in sites {
-            let annotation = Pin(lat: site.lat, long: site.lon)
+            let annotation = Pin(lat: site.lat.value!, long: site.lon.value!)
             annotation.title = site.title
             mapView.addAnnotation(annotation)
         }

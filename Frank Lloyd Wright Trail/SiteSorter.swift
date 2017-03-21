@@ -10,6 +10,7 @@
 // the Site's name or by
 import Foundation
 import CoreLocation
+import RealmSwift
 
 // This class is in charge of sorting the array of Sites by distance, name, and visited sites
 class SiteSorter{
@@ -18,18 +19,19 @@ class SiteSorter{
     static func sortSitesByDistance(_ location: CLLocation) -> [Site] {
         let sites = Site.getSites()
         var myNewArray = [Site]()
-        
         // manipulating the distance variable of each site so that the distance
-        for var site in sites{
-            let distanceInMeters = location.distance(from: CLLocation(latitude: site.lat, longitude: site.lon))
+        for site in sites{
+            let distanceInMeters = location.distance(from: CLLocation(latitude: site.lat.value!, longitude: site.lon.value!))
             let num = (distanceInMeters / 1609.344) * 100
             let distanceInMiles = round(num) / 100
-            site.distance = distanceInMiles
+            site.distance.value = distanceInMiles
             myNewArray.append(site)
+            
         }
         
+        
         // sorting the array from closest to farthest
-        myNewArray.sort(by: { (obj1: Site, obj2: Site) -> Bool in return obj1.distance < obj2.distance })
+        myNewArray.sort(by: { (obj1: Site, obj2: Site) -> Bool in return obj1.distance.value! < obj2.distance.value! })
         
         return myNewArray
     }
