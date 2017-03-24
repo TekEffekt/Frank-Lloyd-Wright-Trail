@@ -125,7 +125,7 @@ class TimelineVC: UIViewController, TripJsonDelegate {
                // compare the objects to all the sites and if there is a match create card and add a picture from the list of all sites
                  if (Double(round(100*newTripObject[i].endPoint!)/100) == Double(round(100*allSites[compareSites(sites2[j], site2: allSites)].lat)/100)){
                      //timeFrames.append(TimeFrame(text: "Drive time" , date: "9:00am", image: nil))
-                    timeFrames.append(TimeFrame(text:"Travel distance is " + newTripObject[i].distanceText! + "iles" + ". Travel time is " + newTripObject[i].timeText! + ".", date: allSites[compareSites(sites2[j], site2: allSites)].title, image: UIImage(named:allSites[compareSites(sites2[j], site2: allSites)].imageName!)))
+                    timeFrames.append(TimeFrame(text:"Travel distance is " + newTripObject[i].distanceText! + "iles" + ". Travel time is " + newTripObject[i].timeText! + ".", date: allSites[compareSites(sites2[j], site2: allSites)].title!, image: UIImage(named:allSites[compareSites(sites2[j], site2: allSites)].imageName!)))
                 
 
             for b in 0..<objects.count {
@@ -177,13 +177,13 @@ class TimelineVC: UIViewController, TripJsonDelegate {
     
 
     
-    override func viewWillAppear(_ animated: Bool) {
+    func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = "Suggested Trip"
         let button = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.plain, target: self, action: #selector(doneSelected))
         self.navigationItem.rightBarButtonItem = button
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let signupVC = segue.destination as! SignUpVC
         signupVC.trip = self.trip
     }
@@ -194,11 +194,14 @@ class TimelineVC: UIViewController, TripJsonDelegate {
     }
     
 
-    override var prefersStatusBarHidden : Bool {
+    var prefersStatusBarHidden : Bool {
         return true
     }
     
 
 
 }
-
+}
+}
+}
+}

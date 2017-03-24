@@ -103,11 +103,9 @@ class FinalTimeLineVC: UIViewController,TripJsonDelegate {
         for a in 0..<stops.count {
             if(stops[a] is MealStop || stops[a] is GenericStop) {
                 
-<<<<<<< HEAD
-                timeStop += (stops[a].endTime?.timeIntervalSinceDate(stops[a].startTime!))!
-=======
+
                 timeStop = +(stops[a].endTime?.timeIntervalSince(stops[a].startTime! as Date))!
->>>>>>> ui-overhaul
+
             }
             
         }
@@ -131,11 +129,9 @@ class FinalTimeLineVC: UIViewController,TripJsonDelegate {
         
                         if(stops[c] is MealStop || stops[c] is GenericStop) {
                             self.newStops.append(stops[c])
-<<<<<<< HEAD
-                            newStopTime += (newStops[c].startTime?.timeIntervalSinceDate(newStops[c].endTime!))!
-=======
+
                             newStopTime = +(newStops[c].startTime?.timeIntervalSince(newStops[c].endTime! as Date))!
->>>>>>> ui-overhaul
+
                         }
                 }
         }
