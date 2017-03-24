@@ -72,18 +72,25 @@ class TimelineVC: UIViewController, TripJsonDelegate {
 
         if(objects.count != 0 && newTripObject.count == 0){
         for b in 0..<objects.count {
-            objectTime = +objects[b].timeValue!
-            if(objectTime < tripTime){
+            objectTime += (objects[b].timeValue!)
+         
                 newTripObject.append(objects[b])
-                
-                
-            }
+          
         }
+            for i in 0..<newTripObject.count {
+                
+                if(objectTime > tripTime){
+                    objectTime -= (newTripObject.last?.timeValue)!
+                    newTripObject.removeLast()
+                   
+                    
+                }
+            }
         
         // attach the correct image to the sites
         var count = 0
         
-        if(newTripObject.count < 0) {
+        if(newTripObject.count > 0) {
             timeFrames.append(TimeFrame(text: "Home", date: "9:00am", image: nil))}
         if (newTripObject.count == 0){
             timeFrames.append(TimeFrame(text: "It's not possible to visit the sites with the times you entered", date: "Not enough time given", image: nil))
