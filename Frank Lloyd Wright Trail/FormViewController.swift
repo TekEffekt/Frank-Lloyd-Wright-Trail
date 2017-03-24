@@ -18,27 +18,27 @@ class FormViewController: UITableViewController, UITextFieldDelegate {
         subscribeToKeyBoardNotifications()
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         if let currentTextField = currentTextField {
             currentTextField.resignFirstResponder()
         }
     }
     
-    private func subscribeToKeyBoardNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FormViewController.textFieldPressed(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FormViewController.textFieldHiding(_:)), name: UIKeyboardWillHideNotification, object: nil)
+    fileprivate func subscribeToKeyBoardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(FormViewController.textFieldPressed(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(FormViewController.textFieldHiding(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         currentTextField = textField
     }
     
     // MARK: Textfield Notifications
-    func textFieldPressed(sender: NSNotification) {
+    func textFieldPressed(_ sender: Notification) {
         let userInfo = sender.userInfo!
-        let keyboardRect = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue
-        keyboardHeight = keyboardRect.height
+        let keyboardRect = (userInfo[UIKeyboardFrameBeginUserInfoKey]! as AnyObject).cgRectValue
+        keyboardHeight = (keyboardRect?.height)!
         
         if amountMoved == 0 {
             amountMoved = keyboardHeight
@@ -47,30 +47,30 @@ class FormViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
-    func textFieldHiding(sender: NSNotification) {
+    func textFieldHiding(_ sender: Notification) {
         unadjustForTextField()
     }
     
     func adjustForTextField(withKeyboardHeight keyboardHeight: CGFloat) {
-        UIView.animateWithDuration(0.3) { 
+        UIView.animate(withDuration: 0.3, animations: { 
             self.view.frame = CGRect(x: self.view.frame.origin.x, y: self.view.frame.origin.y,
                                      width: self.view.frame.width,
                                      height: self.view.frame.height - keyboardHeight)
-        }
+        }) 
     }
 
     
     func unadjustForTextField() {
-        UIView.animateWithDuration(0.3) {
+        UIView.animate(withDuration: 0.3, animations: {
             self.view.frame = CGRect(x: self.view.frame.origin.x, y: self.view.frame.origin.y,
                                      width: self.view.frame.width,
                                      height: self.view.frame.height + self.amountMoved)
-        }
+        }) 
         
         amountMoved = 0
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }

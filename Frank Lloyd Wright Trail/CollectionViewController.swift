@@ -31,7 +31,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         // For use in foreground
         self.locationManager.requestWhenInUseAuthorization()
         
-        milesAway.textAlignment = .Right
+        milesAway.textAlignment = .right
         //milesAway.text = "0 miles away"
         milesAway.text = ""
         
@@ -51,38 +51,38 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
 
     // DataSource for Collection View
     // ---------------------------
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! Cell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! Cell
         let site = sites[indexPath.row]
         cell.makeCircle()
-        cell.color(site.title)
+        cell.color(site.title!)
         // Sets the caption and image at based on the corresponding object in the array
         cell.image.image = UIImage(named: site.imageName ?? "") ?? UIImage()
-        cell.image.backgroundColor = UIColor.redColor()
+        cell.image.backgroundColor = UIColor.red
         cell.caption.text = site.title
         
         return cell
     }
     // number of cells
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return sites.count
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         let width = (collectionView.bounds.width - 2) / 2
         let height = 0.6 * width
-        return CGSizeMake(width, height)
+        return CGSize(width: width, height: height)
     }
     
     // Delegate for Collection View
     // ---------------------------
 
     // Does something when that cell is clicked
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let site = sites[indexPath.row]
         

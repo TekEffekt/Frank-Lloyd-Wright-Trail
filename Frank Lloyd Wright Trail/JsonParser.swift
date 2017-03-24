@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 protocol TripJsonDelegate: class {
-    func getTripData(objects: [TripObject])
+    func getTripData(_ objects: [TripObject])
 }
 
 class JsonParser: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
@@ -42,17 +42,17 @@ class JsonParser: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
     
     
     // get the lat and long of site and convert to string
-    func getLatLong (sites: [Site?], index: Int) -> String {
+    func getLatLong (_ sites: [Site?], index: Int) -> String {
         
-        var latLong = String(sites[index]!.lat) + ","
-        latLong += String(sites[index]!.lon)
+        var latLong = String(describing: sites[index]!.lat.value!) + ","
+        latLong += String(describing: sites[index]!.lon.value!)
         return latLong
         
         
     }
     
     // compares string and image name to return the index
-    func findLocation(title: String, sites: [Site?])-> Int {
+    func findLocation(_ title: String, sites: [Site?])-> Int {
         
         for i in 0..<sites.count {
             
@@ -66,7 +66,7 @@ class JsonParser: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
     
     //Use this function to retrieve the array of trip objects to create timeline objects from
     // takes an array of sites, returns data and order into an array of TripIbjects
-    func orderOfLocations(locations2: [Site?]) -> [TripObject]{
+    func orderOfLocations(_ locations2: [Site?]) -> [TripObject]{
         var startLatLong: String
         var endLatLong: String
         var startLoc: Int
@@ -158,7 +158,7 @@ class JsonParser: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
         
         // check the closest location, covert current loction and end location into string
         print("CURRENT LOCATION: \(self.currentLocation.debugDescription)       _)_)_)(()()(")
-        if(self.currentLocation!.distanceFromLocation(CLLocation(latitude: locationA!.lat, longitude: locationA!.lon))<self.currentLocation!.distanceFromLocation(CLLocation(latitude: locationB!.lat, longitude: locationB!.lon))) {
+        if(self.currentLocation!.distance(from: CLLocation(latitude: locationA!.lat.value!, longitude: locationA!.lon.value!))<self.currentLocation!.distance(from: CLLocation(latitude: locationB!.lat.value!, longitude: locationB!.lon.value!))) {
             // user location converted to doubles
             var numLat = Double((self.currentLocation?.coordinate.latitude)!)
             var numLong = Double((self.currentLocation?.coordinate.longitude)!)
@@ -166,8 +166,8 @@ class JsonParser: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
             // convert the double into a string and add commas where they need to be
             startLatLong = String(numLat) + ","
             startLatLong += String(numLong)
-            endLatLong = String(locationB!.lat) + ","
-            endLatLong += String(locationB!.lon)
+            endLatLong = String(describing: locationB!.lat.value!) + ","
+            endLatLong += String(describing: locationB!.lon.value!)
             endLoc = bLocation
         }
         else {
@@ -178,8 +178,8 @@ class JsonParser: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
             // convert the double into a string and add commas where they need to be
             startLatLong = String(numLat) + ","
             startLatLong += String(numLong)
-            endLatLong = String(locationA!.lat) + ","
-            endLatLong += String(locationA!.lon)
+            endLatLong = String(describing: locationA!.lat.value!) + ","
+            endLatLong += String(describing: locationA!.lon.value!)
             endLoc = aLocation
             
         }
@@ -187,7 +187,7 @@ class JsonParser: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
         for i in 0..<locations.count {
             if(endLoc != i) {
                 
-                middleLocations.insert(getLatLong(locations, index: i), atIndex: j)
+                middleLocations.insert(getLatLong(locations, index: i), at: j)
                 j += 1
             }
         }
@@ -204,41 +204,44 @@ class JsonParser: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
        
         //API uses startLatLong (user location), endLatLong (last site), and middleLatLong, ( all sites inbetween)
         var listOfTrips = [TripObject]()
+      
+        
         let directionURL = "https://maps.googleapis.com/maps/api/directions/json?origin="+startLatLong+"&destination="+endLatLong+"&waypoints=optimize:true%7C"+middleLatLong+"&key=" + key
-        let request = NSURLRequest(URL: NSURL(string:directionURL)!)
-        let session = NSURLSession.sharedSession()
-        session.dataTaskWithRequest(request,
-                                    completionHandler: {(data: NSData?, response: NSURLResponse?, error: NSError?)-> Void in
+
+        let request = URLRequest(url: URL(string:directionURL)!)
+        let session = URLSession.shared
+        let task = session.dataTask(with: request,
+                                    completionHandler: {(data: Data?, response: URLResponse?, error: Error?)-> Void in
                                         
                                         if error == nil {
                                             do {
-                                                let object = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as! NSDictionary
+                                                let object = try JSONSerialization.jsonObject(with: data!, options: []) as! NSDictionary
                                                 
                                                 let routes = object["routes"] as! [NSDictionary]
                                                 
                                                 for route in routes {
-                                                    for i in 0...route["waypoint_order"]!.count {
-                                                        
-                                                        var distanceValue = route["legs"]![i]["distance"]!!["value"] as! Int
-                                                        var distanceText = route["legs"]![i]["distance"]!!["text"] as! String
-                                                        var timeText = route["legs"]![i]["duration"]!!["text"] as! String
-                                                        var timeValue = route["legs"]![i]["duration"]!!["value"] as! Double
-                                                        var start = route["legs"]![i]["start_location"]!!["lat"] as! Double
+                                                    for i in 0...(route["waypoint_order"]! as AnyObject).count {
+                                                        let legs = route["legs"] as! NSArray
+                                                        let leg = legs[i] as! NSDictionary
+                                                        let distanceValue = (leg["distance"] as! NSDictionary)["value"] as! Int
+                                                        let distanceText = (leg["distance"] as! NSDictionary)["text"] as! String
+                                                        let timeText = (leg["duration"] as! NSDictionary)["text"] as! String
+                                                        let timeValue = (leg["duration"] as! NSDictionary)["value"] as! Double
+                                                        let start = (leg["start_location"] as! NSDictionary)["lat"] as! Double
                                                         //start += route["legs"]![i]["start_location"]!!["lng"] as! Double
-                                                        var end = route["legs"]![i]["end_location"]!!["lat"] as! Double
+                                                        let end = (leg["end_location"] as! NSDictionary)["lat"] as! Double
                                                         //end += route["legs"]![i]["end_location"]!!["lng"] as! Double
                                                         
-                                                        var trip = TripObject.init(startPoint: start, endPoint: end, timeText: timeText, timeValue: timeValue, distanceText: distanceText, distanceValue: distanceValue, image: nil)
+                                                        let trip = TripObject.init(startPoint: start, endPoint: end, timeText: timeText, timeValue: timeValue, distanceText: distanceText, distanceValue: distanceValue, image: nil)
                                                         
                                                         listOfTrips.append(trip)
-                                                        
                                                     }
                                                 }
                                             }catch let error as NSError {
                                                 print(error)
                                             }
                                             
-                                            NSOperationQueue.mainQueue().addOperationWithBlock({ 
+                                            OperationQueue.main.addOperation({ 
                                                 self.delegate?.getTripData(listOfTrips)
                                             })
                                         }
@@ -246,7 +249,8 @@ class JsonParser: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
                                             print("Direction API error")
                                         }
                                         
-        }).resume()
+        })
+        task.resume()
         return listOfTrips
     }
 }
