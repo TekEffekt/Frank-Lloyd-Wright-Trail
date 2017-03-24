@@ -74,9 +74,7 @@ class CreateTripVC : FormViewController {
         if indexPath.section == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "nameCell") as! NameCell
             cell.stopName.font = UIFont.systemFont(ofSize: 17)
-            if let name = trip.tripName{
-                cell.stopName.text! = name
-            }
+            cell.stopName.text! = trip.tripName
             cell.stopName.placeholder = "Trip Name"
             return cell
         }
@@ -239,27 +237,29 @@ class CreateTripVC : FormViewController {
                 
                 for (index, stop) in trip.siteStops.enumerated(){
                     if stop.name! == stopName{
-                        trip.siteStops.remove(objectAtIndex: index)
+                        RealmDelete.siteStop(index: index, trip: self.trip)
+                        tableView.deleteRows(at: [indexPath!], with: .automatic)
                         break
                     }
                 }
                 
                 for (index, stop) in trip.genericStops.enumerated(){
                     if stop.name! == stopName{
-                        trip.genericStops.remove(objectAtIndex: index)
+                        RealmDelete.genericStop(index: index, trip: self.trip)
+                        tableView.deleteRows(at: [indexPath!], with: .automatic)
                         break
                     }
                 }
                 
                 for (index, stop) in trip.mealStops.enumerated(){
                     if stop.name! == stopName{
-                        trip.mealStops.remove(objectAtIndex: index)
+                        RealmDelete.mealStop(index: index, trip: self.trip)
+                        tableView.deleteRows(at: [indexPath!], with: .automatic)
                         break
                     }
                 }
                 
             }
-            tableView.reloadData()
             dismiss(animated: true, completion: nil)
         }
     }
@@ -337,13 +337,13 @@ class CreateTripVC : FormViewController {
     @IBAction func dateChanged(_ picker: UIDatePicker){
         switch picker.tag{
         case 21:
-            trip.startDate = picker.date
+            RealmWrite.writeStartDate(startDate: picker.date, trip: self.trip)
         case 23:
-            trip.startTime = picker.date
+            RealmWrite.writeStartTime(startTime: picker.date, trip: self.trip)
         case 31:
-            trip.endDate = picker.date
+            RealmWrite.writeEndDate(endDate: picker.date, trip: self.trip)
         case 33:
-            trip.endTime = picker.date
+            RealmWrite.writeEndTime(endTime: picker.date, trip: self.trip)
         default:
             break
         }
@@ -353,33 +353,33 @@ class CreateTripVC : FormViewController {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let name = textField.text {
-          trip.tripName = name
+          RealmWrite.writeTripName(tripName: name, trip: self.trip)
         }
     }
     
     func validateAndSave(){
         if trip.startDate == nil{
-            trip.startDate = Date()
+            RealmWrite.writeStartDate(startDate: Date(), trip: self.trip)
         }
         if trip.startTime == nil{
-            trip.startTime = Date()
+            RealmWrite.writeStartTime(startTime: Date(), trip: self.trip)
         }
         if trip.endDate == nil{
-            trip.endDate = Date()
+            RealmWrite.writeEndDate(endDate: Date(), trip: self.trip)
         }
         if trip.endTime == nil{
-            trip.endTime = Date()
+            RealmWrite.writeEndTime(endTime: Date(), trip: self.trip)
         }
-        if trip.siteStops.count > 0 && trip.tripName != nil{
+        if trip.siteStops.count > 0 {
             self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
             
-//            for meal in trip.mealStops{
-//                RealmWrite.add(mealStop: meal, trip: self.trip)
-//            }
-//            for gen in trip.genericStops{
-//                RealmWrite.add(genericStop: gen, trip: self.trip)
-//            }
-            RealmWrite.writeTripName(tripName: trip.tripName!, trip: self.trip)
+            for meal in trip.mealStops{
+                RealmWrite.add(mealStop: meal, trip: self.trip)
+            }
+            for gen in trip.genericStops{
+                RealmWrite.add(genericStop: gen, trip: self.trip)
+            }
+            RealmWrite.writeTripName(tripName: trip.tripName, trip: self.trip)
             RealmWrite.writeStartDate(startDate: trip.startDate!, trip: self.trip)
             RealmWrite.writeStartTime(startTime: trip.startTime!, trip: self.trip)
             RealmWrite.writeEndDate(endDate: trip.endDate!, trip: self.trip)

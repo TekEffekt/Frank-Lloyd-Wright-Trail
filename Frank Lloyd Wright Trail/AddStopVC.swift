@@ -128,12 +128,12 @@ class AddStopVC: FormViewController{
             
             if type == .meal{
                 mealStop?.name = name
-                trip.mealStops.append(mealStop!)
+                RealmWrite.add(mealStop: mealStop!, trip: self.trip)
                 stop = mealStop
             }
             else {
                 genStop?.name = name
-                trip.genericStops.append(genStop!)
+                RealmWrite.add(genericStop: genStop!, trip: self.trip)
                 stop = genStop
             }
             

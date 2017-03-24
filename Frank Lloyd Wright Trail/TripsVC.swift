@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 class TripsVC : UITableViewController{
-    var trips: Results<Trip>?
+    var trips = RealmQuery.queryTrips()
     var trip = Trip()
     
     
@@ -20,13 +20,13 @@ class TripsVC : UITableViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        trips = RealmQuery.queryTrips()
         tableView.reloadData()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTrip))
     }
     
     func addTrip(_ sender : UIBarButtonItem){
         trip = Trip()
+        RealmWrite.add(trip: self.trip)
         performSegue(withIdentifier: "createTrip", sender: UIBarButtonItem())
     }
     
@@ -43,13 +43,11 @@ class TripsVC : UITableViewController{
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let trips = self.trips {
-            if (trips.count) > 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "labelCell") as! LabelCell
-                cell.label.text! = trips[indexPath.row].tripName!
-                cell.accessoryType = .none
-                return cell
-            }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "labelCell") as! LabelCell
+        if let trips = self.trips{
+            cell.label.text! = trips[indexPath.row].tripName
+            cell.accessoryType = .none
+            return cell
         }
         return UITableViewCell()
     }

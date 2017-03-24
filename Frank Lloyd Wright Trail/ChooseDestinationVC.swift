@@ -88,7 +88,7 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
         
         let location = sites[indexPath.row]
         let stop = SiteStop(name: location.title!, site: location)
-        trip.siteStops.append(stop)
+        RealmWrite.add(siteStop: stop, trip: self.trip)
         for place in trip.siteStops{
             print(place.name)
         }
@@ -104,16 +104,10 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
             self.selectedCells.append(indexPath)
             return true
         }
+        return true
     }
     
     
-//    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-//        print ("Deselected item \(indexPath.row)")
-//        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Destination", forIndexPath: indexPath) as! DestinationCell
-//        let imageView = cell.siteImage
-//        
-//        sitesSelected -= 1
-//    }
     
     
     // Flowlayout
