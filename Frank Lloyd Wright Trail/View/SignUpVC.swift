@@ -37,19 +37,16 @@ class SignUpVC: UITableViewController {
     func confirmSelected(_ sender: UIBarButtonItem){
         for i in 0..<trip.siteStops.count{
             if trip.siteStops[i].date == nil {
-                trip.siteStops[i].date = Date()
+                RealmWrite.writeSiteStopDate(index: i, date: Date(), trip: self.trip)
             }
             if trip.siteStops[i].startTime == nil {
-                trip.siteStops[i].startTime = Date()
+                RealmWrite.writeSiteStopDate(index: i, date: Date(), trip: self.trip)
             }
             if trip.siteStops[i].endTime == nil {
-                trip.siteStops[i].endTime = Date()
+                RealmWrite.writeSiteStopEndTime(index: i, date: Date(), trip: self.trip)
             }
         }
-        
-//        for site in trip.siteStops{
-//            RealmWrite.add(siteStop: site, trip: self.trip)
-//        }
+
         
         performSegue(withIdentifier: "segueToFinal", sender: nil)
     }
@@ -192,7 +189,7 @@ class SignUpVC: UITableViewController {
             if let locationName = sites[tag].name{
                 for i in 0..<sites.count{
                     if locationName == sites[i].name{
-                        trip.siteStops[i].startTime = picker.date
+                        RealmWrite.writeSiteStopStartTime(index: i, date: picker.date, trip: self.trip)
                     }
                 }
                 
@@ -201,14 +198,14 @@ class SignUpVC: UITableViewController {
             if picker.datePickerMode == .date{
                 for i in 0..<sites.count{
                     if locationName == sites[i].name{
-                        trip.siteStops[i].date = picker.date
+                        RealmWrite.writeSiteStopDate(index: i, date: picker.date, trip: self.trip)
                     }
                 }
                 
             }else if picker.datePickerMode == .time{
                 for i in 0..<sites.count{
                     if locationName == sites[i].name{
-                        trip.siteStops[i].endTime = picker.date
+                        RealmWrite.writeSiteStopEndTime(index: i, date: picker.date, trip: self.trip)
                     }
                 }
                 

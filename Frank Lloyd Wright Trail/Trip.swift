@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 class Trip: Object{
-    dynamic var tripName: String?
+    dynamic var tripName = "New trip"
     dynamic var startDate: Date?{
         didSet{
             if let start = self.startTime{

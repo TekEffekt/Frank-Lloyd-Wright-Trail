@@ -126,7 +126,6 @@ class JsonParser: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
         var locationA = locations[index]
         aLocation = index
         
-        
         index = findLocation("warehouse",sites: locations)
         if(index == -1)
         {

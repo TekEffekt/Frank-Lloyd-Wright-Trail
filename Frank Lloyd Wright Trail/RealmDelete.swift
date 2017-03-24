@@ -21,4 +21,37 @@ class RealmDelete{
             print(error)
         }
     }
+    
+    static func siteStop(index: Int, trip: Trip){
+        do {
+            let realm = try Realm()
+            try realm.write{
+                trip.siteStops.remove(objectAtIndex: index)
+            }
+        } catch let error {
+            print(error)
+        }
+    }
+    
+    static func mealStop(index: Int, trip: Trip){
+        do {
+            let realm = try Realm()
+            try realm.write{
+                trip.mealStops.remove(objectAtIndex: index)
+            }
+        } catch let error {
+            print(error)
+        }
+    }
+    
+    static func genericStop(index: Int, trip: Trip){
+        do {
+            let realm = try Realm()
+            try realm.write{
+                trip.genericStops.remove(objectAtIndex: index)
+            }
+        } catch let error {
+            print(error)
+        }
+    }
 }

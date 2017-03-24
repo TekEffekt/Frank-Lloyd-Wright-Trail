@@ -74,7 +74,6 @@ class FinalTimeLineVC: UIViewController,TripJsonDelegate {
     }
     
     func saveSelected(){
-        RealmWrite.add(trip: self.trip)
         navigationController?.popToRootViewController(animated: true)
     }
     
