@@ -83,9 +83,8 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
         //print("Selected item: \(indexPath.row)")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Destination", for: indexPath) as! DestinationCell
         let imageView = cell.siteImage
-        visuallySelectSurface(imageView!, withAnimation: true)
+        //visuallySelectSurface(imageView!, withAnimation: true)
         cell.selected(true)
-        
         let location = sites[indexPath.row]
         let stop = SiteStop(name: location.title!, site: location)
         RealmWrite.add(siteStop: stop, trip: self.trip)
@@ -104,10 +103,15 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
             self.selectedCells.append(indexPath)
             return true
         }
-        return true
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+        if self.selectedCells.contains(indexPath){
+            return false
+        } else {
+            return true
+        }
+    }
     
     
     // Flowlayout

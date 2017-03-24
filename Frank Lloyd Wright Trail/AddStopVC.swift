@@ -120,9 +120,25 @@ class AddStopVC: FormViewController{
     }
     
     func doneSelected(_ sender: UIBarButtonItem){
-        
         var indexPath = IndexPath(row: 0, section: 0)
         let cell = self.tableView.cellForRow(at: indexPath) as! NameCell
+        
+        indexPath = IndexPath(row: 1, section: 1)
+        let dateCell = tableView.cellForRow(at: indexPath) as! DatePickCell
+        indexPath = IndexPath(row: 1, section: 2)
+        let startTimeCell = tableView.cellForRow(at: indexPath) as! DatePickCell
+        indexPath = IndexPath(row: 3, section: 2)
+        let endTimeCell = tableView.cellForRow(at: indexPath) as! DatePickCell
+        
+        if type == .meal{
+            mealStop?.date = dateCell.datePicker.date
+            mealStop?.startTime = startTimeCell.datePicker.date
+            mealStop?.endTime = endTimeCell.datePicker.date
+        }else{
+            genStop?.date = dateCell.datePicker.date
+            genStop?.startTime = dateCell.datePicker.date
+            genStop?.endTime = endTimeCell.datePicker.date
+        }
         
         if let name = cell.stopName.text, !name.isEmpty{
             
@@ -141,25 +157,7 @@ class AddStopVC: FormViewController{
             print("no stop name")
             return
         }
-        
-        
-        indexPath = IndexPath(row: 1, section: 1)
-        let dateCell = tableView.cellForRow(at: indexPath) as! DatePickCell
-        indexPath = IndexPath(row: 1, section: 2)
-        let startTimeCell = tableView.cellForRow(at: indexPath) as! DatePickCell
-        indexPath = IndexPath(row: 3, section: 2)
-        let endTimeCell = tableView.cellForRow(at: indexPath) as! DatePickCell
-        
-        
-        if type == .meal{
-            mealStop?.date = dateCell.datePicker.date
-            mealStop?.startTime = startTimeCell.datePicker.date
-            mealStop?.endTime = endTimeCell.datePicker.date
-        }else{
-            genStop?.date = dateCell.datePicker.date
-            genStop?.startTime = dateCell.datePicker.date
-            genStop?.endTime = endTimeCell.datePicker.date
-        }
+    
         self.navigationController?.popViewController(animated: true)
     }
     
