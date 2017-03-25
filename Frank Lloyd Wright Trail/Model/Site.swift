@@ -7,35 +7,49 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct Site {
+class Site: Object{
     
-    let lon: Double
-    let lat: Double
-    let title: String
-    let subtitle: String
-    let imageName: String?
-    let details: String?
-    var distance: Double
-    var hasBeenVisited = false
+    var lon = RealmOptional<Double>()
+    var lat = RealmOptional<Double>()
+    dynamic var title: String?
+    dynamic var subtitle: String?
+    dynamic var imageName: String?
+    dynamic var details: String?
+    var distance = RealmOptional<Double>()
+    dynamic var hasBeenVisited = false
     
+    
+    
+    convenience required init(lon: RealmOptional<Double>, lat: RealmOptional<Double>, title: String, subtitle: String, imageName: String, details: String, distance: RealmOptional<Double>, hasBeenVisited: Bool){
+        self.init()
+        self.lon = lon
+        self.lat = lat
+        self.title = title
+        self.subtitle = subtitle
+        self.imageName = imageName
+        self.details = details
+        self.distance = distance
+        self.hasBeenVisited = hasBeenVisited
+    }
     
     static func getSites() -> [Site] {
         var locations: NSArray?
         var sites: [Site] = []
-        if let path = NSBundle.mainBundle().pathForResource("locations", ofType: "plist") {
+        if let path = Bundle.main.path(forResource: "locations", ofType: "plist") {
             locations = NSArray(contentsOfFile: path)
         }
         if let items = locations {
             // adds each location to an array of type Pin
             for item in items {
-                let lat = item.valueForKey("lat") as! Double
-                let long = item.valueForKey("long")as! Double
-                let title = item.valueForKey("title") as! String
-                let imageName = item.valueForKey("imageName") as! String
-                let subtitle = item.valueForKey("subtitle") as! String
-                let details = item.valueForKey("details") as! String
-                let site = Site(lon: long, lat: lat, title: title, subtitle: subtitle, imageName: imageName,details: details,  distance: 0.0,hasBeenVisited: false)
+                let lat = (item as AnyObject).value(forKey: "lat") as! Double
+                let long = (item as AnyObject).value(forKey: "long") as! Double
+                let title = (item as AnyObject).value(forKey: "title") as! String
+                let imageName = (item as AnyObject).value(forKey: "imageName") as! String
+                let subtitle = (item as AnyObject).value(forKey: "subtitle") as! String
+                let details = (item as AnyObject).value(forKey: "details") as! String
+                let site = Site(lon: RealmOptional(long), lat: RealmOptional(lat), title: title, subtitle: subtitle, imageName: imageName,details: details,  distance: RealmOptional(0.0),hasBeenVisited: false)
                 sites.append(site)
             }
         }

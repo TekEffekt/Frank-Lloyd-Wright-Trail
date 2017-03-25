@@ -13,7 +13,7 @@ import NYTPhotoViewer
 class DetailViewController: UIViewController,NYTPhotosViewControllerDelegate
 {
     // button action for visted feature. not implemented yet
-    @IBAction func siteVisted(sender: AnyObject) {
+    @IBAction func siteVisted(_ sender: AnyObject) {
         
     }
     
@@ -45,17 +45,17 @@ class DetailViewController: UIViewController,NYTPhotosViewControllerDelegate
     }
     
     // a segue to pass along the annotation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "container" ){
             // segue into LocationGalleryPageControlller and pass through the slected pin's MKPinAnnotaion
-            let blank: LocationGalleryPageControlller = segue.destinationViewController as! LocationGalleryPageControlller
+            let blank: LocationGalleryPageControlller = segue.destination as! LocationGalleryPageControlller
             blank.picture = viaSegue
         }
     }
     
     // func to display the right annotaion site info using a switch statment,
     // then setting the correct labels and text view
-    func displayDetailAnnotation (viaSegue: MKAnnotationView){
+    func displayDetailAnnotation (_ viaSegue: MKAnnotationView){
         
         switch  viaSegue.annotation!.coordinate.latitude{
         case 42.7152375:

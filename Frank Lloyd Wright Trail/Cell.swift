@@ -18,26 +18,26 @@ class Cell: UICollectionViewCell {
         circleColor.layer.cornerRadius = min(circleColor.frame.size.height, circleColor.frame.size.width) / 2.0
         circleColor.center = center
     }
-    func color(title : String){
+    func color(_ title : String){
         switch title {
         case "SC Johnson Administration Building and Research Tower" :
-            circleColor.backgroundColor = UIColor.redColor()
+            circleColor.backgroundColor = UIColor.red
         case "Wingspread" :
-            circleColor.backgroundColor = UIColor.orangeColor()
+            circleColor.backgroundColor = UIColor.orange
         case "Monona Terrace" :
-            circleColor.backgroundColor = UIColor.magentaColor()
+            circleColor.backgroundColor = UIColor.magenta
         case "First Unitatrian Society Meeting House" :
-            circleColor.backgroundColor = UIColor.greenColor()
+            circleColor.backgroundColor = UIColor.green
         case "Talisesin and Frank Lloyd Wright Visitor Center" :
-            circleColor.backgroundColor = UIColor.blueColor()
+            circleColor.backgroundColor = UIColor.blue
         case "A.D. German Warehouse" :
-            circleColor.backgroundColor = UIColor.purpleColor()
+            circleColor.backgroundColor = UIColor.purple
         case "American System Built Homes" :
-            circleColor.backgroundColor = UIColor.cyanColor()
+            circleColor.backgroundColor = UIColor.cyan
         case "Wyoming Valley School" :
-            circleColor.backgroundColor = UIColor.yellowColor()
+            circleColor.backgroundColor = UIColor.yellow
         default :
-            circleColor.backgroundColor = UIColor.redColor()
+            circleColor.backgroundColor = UIColor.red
         }
     }
 }

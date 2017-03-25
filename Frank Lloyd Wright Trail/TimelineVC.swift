@@ -7,6 +7,23 @@
 //
 
 import UIKit
+import RealmSwift
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+private func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+
+
 
 class TimelineVC: UIViewController, TripJsonDelegate {
     
@@ -14,60 +31,139 @@ class TimelineVC: UIViewController, TripJsonDelegate {
     var scrollView: UIScrollView!
     var timeline:   TimelineView!
     var json: JsonParser!
-    var sites = TripModel.shared.getSites()
+    var sites = List<SiteStop>()
     var allSites = Site.getSites()
+    var sites2 = [Site?]()
+    var sharedTripObject: [TripObject] = []
+    var stops = [Stop]()
+    var startTime = Date()
+    var endTime = Date()
+    var newStops = [Stop]()
+    var newTripObject = [TripObject]()
+    var trip = Trip()
+    
+    let date = Date()
+    let calendar = Calendar.current
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        sites = trip.siteStops
+        stops = trip.stops
+        startTime = trip.startTime!
+        endTime = trip.endTime!
+        
         scrollView = UIScrollView(frame: view.bounds)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scrollView)
         
-        view.addConstraints([
-            NSLayoutConstraint(item: scrollView, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: scrollView, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: 29),
-            NSLayoutConstraint(item: scrollView, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: scrollView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: 0)
-            ])
         
-        json = JsonParser(withDelegate: self, locations: sites)
-        getTripData(json.orderOfLocations(sites))
+        
+        view.addConstraints([
+            NSLayoutConstraint(item: scrollView, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: scrollView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 29),
+            NSLayoutConstraint(item: scrollView, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: scrollView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0)
+            ])
+        for i in 0..<sites.count {
+        
+            sites2.append(sites[i].site)
+        }
+        json = JsonParser(withDelegate: self, locations: sites2)
+        getTripData(json.orderOfLocations(sites2))
     }
     
-    
-    override func prefersStatusBarHidden() -> Bool {
-        return true
+    func compareSites(_ site1:Site?, site2: [Site]) -> Int {
+        for j in 0..<site2.count{
+            let latitude1 = Double(round(100*(site1?.lat.value!)!/100))
+            let latitude2 = Double(round(100*site2[j].lat.value!/100))
+            
+            if (latitude1 == latitude2){
+                return j
+            }
+        }
+        return -1
     }
+    
     
     // func to get API object data
-    func getTripData(objects: [TripObject]) {
+    func getTripData(_ objects: [TripObject]) {
         var timeFrames: [TimeFrame] = []
         
-        for i in 0..<objects.count{
-            for j in 0..<sites.count{
-               // compare the objects to all the sites and if there is a match create card and add a picture from the list of all sites
-                if(Double(round(100*objects[i].endPoint!)/100) == Double(round(100*allSites[j].lat)/100)){
-                    timeFrames.append(TimeFrame(text:"Travel distance is " + objects[i].distanceText! + " Travel time is " + objects[i].timeText!, date: allSites[j].title, image: UIImage(named:allSites[j].imageName!)))
+        var objectTime = 0.0
+        var tripTime = endTime.timeIntervalSince(startTime)
+        
+        if(objects.count != 0 && newTripObject.count == 0){
+            for b in 0..<objects.count {
+                objectTime = +objects[b].timeValue!
+                if(objectTime < tripTime){
+                    newTripObject.append(objects[b])
+                    
+                    
                 }
             }
             
+            // attach the correct image to the sites
+            var count = 0
+            
+            if(newTripObject.count < 0) {
+                timeFrames.append(TimeFrame(text: "Home", date: "9:00am", image: nil))}
+            if (newTripObject.count == 0){
+                timeFrames.append(TimeFrame(text: "It's not possible to visit the sites with the times you entered", date: "Not enough time given", image: nil))
+            } else{
+                for i in 0..<newTripObject.count{
+                    for j in 0..<sites2.count{
+                        // compare the objects to all the sites and if there is a match create card and add a picture from the list of all sites
+                        if (Double(round(100*newTripObject[i].endPoint!)/100) == Double(round(100*allSites[compareSites(sites2[j]!, site2: allSites)].lat.value!)/100)){
+                            //timeFrames.append(TimeFrame(text: "Drive time" , date: "9:00am", image: nil))
+                            timeFrames.append(TimeFrame(text:"Travel distance is " + newTripObject[i].distanceText! + "iles" + ". Travel time is " + newTripObject[i].timeText! + ".", date: allSites[compareSites(sites2[j], site2: allSites)].title!, image: UIImage(named:allSites[compareSites(sites2[j], site2: allSites)].imageName!)))
+                        }
+                    }
+                    
+                }
+            }
         }
         
-        timeline = TimelineView(bulletType: .Circle, timeFrames: timeFrames)
+        timeline = TimelineView(bulletType: .circle, timeFrames: timeFrames)
+        
         
         scrollView.addSubview(timeline)
         scrollView.addConstraints([
-            NSLayoutConstraint(item: timeline, attribute: .Left, relatedBy: .Equal, toItem: scrollView, attribute: .Left, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: timeline, attribute: .Bottom, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Bottom, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: timeline, attribute: .Top, relatedBy: .Equal, toItem: scrollView, attribute: .Top, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: timeline, attribute: .Right, relatedBy: .Equal, toItem: scrollView, attribute: .Right, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: timeline, attribute: .left, relatedBy: .equal, toItem: scrollView, attribute: .left, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: timeline, attribute: .bottom, relatedBy: .lessThanOrEqual, toItem: scrollView, attribute: .bottom, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: timeline, attribute: .top, relatedBy: .equal, toItem: scrollView, attribute: .top, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: timeline, attribute: .right, relatedBy: .equal, toItem: scrollView, attribute: .right, multiplier: 1.0, constant: 0),
             
-            NSLayoutConstraint(item: timeline, attribute: .Width, relatedBy: .Equal, toItem: scrollView, attribute: .Width, multiplier: 1.0, constant: 0)
+            NSLayoutConstraint(item: timeline, attribute: .width, relatedBy: .equal, toItem: scrollView, attribute: .width, multiplier: 1.0, constant: 0)
             ])
         
-        view.sendSubviewToBack(scrollView)
+        view.sendSubview(toBack: scrollView)
     }
     
+
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationItem.title = "Suggested Trip"
+        let button = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.plain, target: self, action: #selector(doneSelected))
+        self.navigationItem.rightBarButtonItem = button
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let signupVC = segue.destination as! SignUpVC
+        signupVC.trip = self.trip
+    }
+    
+    func doneSelected(_ sender: UIBarButtonItem){
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
+        performSegue(withIdentifier: "signup", sender: nil)
+    }
+    
+
+    override var prefersStatusBarHidden : Bool {
+        return true
+    }
+    
+
+
 }
+
