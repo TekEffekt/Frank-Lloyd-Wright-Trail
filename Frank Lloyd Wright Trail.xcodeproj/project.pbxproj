@@ -30,6 +30,7 @@
 		217503521E4BBB0300EC9693 /* UWParkside.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 217503511E4BBB0300EC9693 /* UWParkside.gpx */; };
 		218502C41E3EF84700CAFE6D /* TimelineCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218502C31E3EF84700CAFE6D /* TimelineCardModel.swift */; };
 		218503001E4198D000CAFE6D /* Date+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218502FF1E4198D000CAFE6D /* Date+Comparable.swift */; };
+		21D507AF1E85F7050088AD47 /* GoogleDirectionsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D507AE1E85F7050088AD47 /* GoogleDirectionsAPI.swift */; };
 		3D968D3100D7715D8590C20E /* Pods_Frank_Lloyd_Wright_Trail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF68C79F7226D19F1DACC2B8 /* Pods_Frank_Lloyd_Wright_Trail.framework */; };
 		847AE4B61DA71FFA0056B6D7 /* PhotosProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AE4B51DA71FFA0056B6D7 /* PhotosProvider.swift */; };
 		847AE4B81DA720010056B6D7 /* ExamplePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AE4B71DA720010056B6D7 /* ExamplePhoto.swift */; };
@@ -95,6 +96,7 @@
 		217503511E4BBB0300EC9693 /* UWParkside.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UWParkside.gpx; sourceTree = "<group>"; };
 		218502C31E3EF84700CAFE6D /* TimelineCardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineCardModel.swift; sourceTree = "<group>"; };
 		218502FF1E4198D000CAFE6D /* Date+Comparable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Comparable.swift"; sourceTree = "<group>"; };
+		21D507AE1E85F7050088AD47 /* GoogleDirectionsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleDirectionsAPI.swift; sourceTree = "<group>"; };
 		46912E114CBBD62D92AB4CE3 /* Pods-Frank Lloyd Wright Trail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frank Lloyd Wright Trail.release.xcconfig"; path = "Pods/Target Support Files/Pods-Frank Lloyd Wright Trail/Pods-Frank Lloyd Wright Trail.release.xcconfig"; sourceTree = "<group>"; };
 		847AE4B51DA71FFA0056B6D7 /* PhotosProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosProvider.swift; sourceTree = "<group>"; };
 		847AE4B71DA720010056B6D7 /* ExamplePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamplePhoto.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				211EB2E41E5E6FAB00176C13 /* SignUpVC.swift */,
 				84CBA0351E67BB83004398B7 /* FinalTimeLineVC.swift */,
 				84EF3A551E44EE0E00A8B00A /* JsonParser.swift */,
+				21D507AE1E85F7050088AD47 /* GoogleDirectionsAPI.swift */,
 			);
 			name = "Trip Planner";
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 2T9JP2ZYVK;
 						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -539,6 +543,7 @@
 				847AE4B61DA71FFA0056B6D7 /* PhotosProvider.swift in Sources */,
 				847AE4BC1DA720B30056B6D7 /* LocationGalleryImageController.swift in Sources */,
 				21492FD31E5A3F8E005660F3 /* GenericStop.swift in Sources */,
+				21D507AF1E85F7050088AD47 /* GoogleDirectionsAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -652,6 +657,7 @@
 			baseConfigurationReference = 866A48BE69E58B36CE7AFA90 /* Pods-Frank Lloyd Wright Trail.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 2T9JP2ZYVK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -672,6 +678,7 @@
 			baseConfigurationReference = 46912E114CBBD62D92AB4CE3 /* Pods-Frank Lloyd Wright Trail.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 2T9JP2ZYVK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

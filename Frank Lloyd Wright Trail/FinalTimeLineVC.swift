@@ -39,7 +39,7 @@ class FinalTimeLineVC: UIViewController,TripJsonDelegate {
     var tripObj = [TripObject]()
     var newStops = [Stop]()
     var newTripObject = [TripObject]()
-    var trip = Trip()
+    var trip: Trip!
     
     
     override func viewDidLoad() {

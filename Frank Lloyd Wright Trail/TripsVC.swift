@@ -26,6 +26,7 @@ class TripsVC : UITableViewController{
     
     func addTrip(_ sender : UIBarButtonItem){
         trip = Trip()
+        trip.id = trip.incrementID()
         RealmWrite.add(trip: self.trip)
         performSegue(withIdentifier: "createTrip", sender: UIBarButtonItem())
     }

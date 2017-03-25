@@ -15,7 +15,7 @@ class SignUpVC: UITableViewController {
     var currentSection = -1
     var dateTag = 0
     var sites = List<SiteStop>()
-    var trip = Trip()
+    var trip: Trip!
     
     override func viewDidLoad() {
         super.viewDidLoad()

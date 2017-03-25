@@ -17,7 +17,7 @@ class CreateTripVC : FormViewController {
     var cellTapped = false
     var currentRow = -1
     var currentSection = -1
-    var trip = Trip()
+    var trip: Trip!
     
     
     override func viewDidLoad() {

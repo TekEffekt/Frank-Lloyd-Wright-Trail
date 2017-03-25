@@ -16,7 +16,7 @@ class AddStopVC: FormViewController{
     var genStop: GenericStop?
     var mealStop: MealStop?
     var stop: Stop?
-    var trip = Trip()
+    var trip: Trip!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -157,7 +157,6 @@ class AddStopVC: FormViewController{
             print("no stop name")
             return
         }
-    
         self.navigationController?.popViewController(animated: true)
     }
     

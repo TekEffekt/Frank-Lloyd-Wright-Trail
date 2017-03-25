@@ -14,7 +14,7 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
     var selectedCells = [IndexPath]()
     let sites = Site.getSites()
     var sitesSelected = 0
-    var trip = Trip()
+    var trip: Trip!
 
     override func viewDidLoad() {
         super.viewDidLoad()
