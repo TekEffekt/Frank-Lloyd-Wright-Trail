@@ -30,12 +30,12 @@ class LocationGalleryPageControlller: UIPageViewController, UIPageViewController
     var site7:[UIImage] = [UIImage(named: "wyoming")!, UIImage(named: "wyoming2")!, UIImage(named: "wyoming3")!]
 
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         
         // for loop that creates 3 LocationGalleryImageControllers, one for each picture in the sites
         // sets nytphoto to current annotation being view by using its latitude
         for i in 0...2 {
-            let controller = storyboard?.instantiateViewControllerWithIdentifier("LocationGalleryImageController") as! LocationGalleryImageController
+            let controller = storyboard?.instantiateViewController(withIdentifier: "LocationGalleryImageController") as! LocationGalleryImageController
             
             switch  picture.annotation!.coordinate.latitude{
             case 43.3334718:
@@ -77,7 +77,7 @@ class LocationGalleryPageControlller: UIPageViewController, UIPageViewController
         
         if let firstViewController = imageControllers.first {
             setViewControllers([firstViewController],
-                               direction: .Forward,
+                               direction: .forward,
                                animated: false,
                                completion: nil)
         }
@@ -85,10 +85,10 @@ class LocationGalleryPageControlller: UIPageViewController, UIPageViewController
         self.dataSource = self
     }
     
-    func pageViewController(pageViewController: UIPageViewController,
-                            viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
-        guard let viewControllerIndex = imageControllers.indexOf(viewController as! LocationGalleryImageController) else {
+        guard let viewControllerIndex = imageControllers.index(of: viewController as! LocationGalleryImageController) else {
             return nil
         }
         
@@ -106,9 +106,9 @@ class LocationGalleryPageControlller: UIPageViewController, UIPageViewController
     }
     
     
-    func pageViewController(pageViewController: UIPageViewController,
-                            viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = imageControllers.indexOf(viewController as! LocationGalleryImageController) else {
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        guard let viewControllerIndex = imageControllers.index(of: viewController as! LocationGalleryImageController) else {
             return nil
         }
         
