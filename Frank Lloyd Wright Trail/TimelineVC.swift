@@ -44,9 +44,12 @@ class TimelineVC: UIViewController {
         //must send ID to seperate thread can't pass realm objects between threads
         let tripID = trip.id
         google.getOptimizedWayPoints(tripID, completion: {(timeLineCards: [TimelineCardModel]) -> Void in
+            guard let trip = RealmQuery.queryTripByID(tripID) else {
+                print("Could Not Find Trip by ID")
+                return
+            }
             
-            
-            let tripTime = self.trip.fullEndDate?.timeIntervalSince(self.trip.fullStartDate!)
+            let tripTime = trip.fullEndDate?.timeIntervalSince(trip.fullStartDate!)
             var driveTime = 0.0
             //add up duration in minutes to see if enough time to complete trip
             for driveCard in timeLineCards {

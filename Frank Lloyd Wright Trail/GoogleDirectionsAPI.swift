@@ -54,6 +54,10 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
         let urlRequest = URLRequest(url: url)
         let session = URLSession.shared
         let task = session.dataTask(with: urlRequest) {data, response, error in
+            guard let trip = RealmQuery.queryTripByID(id) else {
+                print("Could Not Find Trip by ID")
+                return
+            }
             guard error == nil else {
                 print("Error Calling GET")
                 print(error!)
@@ -88,6 +92,7 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
                 timelineHomeCard.icon = UIImage(named: "house")
                 
                 timelineCards.append(timelineHomeCard)
+                var i = 0
                 for (index, leg) in legs.enumerated() {
                     var timelineSiteCard = TimelineCardModel()
                     var timelineCarCard = TimelineCardModel()
@@ -112,11 +117,16 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
                     timelineCarCard.icon = UIImage(named: "car")
                     timelineCards.append(timelineCarCard)
                     //add sites in correct order
-                    let index = waypointOrder[index]
-                    let site = trip.siteStops[index].site
-                    timelineSiteCard.name = site?.title!
-                    timelineSiteCard.locationImage = UIImage(named: (site?.imageName!)!)
-                    timelineCards.append(timelineSiteCard)
+                    print("waypointOrder: \(waypointOrder)")
+                    print("index: \(index)")
+                    if i < legs.count - 1 {
+                        let index = waypointOrder[index]
+                        let site = trip.siteStops[index].site
+                        timelineSiteCard.name = site?.title!
+                        timelineSiteCard.locationImage = UIImage(named: (site?.imageName!)!)
+                        timelineCards.append(timelineSiteCard)
+                    }
+                    i += 1
                 }
                 timelineCards.append(timelineHomeCard)
                 completion(timelineCards)
