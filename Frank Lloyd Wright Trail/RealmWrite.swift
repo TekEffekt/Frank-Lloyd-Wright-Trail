@@ -109,6 +109,28 @@ class RealmWrite{
         }
     }
     
+    static func writeSiteStopFullStartDate(index: Int, date: Date, trip: Trip) {
+        do {
+            let realm = try Realm()
+            try realm.write {
+                trip.siteStops[index].startDate = date
+            }
+        } catch let error {
+            print(error)
+        }
+    }
+    
+    static func writeSiteStopFullEndDate(index: Int, date: Date, trip: Trip) {
+        do {
+            let realm = try Realm()
+            try realm.write {
+                trip.siteStops[index].endDate = date
+            }
+        } catch let error {
+            print(error)
+        }
+    }
+    
     static func writeSiteStopEndTime(index: Int, date: Date, trip: Trip){
         do {
             let realm = try Realm()

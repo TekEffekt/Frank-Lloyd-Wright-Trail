@@ -134,10 +134,19 @@ class AddStopVC: FormViewController{
             mealStop?.date = dateCell.datePicker.date
             mealStop?.startTime = startTimeCell.datePicker.date
             mealStop?.endTime = endTimeCell.datePicker.date
+            var fullStartDate = CombineDates.combineDateWithTime((mealStop?.date)!, time: (mealStop?.startTime)!)
+            mealStop?.startDate = fullStartDate
+            var fullEndDate = CombineDates.combineDateWithTime((mealStop?.date)!, time: (mealStop?.endTime)!)
+            mealStop?.endDate = fullEndDate
+            
         }else{
             genStop?.date = dateCell.datePicker.date
             genStop?.startTime = dateCell.datePicker.date
             genStop?.endTime = endTimeCell.datePicker.date
+            var fullStartDate = CombineDates.combineDateWithTime((genStop?.date)!, time: (genStop?.startTime)!)
+            genStop?.startDate = fullStartDate
+            var fullEndDate = CombineDates.combineDateWithTime((genStop?.date)!, time: (genStop?.endTime)!)
+            genStop?.endDate = fullEndDate
         }
         
         if let name = cell.stopName.text, !name.isEmpty{
