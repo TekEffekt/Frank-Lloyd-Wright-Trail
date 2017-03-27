@@ -45,7 +45,6 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
         let key = "AIzaSyD99efuqx7jK3bOi7txWUDRZNlh-G50b0w"
         
         let directionEndPoint = "https://maps.googleapis.com/maps/api/directions/json?origin=\(userCoordString)&destination=\(userCoordString)&waypoints=optimize:true%7C\(waypointsCoordString)&key=\(key)"
-        print("URL!! = \(directionEndPoint)")
         
         guard let url = URL(string: directionEndPoint) else {
             print("Error Converting to URL")
@@ -89,7 +88,7 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
                 //timelineCards to be returned
                 var timelineCards = [TimelineCardModel]()
                 var timelineHomeCard = TimelineCardModel()
-                timelineHomeCard.icon = UIImage(named: "house")
+                timelineHomeCard.icon = UIImage(named: "home")
                 
                 timelineCards.append(timelineHomeCard)
                 var i = 0
@@ -117,8 +116,6 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
                     timelineCarCard.icon = UIImage(named: "car")
                     timelineCards.append(timelineCarCard)
                     //add sites in correct order
-                    print("waypointOrder: \(waypointOrder)")
-                    print("index: \(index)")
                     if i < legs.count - 1 {
                         let index = waypointOrder[index]
                         let site = trip.siteStops[index].site

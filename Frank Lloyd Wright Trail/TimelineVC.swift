@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 
 class TimelineVC: UIViewController {
-    
+    var enoughTime = true
     var scrollView: UIScrollView!
     var timeline: TimelineView!
     var trip: Trip!
@@ -59,30 +59,47 @@ class TimelineVC: UIViewController {
                     driveTime += durationTime
                 }
             }
+            //consider hour spent at each site stop
+            driveTime += (Double(trip.siteStops.count) * 3600.0)
+            
             var timeFrames = [TimeFrame]()
             if (tripTime?.isLess(than: driveTime))! {
-                timeFrames.append(TimeFrame(text: "It's not possible to visit the sites with the times you entered", date: "Not enough time given", image: nil))
+                timeFrames.append(TimeFrame(text: "", date: "Not Enough Time For Trip", image: UIImage(named:"NoEntry")!))
             } else {
+                var timeOfDay = trip.startDate
+                var timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay!)
                 for (index, card) in timeLineCards.enumerated() {
-                    if index == 0 {
+                    if index == 0 || index == timeLineCards.count - 1 {
                         //home card
-                        let timeFrame = TimeFrame(text: "", date: "", image: card.icon!)
+                        let timeFrame = TimeFrame(text: "", date: timeOfDayFormatted, image: card.icon!)
                         timeFrames.append(timeFrame)
                     } else if let name = card.name {
                         //location card
-                        let timeFrame = TimeFrame(text: name, date: "", image: card.locationImage!)
+                        let timeFrame = TimeFrame(text: name, date: timeOfDayFormatted, image: card.locationImage!)
                         timeFrames.append(timeFrame)
+                        //assume hour spent at site
+                        timeOfDay = DateHelp.addHoursToDate(hours: 1, date: timeOfDay!)
+                        timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay!)
                     } else {
                         //drive card
-                        let timeFrame = TimeFrame(text: card.distance!, date: card.duration!, image: card.icon!)
+                        let timeFrame = TimeFrame(text: "\(card.distance!)les, \(card.duration!)", date: "", image: card.icon!)
                         timeFrames.append(timeFrame)
+                        //get actual int from duration of drive instead of string
+                        let minutesString = card.duration!
+                        let minutesNum = minutesString.components(separatedBy: " ").flatMap { Int($0.trimmingCharacters(in: .whitespaces))}[0]
+                        timeOfDay = DateHelp.addMinutesToDate(minutes: minutesNum, date: timeOfDay!)
+                        timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay!)
                     }
                 }
             }
             //back to main thread before UI changes
             DispatchQueue.main.async {
                 self.timeline = TimelineView(bulletType: .circle, timeFrames: timeFrames)
-                
+                if self.timeline.timeFrames.count == 1 {
+                    self.enoughTime = false
+                }
+                self.timeline.detailLabelColor = UIColor(hexString: "#A6192E")
+                self.timeline.titleLabelColor = UIColor(hexString: "#A6192E")
                 self.scrollView.addSubview(self.timeline)
                 self.scrollView.addConstraints([
                     NSLayoutConstraint(item: self.timeline, attribute: .left, relatedBy: .equal, toItem: self.scrollView, attribute: .left, multiplier: 1.0, constant: 0),
@@ -104,8 +121,12 @@ class TimelineVC: UIViewController {
     }
     
     func doneSelected(_ sender: UIBarButtonItem){
+        if enoughTime {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
         performSegue(withIdentifier: "signup", sender: nil)
+        } else {
+            print("Not Enough Time for Trip")
+        }
     }
     
     

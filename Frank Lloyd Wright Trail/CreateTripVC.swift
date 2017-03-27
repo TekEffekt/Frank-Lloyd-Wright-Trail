@@ -338,12 +338,40 @@ class CreateTripVC : FormViewController {
         switch picker.tag{
         case 21:
             RealmWrite.writeStartDate(startDate: picker.date, trip: self.trip)
+            if let start = trip.startTime{
+                let fullStartDate = CombineDates.combineDateWithTime(trip.startDate!, time: start)
+                RealmWrite.writeFullStartDate(fullStartDate!, trip)
+            }else{
+                let fullStartDate = CombineDates.combineDateWithTime(trip.startDate!, time: Date())
+                RealmWrite.writeFullStartDate(fullStartDate!, trip)
+            }
         case 23:
             RealmWrite.writeStartTime(startTime: picker.date, trip: self.trip)
+            if let startDay = trip.startDate{
+                let fullStartDate = CombineDates.combineDateWithTime(startDay, time: trip.startTime!)
+                RealmWrite.writeFullStartDate(fullStartDate!, trip)
+            }else{
+                let fullStartDate = CombineDates.combineDateWithTime(Date(), time: trip.startTime!)
+                RealmWrite.writeFullStartDate(fullStartDate!, trip)
+            }
         case 31:
             RealmWrite.writeEndDate(endDate: picker.date, trip: self.trip)
+            if let end = trip.endTime{
+                let fullEndDate = CombineDates.combineDateWithTime(trip.endDate!, time: end)
+                RealmWrite.writeFullEndDate(fullEndDate!, trip)
+            }else{
+                let fullEndDate = CombineDates.combineDateWithTime(trip.endDate!, time: Date())
+                RealmWrite.writeFullEndDate(fullEndDate!, trip)
+            }
         case 33:
             RealmWrite.writeEndTime(endTime: picker.date, trip: self.trip)
+            if let endDay = trip.endDate{
+                let fullEndDate = CombineDates.combineDateWithTime(endDay, time: trip.endTime!)
+                RealmWrite.writeFullEndDate(fullEndDate!, trip)
+            }else{
+                let fullEndDate = CombineDates.combineDateWithTime(Date(), time: trip.endTime!)
+                RealmWrite.writeFullEndDate(fullEndDate!, trip)
+            }
         default:
             break
         }
@@ -360,15 +388,43 @@ class CreateTripVC : FormViewController {
     func validateAndSave(){
         if trip.startDate == nil{
             RealmWrite.writeStartDate(startDate: Date(), trip: self.trip)
+            if let start = trip.startTime{
+                let fullStartDate = CombineDates.combineDateWithTime(trip.startDate!, time: start)
+                RealmWrite.writeFullStartDate(fullStartDate!, trip)
+            }else{
+                let fullStartDate = CombineDates.combineDateWithTime(trip.startDate!, time: Date())
+                RealmWrite.writeFullStartDate(fullStartDate!, trip)
+            }
         }
         if trip.startTime == nil{
             RealmWrite.writeStartTime(startTime: Date(), trip: self.trip)
+            if let startDay = trip.startDate{
+                let fullStartDate = CombineDates.combineDateWithTime(startDay, time: trip.startTime!)
+                RealmWrite.writeFullStartDate(fullStartDate!, trip)
+            }else{
+                let fullStartDate = CombineDates.combineDateWithTime(Date(), time: trip.startTime!)
+                RealmWrite.writeFullStartDate(fullStartDate!, trip)
+            }
         }
         if trip.endDate == nil{
             RealmWrite.writeEndDate(endDate: Date(), trip: self.trip)
+            if let end = trip.endTime{
+                let fullEndDate = CombineDates.combineDateWithTime(trip.endDate!, time: end)
+                RealmWrite.writeFullEndDate(fullEndDate!, trip)
+            }else{
+                let fullEndDate = CombineDates.combineDateWithTime(trip.endDate!, time: Date())
+                RealmWrite.writeFullEndDate(fullEndDate!, trip)
+            }
         }
         if trip.endTime == nil{
             RealmWrite.writeEndTime(endTime: Date(), trip: self.trip)
+            if let endDay = trip.endDate{
+                let fullEndDate = CombineDates.combineDateWithTime(endDay, time: trip.endTime!)
+                RealmWrite.writeFullEndDate(fullEndDate!, trip)
+            }else{
+                let fullEndDate = CombineDates.combineDateWithTime(Date(), time: trip.endTime!)
+                RealmWrite.writeFullEndDate(fullEndDate!, trip)
+            }
         }
         if trip.siteStops.count > 0 {
             self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)

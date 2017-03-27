@@ -43,6 +43,28 @@ class RealmWrite{
         }
     }
     
+    static func writeFullStartDate(_ fullStartDate: Date, _ trip: Trip){
+        do {
+            let realm = try Realm()
+            try realm.write {
+                trip.fullStartDate = fullStartDate
+            }
+        } catch let error {
+            print(error)
+        }
+    }
+    
+    static func writeFullEndDate(_ fullEndDate: Date, _ trip: Trip){
+        do {
+            let realm = try Realm()
+            try realm.write {
+                trip.fullEndDate = fullEndDate
+            }
+        } catch let error {
+            print(error)
+        }
+    }
+    
     static func writeEndDate(endDate: Date, trip: Trip){
         do {
             let realm = try Realm()
