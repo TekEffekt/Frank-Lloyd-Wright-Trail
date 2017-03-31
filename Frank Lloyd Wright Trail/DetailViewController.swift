@@ -10,7 +10,7 @@ import MapKit
 import UIKit
 import NYTPhotoViewer
 
-@available(iOS 10.0, *)
+
 class DetailViewController: UIViewController,NYTPhotosViewControllerDelegate, UITextViewDelegate
 {
     // button action for visted feature. not implemented yet
