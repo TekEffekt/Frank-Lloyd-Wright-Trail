@@ -71,6 +71,8 @@ class FinalTimeLineVC: UIViewController,TripJsonDelegate {
         }
         json = JsonParser(withDelegate: self, locations: sites2)
         json.orderOfLocations(sites2)
+       
+        
     }
     
     func saveSelected(){

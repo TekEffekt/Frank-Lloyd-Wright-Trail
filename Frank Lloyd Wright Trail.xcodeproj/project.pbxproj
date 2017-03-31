@@ -37,6 +37,7 @@
 		847AE4BC1DA720B30056B6D7 /* LocationGalleryImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AE4BB1DA720B30056B6D7 /* LocationGalleryImageController.swift */; };
 		847AE4BE1DA723450056B6D7 /* locations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 847AE4BD1DA723450056B6D7 /* locations.plist */; };
 		8493937B1DDE568C00BB7220 /* TripOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493937A1DDE568C00BB7220 /* TripOrder.swift */; };
+		849F472E1E85E8BD00373C5C /* FinalAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F472D1E85E8BD00373C5C /* FinalAPI.swift */; };
 		84B1F0361E3941C00048986C /* Timeline-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = FAB740D21DDEAF7900BA859F /* Timeline-Bridging-Header.h */; };
 		84B1F0381E3BCC9E0048986C /* LocationDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B1F0371E3BCC9E0048986C /* LocationDetails.storyboard */; };
 		84CBA0361E67BB83004398B7 /* FinalTimeLineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CBA0351E67BB83004398B7 /* FinalTimeLineVC.swift */; };
@@ -102,6 +103,7 @@
 		847AE4BB1DA720B30056B6D7 /* LocationGalleryImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationGalleryImageController.swift; sourceTree = "<group>"; };
 		847AE4BD1DA723450056B6D7 /* locations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = locations.plist; sourceTree = "<group>"; };
 		8493937A1DDE568C00BB7220 /* TripOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripOrder.swift; sourceTree = "<group>"; };
+		849F472D1E85E8BD00373C5C /* FinalAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalAPI.swift; sourceTree = "<group>"; };
 		84B1F0371E3BCC9E0048986C /* LocationDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LocationDetails.storyboard; sourceTree = "<group>"; };
 		84CBA0351E67BB83004398B7 /* FinalTimeLineVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalTimeLineVC.swift; sourceTree = "<group>"; };
 		84EF3A551E44EE0E00A8B00A /* JsonParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonParser.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				211EB2E41E5E6FAB00176C13 /* SignUpVC.swift */,
 				84CBA0351E67BB83004398B7 /* FinalTimeLineVC.swift */,
 				84EF3A551E44EE0E00A8B00A /* JsonParser.swift */,
+				849F472D1E85E8BD00373C5C /* FinalAPI.swift */,
 			);
 			name = "Trip Planner";
 			sourceTree = "<group>";
@@ -533,6 +536,7 @@
 				FAEE90AE1D6771B5008264DC /* TabBarController.swift in Sources */,
 				FAEE90B41D677EBB008264DC /* LocationsViewController.swift in Sources */,
 				B6DB3BBF1D7A104900FC737D /* LocationCollectionDelegate.swift in Sources */,
+				849F472E1E85E8BD00373C5C /* FinalAPI.swift in Sources */,
 				FAD304B31D6D28E800D8CE2F /* DetailViewController.swift in Sources */,
 				84EF3A561E44EE0E00A8B00A /* JsonParser.swift in Sources */,
 				FAB740E81DDEB21B00BA859F /* TimelineVC.swift in Sources */,
@@ -658,7 +662,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "Frank Lloyd Wright Trail/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "uwp.edu.appFactory.Frank-Lloyd-Wright";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -678,7 +682,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "Frank Lloyd Wright Trail/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "uwp.edu.appFactory.Frank-Lloyd-Wright";
 				PRODUCT_NAME = "$(TARGET_NAME)";

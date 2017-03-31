@@ -4,7 +4,7 @@
 <array>
 	<dict>
 		<key>subtitle</key>
-		<string>The SC Johnson Administration Building was the first Frank Lloyd Wright designed for SC Johnson. The Research Tower opened in 1950.</string>
+		<string>http://www.scjohnson.com/en/company/visiting.aspx</string>
 		<key>lat</key>
 		<real>42.7152375</real>
 		<key>long</key>
@@ -18,7 +18,7 @@
 	</dict>
 	<dict>
 		<key>subtitle</key>
-		<string>Third generation SC Johnson leader H.F. Johnson Jr. commissioned with Frank Lloyd Wright in 1936.</string>
+		<string>http://www.johnsonfdn.org/</string>
 		<key>lat</key>
 		<real>42.784472</real>
 		<key>long</key>
@@ -32,7 +32,7 @@
 	</dict>
 	<dict>
 		<key>subtitle</key>
-		<string>Frank Lloyd Wright took special interest in creating architect-designed homes for moderate and low-income families.</string>
+		<string>http://www.wrightinmilwaukee.com/</string>
 		<key>lat</key>
 		<real>43.0105838</real>
 		<key>long</key>
@@ -46,7 +46,7 @@
 	</dict>
 	<dict>
 		<key>subtitle</key>
-		<string>Creatively charged by the architecture and the natural landscape. Monona Terrace is truly the product of our community and culture.</string>
+		<string>https://www.mononaterrace.com/</string>
 		<key>lat</key>
 		<real>43.0717445</real>
 		<key>long</key>
@@ -60,7 +60,7 @@
 	</dict>
 	<dict>
 		<key>subtitle</key>
-		<string>Since 1879 First Unitarian Society of Madison has been a liberal religious presence in Madison, providing a welcoming alternative religious community.</string>
+		<string>https://www.fusmadison.org/</string>
 		<key>lat</key>
 		<real>43.0757361</real>
 		<key>long</key>
@@ -74,7 +74,7 @@
 	</dict>
 	<dict>
 		<key>subtitle</key>
-		<string>Taliesin Preservation offers a variety of tours of the Taliesin estate in Spring Green, Wisconsin.</string>
+		<string>http://www.taliesinpreservation.org/</string>
 		<key>lat</key>
 		<real>43.1192675</real>
 		<key>long</key>
@@ -88,7 +88,7 @@
 	</dict>
 	<dict>
 		<key>subtitle</key>
-		<string>Frank Lloyd Wright designed Wyoming Valley School in 1957 for the children of Wyoming Valley</string>
+		<string>http://wyomingvalleyschool.blogspot.com/</string>
 		<key>lat</key>
 		<real>43.1439006</real>
 		<key>long</key>
@@ -103,7 +103,7 @@ Wyoming Valley School Cultural Arts Center is a nonprofit organization that prom
 	</dict>
 	<dict>
 		<key>subtitle</key>
-		<string>Frank Lloyd Wright designed the A.D. German Warehouse that was constructed in 1915.</string>
+		<string>http://www.adgermanwarehouse.com/index.html</string>
 		<key>lat</key>
 		<real>43.3334718</real>
 		<key>long</key>

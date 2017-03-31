@@ -111,48 +111,28 @@ class TimelineVC: UIViewController, TripJsonDelegate {
                 }
             }
         
-        // attach the correct image to the sites
-        var count = 0
-        
-        if(newTripObject.count > 0) {
-            timeFrames.append(TimeFrame(text: "Home", date: "9:00am", image: nil))}
-        if (newTripObject.count == 0){
-            timeFrames.append(TimeFrame(text: "It's not possible to visit the sites with the times you entered", date: "Not enough time given", image: nil))
-        } else{
-        for i in 0..<newTripObject.count{
-            for j in 0..<sites2.count{
-              
-               // compare the objects to all the sites and if there is a match create card and add a picture from the list of all sites
-                 if (Double(round(100*newTripObject[i].endPoint!)/100) == Double(round(100*allSites[compareSites(sites2[j], site2: allSites)].lat)/100)){
-                     //timeFrames.append(TimeFrame(text: "Drive time" , date: "9:00am", image: nil))
-                    timeFrames.append(TimeFrame(text:"Travel distance is " + newTripObject[i].distanceText! + "iles" + ". Travel time is " + newTripObject[i].timeText! + ".", date: allSites[compareSites(sites2[j], site2: allSites)].title!, image: UIImage(named:allSites[compareSites(sites2[j], site2: allSites)].imageName!)))
-                
-
-            for b in 0..<objects.count {
-                objectTime = +objects[b].timeValue!
-                if(objectTime < tripTime){
-                    newTripObject.append(objects[b])
-                    
-                    
-                }
-            }
+    
+            
             
             // attach the correct image to the sites
             var count = 0
-            
-            if(newTripObject.count < 0) {
-                timeFrames.append(TimeFrame(text: "Home", date: "9:00am", image: nil))}
-            if (newTripObject.count == 0){
-                timeFrames.append(TimeFrame(text: "It's not possible to visit the sites with the times you entered", date: "Not enough time given", image: nil))
-            } else{
-                for i in 0..<newTripObject.count{
-                    for j in 0..<sites2.count{
-                        // compare the objects to all the sites and if there is a match create card and add a picture from the list of all sites
-                        if (Double(round(100*newTripObject[i].endPoint!)/100) == Double(round(100*allSites[compareSites(sites2[j]!, site2: allSites)].lat.value!)/100)){
-                            //timeFrames.append(TimeFrame(text: "Drive time" , date: "9:00am", image: nil))
-                            timeFrames.append(TimeFrame(text:"Travel distance is " + newTripObject[i].distanceText! + "iles" + ". Travel time is " + newTripObject[i].timeText! + ".", date: allSites[compareSites(sites2[j], site2: allSites)].title!, image: UIImage(named:allSites[compareSites(sites2[j], site2: allSites)].imageName!)))
-                        }
-                    }
+                   
+                    
+                    if(newTripObject.count < 0) {
+                        timeFrames.append(TimeFrame(text: "Home", date: "9:00am", image: nil))}
+                    if (newTripObject.count == 0){
+                        timeFrames.append(TimeFrame(text: "It's not possible to visit the sites with the times you entered", date: "Not enough time given", image: nil))
+                    } else{
+                        for i in 0..<newTripObject.count{
+                            for j in 0..<sites2.count{
+                                let sites2j = sites2[j]
+                                // compare the objects to all the sites and if there is a match create card and add a picture from the list of all sites
+                                if (Double(round(100*newTripObject[i].endPoint!)/100) == Double(round(100*allSites[compareSites(sites2j!, site2: allSites)].lat.value!)/100)){
+                                    //timeFrames.append(TimeFrame(text: "Drive time" , date: "9:00am", image: nil))
+                                    timeFrames.append(TimeFrame(text:"Travel distance is " + newTripObject[i].distanceText! + "iles" + ". Travel time is " + newTripObject[i].timeText! + ".", date: allSites[compareSites(sites2[j], site2: allSites)].title!, image: UIImage(named:allSites[compareSites(sites2[j], site2: allSites)].imageName!)))
+                                }
+                            }
+
                     
 
                 }
@@ -177,13 +157,13 @@ class TimelineVC: UIViewController, TripJsonDelegate {
     
 
     
-    func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = "Suggested Trip"
         let button = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.plain, target: self, action: #selector(doneSelected))
         self.navigationItem.rightBarButtonItem = button
     }
     
-    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let signupVC = segue.destination as! SignUpVC
         signupVC.trip = self.trip
     }
@@ -194,14 +174,11 @@ class TimelineVC: UIViewController, TripJsonDelegate {
     }
     
 
-    var prefersStatusBarHidden : Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     
 
 
 }
-}
-}
-}
-}
+
