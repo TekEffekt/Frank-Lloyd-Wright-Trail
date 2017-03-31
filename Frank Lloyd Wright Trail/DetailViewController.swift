@@ -61,6 +61,7 @@ class DetailViewController: UIViewController,NYTPhotosViewControllerDelegate, UI
     
     func createLinkText(link: String) -> NSMutableAttributedString {
 
+       
         var attributedString = NSMutableAttributedString(string: "")
         let linkAttributes = [
             NSLinkAttributeName: NSURL(string: link),
@@ -89,6 +90,7 @@ class DetailViewController: UIViewController,NYTPhotosViewControllerDelegate, UI
     
         
         // Set the 'click here' substring to be the link
+
         attributedString.setAttributes(linkAttributes, range: NSMakeRange(0, attributedString.length))
         return attributedString
     }
