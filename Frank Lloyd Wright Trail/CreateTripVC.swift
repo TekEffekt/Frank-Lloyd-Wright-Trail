@@ -334,6 +334,7 @@ class CreateTripVC : FormViewController {
         self.present(actionSheetController, animated: true, completion: nil)
     }
     
+    
     @IBAction func dateChanged(_ picker: UIDatePicker){
         switch picker.tag{
         case 21:
@@ -445,9 +446,7 @@ class CreateTripVC : FormViewController {
         }else{
             print("No Location Stops Added")
         }
-        
     }
-    
 }
 
 enum StopActions {

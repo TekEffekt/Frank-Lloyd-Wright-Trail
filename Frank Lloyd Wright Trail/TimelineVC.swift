@@ -63,10 +63,11 @@ class TimelineVC: UIViewController {
             driveTime += (Double(trip.siteStops.count) * 3600.0)
             
             var timeFrames = [TimeFrame]()
+       
             if (tripTime?.isLess(than: driveTime))! {
                 timeFrames.append(TimeFrame(text: "", date: "Not Enough Time For Trip", image: UIImage(named:"NoEntry")!))
             } else {
-                var timeOfDay = trip.startDate
+                var timeOfDay = trip.fullStartDate
                 var timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay!)
                 for (index, card) in timeLineCards.enumerated() {
                     if index == 0 || index == timeLineCards.count - 1 {

@@ -136,7 +136,7 @@ class AddStopVC: FormViewController{
             mealStop?.endTime = endTimeCell.datePicker.date
             var fullStartDate = CombineDates.combineDateWithTime((mealStop?.date)!, time: (mealStop?.startTime)!)
             mealStop?.startDate = fullStartDate
-            var fullEndDate = CombineDates.combineDateWithTime((mealStop?.date)!, time: (mealStop?.endTime)!)
+            let fullEndDate = CombineDates.combineDateWithTime((mealStop?.date)!, time: (mealStop?.endTime)!)
             mealStop?.endDate = fullEndDate
             
         }else{
