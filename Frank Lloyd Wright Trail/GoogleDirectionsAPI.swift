@@ -167,7 +167,7 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
         let userCoordString = "\(userCoords.lat),\(userCoords.lon)"
         var waypointsCoordString = ""
         for coord in waypointCoords {
-            waypointsCoordString += "via:\(coord.lat)%2C\(coord.lon)%7C"
+            waypointsCoordString += "\(coord.lat),\(coord.lon)%7C"
         }
         //remove last 3 characters (extra "%7C")
         waypointsCoordString = String(waypointsCoordString.characters.dropLast())
@@ -176,7 +176,7 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
         
         let key = "AIzaSyD99efuqx7jK3bOi7txWUDRZNlh-G50b0w"
         
-        let directionEndPoint = "https://maps.googleapis.com/maps/api/directions/json?origin=\(userCoordString)&destination=\(userCoordString)&waypoints=\(waypointsCoordString)&key=\(key)"
+        let directionEndPoint = "https://maps.googleapis.com/maps/api/directions/json?origin=\(userCoordString)&destination=\(userCoordString)&waypoints=optimize:false%7C\(waypointsCoordString)&key=\(key)"
         
         guard let url = URL(string: directionEndPoint) else {
             print("Error Converting to URL")
@@ -242,15 +242,18 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
                         print("Conversion to Duration Text Failed")
                         return
                     }
+        
                     timelineCarCard.distance = distanceText
                     timelineCarCard.duration = durationText
                     timelineCarCard.icon = UIImage(named: "car")
                     timelineCards.append(timelineCarCard)
                     //add sites in correct order
+                    if index < legs.count - 1 {
                         let site = sortedList[index].site
                         timelineSiteCard.name = site?.title!
                         timelineSiteCard.locationImage = UIImage(named: (site?.imageName!)!)
                         timelineCards.append(timelineSiteCard)
+                    }
                 }
                 timelineCards.append(timelineHomeCard)
                 completion(timelineCards)

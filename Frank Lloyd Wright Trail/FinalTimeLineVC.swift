@@ -77,6 +77,8 @@ class FinalTimeLineVC: UIViewController {
                     let timeFrame = TimeFrame(text: "", date: timeOfDayFormatted, image: card.icon!)
                     timeFrames.append(timeFrame)
                 } else if let name = card.name {
+                    //check if on same day
+                    if index > 0 && DateHelp.datesInSameDay(
                     //location card
                     let timeFrame = TimeFrame(text: name, date: timeOfDayFormatted, image: card.locationImage!)
                     timeFrames.append(timeFrame)

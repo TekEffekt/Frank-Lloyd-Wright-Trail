@@ -231,6 +231,8 @@ class SignUpVC: UITableViewController {
                 for i in 0..<sites.count{
                     if locationName == sites[i].name{
                         RealmWrite.writeSiteStopEndTime(index: i, date: picker.date, trip: self.trip)
+                    } else {
+                        continue
                     }
                     if sites[i].date == nil {
                         RealmWrite.writeSiteStopDate(index: i, date: Date(), trip: self.trip)
