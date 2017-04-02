@@ -26,8 +26,9 @@ class DateHelp {
     }
     
     static func getStartOfDayFrom(startDate: Date, firstDriveMinutes: Int) -> Date {
+        //give 10 minutes wiggle room
         let calendar = Calendar.current
-        return calendar.date(byAdding: .minute, value: -firstDriveMinutes, to: startDate)!
+        return calendar.date(byAdding: .minute, value: (-firstDriveMinutes - 10), to: startDate)!
     }
     
     static func getDurationOfTour(startTime: Date, endTime: Date) -> Double {

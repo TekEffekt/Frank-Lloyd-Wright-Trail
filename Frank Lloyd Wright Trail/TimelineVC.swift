@@ -76,20 +76,20 @@ class TimelineVC: UIViewController {
                         timeFrames.append(timeFrame)
                     } else if let name = card.name {
                         //location card
-                        let timeFrame = TimeFrame(text: name, date: timeOfDayFormatted, image: card.locationImage!)
+                        let timeFrame = TimeFrame(text: name, date: ("Tour Start: \(timeOfDayFormatted)"), image: card.locationImage!)
                         timeFrames.append(timeFrame)
                         //assume hour spent at site
                         timeOfDay = DateHelp.addHoursToDate(hours: 1, date: timeOfDay!)
                         timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay!)
                     } else {
                         //drive card
-                        let timeFrame = TimeFrame(text: "\(card.distance!)les, \(card.duration!)", date: "", image: card.icon!)
-                        timeFrames.append(timeFrame)
                         //get actual int from duration of drive instead of string
                         let minutesString = card.duration!
                         let minutesNum = minutesString.components(separatedBy: " ").flatMap { Int($0.trimmingCharacters(in: .whitespaces))}[0]
                         timeOfDay = DateHelp.addMinutesToDate(minutes: minutesNum, date: timeOfDay!)
                         timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay!)
+                        let timeFrame = TimeFrame(text: "\(card.duration!) (est arrival: \(timeOfDayFormatted))", date: "", image: card.icon!)
+                        timeFrames.append(timeFrame)
                     }
                 }
             }
