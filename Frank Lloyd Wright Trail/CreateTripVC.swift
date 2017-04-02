@@ -161,7 +161,7 @@ class CreateTripVC : FormViewController {
                  performSegue(withIdentifier: "AddLocation", sender: nil)
             }
             else{
-                actionPressed(.delete, indexPath: indexPath)
+                alertPopUp(indexPath)
             }
             
         }
