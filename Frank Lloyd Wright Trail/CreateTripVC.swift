@@ -52,7 +52,7 @@ class CreateTripVC : FormViewController {
         if section == 0{
             return 1
         }else if section == 1 {
-            return trip.stops.count + 1
+            return trip.siteStops.count + 1
         }else {
             return 4
         }
@@ -82,7 +82,7 @@ class CreateTripVC : FormViewController {
         else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! AddStopCell
             //add stop cell
-            if indexPath.row == trip.stops.count{
+            if indexPath.row == trip.siteStops.count{
                 cell.stopName.text! = "Add Stop"
                 cell.modifyImage.image = UIImage(named: "Add")
                 cell.stopName.textColor = UIColor(hexString: "#0073FF")
@@ -90,8 +90,8 @@ class CreateTripVC : FormViewController {
             }
             //stop added cell
             else{
-                if trip.stops.count > 0{
-                if let name = trip.stops[indexPath.row].name{
+                if trip.siteStops.count > 0{
+                if let name = trip.siteStops[indexPath.row].name{
                     cell.stopName.text! = name
                 }
                 cell.stopName.adjustsFontSizeToFitWidth = true
@@ -157,11 +157,11 @@ class CreateTripVC : FormViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.section == 1{
-            if(indexPath.row == trip.stops.count){
-                actionSheet()
+            if(indexPath.row == trip.siteStops.count){
+                 performSegue(withIdentifier: "AddLocation", sender: nil)
             }
             else{
-                alertPopUp(indexPath)
+                actionPressed(.delete, indexPath: indexPath)
             }
             
         }
@@ -218,16 +218,7 @@ class CreateTripVC : FormViewController {
     
     //action sheet button clicked
     private func actionPressed(_ stopAction:StopActions, indexPath : IndexPath?) {
-        
         switch stopAction {
-        case .location:
-            performSegue(withIdentifier: "AddLocation", sender: nil)
-        case .meal:
-            tappedStopType = .meal
-            performSegue(withIdentifier: "AddStop", sender: nil)
-        case .generic:
-            tappedStopType = .generic
-            performSegue(withIdentifier: "AddStop", sender: nil)
         case .cancel:
             dismiss(animated: true, completion: nil)
         case .delete:
@@ -242,34 +233,12 @@ class CreateTripVC : FormViewController {
                         break
                     }
                 }
-                
-                for (index, stop) in trip.genericStops.enumerated(){
-                    if stop.name! == stopName{
-                        RealmDelete.genericStop(index: index, trip: self.trip)
-                        tableView.deleteRows(at: [indexPath!], with: .automatic)
-                        break
-                    }
-                }
-                
-                for (index, stop) in trip.mealStops.enumerated(){
-                    if stop.name! == stopName{
-                        RealmDelete.mealStop(index: index, trip: self.trip)
-                        tableView.deleteRows(at: [indexPath!], with: .automatic)
-                        break
-                    }
-                }
-                
             }
-            dismiss(animated: true, completion: nil)
         }
     }
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let stopVC =  segue.destination as? AddStopVC {
-            stopVC.type = tappedStopType
-            stopVC.trip = self.trip
-        }else if let locationVC = segue.destination as? ChooseDestinationVC{
+        if let locationVC = segue.destination as? ChooseDestinationVC{
             locationVC.trip = self.trip
         }else if let suggestedTLVC = segue.destination as? TimelineVC{
             suggestedTLVC.trip = self.trip
@@ -310,25 +279,6 @@ class CreateTripVC : FormViewController {
             self.actionPressed(.cancel, indexPath: nil)
         }
         actionSheetController.addAction(cancelAction)
-        
-        //Create and add location action
-        let locationStop: UIAlertAction = UIAlertAction(title: "Add Location Stop", style: .default) { action -> Void in
-            //The user just pressed the location button.
-            self.actionPressed(.location, indexPath: nil)
-        }
-        actionSheetController.addAction(locationStop)
-        
-        let mealStop: UIAlertAction = UIAlertAction(title: "Add Meal Stop", style: .default) { action -> Void in
-            //The user just pressed the meal button.
-            self.actionPressed(.meal, indexPath: nil)
-        }
-        actionSheetController.addAction(mealStop)
-        
-        let genericStop: UIAlertAction = UIAlertAction(title: "Add Generic Stop", style: .default) { action -> Void in
-            //The user just pressed the meal button.
-            self.actionPressed(.generic, indexPath: nil)
-        }
-        actionSheetController.addAction(genericStop)
         
         //Present the AlertController
         self.present(actionSheetController, animated: true, completion: nil)
@@ -430,12 +380,6 @@ class CreateTripVC : FormViewController {
         if trip.siteStops.count > 0 {
             self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
             
-            for meal in trip.mealStops{
-                RealmWrite.add(mealStop: meal, trip: self.trip)
-            }
-            for gen in trip.genericStops{
-                RealmWrite.add(genericStop: gen, trip: self.trip)
-            }
             RealmWrite.writeTripName(tripName: trip.tripName, trip: self.trip)
             RealmWrite.writeStartDate(startDate: trip.startDate!, trip: self.trip)
             RealmWrite.writeStartTime(startTime: trip.startTime!, trip: self.trip)
@@ -450,5 +394,5 @@ class CreateTripVC : FormViewController {
 }
 
 enum StopActions {
-    case location, meal, generic, cancel, delete
+    case cancel, delete
 }

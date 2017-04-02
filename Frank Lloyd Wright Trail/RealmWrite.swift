@@ -154,27 +154,6 @@ class RealmWrite{
         }
     }
     
-    static func add(genericStop: GenericStop, trip: Trip){
-        do {
-            let realm = try Realm()
-            try realm.write {
-                trip.genericStops.append(genericStop)
-            }
-        } catch let error {
-            print(error)
-        }
-    }
-    
-    static func add(mealStop: MealStop, trip: Trip){
-        do {
-            let realm = try Realm()
-            try realm.write {
-                trip.mealStops.append(mealStop)
-            }
-        } catch let error {
-            print(error)
-        }
-    }
     
     static func add(trip: Trip){
         do {

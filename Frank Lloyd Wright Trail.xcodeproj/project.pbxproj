@@ -21,7 +21,6 @@
 		21492FCF1E5A3EF9005660F3 /* SiteStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21492FCE1E5A3EF9005660F3 /* SiteStop.swift */; };
 		21492FD11E5A3F51005660F3 /* MealStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21492FD01E5A3F51005660F3 /* MealStop.swift */; };
 		21492FD31E5A3F8E005660F3 /* GenericStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21492FD21E5A3F8E005660F3 /* GenericStop.swift */; };
-		21492FD71E5A46E8005660F3 /* AddStopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21492FD61E5A46E8005660F3 /* AddStopVC.swift */; };
 		21492FDB1E5A4C81005660F3 /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21492FDA1E5A4C81005660F3 /* NameCell.swift */; };
 		217164C71E7C36CE005EF679 /* CombineDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217164C61E7C36CE005EF679 /* CombineDates.swift */; };
 		217164CA1E7DB59B005EF679 /* RealmWrite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217164C91E7DB59B005EF679 /* RealmWrite.swift */; };
@@ -88,7 +87,6 @@
 		21492FCE1E5A3EF9005660F3 /* SiteStop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SiteStop.swift; path = Model/SiteStop.swift; sourceTree = "<group>"; };
 		21492FD01E5A3F51005660F3 /* MealStop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MealStop.swift; path = Model/MealStop.swift; sourceTree = "<group>"; };
 		21492FD21E5A3F8E005660F3 /* GenericStop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericStop.swift; sourceTree = "<group>"; };
-		21492FD61E5A46E8005660F3 /* AddStopVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStopVC.swift; sourceTree = "<group>"; };
 		21492FDA1E5A4C81005660F3 /* NameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameCell.swift; sourceTree = "<group>"; };
 		217164C61E7C36CE005EF679 /* CombineDates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombineDates.swift; sourceTree = "<group>"; };
 		217164C91E7DB59B005EF679 /* RealmWrite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmWrite.swift; sourceTree = "<group>"; };
@@ -240,7 +238,6 @@
 			children = (
 				213757001E52D38A00C21415 /* TripsVC.swift */,
 				213757021E52D65000C21415 /* CreateTripVC.swift */,
-				21492FD61E5A46E8005660F3 /* AddStopVC.swift */,
 				FA3829481DBAE7E3003A4BFA /* ChooseDestinationVC.swift */,
 				FAB740E71DDEB21B00BA859F /* TimelineVC.swift */,
 				211EB2E41E5E6FAB00176C13 /* SignUpVC.swift */,
@@ -519,7 +516,6 @@
 				213757031E52D65000C21415 /* CreateTripVC.swift in Sources */,
 				218503001E4198D000CAFE6D /* Date+Comparable.swift in Sources */,
 				217164CC1E7DB5B4005EF679 /* RealmQuery.swift in Sources */,
-				21492FD71E5A46E8005660F3 /* AddStopVC.swift in Sources */,
 				FA38294B1DBAEB94003A4BFA /* DestinationCell.swift in Sources */,
 				84CBA0361E67BB83004398B7 /* FinalTimeLineVC.swift in Sources */,
 				FAAF70C41D74A39400515DBD /* Cell.swift in Sources */,

@@ -19,8 +19,6 @@ class Trip: Object{
     dynamic var fullEndDate: Date?
     let sitesInfo = List<TripObject>()
     let siteStops = List<SiteStop>()
-    let genericStops = List<GenericStop>()
-    let mealStops = List<MealStop>()
     dynamic var id = 0
     
     func incrementID() -> Int {
@@ -32,20 +30,5 @@ class Trip: Object{
         return "id"
     }
     
-    var stops: [Stop] {
-        get {
-            var stops = [Stop]()
-            for stop in siteStops {
-                stops.append(stop)
-            }
-            for stop in genericStops {
-                stops.append(stop)
-            }
-            for stop in mealStops {
-                stops.append(stop)
-            }
-            return stops
-        }
-    }
     
 }
