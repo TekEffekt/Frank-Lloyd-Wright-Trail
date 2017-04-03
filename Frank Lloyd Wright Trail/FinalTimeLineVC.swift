@@ -79,7 +79,7 @@ class FinalTimeLineVC: UIViewController {
                     timeFrames.append(timeFrame)
                 } else if let name = card.name {
                     //location card
-                    timeOfDay = sortedList[siteIndex].startDate!
+                    timeOfDay = sortedList[siteIndex].startTime!
                     timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
                     let timeFrame = TimeFrame(text: name, date: ("Tour Start: \(timeOfDayFormatted)"), image: card.locationImage!)
                     timeFrames.append(timeFrame)

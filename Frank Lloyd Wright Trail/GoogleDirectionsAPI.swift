@@ -13,7 +13,7 @@ import UIKit
 
 class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
     
-    func getOptimizedWayPoints(_ id: Int, completion: @escaping (_ timeLineCards: [TimelineCardModel]) -> Void) {
+    func getOptimizedWayPoints(_ id: Int, completion: @escaping (_ timeLineCards: [TimelineCardModel], _ wayPointOrder: [Int]) -> Void) {
         //retrieve the start and end coordinates from user location
         guard let userCoords = getStartCoordinates() else {
             print("User Location Failed")
@@ -126,7 +126,7 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
                     i += 1
                 }
                 timelineCards.append(timelineHomeCard)
-                completion(timelineCards)
+                completion(timelineCards, waypointOrder)
                 
             } catch let error {
                 print(error)

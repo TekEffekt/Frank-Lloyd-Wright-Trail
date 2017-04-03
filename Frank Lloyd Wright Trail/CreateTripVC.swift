@@ -12,7 +12,7 @@ import RealmSwift
 class CreateTripVC : FormViewController {
     
     let section = ["TRIP", "STOPS", "TRIP START", "TRIP END"]
-    var labels = [["TRIP"], ["Add Stop"], ["Start Date", " ", "Start Time"], ["End Date", " ", "End Time"]]
+    var labels = [["TRIP"], ["Add Stop"], ["Start Time"], ["End Time"]]
     var tappedStopType: StopActions?
     var cellTapped = false
     var currentRow = -1
@@ -54,7 +54,7 @@ class CreateTripVC : FormViewController {
         }else if section == 1 {
             return trip.siteStops.count + 1
         }else {
-            return 4
+            return 2
         }
     }
     
@@ -78,7 +78,7 @@ class CreateTripVC : FormViewController {
             cell.stopName.placeholder = "Trip Name"
             return cell
         }
-        //add stop cell
+            //add stop cell
         else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! AddStopCell
             //add stop cell
@@ -88,34 +88,25 @@ class CreateTripVC : FormViewController {
                 cell.stopName.textColor = UIColor(hexString: "#0073FF")
                 return cell
             }
-            //stop added cell
+                //stop added cell
             else{
                 if trip.siteStops.count > 0{
-                if let name = trip.siteStops[indexPath.row].name{
-                    cell.stopName.text! = name
+                    if let name = trip.siteStops[indexPath.row].name{
+                        cell.stopName.text! = name
+                    }
+                    cell.stopName.adjustsFontSizeToFitWidth = true
+                    cell.modifyImage.image = UIImage(named: "Minus")
+                    cell.stopName.textColor = UIColor.black
+                    return cell
                 }
-                cell.stopName.adjustsFontSizeToFitWidth = true
-                cell.modifyImage.image = UIImage(named: "Minus")
-                cell.stopName.textColor = UIColor.black
-                return cell
             }
-            }
-        }
+        } else if indexPath.row == 1 {
             //date pick cell
-        else if(indexPath.row == 1 || indexPath.row == 3){
             switch (indexPath.section, indexPath.row) {
             case (2,1):
                 let cell = tableView.dequeueReusableCell(withIdentifier: "dateCell") as! DatePickCell
                 self.dateHelper(cell, indexPath: indexPath)
-                cell.datePicker.tag = 21
-                if let date = trip.startDate{
-                    cell.datePicker.date = date as Date
-                }
-                return cell
-            case (2,3):
-                let cell = tableView.dequeueReusableCell(withIdentifier: "dateCell") as! DatePickCell
-                self.dateHelper(cell, indexPath: indexPath)
-                cell.datePicker.tag = 23
+                cell.datePicker.tag = indexPath.section
                 if let time = trip.startTime{
                     cell.datePicker.date = time as Date
                 }
@@ -123,15 +114,7 @@ class CreateTripVC : FormViewController {
             case (3,1):
                 let cell = tableView.dequeueReusableCell(withIdentifier: "dateCell") as! DatePickCell
                 self.dateHelper(cell, indexPath: indexPath)
-                cell.datePicker.tag = 31
-                if let date = trip.endDate{
-                    cell.datePicker.date = date as Date
-                }
-                return cell
-            case (3,3):
-                let cell = tableView.dequeueReusableCell(withIdentifier: "dateCell") as! DatePickCell
-                self.dateHelper(cell, indexPath: indexPath)
-                cell.datePicker.tag = 33
+                cell.datePicker.tag = indexPath.section
                 if let time = trip.endTime{
                     cell.datePicker.date = time as Date
                 }
@@ -142,7 +125,7 @@ class CreateTripVC : FormViewController {
             
         }
             //label cell
-        else{
+        else if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "labelCell") as! LabelCell
             cell.label.text! = labels[indexPath.section][indexPath.row]
             cell.label.textColor = UIColor.lightGray
@@ -208,9 +191,6 @@ class CreateTripVC : FormViewController {
     //to help format the datepicker
     func dateHelper(_ cell: DatePickCell, indexPath: IndexPath){
         if (indexPath.row == 1){
-            cell.datePicker.datePickerMode = UIDatePickerMode.date
-        }
-        else {
             cell.datePicker.datePickerMode = UIDatePickerMode.time
         }
     }
@@ -287,42 +267,10 @@ class CreateTripVC : FormViewController {
     
     @IBAction func dateChanged(_ picker: UIDatePicker){
         switch picker.tag{
-        case 21:
-            RealmWrite.writeStartDate(startDate: picker.date, trip: self.trip)
-            if let start = trip.startTime{
-                let fullStartDate = CombineDates.combineDateWithTime(trip.startDate!, time: start)
-                RealmWrite.writeFullStartDate(fullStartDate!, trip)
-            }else{
-                let fullStartDate = CombineDates.combineDateWithTime(trip.startDate!, time: Date())
-                RealmWrite.writeFullStartDate(fullStartDate!, trip)
-            }
-        case 23:
+        case 2:
             RealmWrite.writeStartTime(startTime: picker.date, trip: self.trip)
-            if let startDay = trip.startDate{
-                let fullStartDate = CombineDates.combineDateWithTime(startDay, time: trip.startTime!)
-                RealmWrite.writeFullStartDate(fullStartDate!, trip)
-            }else{
-                let fullStartDate = CombineDates.combineDateWithTime(Date(), time: trip.startTime!)
-                RealmWrite.writeFullStartDate(fullStartDate!, trip)
-            }
-        case 31:
-            RealmWrite.writeEndDate(endDate: picker.date, trip: self.trip)
-            if let end = trip.endTime{
-                let fullEndDate = CombineDates.combineDateWithTime(trip.endDate!, time: end)
-                RealmWrite.writeFullEndDate(fullEndDate!, trip)
-            }else{
-                let fullEndDate = CombineDates.combineDateWithTime(trip.endDate!, time: Date())
-                RealmWrite.writeFullEndDate(fullEndDate!, trip)
-            }
-        case 33:
+        case 3:
             RealmWrite.writeEndTime(endTime: picker.date, trip: self.trip)
-            if let endDay = trip.endDate{
-                let fullEndDate = CombineDates.combineDateWithTime(endDay, time: trip.endTime!)
-                RealmWrite.writeFullEndDate(fullEndDate!, trip)
-            }else{
-                let fullEndDate = CombineDates.combineDateWithTime(Date(), time: trip.endTime!)
-                RealmWrite.writeFullEndDate(fullEndDate!, trip)
-            }
         default:
             break
         }
@@ -337,55 +285,17 @@ class CreateTripVC : FormViewController {
     }
     
     func validateAndSave(){
-        if trip.startDate == nil{
-            RealmWrite.writeStartDate(startDate: Date(), trip: self.trip)
-            if let start = trip.startTime{
-                let fullStartDate = CombineDates.combineDateWithTime(trip.startDate!, time: start)
-                RealmWrite.writeFullStartDate(fullStartDate!, trip)
-            }else{
-                let fullStartDate = CombineDates.combineDateWithTime(trip.startDate!, time: Date())
-                RealmWrite.writeFullStartDate(fullStartDate!, trip)
-            }
-        }
         if trip.startTime == nil{
             RealmWrite.writeStartTime(startTime: Date(), trip: self.trip)
-            if let startDay = trip.startDate{
-                let fullStartDate = CombineDates.combineDateWithTime(startDay, time: trip.startTime!)
-                RealmWrite.writeFullStartDate(fullStartDate!, trip)
-            }else{
-                let fullStartDate = CombineDates.combineDateWithTime(Date(), time: trip.startTime!)
-                RealmWrite.writeFullStartDate(fullStartDate!, trip)
-            }
         }
-        if trip.endDate == nil{
-            RealmWrite.writeEndDate(endDate: Date(), trip: self.trip)
-            if let end = trip.endTime{
-                let fullEndDate = CombineDates.combineDateWithTime(trip.endDate!, time: end)
-                RealmWrite.writeFullEndDate(fullEndDate!, trip)
-            }else{
-                let fullEndDate = CombineDates.combineDateWithTime(trip.endDate!, time: Date())
-                RealmWrite.writeFullEndDate(fullEndDate!, trip)
-            }
-        }
-        if trip.endTime == nil{
+        
+        if trip.endTime == nil {
             RealmWrite.writeEndTime(endTime: Date(), trip: self.trip)
-            if let endDay = trip.endDate{
-                let fullEndDate = CombineDates.combineDateWithTime(endDay, time: trip.endTime!)
-                RealmWrite.writeFullEndDate(fullEndDate!, trip)
-            }else{
-                let fullEndDate = CombineDates.combineDateWithTime(Date(), time: trip.endTime!)
-                RealmWrite.writeFullEndDate(fullEndDate!, trip)
-            }
         }
+        
         if trip.siteStops.count > 0 {
             self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
-            
             RealmWrite.writeTripName(tripName: trip.tripName, trip: self.trip)
-            RealmWrite.writeStartDate(startDate: trip.startDate!, trip: self.trip)
-            RealmWrite.writeStartTime(startTime: trip.startTime!, trip: self.trip)
-            RealmWrite.writeEndDate(endDate: trip.endDate!, trip: self.trip)
-            RealmWrite.writeEndTime(endTime: trip.endTime!, trip: self.trip)
-            
             performSegue(withIdentifier: "suggestedTL", sender: nil)
         }else{
             print("No Location Stops Added")

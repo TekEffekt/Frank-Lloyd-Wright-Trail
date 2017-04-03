@@ -14,6 +14,7 @@ class TimelineVC: UIViewController {
     var scrollView: UIScrollView!
     var timeline: TimelineView!
     var trip: Trip!
+    var wayPointOrder = [Int]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,13 +44,13 @@ class TimelineVC: UIViewController {
         let google = GoogleDirectionsAPI()
         //must send ID to seperate thread can't pass realm objects between threads
         let tripID = trip.id
-        google.getOptimizedWayPoints(tripID, completion: {(timeLineCards: [TimelineCardModel]) -> Void in
+        google.getOptimizedWayPoints(tripID, completion: {(timeLineCards: [TimelineCardModel], wayPointOrder: [Int]) -> Void in
             guard let trip = RealmQuery.queryTripByID(tripID) else {
                 print("Could Not Find Trip by ID")
                 return
             }
             
-            let tripTime = trip.fullEndDate?.timeIntervalSince(trip.fullStartDate!)
+            let tripTime = trip.endTime?.timeIntervalSince(trip.startTime!)
             var driveTime = 0.0
             //add up duration in minutes to see if enough time to complete trip
             for driveCard in timeLineCards {
@@ -67,7 +68,7 @@ class TimelineVC: UIViewController {
             if (tripTime?.isLess(than: driveTime))! {
                 timeFrames.append(TimeFrame(text: "", date: "Not Enough Time For Trip", image: UIImage(named:"NoEntry")!))
             } else {
-                var timeOfDay = trip.fullStartDate
+                var timeOfDay = trip.startTime
                 var timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay!)
                 for (index, card) in timeLineCards.enumerated() {
                     if index == 0 || index == timeLineCards.count - 1 {
@@ -95,6 +96,7 @@ class TimelineVC: UIViewController {
             }
             //back to main thread before UI changes
             DispatchQueue.main.async {
+                self.wayPointOrder = wayPointOrder
                 self.timeline = TimelineView(bulletType: .circle, timeFrames: timeFrames)
                 if self.timeline.timeFrames.count == 1 {
                     self.enoughTime = false
@@ -118,6 +120,7 @@ class TimelineVC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let signupVC = segue.destination as! SignUpVC
+        signupVC.wayPointOrder = self.wayPointOrder
         signupVC.trip = self.trip
     }
     

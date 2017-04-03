@@ -16,6 +16,7 @@ class SignUpVC: UITableViewController {
     var dateTag = 0
     var sites = List<SiteStop>()
     var trip: Trip!
+    var wayPointOrder: [Int]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,24 +37,19 @@ class SignUpVC: UITableViewController {
     
     func confirmSelected(_ sender: UIBarButtonItem){
         for i in 0..<trip.siteStops.count{
-            let site = trip.siteStops[i]
+            let index = wayPointOrder[i]
+            let site = trip.siteStops[index]
             if site.date == nil {
-                RealmWrite.writeSiteStopDate(index: i, date: Date(), trip: self.trip)
+                RealmWrite.writeSiteStopDate(index: index, date: Date(), trip: self.trip)
             }
             if site.startTime == nil {
-                RealmWrite.writeSiteStopStartTime(index: i, date: Date(), trip: self.trip)
+                RealmWrite.writeSiteStopStartTime(index: index, date: Date(), trip: self.trip)
             }
             if site.endTime == nil {
-                RealmWrite.writeSiteStopEndTime(index: i, date: Date(), trip: self.trip)
+                RealmWrite.writeSiteStopEndTime(index: index, date: Date(), trip: self.trip)
             }
             
-            let fullStartDate = CombineDates.combineDateWithTime(trip.siteStops[i].date!, time: trip.siteStops[i].startTime!)
-            RealmWrite.writeSiteStopFullStartDate(index: i, date: fullStartDate!, trip: self.trip)
-            
-            let fullEndDate = CombineDates.combineDateWithTime(trip.siteStops[i].date!, time: trip.siteStops[i].endTime!)
-            RealmWrite.writeSiteStopFullEndDate(index: i, date: fullEndDate!, trip: self.trip)
         }
-
         
         performSegue(withIdentifier: "segueToFinal", sender: nil)
     }
@@ -70,20 +66,12 @@ class SignUpVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return 5
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             switch indexPath.row {
             case 0:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "label", for: indexPath) as! LabelCell
-                cell.label.textColor = UIColor.black
-                cell.accessoryType = .none
-                cell.label.text! = sites[indexPath.section].name!
-                cell.label.adjustsFontSizeToFitWidth = true
-                
-                return cell
-            case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "signup", for: indexPath) as! SignUpCell
                 
                 cell.url.text! = "www.tourtimes.com"
@@ -91,23 +79,7 @@ class SignUpVC: UITableViewController {
                 cell.accessoryType = .disclosureIndicator
                 
                 return cell
-            case 2:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "label", for: indexPath) as! LabelCell
-                
-                cell.label.text! = "Tour Date"
-                cell.label.textColor = UIColor.lightGray
-                cell.accessoryType = .disclosureIndicator
-                
-                return cell
-            case 3:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "datepick", for: indexPath) as! DatePickCell
-                cell.datePicker.datePickerMode = .date
-                cell.datePicker.tag = indexPath.section
-                if let date = sites[indexPath.section].date{
-                    cell.datePicker.date = date as Date
-                }
-                return cell
-            case 4:
+            case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "label", for: indexPath) as! LabelCell
                 
                 cell.label.text! = "Tour Start"
@@ -115,15 +87,15 @@ class SignUpVC: UITableViewController {
                 cell.accessoryType = .disclosureIndicator
                 
                 return cell
-            case 5:
+            case 2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "datepick", for: indexPath) as! DatePickCell
                 cell.datePicker.datePickerMode = .time
                 cell.datePicker.tag = indexPath.section + 30
-                if let time = sites[indexPath.section].startTime{
+                if let time = sites[wayPointOrder[indexPath.section]].startTime{
                     cell.datePicker.date = time as Date
                 }
                 return cell
-            case 6:
+            case 3:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "label", for: indexPath) as! LabelCell
                 
                 cell.label.text! = "Tour End"
@@ -131,11 +103,11 @@ class SignUpVC: UITableViewController {
                 cell.accessoryType = .disclosureIndicator
                 
                 return cell
-            case 7:
+            case 4:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "datepick", for: indexPath) as! DatePickCell
                 cell.datePicker.datePickerMode = .time
                 cell.datePicker.tag = indexPath.section
-                if let time = sites[indexPath.section].endTime{
+                if let time = sites[wayPointOrder[indexPath.section]].endTime{
                     cell.datePicker.date = time as Date
                 }
                 return cell
@@ -144,6 +116,10 @@ class SignUpVC: UITableViewController {
                 break
             }
         return UITableViewCell()
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sites[wayPointOrder[section]].name!
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -162,7 +138,7 @@ class SignUpVC: UITableViewController {
         
         
         switch indexPath.row {
-        case 1:
+        case 0:
             print("Go to signup website")
         default:
             break
@@ -176,12 +152,12 @@ class SignUpVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if indexPath.row == 3 || indexPath.row == 5 || indexPath.row == 7{
+        if indexPath.row == 2 || indexPath.row == 4 {
             if indexPath.row == currentRow && indexPath.section == currentSection && cellTapped {
                 return 75
             }
                 
-            else if indexPath.row == 3 || indexPath.row == 5 || indexPath.row == 7{
+            else if indexPath.row == 2 || indexPath.row == 4 {
                 return 0
             }
         }
@@ -191,60 +167,31 @@ class SignUpVC: UITableViewController {
     
     @IBAction func dateChanged(_ picker: UIDatePicker){
         
-        if picker.datePickerMode == .time && picker.tag >= 30 {
+        if picker.tag >= 30 {
             let tag = picker.tag - 30
-            if let locationName = sites[tag].name{
+            if let locationName = sites[wayPointOrder[tag]].name{
                 for i in 0..<sites.count{
-                    if locationName == sites[i].name{
-                        RealmWrite.writeSiteStopStartTime(index: i, date: picker.date, trip: self.trip)
-                        if sites[i].date == nil {
-                            RealmWrite.writeSiteStopDate(index: i, date: Date(), trip: self.trip)
-                        } else {
-                            let fullStartDate = CombineDates.combineDateWithTime(trip.siteStops[i].date!, time: trip.siteStops[i].startTime!)
-                            RealmWrite.writeSiteStopFullStartDate(index: i, date: fullStartDate!, trip: self.trip)
-                        }
+                    let index = wayPointOrder[i]
+                    if locationName == sites[index].name{
+                        print("changing start time for \(locationName)")
+                        RealmWrite.writeSiteStopStartTime(index: index, date: picker.date, trip: self.trip)
+            
                     }
                 }
             }
-        } else if let locationName = sites[picker.tag].name{
-            if picker.datePickerMode == .date{
+        } else {
+            let tag = picker.tag
+            if let locationName = sites[wayPointOrder[tag]].name {
                 for i in 0..<sites.count{
-                    if locationName == sites[i].name{
-                        RealmWrite.writeSiteStopDate(index: i, date: picker.date, trip: self.trip)
-                        if sites[i].startTime == nil {
-                            RealmWrite.writeSiteStopStartTime(index: i, date: Date(), trip: self.trip)
-                        } else {
-                            let fullStartDate = CombineDates.combineDateWithTime(trip.siteStops[i].date!, time: trip.siteStops[i].startTime!)
-                            RealmWrite.writeSiteStopFullStartDate(index: i, date: fullStartDate!, trip: self.trip)
-                        }
-                        
-                        if sites[i].endTime == nil {
-                            RealmWrite.writeSiteStopEndTime(index: i, date: Date(), trip: self.trip)
-                        } else {
-                            let fullEndDate = CombineDates.combineDateWithTime(trip.siteStops[i].date!, time: trip.siteStops[i].endTime!)
-                            RealmWrite.writeSiteStopFullEndDate(index: i, date: fullEndDate!, trip: self.trip)
-                        }
-                    }
-                }
-                
-            }else if picker.datePickerMode == .time{
-                for i in 0..<sites.count{
-                    if locationName == sites[i].name{
+                    let index = wayPointOrder[i]
+                    if locationName == sites[index].name {
                         RealmWrite.writeSiteStopEndTime(index: i, date: picker.date, trip: self.trip)
-                    } else {
-                        continue
-                    }
-                    if sites[i].date == nil {
-                        RealmWrite.writeSiteStopDate(index: i, date: Date(), trip: self.trip)
-                    } else {
-                        let fullEndDate = CombineDates.combineDateWithTime(trip.siteStops[i].date!, time: trip.siteStops[i].endTime!)
-                        RealmWrite.writeSiteStopFullEndDate(index: i, date: fullEndDate!, trip: self.trip)
                     }
                 }
             }
         }
-        
     }
+    
     
     //toggle function
     private func togglePicker(){
