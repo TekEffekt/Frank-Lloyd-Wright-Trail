@@ -107,12 +107,18 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
                         print("Conversion to Duration Failed")
                         return
                     }
+                    guard let durationValue = duration["value"] as? Int else {
+                        print("Conversion to Duration Value Failed")
+                        return
+                    }
                     guard let durationText = duration["text"] as? String else {
                         print("Conversion to Duration Text Failed")
                         return
                     }
+                    
                     timelineCarCard.distance = distanceText
-                    timelineCarCard.duration = durationText
+                    timelineCarCard.durationText = durationText
+                    timelineCarCard.durationValue = durationValue
                     timelineCarCard.icon = UIImage(named: "car")
                     timelineCards.append(timelineCarCard)
                     //add sites in correct order
@@ -238,13 +244,17 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
                         print("Conversion to Duration Failed")
                         return
                     }
+                    guard let durationValue = duration["value"] as? Int else {
+                        print("Conversion to Duration Value Failed")
+                        return
+                    }
                     guard let durationText = duration["text"] as? String else {
                         print("Conversion to Duration Text Failed")
                         return
                     }
-        
                     timelineCarCard.distance = distanceText
-                    timelineCarCard.duration = durationText
+                    timelineCarCard.durationText = durationText
+                    timelineCarCard.durationValue = durationValue
                     timelineCarCard.icon = UIImage(named: "car")
                     timelineCards.append(timelineCarCard)
                     //add sites in correct order

@@ -54,10 +54,9 @@ class TimelineVC: UIViewController {
             var driveTime = 0.0
             //add up duration in minutes to see if enough time to complete trip
             for driveCard in timeLineCards {
-                if let duration = driveCard.duration {
+                if let duration = driveCard.durationValue {
                     //convert string to seconds (timeIntervalSlice is in seconds)
-                    let durationTime = (Double(duration.replacingOccurrences(of: " mins", with: ""))! * 60)
-                    driveTime += durationTime
+                    driveTime += Double(duration/60)
                 }
             }
             //consider hour spent at each site stop
@@ -68,8 +67,8 @@ class TimelineVC: UIViewController {
             if (tripTime?.isLess(than: driveTime))! {
                 timeFrames.append(TimeFrame(text: "", date: "Not Enough Time For Trip", image: UIImage(named:"NoEntry")!))
             } else {
-                var timeOfDay = trip.startTime
-                var timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay!)
+                var timeOfDay = DateHelp.getStartOfDayFrom(startDate: trip.startTime!, firstDriveSeconds: timeLineCards[1].durationValue!)
+                var timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
                 for (index, card) in timeLineCards.enumerated() {
                     if index == 0 || index == timeLineCards.count - 1 {
                         //home card
@@ -77,19 +76,20 @@ class TimelineVC: UIViewController {
                         timeFrames.append(timeFrame)
                     } else if let name = card.name {
                         //location card
+                        //add 10 min of leeway 
+                        timeOfDay = DateHelp.addMinutesToDate(minutes: 10, date: timeOfDay)
+                        timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
                         let timeFrame = TimeFrame(text: name, date: ("Tour Start: \(timeOfDayFormatted)"), image: card.locationImage!)
                         timeFrames.append(timeFrame)
                         //assume hour spent at site
-                        timeOfDay = DateHelp.addHoursToDate(hours: 1, date: timeOfDay!)
-                        timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay!)
+                        timeOfDay = DateHelp.addHoursToDate(hours: 1, date: timeOfDay)
+                        timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
                     } else {
                         //drive card
-                        //get actual int from duration of drive instead of string
-                        let minutesString = card.duration!
-                        let minutesNum = minutesString.components(separatedBy: " ").flatMap { Int($0.trimmingCharacters(in: .whitespaces))}[0]
-                        timeOfDay = DateHelp.addMinutesToDate(minutes: minutesNum, date: timeOfDay!)
-                        timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay!)
-                        let timeFrame = TimeFrame(text: "\(card.duration!) (est arrival: \(timeOfDayFormatted))", date: "", image: card.icon!)
+                        let seconds = card.durationValue!
+                        timeOfDay = DateHelp.addSecondsToDate(seconds, date: timeOfDay)
+                        timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
+                        let timeFrame = TimeFrame(text: "\(card.durationText!) (est arrival: \(timeOfDayFormatted))", date: "", image: card.icon!)
                         timeFrames.append(timeFrame)
                     }
                 }

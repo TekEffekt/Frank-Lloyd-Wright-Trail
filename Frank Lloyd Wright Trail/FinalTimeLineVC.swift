@@ -59,16 +59,11 @@ class FinalTimeLineVC: UIViewController {
                 tourTimes.append(Int(duration))
             }
             
-            
             var timeFrames = [TimeFrame]()
+        
+            let firstDuration = timeLineCards[1].durationValue
             
-            
-            print(sortedList[0].startTime!)
-            print(timeLineCards[1].duration!)
-            let firstDurationString = timeLineCards[1].duration!
-            let firstDuration = firstDurationString.components(separatedBy: " ").flatMap { Int($0.trimmingCharacters(in: .whitespaces))}[0]
-            
-            var timeOfDay = DateHelp.getStartOfDayFrom(startDate: sortedList[0].startTime!, firstDriveMinutes: firstDuration)
+            var timeOfDay = DateHelp.getStartOfDayFrom(startDate: sortedList[0].startTime!, firstDriveSeconds: firstDuration!)
             var timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
             var durationIndex = 0
             var siteIndex = 0
@@ -92,11 +87,10 @@ class FinalTimeLineVC: UIViewController {
                 } else {
                     //drive card
                     //get actual int from duration of drive instead of string
-                    let minutesString = card.duration!
-                    let minutesNum = minutesString.components(separatedBy: " ").flatMap { Int($0.trimmingCharacters(in: .whitespaces))}[0]
-                    timeOfDay = DateHelp.addMinutesToDate(minutes: minutesNum, date: timeOfDay)
+                    let seconds = card.durationValue
+                    timeOfDay = DateHelp.addSecondsToDate(seconds!, date: timeOfDay)
                     timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
-                    let timeFrame = TimeFrame(text: "\(card.duration!) (est arrival: \(timeOfDayFormatted))", date: "", image: card.icon!)
+                    let timeFrame = TimeFrame(text: "\(card.durationText!) (est arrival: \(timeOfDayFormatted))", date: "", image: card.icon!)
                     timeFrames.append(timeFrame)
                 }
             }

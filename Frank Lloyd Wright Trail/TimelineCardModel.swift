@@ -11,7 +11,8 @@ import Foundation
 struct TimelineCardModel{
     var name: String?
     var distance: String?
-    var duration: String?
+    var durationValue: Int?
+    var durationText: String?
     var locationImage: UIImage?
     var icon: UIImage?
 }
