@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 class DateHelp {
     static func getHoursAndMinutes(from date: Date) -> String {
@@ -41,6 +42,46 @@ class DateHelp {
         //convert to minutes
         interval = interval/60
         return interval
+    }
+    
+    static func getStopDictionary(sortedList: List<SiteStop>) -> [Date : [SiteStop]]{
+        var siteDict = [Date : [SiteStop]]()
+        
+        let calendar = Calendar.current
+        
+        for siteStop in sortedList {
+            let month = calendar.component(.month, from: siteStop.date!)
+            let day = calendar.component(.day, from: siteStop.date!)
+            let year = calendar.component(.year, from: siteStop.date!)
+            var components = DateComponents()
+            components.month = month
+            components.day = day
+            components.year = year
+            
+            let date = calendar.date(from: components)
+            if let _ = siteDict[date!] {
+                siteDict[date!]?.append(siteStop)
+            } else {
+                siteDict.updateValue([siteStop], forKey: date!)
+            }
+        }
+        
+        return siteDict
+        
+    }
+    
+    static func getShortDateName(date: Date) -> String {
+        let calendar = Calendar.current
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d"
+        let day = calendar.component(.day, from: date)
+        
+        return dateFormatter.string(from: date) + ", "
+    }
+    
+    static func isInSameDay(_ date1: Date , _ date2: Date) -> Bool {
+        let calendar = Calendar.current
+        return calendar.isDate(_: date1, inSameDayAs: date2)
     }
 
 }

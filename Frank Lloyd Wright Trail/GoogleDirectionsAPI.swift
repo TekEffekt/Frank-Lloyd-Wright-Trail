@@ -11,6 +11,29 @@ import CoreLocation
 import RealmSwift
 import UIKit
 
+extension URLSession {
+    func synchronousDataTask(with url: URL) -> (Data?, URLResponse?, Error?) {
+        var data: Data?
+        var response: URLResponse?
+        var error: Error?
+        
+        let semaphore = DispatchSemaphore(value: 0)
+        
+        let dataTask = self.dataTask(with: url) {
+            data = $0
+            response = $1
+            error = $2
+            
+            semaphore.signal()
+        }
+        dataTask.resume()
+        
+        _ = semaphore.wait(timeout: .distantFuture)
+        
+        return (data, response, error)
+    }
+}
+
 class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
     
     func getOptimizedWayPoints(_ id: Int, completion: @escaping (_ timeLineCards: [TimelineCardModel], _ wayPointOrder: [Int]) -> Void) {
@@ -27,7 +50,7 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
         
         
         //retrieve coordinates of all the sitestops to be used as waypoints
-        guard let waypointCoords = getSiteCoords(trip.siteStops) else {
+        guard let waypointCoords = getSiteCoords(Array(trip.siteStops)) else {
             print("Error Getting Sites' Coords")
             return
         }
@@ -163,11 +186,24 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
             return list
         }
         
+        //create dictionary for multi day trips
+        var siteDict = DateHelp.getStopDictionary(sortedList: sortedList)
         
+        var timeLineCards: [TimelineCardModel] = []
+        //iterate dictionary in order of dates
+        for (_ , siteList) in (siteDict.sorted {$0.0 < $1.0}) {
+            let cards = getTimelineCards(tripId: id, userCoords: userCoords, sortedList: siteList)
+            timeLineCards.append(contentsOf: cards)
+        }
+        
+        completion(timeLineCards)
+    }
+    
+    func getTimelineCards(tripId: Int, userCoords: (lat: Double, lon: Double), sortedList: [SiteStop]) -> [TimelineCardModel] {
         //retrieve coordinates of all the sitestops to be used as waypoints
         guard let waypointCoords = getSiteCoords(sortedList) else {
             print("Error Getting Sites' Coords")
-            return
+            return []
         }
         //format coordinates for use in url
         let userCoordString = "\(userCoords.lat),\(userCoords.lon)"
@@ -186,96 +222,93 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
         
         guard let url = URL(string: directionEndPoint) else {
             print("Error Converting to URL")
-            return
+            return []
         }
-        let urlRequest = URLRequest(url: url)
+        
         let session = URLSession.shared
-        let task = session.dataTask(with: urlRequest) {data, response, error in
-            guard let trip = RealmQuery.queryTripByID(id) else {
-                print("Could Not Find Trip by ID")
-                return
-            }
-            //sort list of stops
-            let sortedList = trip.siteStops.sorted(byKeyPath: "startTime", ascending: true)
-          
-            guard error == nil else {
-                print("Error Calling GET")
-                print(error!)
-                return
-            }
-            guard let responseData = data else {
-                print("Error Receiving Data")
-                return
-            }
-            do{
-                let json = try JSONSerialization.jsonObject(with: responseData, options: [])
-                guard let dictionary = json as? [String: Any] else {
-                    print("Conversion to Dictionary Failed")
-                    return
-                }
-                guard let routes = dictionary["routes"] as? [[String: Any]] else {
-                    print("Conversion to Routes Failed")
-                    return
-                }
-                guard let route = routes.first else { return }
-               
-                guard let legs = route["legs"] as? [[String: Any]] else {
-                    print("Conversion to Legs Failed")
-                    return
-                }
-                //timelineCards to be returned
-                var timelineCards = [TimelineCardModel]()
-                var timelineHomeCard = TimelineCardModel()
-                timelineHomeCard.icon = UIImage(named: "home")
-                
-                timelineCards.append(timelineHomeCard)
-                for (index, leg) in legs.enumerated() {
-                    var timelineSiteCard = TimelineCardModel()
-                    var timelineCarCard = TimelineCardModel()
-                    guard let distance = leg["distance"] as? [String: Any] else {
-                        print("Conversion to Distance Failed")
-                        return
-                    }
-                    guard let distanceText = distance["text"] as? String else {
-                        print("Conversion to Distance Text Failed")
-                        return
-                    }
-                    guard let duration = leg["duration"] as? [String: Any] else {
-                        print("Conversion to Duration Failed")
-                        return
-                    }
-                    guard let durationValue = duration["value"] as? Int else {
-                        print("Conversion to Duration Value Failed")
-                        return
-                    }
-                    guard let durationText = duration["text"] as? String else {
-                        print("Conversion to Duration Text Failed")
-                        return
-                    }
-                    timelineCarCard.distance = distanceText
-                    timelineCarCard.durationText = durationText
-                    timelineCarCard.durationValue = durationValue
-                    timelineCarCard.icon = UIImage(named: "car")
-                    timelineCards.append(timelineCarCard)
-                    //add sites in correct order
-                    if index < legs.count - 1 {
-                        let site = sortedList[index].site
-                        timelineSiteCard.name = site?.title!
-                        timelineSiteCard.locationImage = UIImage(named: (site?.imageName!)!)
-                        timelineCards.append(timelineSiteCard)
-                    }
-                }
-                timelineCards.append(timelineHomeCard)
-                completion(timelineCards)
-                
-            } catch let error {
-                print(error)
-                print("Error Converting Data to JSON")
-                return
-            }
+        let syncResponse = session.synchronousDataTask(with: url)
+        let data = syncResponse.0
+        let response = syncResponse.1
+        let error = syncResponse.2
+        
+        
+        guard error == nil else {
+            print("Error Calling GET")
+            print(error!)
+            return []
         }
-        //hit url and obtain results
-        task.resume()
+        guard let responseData = data else {
+            print("Error Receiving Data")
+            return []
+        }
+        do {
+            let json = try JSONSerialization.jsonObject(with: responseData, options: [])
+            guard let dictionary = json as? [String: Any] else {
+                print("Conversion to Dictionary Failed")
+                return []
+            }
+            guard let routes = dictionary["routes"] as? [[String: Any]] else {
+                print("Conversion to Routes Failed")
+                return []
+            }
+            guard let route = routes.first else { return [] }
+            
+            guard let legs = route["legs"] as? [[String: Any]] else {
+                print("Conversion to Legs Failed")
+                return []
+            }
+            //timelineCards to be returned
+            var timelineCards = [TimelineCardModel]()
+            var timelineHomeCard = TimelineCardModel()
+            timelineHomeCard.icon = UIImage(named: "home")
+            timelineHomeCard.name = "start"
+            timelineHomeCard.date = sortedList[0].startDate
+                
+            timelineCards.append(timelineHomeCard)
+            for (index, leg) in legs.enumerated() {
+                var timelineSiteCard = TimelineCardModel()
+                var timelineCarCard = TimelineCardModel()
+                guard let distance = leg["distance"] as? [String: Any] else {
+                    print("Conversion to Distance Failed")
+                    return []
+                }
+                guard let distanceText = distance["text"] as? String else {
+                    print("Conversion to Distance Text Failed")
+                    return []
+                }
+                guard let duration = leg["duration"] as? [String: Any] else {
+                    print("Conversion to Duration Failed")
+                    return []
+                }
+                guard let durationValue = duration["value"] as? Int else {
+                    print("Conversion to Duration Value Failed")
+                    return []
+                }
+                guard let durationText = duration["text"] as? String else {
+                    print("Conversion to Duration Text Failed")
+                    return []
+                }
+                timelineCarCard.distance = distanceText
+                timelineCarCard.durationText = durationText
+                timelineCarCard.durationValue = durationValue
+                timelineCarCard.icon = UIImage(named: "car")
+                timelineCards.append(timelineCarCard)
+                //add sites in correct order
+                if index < legs.count - 1 {
+                    let site = sortedList[index].site
+                    timelineSiteCard.name = site?.title!
+                    timelineSiteCard.locationImage = UIImage(named: (site?.imageName!)!)
+                    timelineCards.append(timelineSiteCard)
+                }
+            }
+            timelineHomeCard.name = "end"
+            timelineCards.append(timelineHomeCard)
+            return timelineCards
+        } catch let error {
+            print(error)
+            print("Error Converting Data to JSON")
+            return []
+        }
     }
     
     func getStartCoordinates() -> (lat: Double, lon: Double)? {
@@ -294,7 +327,7 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
         return nil
     }
     
-    func getSiteCoords(_ siteStops: List<SiteStop>) -> [(lat: Double, lon: Double)]? {
+    func getSiteCoords(_ siteStops: [SiteStop]) -> [(lat: Double, lon: Double)]? {
         var coordsList = [(Double, Double)]()
         for siteStop in siteStops {
             guard let site = siteStop.site else {

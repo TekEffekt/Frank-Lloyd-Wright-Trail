@@ -98,6 +98,7 @@ class TimelineVC: UIViewController {
             DispatchQueue.main.async {
                 self.wayPointOrder = wayPointOrder
                 self.timeline = TimelineView(bulletType: .circle, timeFrames: timeFrames)
+                self.timeline.isUserInteractionEnabled = false
                 if self.timeline.timeFrames.count == 1 {
                     self.enoughTime = false
                 }

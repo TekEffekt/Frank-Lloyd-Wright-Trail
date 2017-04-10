@@ -190,19 +190,18 @@ class SignUpVC: UITableViewController {
     }
     
     @IBAction func dateChanged(_ picker: UIDatePicker){
-        
+        //must set full start/ full end time
         if picker.datePickerMode == .time && picker.tag >= 30 {
             let tag = picker.tag - 30
             if let locationName = sites[wayPointOrder[tag]].name {
                 for i in 0..<sites.count{
-                    let index = wayPointOrder[i]
-                    if locationName == sites[index].name {
-                        RealmWrite.writeSiteStopStartTime(index: index, date: picker.date, trip: self.trip)
-                        if sites[index].date == nil {
-                            RealmWrite.writeSiteStopDate(index: index, date: Date(), trip: self.trip)
+                    if locationName == sites[i].name {
+                        RealmWrite.writeSiteStopStartTime(index: i, date: picker.date, trip: self.trip)
+                        if sites[i].date == nil {
+                            RealmWrite.writeSiteStopDate(index: i, date: Date(), trip: self.trip)
                         } else {
-                            let fullStartDate = CombineDates.combineDateWithTime(trip.siteStops[index].date!, time: trip.siteStops[index].startTime!)
-                            RealmWrite.writeSiteStopFullStartDate(index: index, date: fullStartDate!, trip: self.trip)
+                            let fullStartDate = CombineDates.combineDateWithTime(trip.siteStops[i].date!, time: trip.siteStops[i].startTime!)
+                            RealmWrite.writeSiteStopFullStartDate(index: i, date: fullStartDate!, trip: self.trip)
                         }
                     }
                 }
@@ -210,38 +209,36 @@ class SignUpVC: UITableViewController {
         } else if let locationName = sites[picker.tag].name {
             if picker.datePickerMode == .date {
                 for i in 0..<sites.count{
-                    let index = wayPointOrder[i]
-                    if locationName == sites[index].name {
-                        RealmWrite.writeSiteStopDate(index: index, date: picker.date, trip: self.trip)
-                        if sites[index].startTime == nil {
-                            RealmWrite.writeSiteStopStartTime(index: index, date: Date(), trip: self.trip)
+                    if locationName == sites[i].name {
+                        RealmWrite.writeSiteStopDate(index: i, date: picker.date, trip: self.trip)
+                        if sites[i].startTime == nil {
+                            RealmWrite.writeSiteStopStartTime(index: i, date: Date(), trip: self.trip)
                         } else {
-                            let fullStartDate = CombineDates.combineDateWithTime(trip.siteStops[index].date!, time: trip.siteStops[index].startTime!)
-                            RealmWrite.writeSiteStopFullStartDate(index: index, date: fullStartDate!, trip: self.trip)
+                            let fullStartDate = CombineDates.combineDateWithTime(trip.siteStops[i].date!, time: trip.siteStops[i].startTime!)
+                            RealmWrite.writeSiteStopFullStartDate(index: i, date: fullStartDate!, trip: self.trip)
                         }
                         
-                        if sites[index].endTime == nil {
-                            RealmWrite.writeSiteStopEndTime(index: index, date: Date(), trip: self.trip)
+                        if sites[i].endTime == nil {
+                            RealmWrite.writeSiteStopEndTime(index: i, date: Date(), trip: self.trip)
                         } else {
-                            let fullEndDate = CombineDates.combineDateWithTime(trip.siteStops[index].date!, time: trip.siteStops[index].endTime!)
-                            RealmWrite.writeSiteStopFullEndDate(index: index, date: fullEndDate!, trip: self.trip)
+                            let fullEndDate = CombineDates.combineDateWithTime(trip.siteStops[i].date!, time: trip.siteStops[i].endTime!)
+                            RealmWrite.writeSiteStopFullEndDate(index: i, date: fullEndDate!, trip: self.trip)
                         }
                     }
                 }
                 
             } else if picker.datePickerMode == .time {
                 for i in 0..<sites.count{
-                    let index = wayPointOrder[i]
-                    if locationName == sites[index].name{
-                        RealmWrite.writeSiteStopEndTime(index: index, date: picker.date, trip: self.trip)
+                    if locationName == sites[i].name{
+                        RealmWrite.writeSiteStopEndTime(index: i, date: picker.date, trip: self.trip)
                     } else {
                         continue
                     }
-                    if sites[index].date == nil {
-                        RealmWrite.writeSiteStopDate(index: index, date: Date(), trip: self.trip)
+                    if sites[i].date == nil {
+                        RealmWrite.writeSiteStopDate(index: i, date: Date(), trip: self.trip)
                     } else {
-                        let fullEndDate = CombineDates.combineDateWithTime(trip.siteStops[index].date!, time: trip.siteStops[index].endTime!)
-                        RealmWrite.writeSiteStopFullEndDate(index: index, date: fullEndDate!, trip: self.trip)
+                        let fullEndDate = CombineDates.combineDateWithTime(trip.siteStops[i].date!, time: trip.siteStops[i].endTime!)
+                        RealmWrite.writeSiteStopFullEndDate(index: i, date: fullEndDate!, trip: self.trip)
                     }
                 }
             }

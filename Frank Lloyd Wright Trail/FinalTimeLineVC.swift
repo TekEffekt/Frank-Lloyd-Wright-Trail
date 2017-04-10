@@ -45,6 +45,7 @@ class FinalTimeLineVC: UIViewController {
         let google = GoogleDirectionsAPI()
         //must send ID to seperate thread can't pass realm objects between threads
         let tripID = trip.id
+        
         google.getFinalTimeLine(tripID, completion: {(timeLineCards: [TimelineCardModel]) -> Void in
             guard let trip = RealmQuery.queryTripByID(tripID) else {
                 print("Could Not Find Trip by ID")
@@ -61,15 +62,35 @@ class FinalTimeLineVC: UIViewController {
             
             var timeFrames = [TimeFrame]()
         
-            let firstDuration = timeLineCards[1].durationValue
+            var firstDuration = timeLineCards[1].durationValue
             
             var timeOfDay = DateHelp.getStartOfDayFrom(startDate: sortedList[0].startTime!, firstDriveSeconds: firstDuration!)
             var timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
             var durationIndex = 0
             var siteIndex = 0
+            
+            
             for (index, card) in timeLineCards.enumerated() {
-                if index == 0 || index == timeLineCards.count - 1 {
-                    //home card
+                
+                //homecards
+                if card.name == "start" {
+                    //if new day must restart time
+                    if DateHelp.isInSameDay(card.date!, timeOfDay) {
+                        let monthAndDay = DateHelp.getShortDateName(date: timeOfDay)
+                        timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
+                        let timeFrame = TimeFrame(text: "", date: monthAndDay + timeOfDayFormatted, image: card.icon!)
+                        timeFrames.append(timeFrame)
+                    } else {
+                        firstDuration = timeLineCards[index + 1].durationValue
+                        timeOfDay = DateHelp.getStartOfDayFrom(startDate: card.date!, firstDriveSeconds: firstDuration!)
+                        let monthAndDay = DateHelp.getShortDateName(date: timeOfDay)
+                        timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
+                        let timeFrame = TimeFrame(text: "", date: monthAndDay + timeOfDayFormatted, image: card.icon!)
+                        timeFrames.append(timeFrame)
+                    }
+                    
+                } else if card.name == "end" {
+                    timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
                     let timeFrame = TimeFrame(text: "", date: timeOfDayFormatted, image: card.icon!)
                     timeFrames.append(timeFrame)
                 } else if let name = card.name {
@@ -97,8 +118,13 @@ class FinalTimeLineVC: UIViewController {
             
             //back to main thread before UI changes
             DispatchQueue.main.async {
+                
+                
+                
                 self.timeline = TimelineView(bulletType: .circle, timeFrames: timeFrames)
-        
+                
+                self.timeline.isUserInteractionEnabled = false
+                
                 self.timeline.detailLabelColor = UIColor(hexString: "#A6192E")
                 self.timeline.titleLabelColor = UIColor(hexString: "#A6192E")
                 self.scrollView.addSubview(self.timeline)

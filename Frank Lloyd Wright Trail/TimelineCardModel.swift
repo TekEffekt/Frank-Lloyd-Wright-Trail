@@ -15,4 +15,5 @@ struct TimelineCardModel{
     var durationText: String?
     var locationImage: UIImage?
     var icon: UIImage?
+    var date: Date?
 }
