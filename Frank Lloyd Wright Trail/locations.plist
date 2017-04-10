@@ -3,6 +3,10 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>phoneNumber</key>
+		<string>2622602154</string>
+		<key>website</key>
+		<string>https://www.scjohnson.com/visit</string>
 		<key>subtitle</key>
 		<string>The SC Johnson Administration Building was the first Frank Lloyd Wright designed for SC Johnson. The Research Tower opened in 1950.</string>
 		<key>lat</key>
@@ -17,6 +21,10 @@
 		<string>scjohnson</string>
 	</dict>
 	<dict>
+		<key>phoneNumber</key>
+		<string>2626393211</string>
+		<key>website</key>
+		<string>https://www.scjohnson.com/visit</string>
 		<key>subtitle</key>
 		<string>Third generation SC Johnson leader H.F. Johnson Jr. commissioned with Frank Lloyd Wright in 1936.</string>
 		<key>lat</key>
@@ -31,6 +39,10 @@
 		<string>wingspread</string>
 	</dict>
 	<dict>
+		<key>phoneNumber</key>
+		<string>608-287-0339</string>
+		<key>website</key>
+		<string>https://www.wrightinmilwaukee.com</string>
 		<key>subtitle</key>
 		<string>Frank Lloyd Wright took special interest in creating architect-designed homes for moderate and low-income families.</string>
 		<key>lat</key>
@@ -45,6 +57,10 @@
 		<string>asbh</string>
 	</dict>
 	<dict>
+		<key>phoneNumber</key>
+		<string>6082614000</string>
+		<key>website</key>
+		<string>https://www.mononaterrace.com/experience-monona-terrace/tours_and_education</string>
 		<key>subtitle</key>
 		<string>Creatively charged by the architecture and the natural landscape. Monona Terrace is truly the product of our community and culture.</string>
 		<key>lat</key>
@@ -59,6 +75,10 @@
 		<string>mononaterrace</string>
 	</dict>
 	<dict>
+		<key>phoneNumber</key>
+		<string>6082339774</string>
+		<key>website</key>
+		<string>https://fusmadison.org/welcome/meeting-house/tours/#1441873920568-18a8a48a-7614</string>
 		<key>subtitle</key>
 		<string>Since 1879 First Unitarian Society of Madison has been a liberal religious presence in Madison, providing a welcoming alternative religious community.</string>
 		<key>lat</key>
@@ -73,6 +93,10 @@
 		<string>meetinghouse</string>
 	</dict>
 	<dict>
+		<key>phoneNumber</key>
+		<string>877-588-7900</string>
+		<key>website</key>
+		<string>http://www.taliesinpreservation.org/visit/tours-tickets</string>
 		<key>subtitle</key>
 		<string>Taliesin Preservation offers a variety of tours of the Taliesin estate in Spring Green, Wisconsin.</string>
 		<key>lat</key>
@@ -87,6 +111,10 @@
 		<string>visitorcenter</string>
 	</dict>
 	<dict>
+		<key>phoneNumber</key>
+		<string>6085882544</string>
+		<key>website</key>
+		<string>WyomingValleySchool@gmail.com</string>
 		<key>subtitle</key>
 		<string>Frank Lloyd Wright designed Wyoming Valley School in 1957 for the children of Wyoming Valley</string>
 		<key>lat</key>
@@ -102,6 +130,10 @@ Wyoming Valley School Cultural Arts Center is a nonprofit organization that prom
 		<string>wyoming</string>
 	</dict>
 	<dict>
+		<key>phoneNumber</key>
+		<string>6086045034</string>
+		<key>website</key>
+		<string>https://www.adgermanwarehouse.org/tours.html</string>
 		<key>subtitle</key>
 		<string>Frank Lloyd Wright designed the A.D. German Warehouse that was constructed in 1915.</string>
 		<key>lat</key>

@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class SignUpVC: UITableViewController {
+class SignUpVC: UITableViewController, UITextViewDelegate, UIGestureRecognizerDelegate {
     var cellTapped = false
     var currentRow = -1
     var currentSection = -1
@@ -79,13 +79,28 @@ class SignUpVC: UITableViewController {
         let index = wayPointOrder[indexPath.section]
         switch indexPath.row {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "signup", for: indexPath) as! SignUpCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "URLCell", for: indexPath) as! LinkCell
             
-            cell.url.text! = "www.tourtimes.com"
-            cell.url.adjustsFontSizeToFitWidth = true
-            cell.accessoryType = .disclosureIndicator
+            
+            let plainString = "Sign up for your tour"
+            let attributedString = NSMutableAttributedString(string: plainString)
+            let range = (plainString as NSString).range(of: "Sign up")
+            let websiteurl = trip.siteStops[index].site?.website
+            attributedString.addAttributes([NSLinkAttributeName: NSURL(string: websiteurl!)!], range: range)
+            
+            cell.url.delegate = self
+            cell.url.attributedText = attributedString
+            cell.url.font = UIFont.systemFont(ofSize: 17)
+            cell.url.textAlignment = .justified
+            cell.phoneIcon.image = #imageLiteral(resourceName: "phone")
+            cell.phoneIcon.isUserInteractionEnabled = true
+            let phoneTap = UITapGestureRecognizer(target: self, action: #selector(callLocation))
+            phoneTap.delegate = self
+            cell.phoneIcon.addGestureRecognizer(phoneTap)
+            cell.phoneIcon.tag = index
             
             return cell
+            
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "label", for: indexPath) as! LabelCell
             
@@ -141,6 +156,35 @@ class SignUpVC: UITableViewController {
         return UITableViewCell()
     }
     
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+        
+        if URL.absoluteString == "WyomingValleySchool@gmail.com" {
+            let mailURL = NSURL(string: "mailto:WyomingValleySchool@gmail.com")! as URL
+            UIApplication.shared.openURL(mailURL)
+        }
+        
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(URL, options: [:], completionHandler: nil)
+        } else {
+             UIApplication.shared.openURL(URL)
+        }
+        return true
+    }
+    
+    func callLocation(_ sender: UITapGestureRecognizer) {
+        let phone = sender.view!
+        let phoneNumber = trip.siteStops[phone.tag].site?.phoneNumber!
+        
+        guard let number = URL(string: "telprompt://" + phoneNumber!) else { return }
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(number, options: [:], completionHandler: nil)
+        } else {
+            // Fallback on earlier versions
+            if let url = URL(string: "telprompt://+\(number)") {
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sites[wayPointOrder[section]].name!
@@ -252,5 +296,6 @@ class SignUpVC: UITableViewController {
         tableView.beginUpdates()
         tableView.endUpdates()
     }
+    
     
 }

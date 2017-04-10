@@ -61,8 +61,6 @@ class TripsVC : UITableViewController{
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
-        
         if let trips = self.trips {
         trip = trips[indexPath.row]
         performSegue(withIdentifier: "createTrip", sender: nil)

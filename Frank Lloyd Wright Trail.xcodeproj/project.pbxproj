@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		210D47711E81C3230031129A /* RealmDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210D47701E81C3230031129A /* RealmDelete.swift */; };
-		211EB2E31E5E6AF700176C13 /* SignUpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211EB2E21E5E6AF700176C13 /* SignUpCell.swift */; };
 		211EB2E51E5E6FAB00176C13 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211EB2E41E5E6FAB00176C13 /* SignUpVC.swift */; };
 		213757011E52D38A00C21415 /* TripsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213757001E52D38A00C21415 /* TripsVC.swift */; };
 		213757031E52D65000C21415 /* CreateTripVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213757021E52D65000C21415 /* CreateTripVC.swift */; };
@@ -29,6 +28,7 @@
 		217503521E4BBB0300EC9693 /* UWParkside.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 217503511E4BBB0300EC9693 /* UWParkside.gpx */; };
 		218502C41E3EF84700CAFE6D /* TimelineCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218502C31E3EF84700CAFE6D /* TimelineCardModel.swift */; };
 		218503001E4198D000CAFE6D /* Date+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218502FF1E4198D000CAFE6D /* Date+Comparable.swift */; };
+		219A12931E9B136E00356BD7 /* LinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219A12921E9B136E00356BD7 /* LinkCell.swift */; };
 		21D507AF1E85F7050088AD47 /* GoogleDirectionsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D507AE1E85F7050088AD47 /* GoogleDirectionsAPI.swift */; };
 		21F452FE1E88740D005B2E17 /* DateHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F452FD1E88740D005B2E17 /* DateHelp.swift */; };
 		3D968D3100D7715D8590C20E /* Pods_Frank_Lloyd_Wright_Trail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF68C79F7226D19F1DACC2B8 /* Pods_Frank_Lloyd_Wright_Trail.framework */; };
@@ -74,7 +74,6 @@
 
 /* Begin PBXFileReference section */
 		210D47701E81C3230031129A /* RealmDelete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmDelete.swift; sourceTree = "<group>"; };
-		211EB2E21E5E6AF700176C13 /* SignUpCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpCell.swift; path = ../SignUpCell.swift; sourceTree = "<group>"; };
 		211EB2E41E5E6FAB00176C13 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpVC.swift; path = View/SignUpVC.swift; sourceTree = "<group>"; };
 		213757001E52D38A00C21415 /* TripsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsVC.swift; sourceTree = "<group>"; };
 		213757021E52D65000C21415 /* CreateTripVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTripVC.swift; sourceTree = "<group>"; };
@@ -95,6 +94,7 @@
 		217503511E4BBB0300EC9693 /* UWParkside.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UWParkside.gpx; sourceTree = "<group>"; };
 		218502C31E3EF84700CAFE6D /* TimelineCardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineCardModel.swift; sourceTree = "<group>"; };
 		218502FF1E4198D000CAFE6D /* Date+Comparable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Comparable.swift"; sourceTree = "<group>"; };
+		219A12921E9B136E00356BD7 /* LinkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkCell.swift; sourceTree = "<group>"; };
 		21D507AE1E85F7050088AD47 /* GoogleDirectionsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleDirectionsAPI.swift; sourceTree = "<group>"; };
 		21F452FD1E88740D005B2E17 /* DateHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelp.swift; sourceTree = "<group>"; };
 		46912E114CBBD62D92AB4CE3 /* Pods-Frank Lloyd Wright Trail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frank Lloyd Wright Trail.release.xcconfig"; path = "Pods/Target Support Files/Pods-Frank Lloyd Wright Trail/Pods-Frank Lloyd Wright Trail.release.xcconfig"; sourceTree = "<group>"; };
@@ -266,7 +266,6 @@
 		FA5AB5AB1D7E6A9D005CFBD4 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				211EB2E21E5E6AF700176C13 /* SignUpCell.swift */,
 				213757061E56412000C21415 /* AddStopCell.swift */,
 				FAAF70C31D74A39400515DBD /* Cell.swift */,
 				FA38294A1DBAEB94003A4BFA /* DestinationCell.swift */,
@@ -274,6 +273,7 @@
 				2137570E1E56A0F700C21415 /* DatePickCell.swift */,
 				213757101E56A3DF00C21415 /* LabelCell.swift */,
 				21492FDA1E5A4C81005660F3 /* NameCell.swift */,
+				219A12921E9B136E00356BD7 /* LinkCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -501,7 +501,6 @@
 				218502C41E3EF84700CAFE6D /* TimelineCardModel.swift in Sources */,
 				FAB740E31DDEB14A00BA859F /* UIApplication+JTSImageViewController.m in Sources */,
 				FAB740E41DDEB14A00BA859F /* UIImage+JTSImageEffects.m in Sources */,
-				211EB2E31E5E6AF700176C13 /* SignUpCell.swift in Sources */,
 				21492FCD1E5A3DF2005660F3 /* Stop.swift in Sources */,
 				FAB740E01DDEB14A00BA859F /* JTSImageInfo.m in Sources */,
 				217164C71E7C36CE005EF679 /* CombineDates.swift in Sources */,
@@ -536,6 +535,7 @@
 				211EB2E51E5E6FAB00176C13 /* SignUpVC.swift in Sources */,
 				FAEE90AE1D6771B5008264DC /* TabBarController.swift in Sources */,
 				FAEE90B41D677EBB008264DC /* LocationsViewController.swift in Sources */,
+				219A12931E9B136E00356BD7 /* LinkCell.swift in Sources */,
 				B6DB3BBF1D7A104900FC737D /* LocationCollectionDelegate.swift in Sources */,
 				FAD304B31D6D28E800D8CE2F /* DetailViewController.swift in Sources */,
 				84EF3A561E44EE0E00A8B00A /* JsonParser.swift in Sources */,
