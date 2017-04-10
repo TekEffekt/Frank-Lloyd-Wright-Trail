@@ -156,7 +156,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="maE-aQ-a7X">
-                                            <rect key="frame" x="321" y="6" width="33.5" height="33.5"/>
+                                            <rect key="frame" x="321" y="7" width="31" height="31"/>
                                         </imageView>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXB-Rv-IVj">
                                             <rect key="frame" x="8" y="6" width="225" height="36"/>
@@ -170,9 +170,9 @@
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="UXB-Rv-IVj" secondAttribute="bottom" constant="2" id="22y-DA-tQE"/>
                                         <constraint firstItem="UXB-Rv-IVj" firstAttribute="top" secondItem="f3F-dd-781" secondAttribute="top" constant="6" id="Gkh-lq-fAK"/>
-                                        <constraint firstItem="maE-aQ-a7X" firstAttribute="top" secondItem="f3F-dd-781" secondAttribute="top" constant="6" id="JCe-8T-uEW"/>
-                                        <constraint firstAttribute="bottom" secondItem="maE-aQ-a7X" secondAttribute="bottom" constant="4.5" id="Lcf-Kk-rIH"/>
-                                        <constraint firstAttribute="trailing" secondItem="maE-aQ-a7X" secondAttribute="trailing" constant="20.5" id="Up2-HL-SFo"/>
+                                        <constraint firstItem="maE-aQ-a7X" firstAttribute="top" secondItem="f3F-dd-781" secondAttribute="top" constant="7" id="JCe-8T-uEW"/>
+                                        <constraint firstAttribute="bottom" secondItem="maE-aQ-a7X" secondAttribute="bottom" constant="5.5" id="Lcf-Kk-rIH"/>
+                                        <constraint firstAttribute="trailing" secondItem="maE-aQ-a7X" secondAttribute="trailing" constant="23" id="Up2-HL-SFo"/>
                                         <constraint firstItem="UXB-Rv-IVj" firstAttribute="width" secondItem="f3F-dd-781" secondAttribute="width" multiplier="3/5" id="Zo5-1z-V8R"/>
                                         <constraint firstItem="UXB-Rv-IVj" firstAttribute="leading" secondItem="f3F-dd-781" secondAttribute="leading" constant="8" id="f1W-3p-rWw"/>
                                         <constraint firstItem="maE-aQ-a7X" firstAttribute="leading" secondItem="UXB-Rv-IVj" secondAttribute="trailing" constant="88" id="lCh-hK-aop"/>
