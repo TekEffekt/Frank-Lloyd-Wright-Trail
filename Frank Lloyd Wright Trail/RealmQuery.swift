@@ -21,4 +21,13 @@ class RealmQuery{
         return nil
     }
     
+    static func queryTripByID(_ id: Int) -> Trip? {
+        do {
+            let realm = try Realm()
+            return realm.object(ofType: Trip.self, forPrimaryKey: id)
+        } catch let error {
+            print(error)
+        }
+        return nil
+    }
 }

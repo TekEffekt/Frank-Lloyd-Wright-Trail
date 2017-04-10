@@ -1,10 +1,75 @@
-
-# Created by https://www.gitignore.io/api/xcode
-
-### Xcode ###
-# Xcode
+#----------------------------------------------------------#
+# File:     .gitignore
+# Project:  Racine Zoo - iOS
+# Author:   AppFactory UWP
 #
-# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+# Template: ios.gitignore
+#----------------------------------------------------------#
+
+# Keep these blank files for empty directories
+!**/.gitkeep
+
+# Backup and temp files
+*.bak
+*.tmp
+
+# Logs
+**/logs/*
+*.log
+
+# Dependency directory
+bower_components/
+node_modules/
+jspm_modules/
+vendor/
+
+# Ignore the lock files
+composer.lock
+yarn.lock
+
+#----------------------------------------------------------#
+# User Configuration Files
+#   These files are placed by Operating Systems and
+#   software to keep track of user configurations.
+#----------------------------------------------------------#
+
+#-------------------
+# IDE Files
+#-------------------
+
+# Netbeans directory
+nbproject/
+
+# IDEA directory
+.idea/
+
+## Sublime Text cache files
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+
+#-------------------
+# OS files
+#-------------------
+
+# MacOS
+.DS_Store
+._*
+
+# Linux
+*.swp
+
+# Windows
+$Recycle.Bin
+Thumbs.db
+
+#----------------------------------------------------------#
+# Framework Files
+#   These files are used by the framework.  We do not need
+#   to use Source Control on these types of files.
+#----------------------------------------------------------#
 
 ## Build generated
 build/
@@ -25,4 +90,57 @@ xcuserdata/
 *.moved-aside
 *.xccheckout
 *.xcscmblueprint
-.DS_Store
+
+## Obj-C/Swift specific
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Swift Package Manager
+#
+# Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
+# Packages/
+# Package.pins
+.build/
+
+# CocoaPods
+#
+# We recommend against adding the Pods directory to your .gitignore. However
+# you should judge for yourself, the pros and cons are mentioned at:
+# https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
+
+Pods/
+Podfile.lock
+
+# Carthage
+#
+# Add this line if you want to avoid checking in source code from Carthage dependencies.
+# Carthage/Checkouts
+
+Carthage/Build
+
+# fastlane
+#
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+# screenshots whenever they are needed.
+# For more information about the recommended setup visit:
+# https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Gitignore.md
+
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+
+#----------------------------------------------------------#
+# Project Specific Files
+#   These files are specific to the project.
+#----------------------------------------------------------#
+
+
+
+# end .gitignore

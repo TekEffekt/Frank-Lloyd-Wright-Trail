@@ -21,33 +21,12 @@ class RealmWrite{
         }
     }
     
-    static func writeStartDate(startDate: Date, trip: Trip){
-        do {
-            let realm = try Realm()
-            try realm.write {
-                trip.startDate = startDate
-            }
-        } catch let error {
-            print(error)
-        }
-    }
     
     static func writeStartTime(startTime: Date, trip: Trip){
         do {
             let realm = try Realm()
             try realm.write {
                 trip.startTime = startTime
-            }
-        } catch let error {
-            print(error)
-        }
-    }
-    
-    static func writeEndDate(endDate: Date, trip: Trip){
-        do {
-            let realm = try Realm()
-            try realm.write {
-                trip.endDate = endDate
             }
         } catch let error {
             print(error)
@@ -87,6 +66,28 @@ class RealmWrite{
         }
     }
     
+    static func writeSiteStopFullStartDate(index: Int, date: Date, trip: Trip) {
+        do {
+            let realm = try Realm()
+            try realm.write {
+                trip.siteStops[index].startDate = date
+            }
+        } catch let error {
+            print(error)
+        }
+    }
+    
+    static func writeSiteStopFullEndDate(index: Int, date: Date, trip: Trip) {
+        do {
+            let realm = try Realm()
+            try realm.write {
+                trip.siteStops[index].endDate = date
+            }
+        } catch let error {
+            print(error)
+        }
+    }
+    
     static func writeSiteStopEndTime(index: Int, date: Date, trip: Trip){
         do {
             let realm = try Realm()
@@ -110,27 +111,6 @@ class RealmWrite{
         }
     }
     
-    static func add(genericStop: GenericStop, trip: Trip){
-        do {
-            let realm = try Realm()
-            try realm.write {
-                trip.genericStops.append(genericStop)
-            }
-        } catch let error {
-            print(error)
-        }
-    }
-    
-    static func add(mealStop: MealStop, trip: Trip){
-        do {
-            let realm = try Realm()
-            try realm.write {
-                trip.mealStops.append(mealStop)
-            }
-        } catch let error {
-            print(error)
-        }
-    }
     
     static func add(trip: Trip){
         do {

@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Car.png",
+      "filename" : "NoEntry.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Car_96.png",
+      "filename" : "No Entry_100.png",
       "scale" : "2x"
     },
     {

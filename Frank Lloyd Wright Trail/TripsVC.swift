@@ -26,6 +26,7 @@ class TripsVC : UITableViewController{
     
     func addTrip(_ sender : UIBarButtonItem){
         trip = Trip()
+        trip.id = trip.incrementID()
         RealmWrite.add(trip: self.trip)
         performSegue(withIdentifier: "createTrip", sender: UIBarButtonItem())
     }
@@ -60,7 +61,7 @@ class TripsVC : UITableViewController{
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let trips = self.trips{
+        if let trips = self.trips {
         trip = trips[indexPath.row]
         performSegue(withIdentifier: "createTrip", sender: nil)
         }

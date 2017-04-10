@@ -9,10 +9,11 @@
 import Foundation
 
 struct TimelineCardModel{
-    var primaryText : String?
-    var secondaryText : String?
-    // can store either a location image or icon
-    var locationImage : UIImage?
-    var icon : UIImage?
-
+    var name: String?
+    var distance: String?
+    var durationValue: Int?
+    var durationText: String?
+    var locationImage: UIImage?
+    var icon: UIImage?
+    var date: Date?
 }
