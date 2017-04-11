@@ -276,8 +276,6 @@ class CreateTripVC : FormViewController {
         }
     }
     
-    
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let name = textField.text {
           RealmWrite.writeTripName(tripName: name, trip: self.trip)
@@ -297,8 +295,11 @@ class CreateTripVC : FormViewController {
             self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
             RealmWrite.writeTripName(tripName: trip.tripName, trip: self.trip)
             performSegue(withIdentifier: "suggestedTL", sender: nil)
-        }else{
-            print("No Location Stops Added")
+        } else {
+            let alertController = UIAlertController(title: "No Locations", message: "You must add at least one location to create a trip.", preferredStyle: .alert)
+            let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(okButton)
+            self.present(alertController, animated: true, completion: nil)
         }
     }
 }
