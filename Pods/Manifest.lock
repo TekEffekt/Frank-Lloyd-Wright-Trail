@@ -7,6 +7,7 @@ PODS:
     - FLAnimatedImage (~> 1.0.8)
     - NYTPhotoViewer/Core
   - NYTPhotoViewer/Core (1.1.0)
+  - ReachabilitySwift (3)
   - Realm (2.4.4):
     - Realm/Headers (= 2.4.4)
   - Realm/Headers (2.4.4)
@@ -15,14 +16,16 @@ PODS:
 
 DEPENDENCIES:
   - NYTPhotoViewer (~> 1.1.0)
+  - ReachabilitySwift (~> 3)
   - RealmSwift
 
 SPEC CHECKSUMS:
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   NYTPhotoViewer: e80e8767f3780d2df37c6f72cbab15d6c7232911
+  ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
   Realm: 5a280a1f5a9a3c267bebf4f41ee47911137703d7
   RealmSwift: 0c02b9f2d4be4301c497ed10e53a0580584eb1dd
 
-PODFILE CHECKSUM: 0c52744445e82817cd7585e2ab58e5713499ea18
+PODFILE CHECKSUM: 26d9e20264875ba1dbbd8f09450f26914e345950
 
 COCOAPODS: 1.2.0

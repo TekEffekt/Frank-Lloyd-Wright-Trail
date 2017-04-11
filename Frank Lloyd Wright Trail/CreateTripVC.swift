@@ -8,8 +8,9 @@
 
 import Foundation
 import RealmSwift
+import CoreLocation
 
-class CreateTripVC : FormViewController {
+class CreateTripVC : FormViewController, CLLocationManagerDelegate {
     
     let section = ["TRIP", "STOPS", "TRIP START", "TRIP END"]
     var labels = [["TRIP"], ["Add Stop"], ["Start Time"], ["End Time"]]
@@ -291,6 +292,36 @@ class CreateTripVC : FormViewController {
             RealmWrite.writeEndTime(endTime: Date(), trip: self.trip)
         }
         
+        
+        let locationManager = CLLocationManager()
+        locationManager.delegate = self
+        
+        if CLLocationManager.authorizationStatus() == .notDetermined {
+            locationManager.requestWhenInUseAuthorization()
+        }
+        
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        if CLLocationManager.locationServicesEnabled() {
+            
+            switch CLLocationManager.authorizationStatus() {
+            case .notDetermined, .restricted, .denied:
+                let alertController = UIAlertController(title: "User Location Access Denied", message: "To allow get a suggested timeline you must enable location services, you may configure it in Settings.", preferredStyle: .alert)
+                let settingsButton = UIAlertAction(title: "Settings", style: .default) {
+                    action -> Void in
+                    self.openSettings()
+                }
+                alertController.addAction(settingsButton)
+                let okButton = UIAlertAction(title: "OK", style: .default) {
+                    action -> Void in
+                    return
+                }
+                alertController.addAction(okButton)
+                self.present(alertController, animated: true, completion: nil)
+            default:
+                break
+            }
+        }
+        
         if trip.siteStops.count > 0 {
             self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
             RealmWrite.writeTripName(tripName: trip.tripName, trip: self.trip)
@@ -302,7 +333,17 @@ class CreateTripVC : FormViewController {
             self.present(alertController, animated: true, completion: nil)
         }
     }
+    
+    func openSettings() {
+        let path = UIApplicationOpenSettingsURLString
+        if let settingsURL = URL(string: path), UIApplication.shared.canOpenURL(settingsURL) {
+            UIApplication.shared.openURL(settingsURL)
+        }
+    }
 }
+
+
+
 
 enum StopActions {
     case cancel, delete

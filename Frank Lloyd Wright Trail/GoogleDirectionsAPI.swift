@@ -319,6 +319,8 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
             locationManager.requestWhenInUseAuthorization()
         }
         
+        
+        
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         if CLLocationManager.locationServicesEnabled() {
             locationManager.startUpdatingLocation()
