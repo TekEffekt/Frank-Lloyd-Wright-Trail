@@ -86,6 +86,10 @@ class SignUpVC: UITableViewController, UITextViewDelegate, UIGestureRecognizerDe
             }
         }
         
+        if !Network.reachability.isReachable {
+            NetworkAlert.show()
+            return
+        }
         
         performSegue(withIdentifier: "segueToFinal", sender: nil)
     }

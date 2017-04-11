@@ -30,6 +30,9 @@
 		218503001E4198D000CAFE6D /* Date+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218502FF1E4198D000CAFE6D /* Date+Comparable.swift */; };
 		219A12931E9B136E00356BD7 /* LinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219A12921E9B136E00356BD7 /* LinkCell.swift */; };
 		21D507AF1E85F7050088AD47 /* GoogleDirectionsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D507AE1E85F7050088AD47 /* GoogleDirectionsAPI.swift */; };
+		21D660431E9D85FD00D1CED1 /* NetworkAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D660421E9D85FD00D1CED1 /* NetworkAlert.swift */; };
+		21D660451E9D862400D1CED1 /* LocationAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D660441E9D862400D1CED1 /* LocationAlert.swift */; };
+		21D660471E9D8BBF00D1CED1 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D660461E9D8BBF00D1CED1 /* Network.swift */; };
 		21F452FE1E88740D005B2E17 /* DateHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F452FD1E88740D005B2E17 /* DateHelp.swift */; };
 		3D968D3100D7715D8590C20E /* Pods_Frank_Lloyd_Wright_Trail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF68C79F7226D19F1DACC2B8 /* Pods_Frank_Lloyd_Wright_Trail.framework */; };
 		847AE4B61DA71FFA0056B6D7 /* PhotosProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AE4B51DA71FFA0056B6D7 /* PhotosProvider.swift */; };
@@ -96,6 +99,9 @@
 		218502FF1E4198D000CAFE6D /* Date+Comparable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Comparable.swift"; sourceTree = "<group>"; };
 		219A12921E9B136E00356BD7 /* LinkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkCell.swift; sourceTree = "<group>"; };
 		21D507AE1E85F7050088AD47 /* GoogleDirectionsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleDirectionsAPI.swift; sourceTree = "<group>"; };
+		21D660421E9D85FD00D1CED1 /* NetworkAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAlert.swift; sourceTree = "<group>"; };
+		21D660441E9D862400D1CED1 /* LocationAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAlert.swift; sourceTree = "<group>"; };
+		21D660461E9D8BBF00D1CED1 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		21F452FD1E88740D005B2E17 /* DateHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelp.swift; sourceTree = "<group>"; };
 		46912E114CBBD62D92AB4CE3 /* Pods-Frank Lloyd Wright Trail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frank Lloyd Wright Trail.release.xcconfig"; path = "Pods/Target Support Files/Pods-Frank Lloyd Wright Trail/Pods-Frank Lloyd Wright Trail.release.xcconfig"; sourceTree = "<group>"; };
 		847AE4B51DA71FFA0056B6D7 /* PhotosProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosProvider.swift; sourceTree = "<group>"; };
@@ -167,6 +173,9 @@
 				213FC9141E67B88400BBEFE4 /* UIColorExt.swift */,
 				217164C61E7C36CE005EF679 /* CombineDates.swift */,
 				21F452FD1E88740D005B2E17 /* DateHelp.swift */,
+				21D660421E9D85FD00D1CED1 /* NetworkAlert.swift */,
+				21D660441E9D862400D1CED1 /* LocationAlert.swift */,
+				21D660461E9D8BBF00D1CED1 /* Network.swift */,
 			);
 			name = "Helper Classes";
 			sourceTree = "<group>";
@@ -497,6 +506,7 @@
 				21492FD11E5A3F51005660F3 /* MealStop.swift in Sources */,
 				84B1F0361E3941C00048986C /* Timeline-Bridging-Header.h in Sources */,
 				213757071E56412000C21415 /* AddStopCell.swift in Sources */,
+				21D660471E9D8BBF00D1CED1 /* Network.swift in Sources */,
 				FAB740E11DDEB14A00BA859F /* JTSImageViewController.m in Sources */,
 				218502C41E3EF84700CAFE6D /* TimelineCardModel.swift in Sources */,
 				FAB740E31DDEB14A00BA859F /* UIApplication+JTSImageViewController.m in Sources */,
@@ -521,11 +531,13 @@
 				213FC9151E67B88400BBEFE4 /* UIColorExt.swift in Sources */,
 				B6DB3BBB1D7A100200FC737D /* Pin.swift in Sources */,
 				213757111E56A3DF00C21415 /* LabelCell.swift in Sources */,
+				21D660431E9D85FD00D1CED1 /* NetworkAlert.swift in Sources */,
 				213FC9D91E73573C00BBEFE4 /* FormViewController.swift in Sources */,
 				FAB740E61DDEB1AB00BA859F /* TimelineView.swift in Sources */,
 				FAB740E21DDEB14A00BA859F /* JTSSimpleImageDownloader.m in Sources */,
 				FA5AB5AF1D7E744D005CFBD4 /* Item.swift in Sources */,
 				847AE4B81DA720010056B6D7 /* ExamplePhoto.swift in Sources */,
+				21D660451E9D862400D1CED1 /* LocationAlert.swift in Sources */,
 				217164CA1E7DB59B005EF679 /* RealmWrite.swift in Sources */,
 				21492FCF1E5A3EF9005660F3 /* SiteStop.swift in Sources */,
 				FAB740DF1DDEB14A00BA859F /* JTSAnimatedGIFUtility.m in Sources */,

@@ -322,6 +322,13 @@ class CreateTripVC : FormViewController, CLLocationManagerDelegate {
             }
         }
         
+        if !Network.reachability.isReachable {
+            NetworkAlert.show()
+            return
+        }
+        
+        
+        
         if trip.siteStops.count > 0 {
             self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
             RealmWrite.writeTripName(tripName: trip.tripName, trip: self.trip)
