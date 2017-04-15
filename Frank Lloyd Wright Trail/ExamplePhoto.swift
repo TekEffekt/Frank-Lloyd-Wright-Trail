@@ -18,13 +18,15 @@ class ExamplePhoto:NSObject ,NYTPhoto{
     var imageData: Data?
     var placeholderImage: UIImage?
     let attributedCaptionTitle: NSAttributedString?
-    let attributedCaptionSummary: NSAttributedString? = NSAttributedString(string: "summary string", attributes: [NSForegroundColorAttributeName: UIColor.gray])
-    let attributedCaptionCredit: NSAttributedString? = NSAttributedString(string: "credit", attributes: [NSForegroundColorAttributeName: UIColor.darkGray])
+    var attributedCaptionSummary: NSAttributedString? = NSAttributedString(string: "summary string", attributes: [NSForegroundColorAttributeName: UIColor.gray])
+    var attributedCaptionCredit: NSAttributedString? = NSAttributedString(string: "credit", attributes: [NSForegroundColorAttributeName: UIColor.darkGray])
     
-    init(image: UIImage? = nil, imageData: Data? = nil, attributedCaptionTitle: NSAttributedString) {
+    init(image: UIImage? = nil, imageData: Data? = nil, attributedCaptionTitle: NSAttributedString, attributedCaptionSummary: NSAttributedString, attributedCaptionCredit: NSAttributedString) {
         self.image = image
         self.imageData = imageData
         self.attributedCaptionTitle = attributedCaptionTitle
+        self.attributedCaptionSummary = attributedCaptionSummary
+        self.attributedCaptionCredit = attributedCaptionCredit
         super.init()
     }
     

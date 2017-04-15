@@ -6,6 +6,7 @@ use_frameworks!
 target 'Frank Lloyd Wright Trail' do
 pod 'RealmSwift'
 pod 'NYTPhotoViewer', '~> 1.1.0'
+pod 'ReachabilitySwift', '~> 3'
 end
 
 

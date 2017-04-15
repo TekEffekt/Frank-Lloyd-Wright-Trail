@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReachabilitySwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         UITabBar.appearance().tintColor = UIColor(red: 187/255.0, green: 62/255.0, blue: 24/255.0, alpha: 1.0)
         UIApplication.shared.statusBarStyle = .lightContent
+ 
+        do {
+            try Network.reachability.startNotifier() } catch {
+                print("Cannot start notifier")
+        }
+        
         return true
     }
     

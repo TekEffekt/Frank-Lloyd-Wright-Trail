@@ -19,10 +19,13 @@ class Site: Object{
     dynamic var details: String?
     var distance = RealmOptional<Double>()
     dynamic var hasBeenVisited = false
+    dynamic var website: String?
+    dynamic var phoneNumber: String?
+    dynamic var infoURL: String?
     
     
     
-    convenience required init(lon: RealmOptional<Double>, lat: RealmOptional<Double>, title: String, subtitle: String, imageName: String, details: String, distance: RealmOptional<Double>, hasBeenVisited: Bool){
+    convenience required init(lon: RealmOptional<Double>, lat: RealmOptional<Double>, title: String, subtitle: String, imageName: String, details: String, distance: RealmOptional<Double>, hasBeenVisited: Bool, website: String, phoneNumber: String, infoURL: String){
         self.init()
         self.lon = lon
         self.lat = lat
@@ -32,6 +35,9 @@ class Site: Object{
         self.details = details
         self.distance = distance
         self.hasBeenVisited = hasBeenVisited
+        self.website = website
+        self.phoneNumber = phoneNumber
+        self.infoURL = infoURL
     }
     
     static func getSites() -> [Site] {
@@ -49,7 +55,10 @@ class Site: Object{
                 let imageName = (item as AnyObject).value(forKey: "imageName") as! String
                 let subtitle = (item as AnyObject).value(forKey: "subtitle") as! String
                 let details = (item as AnyObject).value(forKey: "details") as! String
-                let site = Site(lon: RealmOptional(long), lat: RealmOptional(lat), title: title, subtitle: subtitle, imageName: imageName,details: details,  distance: RealmOptional(0.0),hasBeenVisited: false)
+                let website = (item as AnyObject).value(forKey: "website") as! String
+                let phoneNumber = (item as AnyObject).value(forKey: "phoneNumber") as! String
+                let infoURL = (item as AnyObject).value(forKey: "infoURL") as! String
+                let site = Site(lon: RealmOptional(long), lat: RealmOptional(lat), title: title, subtitle: subtitle, imageName: imageName,details: details,  distance: RealmOptional(0.0),hasBeenVisited: false, website: website, phoneNumber: phoneNumber, infoURL: infoURL)
                 sites.append(site)
             }
         }

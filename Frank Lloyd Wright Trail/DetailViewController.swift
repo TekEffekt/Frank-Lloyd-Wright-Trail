@@ -10,7 +10,7 @@ import MapKit
 import UIKit
 import NYTPhotoViewer
 
-class DetailViewController: UIViewController,NYTPhotosViewControllerDelegate
+class DetailViewController: UIViewController,NYTPhotosViewControllerDelegate, UITextViewDelegate
 {
     // button action for visted feature. not implemented yet
     @IBAction func siteVisted(_ sender: AnyObject) {
@@ -59,40 +59,106 @@ class DetailViewController: UIViewController,NYTPhotosViewControllerDelegate
         
         switch  viaSegue.annotation!.coordinate.latitude{
         case 42.7152375:
-            siteDetails.text = sites[0].details
+            let plainString = sites[0].details! + "\n\n More Information \n"
+            let attributedString = NSMutableAttributedString(string: plainString)
+            let range = (plainString as NSString).range(of: "More Information")
+            let webURL = sites[0].infoURL
+            attributedString.addAttributes([NSLinkAttributeName: NSURL(string: webURL!)!], range: range)
+            siteDetails.delegate = self
+            siteDetails.attributedText = attributedString
+            siteDetails.font = UIFont.systemFont(ofSize: 15)
+            
             siteSubtitle.text = sites[0].subtitle
             siteTitle.text = sites[0].title
         case 42.784472:
-            siteDetails.text = sites[1].details
+            let plainString = sites[1].details! + "\n\n More Information \n"
+            let attributedString = NSMutableAttributedString(string: plainString)
+            let range = (plainString as NSString).range(of: "More Information")
+            let webURL = sites[1].infoURL
+            attributedString.addAttributes([NSLinkAttributeName: NSURL(string: webURL!)!], range: range)
+            siteDetails.delegate = self
+            siteDetails.attributedText = attributedString
+            siteDetails.font = UIFont.systemFont(ofSize: 15)
+            
             siteSubtitle.text = sites[1].subtitle
             siteTitle.text = sites[1].title
         case 43.0105838:
-            siteDetails.text = sites[2].details
+            let plainString = sites[2].details! + "\n\n More Information \n"
+            let attributedString = NSMutableAttributedString(string: plainString)
+            let range = (plainString as NSString).range(of: "More Information")
+            let webURL = sites[2].infoURL
+            attributedString.addAttributes([NSLinkAttributeName: NSURL(string: webURL!)!], range: range)
+            siteDetails.delegate = self
+            siteDetails.attributedText = attributedString
+            siteDetails.font = UIFont.systemFont(ofSize: 15)
+            
             siteSubtitle.text = sites[2].subtitle
             siteTitle.text = sites[2].title
             
         case 43.0717445:
-            siteDetails.text = sites[3].details
+            let plainString = sites[3].details! + "\n\n More Information \n"
+            let attributedString = NSMutableAttributedString(string: plainString)
+            let range = (plainString as NSString).range(of: "More Information")
+            let webURL = sites[3].infoURL
+            attributedString.addAttributes([NSLinkAttributeName: NSURL(string: webURL!)!], range: range)
+            siteDetails.delegate = self
+            siteDetails.attributedText = attributedString
+            siteDetails.font = UIFont.systemFont(ofSize: 15)
+            
             siteSubtitle.text = sites[3].subtitle
             siteTitle.text = sites[3].title
             
         case 43.0757361:
-            siteDetails.text = sites[4].details
+            let plainString = sites[4].details! + "\n\n More Information \n"
+            let attributedString = NSMutableAttributedString(string: plainString)
+            let range = (plainString as NSString).range(of: "More Information")
+            let webURL = sites[4].infoURL
+            attributedString.addAttributes([NSLinkAttributeName: NSURL(string: webURL!)!], range: range)
+            siteDetails.delegate = self
+            siteDetails.attributedText = attributedString
+            siteDetails.font = UIFont.systemFont(ofSize: 15)
+            
             siteSubtitle.text = sites[4].subtitle
             siteTitle.text = sites[4].title
             
-        case 43.1439006:
-            siteDetails.text = sites[5].details
+        case 43.1192675:
+            let plainString = sites[5].details! + "\n\n More Information \n"
+            let attributedString = NSMutableAttributedString(string: plainString)
+            let range = (plainString as NSString).range(of: "More Information")
+            let webURL = sites[5].infoURL
+            if let url = NSURL(string: webURL!) {
+            attributedString.addAttributes([NSLinkAttributeName: url], range: range)
+            }
+            siteDetails.delegate = self
+            siteDetails.attributedText = attributedString
+            siteDetails.font = UIFont.systemFont(ofSize: 15)
+            
             siteSubtitle.text = sites[5].subtitle
             siteTitle.text = sites[5].title
             
-        case 43.1192397:
-            siteDetails.text = sites[6].details
+        case 43.1439006:
+            let plainString = sites[6].details! + "\n\n More Information \n"
+            let attributedString = NSMutableAttributedString(string: plainString)
+            let range = (plainString as NSString).range(of: "More Information")
+            let webURL = sites[6].infoURL
+            attributedString.addAttributes([NSLinkAttributeName: NSURL(string: webURL!)!], range: range)
+            siteDetails.delegate = self
+            siteDetails.attributedText = attributedString
+            siteDetails.font = UIFont.systemFont(ofSize: 15)
+            
             siteSubtitle.text = sites[6].subtitle
             siteTitle.text = sites[6].title
             
         case 43.3334718:
-            siteDetails.text = sites[7].details
+            let plainString = sites[7].details! + "\n\n More Information \n"
+            let attributedString = NSMutableAttributedString(string: plainString)
+            let range = (plainString as NSString).range(of: "More Information")
+            let webURL = sites[7].infoURL
+            attributedString.addAttributes([NSLinkAttributeName: NSURL(string: webURL!)!], range: range)
+            siteDetails.delegate = self
+            siteDetails.attributedText = attributedString
+            siteDetails.font = UIFont.systemFont(ofSize: 15)
+            
             siteSubtitle.text = sites[7].subtitle
             siteTitle.text = sites[7].title
             
@@ -103,6 +169,15 @@ class DetailViewController: UIViewController,NYTPhotosViewControllerDelegate
         }
         
         
+    }
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(URL, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(URL)
+        }
+        return true
     }
     
 }

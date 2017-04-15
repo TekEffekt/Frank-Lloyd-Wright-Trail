@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		210D47711E81C3230031129A /* RealmDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210D47701E81C3230031129A /* RealmDelete.swift */; };
-		211EB2E31E5E6AF700176C13 /* SignUpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211EB2E21E5E6AF700176C13 /* SignUpCell.swift */; };
 		211EB2E51E5E6FAB00176C13 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211EB2E41E5E6FAB00176C13 /* SignUpVC.swift */; };
 		213757011E52D38A00C21415 /* TripsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213757001E52D38A00C21415 /* TripsVC.swift */; };
 		213757031E52D65000C21415 /* CreateTripVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213757021E52D65000C21415 /* CreateTripVC.swift */; };
@@ -21,7 +20,6 @@
 		21492FCF1E5A3EF9005660F3 /* SiteStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21492FCE1E5A3EF9005660F3 /* SiteStop.swift */; };
 		21492FD11E5A3F51005660F3 /* MealStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21492FD01E5A3F51005660F3 /* MealStop.swift */; };
 		21492FD31E5A3F8E005660F3 /* GenericStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21492FD21E5A3F8E005660F3 /* GenericStop.swift */; };
-		21492FD71E5A46E8005660F3 /* AddStopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21492FD61E5A46E8005660F3 /* AddStopVC.swift */; };
 		21492FDB1E5A4C81005660F3 /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21492FDA1E5A4C81005660F3 /* NameCell.swift */; };
 		217164C71E7C36CE005EF679 /* CombineDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217164C61E7C36CE005EF679 /* CombineDates.swift */; };
 		217164CA1E7DB59B005EF679 /* RealmWrite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217164C91E7DB59B005EF679 /* RealmWrite.swift */; };
@@ -30,6 +28,12 @@
 		217503521E4BBB0300EC9693 /* UWParkside.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 217503511E4BBB0300EC9693 /* UWParkside.gpx */; };
 		218502C41E3EF84700CAFE6D /* TimelineCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218502C31E3EF84700CAFE6D /* TimelineCardModel.swift */; };
 		218503001E4198D000CAFE6D /* Date+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218502FF1E4198D000CAFE6D /* Date+Comparable.swift */; };
+		219A12931E9B136E00356BD7 /* LinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219A12921E9B136E00356BD7 /* LinkCell.swift */; };
+		21D507AF1E85F7050088AD47 /* GoogleDirectionsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D507AE1E85F7050088AD47 /* GoogleDirectionsAPI.swift */; };
+		21D660431E9D85FD00D1CED1 /* NetworkAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D660421E9D85FD00D1CED1 /* NetworkAlert.swift */; };
+		21D660451E9D862400D1CED1 /* LocationAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D660441E9D862400D1CED1 /* LocationAlert.swift */; };
+		21D660471E9D8BBF00D1CED1 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D660461E9D8BBF00D1CED1 /* Network.swift */; };
+		21F452FE1E88740D005B2E17 /* DateHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F452FD1E88740D005B2E17 /* DateHelp.swift */; };
 		3D968D3100D7715D8590C20E /* Pods_Frank_Lloyd_Wright_Trail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF68C79F7226D19F1DACC2B8 /* Pods_Frank_Lloyd_Wright_Trail.framework */; };
 		847AE4B61DA71FFA0056B6D7 /* PhotosProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AE4B51DA71FFA0056B6D7 /* PhotosProvider.swift */; };
 		847AE4B81DA720010056B6D7 /* ExamplePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AE4B71DA720010056B6D7 /* ExamplePhoto.swift */; };
@@ -73,7 +77,6 @@
 
 /* Begin PBXFileReference section */
 		210D47701E81C3230031129A /* RealmDelete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmDelete.swift; sourceTree = "<group>"; };
-		211EB2E21E5E6AF700176C13 /* SignUpCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpCell.swift; path = ../SignUpCell.swift; sourceTree = "<group>"; };
 		211EB2E41E5E6FAB00176C13 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpVC.swift; path = View/SignUpVC.swift; sourceTree = "<group>"; };
 		213757001E52D38A00C21415 /* TripsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsVC.swift; sourceTree = "<group>"; };
 		213757021E52D65000C21415 /* CreateTripVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTripVC.swift; sourceTree = "<group>"; };
@@ -86,7 +89,6 @@
 		21492FCE1E5A3EF9005660F3 /* SiteStop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SiteStop.swift; path = Model/SiteStop.swift; sourceTree = "<group>"; };
 		21492FD01E5A3F51005660F3 /* MealStop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MealStop.swift; path = Model/MealStop.swift; sourceTree = "<group>"; };
 		21492FD21E5A3F8E005660F3 /* GenericStop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericStop.swift; sourceTree = "<group>"; };
-		21492FD61E5A46E8005660F3 /* AddStopVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStopVC.swift; sourceTree = "<group>"; };
 		21492FDA1E5A4C81005660F3 /* NameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameCell.swift; sourceTree = "<group>"; };
 		217164C61E7C36CE005EF679 /* CombineDates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombineDates.swift; sourceTree = "<group>"; };
 		217164C91E7DB59B005EF679 /* RealmWrite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmWrite.swift; sourceTree = "<group>"; };
@@ -95,6 +97,12 @@
 		217503511E4BBB0300EC9693 /* UWParkside.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UWParkside.gpx; sourceTree = "<group>"; };
 		218502C31E3EF84700CAFE6D /* TimelineCardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineCardModel.swift; sourceTree = "<group>"; };
 		218502FF1E4198D000CAFE6D /* Date+Comparable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Comparable.swift"; sourceTree = "<group>"; };
+		219A12921E9B136E00356BD7 /* LinkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkCell.swift; sourceTree = "<group>"; };
+		21D507AE1E85F7050088AD47 /* GoogleDirectionsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleDirectionsAPI.swift; sourceTree = "<group>"; };
+		21D660421E9D85FD00D1CED1 /* NetworkAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAlert.swift; sourceTree = "<group>"; };
+		21D660441E9D862400D1CED1 /* LocationAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAlert.swift; sourceTree = "<group>"; };
+		21D660461E9D8BBF00D1CED1 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		21F452FD1E88740D005B2E17 /* DateHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelp.swift; sourceTree = "<group>"; };
 		46912E114CBBD62D92AB4CE3 /* Pods-Frank Lloyd Wright Trail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frank Lloyd Wright Trail.release.xcconfig"; path = "Pods/Target Support Files/Pods-Frank Lloyd Wright Trail/Pods-Frank Lloyd Wright Trail.release.xcconfig"; sourceTree = "<group>"; };
 		847AE4B51DA71FFA0056B6D7 /* PhotosProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosProvider.swift; sourceTree = "<group>"; };
 		847AE4B71DA720010056B6D7 /* ExamplePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamplePhoto.swift; sourceTree = "<group>"; };
@@ -164,6 +172,10 @@
 			children = (
 				213FC9141E67B88400BBEFE4 /* UIColorExt.swift */,
 				217164C61E7C36CE005EF679 /* CombineDates.swift */,
+				21F452FD1E88740D005B2E17 /* DateHelp.swift */,
+				21D660421E9D85FD00D1CED1 /* NetworkAlert.swift */,
+				21D660441E9D862400D1CED1 /* LocationAlert.swift */,
+				21D660461E9D8BBF00D1CED1 /* Network.swift */,
 			);
 			name = "Helper Classes";
 			sourceTree = "<group>";
@@ -235,12 +247,12 @@
 			children = (
 				213757001E52D38A00C21415 /* TripsVC.swift */,
 				213757021E52D65000C21415 /* CreateTripVC.swift */,
-				21492FD61E5A46E8005660F3 /* AddStopVC.swift */,
 				FA3829481DBAE7E3003A4BFA /* ChooseDestinationVC.swift */,
 				FAB740E71DDEB21B00BA859F /* TimelineVC.swift */,
 				211EB2E41E5E6FAB00176C13 /* SignUpVC.swift */,
 				84CBA0351E67BB83004398B7 /* FinalTimeLineVC.swift */,
 				84EF3A551E44EE0E00A8B00A /* JsonParser.swift */,
+				21D507AE1E85F7050088AD47 /* GoogleDirectionsAPI.swift */,
 			);
 			name = "Trip Planner";
 			sourceTree = "<group>";
@@ -263,7 +275,6 @@
 		FA5AB5AB1D7E6A9D005CFBD4 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				211EB2E21E5E6AF700176C13 /* SignUpCell.swift */,
 				213757061E56412000C21415 /* AddStopCell.swift */,
 				FAAF70C31D74A39400515DBD /* Cell.swift */,
 				FA38294A1DBAEB94003A4BFA /* DestinationCell.swift */,
@@ -271,6 +282,7 @@
 				2137570E1E56A0F700C21415 /* DatePickCell.swift */,
 				213757101E56A3DF00C21415 /* LabelCell.swift */,
 				21492FDA1E5A4C81005660F3 /* NameCell.swift */,
+				219A12921E9B136E00356BD7 /* LinkCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -395,6 +407,7 @@
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 2T9JP2ZYVK;
 						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -489,14 +502,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8493937B1DDE568C00BB7220 /* TripOrder.swift in Sources */,
+				21F452FE1E88740D005B2E17 /* DateHelp.swift in Sources */,
 				21492FD11E5A3F51005660F3 /* MealStop.swift in Sources */,
 				84B1F0361E3941C00048986C /* Timeline-Bridging-Header.h in Sources */,
 				213757071E56412000C21415 /* AddStopCell.swift in Sources */,
+				21D660471E9D8BBF00D1CED1 /* Network.swift in Sources */,
 				FAB740E11DDEB14A00BA859F /* JTSImageViewController.m in Sources */,
 				218502C41E3EF84700CAFE6D /* TimelineCardModel.swift in Sources */,
 				FAB740E31DDEB14A00BA859F /* UIApplication+JTSImageViewController.m in Sources */,
 				FAB740E41DDEB14A00BA859F /* UIImage+JTSImageEffects.m in Sources */,
-				211EB2E31E5E6AF700176C13 /* SignUpCell.swift in Sources */,
 				21492FCD1E5A3DF2005660F3 /* Stop.swift in Sources */,
 				FAB740E01DDEB14A00BA859F /* JTSImageInfo.m in Sources */,
 				217164C71E7C36CE005EF679 /* CombineDates.swift in Sources */,
@@ -511,18 +525,19 @@
 				213757031E52D65000C21415 /* CreateTripVC.swift in Sources */,
 				218503001E4198D000CAFE6D /* Date+Comparable.swift in Sources */,
 				217164CC1E7DB5B4005EF679 /* RealmQuery.swift in Sources */,
-				21492FD71E5A46E8005660F3 /* AddStopVC.swift in Sources */,
 				FA38294B1DBAEB94003A4BFA /* DestinationCell.swift in Sources */,
 				84CBA0361E67BB83004398B7 /* FinalTimeLineVC.swift in Sources */,
 				FAAF70C41D74A39400515DBD /* Cell.swift in Sources */,
 				213FC9151E67B88400BBEFE4 /* UIColorExt.swift in Sources */,
 				B6DB3BBB1D7A100200FC737D /* Pin.swift in Sources */,
 				213757111E56A3DF00C21415 /* LabelCell.swift in Sources */,
+				21D660431E9D85FD00D1CED1 /* NetworkAlert.swift in Sources */,
 				213FC9D91E73573C00BBEFE4 /* FormViewController.swift in Sources */,
 				FAB740E61DDEB1AB00BA859F /* TimelineView.swift in Sources */,
 				FAB740E21DDEB14A00BA859F /* JTSSimpleImageDownloader.m in Sources */,
 				FA5AB5AF1D7E744D005CFBD4 /* Item.swift in Sources */,
 				847AE4B81DA720010056B6D7 /* ExamplePhoto.swift in Sources */,
+				21D660451E9D862400D1CED1 /* LocationAlert.swift in Sources */,
 				217164CA1E7DB59B005EF679 /* RealmWrite.swift in Sources */,
 				21492FCF1E5A3EF9005660F3 /* SiteStop.swift in Sources */,
 				FAB740DF1DDEB14A00BA859F /* JTSAnimatedGIFUtility.m in Sources */,
@@ -532,6 +547,7 @@
 				211EB2E51E5E6FAB00176C13 /* SignUpVC.swift in Sources */,
 				FAEE90AE1D6771B5008264DC /* TabBarController.swift in Sources */,
 				FAEE90B41D677EBB008264DC /* LocationsViewController.swift in Sources */,
+				219A12931E9B136E00356BD7 /* LinkCell.swift in Sources */,
 				B6DB3BBF1D7A104900FC737D /* LocationCollectionDelegate.swift in Sources */,
 				FAD304B31D6D28E800D8CE2F /* DetailViewController.swift in Sources */,
 				84EF3A561E44EE0E00A8B00A /* JsonParser.swift in Sources */,
@@ -539,6 +555,7 @@
 				847AE4B61DA71FFA0056B6D7 /* PhotosProvider.swift in Sources */,
 				847AE4BC1DA720B30056B6D7 /* LocationGalleryImageController.swift in Sources */,
 				21492FD31E5A3F8E005660F3 /* GenericStop.swift in Sources */,
+				21D507AF1E85F7050088AD47 /* GoogleDirectionsAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,7 +618,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -640,7 +657,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -652,6 +669,7 @@
 			baseConfigurationReference = 866A48BE69E58B36CE7AFA90 /* Pods-Frank Lloyd Wright Trail.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 2T9JP2ZYVK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -672,6 +690,7 @@
 			baseConfigurationReference = 46912E114CBBD62D92AB4CE3 /* Pods-Frank Lloyd Wright Trail.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 2T9JP2ZYVK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

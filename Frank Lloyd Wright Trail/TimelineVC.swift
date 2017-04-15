@@ -9,55 +9,19 @@
 import UIKit
 import RealmSwift
 
-// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
-// Consider refactoring the code to use the non-optional operators.
-private func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
-
-
-
-
-class TimelineVC: UIViewController, TripJsonDelegate {
-    
-    
+class TimelineVC: UIViewController {
+    var enoughTime = true
     var scrollView: UIScrollView!
-    var timeline:   TimelineView!
-    var json: JsonParser!
-    var sites = List<SiteStop>()
-    var allSites = Site.getSites()
-    var sites2 = [Site?]()
-    var sharedTripObject: [TripObject] = []
-    var stops = [Stop]()
-    var startTime = Date()
-    var endTime = Date()
-    var newStops = [Stop]()
-    var newTripObject = [TripObject]()
-    var trip = Trip()
-    
-    let date = Date()
-    let calendar = Calendar.current
+    var timeline: TimelineView!
+    var trip: Trip!
+    var wayPointOrder = [Int]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        sites = trip.siteStops
-        stops = trip.stops
-        startTime = trip.startTime!
-        endTime = trip.endTime!
-        
         scrollView = UIScrollView(frame: view.bounds)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scrollView)
-        
-        
         
         view.addConstraints([
             NSLayoutConstraint(item: scrollView, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 0),
@@ -65,82 +29,9 @@ class TimelineVC: UIViewController, TripJsonDelegate {
             NSLayoutConstraint(item: scrollView, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: 0),
             NSLayoutConstraint(item: scrollView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0)
             ])
-        for i in 0..<sites.count {
         
-            sites2.append(sites[i].site)
-        }
-        json = JsonParser(withDelegate: self, locations: sites2)
-        getTripData(json.orderOfLocations(sites2))
+        loadTimeline()
     }
-    
-    func compareSites(_ site1:Site?, site2: [Site]) -> Int {
-        for j in 0..<site2.count{
-            let latitude1 = Double(round(100*(site1?.lat.value!)!/100))
-            let latitude2 = Double(round(100*site2[j].lat.value!/100))
-            
-            if (latitude1 == latitude2){
-                return j
-            }
-        }
-        return -1
-    }
-    
-    
-    // func to get API object data
-    func getTripData(_ objects: [TripObject]) {
-        var timeFrames: [TimeFrame] = []
-        
-        var objectTime = 0.0
-        var tripTime = endTime.timeIntervalSince(startTime)
-        
-        if(objects.count != 0 && newTripObject.count == 0){
-            for b in 0..<objects.count {
-                objectTime = +objects[b].timeValue!
-                if(objectTime < tripTime){
-                    newTripObject.append(objects[b])
-                    
-                    
-                }
-            }
-            
-            // attach the correct image to the sites
-            var count = 0
-            
-            if(newTripObject.count < 0) {
-                timeFrames.append(TimeFrame(text: "Home", date: "9:00am", image: nil))}
-            if (newTripObject.count == 0){
-                timeFrames.append(TimeFrame(text: "It's not possible to visit the sites with the times you entered", date: "Not enough time given", image: nil))
-            } else{
-                for i in 0..<newTripObject.count{
-                    for j in 0..<sites2.count{
-                        // compare the objects to all the sites and if there is a match create card and add a picture from the list of all sites
-                        if (Double(round(100*newTripObject[i].endPoint!)/100) == Double(round(100*allSites[compareSites(sites2[j]!, site2: allSites)].lat.value!)/100)){
-                            //timeFrames.append(TimeFrame(text: "Drive time" , date: "9:00am", image: nil))
-                            timeFrames.append(TimeFrame(text:"Travel distance is " + newTripObject[i].distanceText! + "iles" + ". Travel time is " + newTripObject[i].timeText! + ".", date: allSites[compareSites(sites2[j], site2: allSites)].title!, image: UIImage(named:allSites[compareSites(sites2[j], site2: allSites)].imageName!)))
-                        }
-                    }
-                    
-                }
-            }
-        }
-        
-        timeline = TimelineView(bulletType: .circle, timeFrames: timeFrames)
-        
-        
-        scrollView.addSubview(timeline)
-        scrollView.addConstraints([
-            NSLayoutConstraint(item: timeline, attribute: .left, relatedBy: .equal, toItem: scrollView, attribute: .left, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: timeline, attribute: .bottom, relatedBy: .lessThanOrEqual, toItem: scrollView, attribute: .bottom, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: timeline, attribute: .top, relatedBy: .equal, toItem: scrollView, attribute: .top, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: timeline, attribute: .right, relatedBy: .equal, toItem: scrollView, attribute: .right, multiplier: 1.0, constant: 0),
-            
-            NSLayoutConstraint(item: timeline, attribute: .width, relatedBy: .equal, toItem: scrollView, attribute: .width, multiplier: 1.0, constant: 0)
-            ])
-        
-        view.sendSubview(toBack: scrollView)
-    }
-    
-
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = "Suggested Trip"
@@ -148,22 +39,107 @@ class TimelineVC: UIViewController, TripJsonDelegate {
         self.navigationItem.rightBarButtonItem = button
     }
     
+    
+    func loadTimeline(){
+        let google = GoogleDirectionsAPI()
+        //must send ID to seperate thread can't pass realm objects between threads
+        let tripID = trip.id
+        google.getOptimizedWayPoints(tripID, completion: {(timeLineCards: [TimelineCardModel], wayPointOrder: [Int]) -> Void in
+            guard let trip = RealmQuery.queryTripByID(tripID) else {
+                print("Could Not Find Trip by ID")
+                return
+            }
+            
+            let tripTime = trip.endTime?.timeIntervalSince(trip.startTime!)
+            var driveTime = 0.0
+            //add up duration in minutes to see if enough time to complete trip
+            for driveCard in timeLineCards {
+                if let duration = driveCard.durationValue {
+                    //convert string to seconds (timeIntervalSlice is in seconds)
+                    driveTime += Double(duration/60)
+                }
+            }
+            //consider hour spent at each site stop
+            driveTime += (Double(trip.siteStops.count) * 3600.0)
+            
+            var timeFrames = [TimeFrame]()
+       
+            if (tripTime?.isLess(than: driveTime))! {
+                timeFrames.append(TimeFrame(text: "", date: "Not Enough Time For Trip", image: UIImage(named:"NoEntry")!))
+            } else {
+                var timeOfDay = DateHelp.getStartOfDayFrom(startDate: trip.startTime!, firstDriveSeconds: timeLineCards[1].durationValue!)
+                var timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
+                for (index, card) in timeLineCards.enumerated() {
+                    if index == 0 || index == timeLineCards.count - 1 {
+                        //home card
+                        let timeFrame = TimeFrame(text: "", date: timeOfDayFormatted, image: card.icon!)
+                        timeFrames.append(timeFrame)
+                    } else if let name = card.name {
+                        //location card
+                        //add 10 min of leeway 
+                        timeOfDay = DateHelp.addMinutesToDate(minutes: 10, date: timeOfDay)
+                        timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
+                        let timeFrame = TimeFrame(text: name, date: ("Tour Start: \(timeOfDayFormatted)"), image: card.locationImage!)
+                        timeFrames.append(timeFrame)
+                        //assume hour spent at site
+                        timeOfDay = DateHelp.addHoursToDate(hours: 1, date: timeOfDay)
+                        timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
+                    } else {
+                        //drive card
+                        let seconds = card.durationValue!
+                        timeOfDay = DateHelp.addSecondsToDate(seconds, date: timeOfDay)
+                        timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
+                        let timeFrame = TimeFrame(text: "\(card.durationText!) (est arrival: \(timeOfDayFormatted))", date: "", image: card.icon!)
+                        timeFrames.append(timeFrame)
+                    }
+                }
+            }
+            //back to main thread before UI changes
+            DispatchQueue.main.async {
+                self.wayPointOrder = wayPointOrder
+                self.timeline = TimelineView(bulletType: .circle, timeFrames: timeFrames)
+                self.timeline.isUserInteractionEnabled = false
+                if self.timeline.timeFrames.count == 1 {
+                    self.enoughTime = false
+                }
+                self.timeline.detailLabelColor = UIColor(hexString: "#A6192E")
+                self.timeline.titleLabelColor = UIColor(hexString: "#A6192E")
+                self.scrollView.addSubview(self.timeline)
+                self.scrollView.addConstraints([
+                    NSLayoutConstraint(item: self.timeline, attribute: .left, relatedBy: .equal, toItem: self.scrollView, attribute: .left, multiplier: 1.0, constant: 0),
+                    NSLayoutConstraint(item: self.timeline, attribute: .bottom, relatedBy: .lessThanOrEqual, toItem: self.scrollView, attribute: .bottom, multiplier: 1.0, constant: 0),
+                    NSLayoutConstraint(item: self.timeline, attribute: .top, relatedBy: .equal, toItem: self.scrollView, attribute: .top, multiplier: 1.0, constant: 0),
+                    NSLayoutConstraint(item: self.timeline, attribute: .right, relatedBy: .equal, toItem: self.scrollView, attribute: .right, multiplier: 1.0, constant: 0),
+                    
+                    NSLayoutConstraint(item: self.timeline, attribute: .width, relatedBy: .equal, toItem: self.scrollView, attribute: .width, multiplier: 1.0, constant: 0)
+                    ])
+                
+                self.view.sendSubview(toBack: self.scrollView)
+            }
+        })
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let signupVC = segue.destination as! SignUpVC
+        signupVC.wayPointOrder = self.wayPointOrder
         signupVC.trip = self.trip
     }
     
     func doneSelected(_ sender: UIBarButtonItem){
+        if enoughTime {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
         performSegue(withIdentifier: "signup", sender: nil)
+        } else {
+            print("Not Enough Time for Trip")
+        }
     }
     
-
+    
     override var prefersStatusBarHidden : Bool {
         return true
     }
     
-
+    
 
 }
 
