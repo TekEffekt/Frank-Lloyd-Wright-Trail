@@ -15,7 +15,7 @@ class NetworkAlert {
         OperationQueue.main.addOperation {
             guard let base = UIApplication.shared.keyWindow?.rootViewController else { return }
             
-            let controller = UIAlertController(title: "No Internet Connection", message: "You have no internet connection.", preferredStyle: .alert)
+            let controller = UIAlertController(title: "No Internet Connection", message: "Please check your network connection.", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "Ok", style: .default , handler: nil)
             controller.addAction(okAction)
             base.present(controller, animated: true, completion: nil)

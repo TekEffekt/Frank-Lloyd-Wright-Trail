@@ -296,15 +296,30 @@ class CreateTripVC : FormViewController, CLLocationManagerDelegate {
     }
     
     func validateAndSave(){
-        if trip.startTime == nil{
-            RealmWrite.writeStartTime(startTime: Date(), trip: self.trip)
+        //validate stop count
+        if trip.siteStops.count == 0 {
+            let alertController = UIAlertController(title: "No Locations", message: "You must add at least one location to create a trip.", preferredStyle: .alert)
+            let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(okButton)
+            self.present(alertController, animated: true, completion: nil)
         }
         
-        if trip.endTime == nil {
-            RealmWrite.writeEndTime(endTime: Date(), trip: self.trip)
+        //validate trip times
+        if let error = Validate.tripTimes(forTrip: trip) {
+            if error == "The selected trip start time is after the trip end time." {
+                let alertController = UIAlertController(title: "Invalid Time Entry", message: error, preferredStyle: .alert)
+                let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(okButton)
+                self.present(alertController, animated: true, completion: nil)
+            } else {
+                let alertController = UIAlertController(title: "Incomplete Form", message: error, preferredStyle: .alert)
+                let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(okButton)
+                self.present(alertController, animated: true, completion: nil)
+            }
         }
         
-        
+        //validate user location
         let locationManager = CLLocationManager()
         locationManager.delegate = self
         
@@ -317,7 +332,7 @@ class CreateTripVC : FormViewController, CLLocationManagerDelegate {
             
             switch CLLocationManager.authorizationStatus() {
             case .notDetermined, .restricted, .denied:
-                let alertController = UIAlertController(title: "User Location Access Denied", message: "To allow get a suggested timeline you must enable location services, you may configure it in Settings.", preferredStyle: .alert)
+                let alertController = UIAlertController(title: "User Location Access Denied", message: "To get a suggested timeline you must enable location services, you may configure it in Settings.", preferredStyle: .alert)
                 let settingsButton = UIAlertAction(title: "Settings", style: .default) {
                     action -> Void in
                     self.openSettings()
@@ -334,6 +349,7 @@ class CreateTripVC : FormViewController, CLLocationManagerDelegate {
             }
         }
         
+        //validate network connection
         if !Network.reachability.isReachable {
             NetworkAlert.show()
             return
@@ -341,16 +357,10 @@ class CreateTripVC : FormViewController, CLLocationManagerDelegate {
         
         
         
-        if trip.siteStops.count > 0 {
-            self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
-            RealmWrite.writeTripName(tripName: trip.tripName, trip: self.trip)
-            performSegue(withIdentifier: "suggestedTL", sender: nil)
-        } else {
-            let alertController = UIAlertController(title: "No Locations", message: "You must add at least one location to create a trip.", preferredStyle: .alert)
-            let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(okButton)
-            self.present(alertController, animated: true, completion: nil)
-        }
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
+        RealmWrite.writeTripName(tripName: trip.tripName, trip: self.trip)
+        performSegue(withIdentifier: "suggestedTL", sender: nil)
+        
     }
     
     func openSettings() {
