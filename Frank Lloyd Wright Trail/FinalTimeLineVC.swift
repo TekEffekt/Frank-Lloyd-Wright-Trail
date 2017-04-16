@@ -78,26 +78,28 @@ class FinalTimeLineVC: UIViewController {
                     if DateHelp.isInSameDay(card.date!, timeOfDay) {
                         let monthAndDay = DateHelp.getShortDateName(date: timeOfDay)
                         timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
-                        let timeFrame = TimeFrame(text: "", date: monthAndDay + timeOfDayFormatted, image: card.icon!)
+                        let timeFrame = TimeFrame(text: "Leave Home", date: monthAndDay + timeOfDayFormatted, image: card.icon!)
                         timeFrames.append(timeFrame)
                     } else {
                         firstDuration = timeLineCards[index + 1].durationValue
                         timeOfDay = DateHelp.getStartOfDayFrom(startDate: card.date!, firstDriveSeconds: firstDuration!)
                         let monthAndDay = DateHelp.getShortDateName(date: timeOfDay)
                         timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
-                        let timeFrame = TimeFrame(text: "", date: monthAndDay + timeOfDayFormatted, image: card.icon!)
+                        let timeFrame = TimeFrame(text: "Leave Home", date: monthAndDay + timeOfDayFormatted, image: card.icon!)
                         timeFrames.append(timeFrame)
                     }
                     
                 } else if card.name == "end" {
                     timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
-                    let timeFrame = TimeFrame(text: "", date: timeOfDayFormatted, image: card.icon!)
+                    let timeFrame = TimeFrame(text: "Arrive Home", date: timeOfDayFormatted, image: card.icon!)
                     timeFrames.append(timeFrame)
                 } else if let name = card.name {
                     //location card
                     timeOfDay = sortedList[siteIndex].startDate!
                     timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
-                    let timeFrame = TimeFrame(text: name, date: ("Tour Start: \(timeOfDayFormatted)"), image: card.locationImage!)
+                    let secondTimeOfDay = sortedList[siteIndex].endDate!
+                    let secondTimeOfDayFormatted = DateHelp.getHoursAndMinutes(from: secondTimeOfDay)
+                    let timeFrame = TimeFrame(text: name, date: ("Tour: \(timeOfDayFormatted) - \(secondTimeOfDayFormatted)"), image: card.locationImage!)
                     timeFrames.append(timeFrame)
                     //add time spent at site
                     let tourTime = tourTimes[durationIndex]
@@ -111,7 +113,8 @@ class FinalTimeLineVC: UIViewController {
                     let seconds = card.durationValue
                     timeOfDay = DateHelp.addSecondsToDate(seconds!, date: timeOfDay)
                     timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
-                    let timeFrame = TimeFrame(text: "\(card.durationText!) (est arrival: \(timeOfDayFormatted))", date: "", image: card.icon!)
+                    let duration = card.durationText!.substring(to: card.durationText!.index(before: card.durationText!.endIndex))
+                    let timeFrame = TimeFrame(text:"(est arrival: \(timeOfDayFormatted))", date: "\(duration)ute drive", image: card.icon!)
                     timeFrames.append(timeFrame)
                 }
             }

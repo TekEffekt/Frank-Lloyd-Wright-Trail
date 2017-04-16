@@ -246,7 +246,7 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
         
         if indexPath.row == 3 || indexPath.row == 5 {
             if indexPath.row == currentRow && indexPath.section == currentSection && cellTapped {
-                return 75
+                return 80
             }
                 
             else if indexPath.row == 3 || indexPath.row == 5 {

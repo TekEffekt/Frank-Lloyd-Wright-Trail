@@ -62,7 +62,7 @@ class CreateTripVC : FormViewController, CLLocationManagerDelegate {
     
     //set header titles
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0{
+        if section == 0 {
             return "Trip Name"
         }
         
@@ -185,7 +185,7 @@ class CreateTripVC : FormViewController, CLLocationManagerDelegate {
         if (indexPath.section != 0 && indexPath.section != 1 && indexPath.row == 1 || indexPath.row == 3){
             
             if indexPath.row == currentRow && indexPath.section == currentSection && cellTapped{
-                return 75
+                return 80
             }
             else if (indexPath.row == 1 || indexPath.row == 3 && indexPath.section != 1 && indexPath.section != 0){
                 return 0

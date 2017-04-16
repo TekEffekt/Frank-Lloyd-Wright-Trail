@@ -19,6 +19,11 @@ class TripsVC : UITableViewController{
         trip = Trip()
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        navigationItem.leftBarButtonItem = editButtonItem
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTrip))
@@ -46,18 +51,16 @@ class TripsVC : UITableViewController{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "labelCell") as! TripLabelCell
         if let trips = self.trips{
-            cell.tripName.text! = trips[indexPath.row].tripName
-            cell.accessoryType = .none
+            if trips[indexPath.row].tripName == "" {
+                cell.tripName.text! = "Trip"
+                cell.accessoryType = .none
+            } else {
+                cell.tripName.text! = trips[indexPath.row].tripName
+                cell.accessoryType = .none
+            }
             return cell
         }
         return UITableViewCell()
-    }
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete{
-            RealmDelete.deleteTrip(index: indexPath.row, trips: trips!)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -72,5 +75,26 @@ class TripsVC : UITableViewController{
         createTrip.trip = trip
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let trip = trips![indexPath.row].tripName
+            
+            let title = "Delete \(trip)?"
+            let message = "Are you sure you want to delete this trip?"
+            let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { (action) -> Void in
+                //remove item from the store
+                RealmDelete.deleteTrip(index: indexPath.row, trips: self.trips!)
+                //also remove
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            })
+            
+            ac.addAction(cancelAction)
+            ac.addAction(deleteAction)
+            present(ac, animated: true, completion: nil)
+        }
+    }
 
 }

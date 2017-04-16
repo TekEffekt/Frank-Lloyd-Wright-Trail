@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 class Trip: Object{
-    dynamic var tripName = "New trip"
+    dynamic var tripName = ""
     dynamic var startTime: Date?
     dynamic var endTime: Date?
     let sitesInfo = List<TripObject>()
