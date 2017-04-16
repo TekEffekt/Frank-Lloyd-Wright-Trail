@@ -21,6 +21,11 @@ class LocationGalleryImageController: UIViewController, NYTPhotoViewControllerDe
     let photos6 = PhotosProvider().photos6
     let photos7 = PhotosProvider().photos7
     let photos8 = PhotosProvider().photos8
+    var statusBarHidden = false
+    
+    override var prefersStatusBarHidden: Bool {
+        return statusBarHidden
+    }
     
     @IBOutlet weak var galleryImage: UIImageView!
     
@@ -40,10 +45,19 @@ class LocationGalleryImageController: UIViewController, NYTPhotoViewControllerDe
         if let image = image {
             galleryImage.image = image
         }
+        statusBarHidden = false
+        self.setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        statusBarHidden = true
+        self.setNeedsStatusBarAppearanceUpdate()
     }
     
     // switch statment to select correct photos
     func tapped(){
+        
         switch  nytphoto!{
         case 43.0105838:
             let photosViewController = NYTPhotosViewController(photos: self.photos7)
@@ -74,4 +88,6 @@ class LocationGalleryImageController: UIViewController, NYTPhotoViewControllerDe
         }
 
     }
+    
+    
    }

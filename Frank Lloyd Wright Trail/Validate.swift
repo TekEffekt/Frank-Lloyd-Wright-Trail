@@ -26,12 +26,32 @@ class Validate {
     
     static func tripTimes(forTrip trip: Trip) -> String? {
         //check to make sure trip has both times assigned, and that start time isn't after end time
-        guard let tripStartTime = trip.startTime else { return "You have no selected a trip start time." }
+        guard let tripStartTime = trip.startTime else { return "You have not selected a trip start time." }
         guard let tripEndTime = trip.endTime else { return "You have not selected a trip end time." }
         
         if tripStartTime.isGreaterThanDate(tripEndTime) {
             return "The selected trip start time is after the trip end time."
         }
         return nil
+    }
+    
+    static func siteStops(forTrip trip: Trip) -> String? {
+        
+        for siteStop in trip.siteStops {
+            guard let siteStartDate = siteStop.startDate else {
+                return "\(siteStop.name!)'s tour has no start date."
+            }
+            
+            guard let siteEndDate = siteStop.endDate else {
+                return "\(siteStop.name!)'s tour has no end date."
+            }
+            
+            if siteStartDate.isGreaterThanDate(siteEndDate) {
+                return "\(siteStop.name!)'s tour start time is after the end time."
+            }
+        }
+        
+        return nil
+        
     }
 }

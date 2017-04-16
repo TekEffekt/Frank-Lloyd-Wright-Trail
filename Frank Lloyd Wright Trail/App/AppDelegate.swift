@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Cannot start notifier")
         }
         
+        UINavigationBar.appearance().barStyle = .blackOpaque
+        
         return true
     }
     

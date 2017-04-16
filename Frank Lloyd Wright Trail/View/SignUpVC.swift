@@ -36,44 +36,6 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
         finalTL.trip = self.trip
     }
     
-    func confirmSelected(_ sender: UIBarButtonItem){
-        
-        let locationManager = CLLocationManager()
-        locationManager.delegate = self
-        
-        if CLLocationManager.authorizationStatus() == .notDetermined {
-            locationManager.requestWhenInUseAuthorization()
-        }
-        
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        if CLLocationManager.locationServicesEnabled() {
-            
-            switch CLLocationManager.authorizationStatus() {
-            case .notDetermined, .restricted, .denied:
-                let alertController = UIAlertController(title: "User Location Access Denied", message: "To allow get a suggested timeline you must enable location services, you may configure it in Settings.", preferredStyle: .alert)
-                let settingsButton = UIAlertAction(title: "Settings", style: .default) {
-                    action -> Void in
-                    self.openSettings()
-                }
-                alertController.addAction(settingsButton)
-                let okButton = UIAlertAction(title: "OK", style: .default) {
-                    action -> Void in
-                    return
-                }
-                alertController.addAction(okButton)
-                self.present(alertController, animated: true, completion: nil)
-            default:
-                break
-            }
-        }
-        
-        if !Network.reachability.isReachable {
-            NetworkAlert.show()
-            return
-        }
-        
-        performSegue(withIdentifier: "segueToFinal", sender: nil)
-    }
     
     func openSettings() {
         let path = UIApplicationOpenSettingsURLString
@@ -277,6 +239,62 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
         //pickerVisible = !pickerVisible
         tableView.beginUpdates()
         tableView.endUpdates()
+    }
+    
+    func confirmSelected(_ sender: UIBarButtonItem){
+        //validate all stops date entries
+        if let error = Validate.siteStops(forTrip: trip) {
+            let charset = CharacterSet(charactersIn: "is after")
+            if error.rangeOfCharacter(from: charset) == nil {
+                let alertController = UIAlertController(title: "Invalid Date Entry", message: error, preferredStyle: .alert)
+                let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(okButton)
+                self.present(alertController, animated: true, completion: nil)
+            } else {
+                let alertController = UIAlertController(title: "Incomplete Form", message: error, preferredStyle: .alert)
+                let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(okButton)
+                self.present(alertController, animated: true, completion: nil)
+            }
+        }
+        
+        //validate user location
+        let locationManager = CLLocationManager()
+        locationManager.delegate = self
+        
+        if CLLocationManager.authorizationStatus() == .notDetermined {
+            locationManager.requestWhenInUseAuthorization()
+        }
+        
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        if CLLocationManager.locationServicesEnabled() {
+            
+            switch CLLocationManager.authorizationStatus() {
+            case .notDetermined, .restricted, .denied:
+                let alertController = UIAlertController(title: "User Location Access Denied", message: "To allow get a suggested timeline you must enable location services, you may configure it in Settings.", preferredStyle: .alert)
+                let settingsButton = UIAlertAction(title: "Settings", style: .default) {
+                    action -> Void in
+                    self.openSettings()
+                }
+                alertController.addAction(settingsButton)
+                let okButton = UIAlertAction(title: "OK", style: .default) {
+                    action -> Void in
+                    return
+                }
+                alertController.addAction(okButton)
+                self.present(alertController, animated: true, completion: nil)
+            default:
+                break
+            }
+        }
+        
+        //validate network connectivity
+        if !Network.reachability.isReachable {
+            NetworkAlert.show()
+            return
+        }
+        
+        performSegue(withIdentifier: "segueToFinal", sender: nil)
     }
     
     

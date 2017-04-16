@@ -32,7 +32,7 @@ class PhotosProvider: NSObject {
         
         
         for photoIndex in 0 ..< arrayPic.capacity {
-            let title = NSAttributedString(string: "\(photoIndex + 1)", attributes: [NSForegroundColorAttributeName: UIColor.white])
+            let title = NSAttributedString(string: "", attributes: [NSForegroundColorAttributeName: UIColor.white])
             let captionSummary = NSAttributedString(string: "SC Johnson Administration Building", attributes: [NSForegroundColorAttributeName: UIColor.gray])
             let captionCredit = NSAttributedString(string: "", attributes: [NSForegroundColorAttributeName: UIColor.darkGray])
             let photo = shouldSetImageOnIndex(photoIndex) ? ExamplePhoto(image: arrayPic[photoIndex], attributedCaptionTitle: title, attributedCaptionSummary: captionSummary, attributedCaptionCredit: captionCredit) : ExamplePhoto(attributedCaptionTitle: title, attributedCaptionSummary: captionSummary, attributedCaptionCredit: captionCredit)
@@ -59,7 +59,7 @@ class PhotosProvider: NSObject {
         }
         
         for photoIndex in 0 ..< arrayPic.capacity {
-            let title = NSAttributedString(string: "\(photoIndex + 1)", attributes: [NSForegroundColorAttributeName: UIColor.white])
+            let title = NSAttributedString(string: "", attributes: [NSForegroundColorAttributeName: UIColor.white])
             let captionSummary = NSAttributedString(string: "Wingspread", attributes: [NSForegroundColorAttributeName: UIColor.gray])
             let captionCredit = NSAttributedString(string: "", attributes: [NSForegroundColorAttributeName: UIColor.darkGray])
             let photo = shouldSetImageOnIndex(photoIndex) ? ExamplePhoto(image: arrayPic[photoIndex], attributedCaptionTitle: title, attributedCaptionSummary: captionSummary, attributedCaptionCredit: captionCredit) : ExamplePhoto(attributedCaptionTitle: title, attributedCaptionSummary: captionSummary, attributedCaptionCredit: captionCredit)
@@ -84,7 +84,7 @@ class PhotosProvider: NSObject {
         }
         
         for photoIndex in 0 ..< arrayPic.capacity {
-            let title = NSAttributedString(string: "\(photoIndex + 1)", attributes: [NSForegroundColorAttributeName: UIColor.white])
+            let title = NSAttributedString(string: "", attributes: [NSForegroundColorAttributeName: UIColor.white])
             let captionSummary = NSAttributedString(string: "Monona Terrace", attributes: [NSForegroundColorAttributeName: UIColor.gray])
             var captionCredit = NSAttributedString(string: "", attributes: [NSForegroundColorAttributeName: UIColor.darkGray])
             if photoIndex == 6 {
@@ -112,7 +112,7 @@ class PhotosProvider: NSObject {
         }
         
         for photoIndex in 0 ..< arrayPic.capacity {
-            let title = NSAttributedString(string: "\(photoIndex + 1)", attributes: [NSForegroundColorAttributeName: UIColor.white])
+            let title = NSAttributedString(string: "", attributes: [NSForegroundColorAttributeName: UIColor.white])
             let captionSummary = NSAttributedString(string: "First Unitatrian Society Meeting House", attributes: [NSForegroundColorAttributeName: UIColor.gray])
             let captionCredit = NSAttributedString(string: "", attributes: [NSForegroundColorAttributeName: UIColor.darkGray])
             let photo = shouldSetImageOnIndex(photoIndex) ? ExamplePhoto(image: arrayPic[photoIndex], attributedCaptionTitle: title, attributedCaptionSummary: captionSummary, attributedCaptionCredit: captionCredit) : ExamplePhoto(attributedCaptionTitle: title, attributedCaptionSummary: captionSummary, attributedCaptionCredit: captionCredit)
@@ -138,7 +138,7 @@ class PhotosProvider: NSObject {
         }
         
         for photoIndex in 0 ..< arrayPic.capacity {
-            let title = NSAttributedString(string: "\(photoIndex + 1)", attributes: [NSForegroundColorAttributeName: UIColor.white])
+            let title = NSAttributedString(string: "", attributes: [NSForegroundColorAttributeName: UIColor.white])
             let captionSummary = NSAttributedString(string: "Talisesin and Frank Lloyd Wright Visitor Center", attributes: [NSForegroundColorAttributeName: UIColor.gray])
             let captionCredit = NSAttributedString(string: "", attributes: [NSForegroundColorAttributeName: UIColor.darkGray])
             let photo = shouldSetImageOnIndex(photoIndex) ? ExamplePhoto(image: arrayPic[photoIndex], attributedCaptionTitle: title, attributedCaptionSummary: captionSummary, attributedCaptionCredit: captionCredit) : ExamplePhoto(attributedCaptionTitle: title, attributedCaptionSummary: captionSummary, attributedCaptionCredit: captionCredit)
@@ -164,7 +164,7 @@ class PhotosProvider: NSObject {
         }
         
         for photoIndex in 0 ..< arrayPic.capacity {
-            let title = NSAttributedString(string: "\(photoIndex + 1)", attributes: [NSForegroundColorAttributeName: UIColor.white])
+            let title = NSAttributedString(string: "", attributes: [NSForegroundColorAttributeName: UIColor.white])
             let captionSummary = NSAttributedString(string: "A.D. German Warehouse", attributes: [NSForegroundColorAttributeName: UIColor.gray])
             let captionCredit = NSAttributedString(string: "", attributes: [NSForegroundColorAttributeName: UIColor.darkGray])
             let photo = shouldSetImageOnIndex(photoIndex) ? ExamplePhoto(image: arrayPic[photoIndex], attributedCaptionTitle: title, attributedCaptionSummary: captionSummary, attributedCaptionCredit: captionCredit) : ExamplePhoto(attributedCaptionTitle: title, attributedCaptionSummary: captionSummary, attributedCaptionCredit: captionCredit)
@@ -190,7 +190,7 @@ class PhotosProvider: NSObject {
         }
         
         for photoIndex in 0 ..< arrayPic.capacity {
-            let title = NSAttributedString(string: "\(photoIndex + 1)", attributes: [NSForegroundColorAttributeName: UIColor.white])
+            let title = NSAttributedString(string: "", attributes: [NSForegroundColorAttributeName: UIColor.white])
             let captionSummary = NSAttributedString(string: "American System Built Homes", attributes: [NSForegroundColorAttributeName: UIColor.gray])
             let captionCredit = NSAttributedString(string: "", attributes: [NSForegroundColorAttributeName: UIColor.darkGray])
             let photo = shouldSetImageOnIndex(photoIndex) ? ExamplePhoto(image: arrayPic[photoIndex], attributedCaptionTitle: title, attributedCaptionSummary: captionSummary, attributedCaptionCredit: captionCredit) : ExamplePhoto(attributedCaptionTitle: title, attributedCaptionSummary: captionSummary, attributedCaptionCredit: captionCredit)
@@ -216,7 +216,7 @@ class PhotosProvider: NSObject {
         }
         
         for photoIndex in 0 ..< arrayPic.capacity {
-            let title = NSAttributedString(string: "\(photoIndex + 1)", attributes: [NSForegroundColorAttributeName: UIColor.white])
+            let title = NSAttributedString(string: "", attributes: [NSForegroundColorAttributeName: UIColor.white])
             let captionSummary = NSAttributedString(string: "Wyoming Valley School", attributes: [NSForegroundColorAttributeName: UIColor.gray])
             let captionCredit = NSAttributedString(string: "", attributes: [NSForegroundColorAttributeName: UIColor.darkGray])
             let photo = shouldSetImageOnIndex(photoIndex) ? ExamplePhoto(image: arrayPic[photoIndex], attributedCaptionTitle: title, attributedCaptionSummary: captionSummary, attributedCaptionCredit: captionCredit) : ExamplePhoto(attributedCaptionTitle: title, attributedCaptionSummary: captionSummary, attributedCaptionCredit: captionCredit)

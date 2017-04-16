@@ -12,7 +12,7 @@
         <!--Location Gallery Page Controlller-->
         <scene sceneID="oDB-98-dzx">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="WpZ-yH-zSS" customClass="LocationGalleryPageControlller" customModule="Frank_Lloyd_Wright_Trail" customModuleProvider="target" sceneMemberID="viewController">
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" doubleSided="YES" id="WpZ-yH-zSS" customClass="LocationGalleryPageControlller" customModule="Frank_Lloyd_Wright_Trail" customModuleProvider="target" sceneMemberID="viewController">
                     <connections>
                         <segue destination="wHg-LF-Dxt" kind="show" id="9P2-5S-SsK"/>
                     </connections>
