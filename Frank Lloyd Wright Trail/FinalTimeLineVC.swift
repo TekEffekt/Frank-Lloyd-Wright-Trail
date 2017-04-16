@@ -53,10 +53,10 @@ class FinalTimeLineVC: UIViewController {
             }
             
             // sort sitestops by tourtimes
-            let sortedList = trip.siteStops.sorted(byKeyPath: "startTime", ascending: true)
+            let sortedList = trip.siteStops.sorted(byKeyPath: "startDate", ascending: true)
             var tourTimes = [Int]()
             for tour in sortedList {
-                let duration = DateHelp.getDurationOfTour(startTime: tour.startTime!, endTime: tour.endTime!)
+                let duration = DateHelp.getDurationOfTour(startTime: tour.startDate!, endTime: tour.endDate!)
                 tourTimes.append(Int(duration))
             }
             
@@ -64,7 +64,7 @@ class FinalTimeLineVC: UIViewController {
         
             var firstDuration = timeLineCards[1].durationValue
             
-            var timeOfDay = DateHelp.getStartOfDayFrom(startDate: sortedList[0].startTime!, firstDriveSeconds: firstDuration!)
+            var timeOfDay = DateHelp.getStartOfDayFrom(startDate: sortedList[0].startDate!, firstDriveSeconds: firstDuration!)
             var timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
             var durationIndex = 0
             var siteIndex = 0
@@ -95,7 +95,7 @@ class FinalTimeLineVC: UIViewController {
                     timeFrames.append(timeFrame)
                 } else if let name = card.name {
                     //location card
-                    timeOfDay = sortedList[siteIndex].startTime!
+                    timeOfDay = sortedList[siteIndex].startDate!
                     timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
                     let timeFrame = TimeFrame(text: name, date: ("Tour Start: \(timeOfDayFormatted)"), image: card.locationImage!)
                     timeFrames.append(timeFrame)

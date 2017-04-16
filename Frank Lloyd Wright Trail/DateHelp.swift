@@ -12,7 +12,7 @@ import RealmSwift
 class DateHelp {
     static func getHoursAndMinutes(from date: Date) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "h:mma"
+        dateFormatter.dateFormat = "h:mm a"
         return dateFormatter.string(from: date)
     }
     
@@ -50,9 +50,9 @@ class DateHelp {
         let calendar = Calendar.current
         
         for siteStop in sortedList {
-            let month = calendar.component(.month, from: siteStop.date!)
-            let day = calendar.component(.day, from: siteStop.date!)
-            let year = calendar.component(.year, from: siteStop.date!)
+            let month = calendar.component(.month, from: siteStop.startDate!)
+            let day = calendar.component(.day, from: siteStop.startDate!)
+            let year = calendar.component(.year, from: siteStop.startDate!)
             var components = DateComponents()
             components.month = month
             components.day = day

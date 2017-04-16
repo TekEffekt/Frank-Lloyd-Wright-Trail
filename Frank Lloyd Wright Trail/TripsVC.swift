@@ -44,9 +44,9 @@ class TripsVC : UITableViewController{
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "labelCell") as! LabelCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "labelCell") as! TripLabelCell
         if let trips = self.trips{
-            cell.label.text! = trips[indexPath.row].tripName
+            cell.tripName.text! = trips[indexPath.row].tripName
             cell.accessoryType = .none
             return cell
         }

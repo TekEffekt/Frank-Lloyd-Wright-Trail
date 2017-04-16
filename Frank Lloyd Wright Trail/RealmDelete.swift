@@ -32,4 +32,26 @@ class RealmDelete{
             print(error)
         }
     }
+    
+    static func siteStop(siteTitle: String, trip: Trip){
+        var siteIndex: Int?
+        
+        for (index, siteStop) in trip.siteStops.enumerated() {
+            if siteTitle == siteStop.site?.title! {
+                siteIndex = index
+            }
+        }
+        
+        if let index = siteIndex {
+            do {
+                let realm = try Realm()
+                try realm.write{
+                    trip.siteStops.remove(objectAtIndex: index)
+                }
+            } catch let error {
+                print(error)
+            }
+        }
+    }
+    
 }

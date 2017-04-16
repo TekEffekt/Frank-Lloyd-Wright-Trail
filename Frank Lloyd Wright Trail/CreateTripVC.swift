@@ -63,7 +63,7 @@ class CreateTripVC : FormViewController, CLLocationManagerDelegate {
     //set header titles
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0{
-            return nil
+            return "Trip Name"
         }
         
         return self.section[section]
@@ -72,11 +72,11 @@ class CreateTripVC : FormViewController, CLLocationManagerDelegate {
     //configure cells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //name cell
-        if indexPath.section == 0{
+        if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "nameCell") as! NameCell
-            cell.stopName.font = UIFont.systemFont(ofSize: 17)
-            cell.stopName.text! = trip.tripName
-            cell.stopName.placeholder = "Trip Name"
+            cell.tripNameField.font = UIFont.systemFont(ofSize: 17)
+            cell.tripNameField.text! = trip.tripName
+            cell.tripNameField.placeholder = "Trip Name"
             return cell
         }
             //add stop cell
@@ -128,8 +128,16 @@ class CreateTripVC : FormViewController, CLLocationManagerDelegate {
             //label cell
         else if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "labelCell") as! LabelCell
-            cell.label.text! = labels[indexPath.section][indexPath.row]
-            cell.label.textColor = UIColor.lightGray
+            cell.signUpLabel.text! = labels[indexPath.section][indexPath.row]
+            cell.signUpLabel.textColor = UIColor.lightGray
+            cell.icon.image = #imageLiteral(resourceName: "clock")
+            if indexPath.section == 2 {
+                if let startTime = trip.startTime {
+                    cell.dateLabel.text = DateHelp.getHoursAndMinutes(from: startTime)
+                }
+            } else if let endTime = trip.endTime {
+                    cell.dateLabel.text = DateHelp.getHoursAndMinutes(from: endTime)
+            }
             return cell
         }
         
@@ -208,7 +216,7 @@ class CreateTripVC : FormViewController, CLLocationManagerDelegate {
                 let stopName = cell.stopName.text!
                 
                 for (index, stop) in trip.siteStops.enumerated(){
-                    if stop.name! == stopName{
+                    if stop.name! == stopName {
                         RealmDelete.siteStop(index: index, trip: self.trip)
                         tableView.deleteRows(at: [indexPath!], with: .automatic)
                         break
@@ -270,8 +278,12 @@ class CreateTripVC : FormViewController, CLLocationManagerDelegate {
         switch picker.tag{
         case 2:
             RealmWrite.writeStartTime(startTime: picker.date, trip: self.trip)
+            let indexPath = IndexPath(row: 0, section: 2)
+            tableView.reloadRows(at: [indexPath], with: .none)
         case 3:
             RealmWrite.writeEndTime(endTime: picker.date, trip: self.trip)
+            let indexPath = IndexPath(row: 0, section: 3)
+            tableView.reloadRows(at: [indexPath], with: .none)
         default:
             break
         }

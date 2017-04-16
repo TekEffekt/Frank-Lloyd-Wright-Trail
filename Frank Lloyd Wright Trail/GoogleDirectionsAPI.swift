@@ -179,7 +179,7 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
             return
         }
         // sort sitestops by tourtimes
-        let sortedResultsList = trip.siteStops.sorted(byKeyPath: "startTime", ascending: true)
+        let sortedResultsList = trip.siteStops.sorted(byKeyPath: "startDate", ascending: true)
         // convert result type to list type
         let sortedList = sortedResultsList.reduce(List<SiteStop>()) { (list, element) -> List<SiteStop> in
             list.append(element)

@@ -16,11 +16,10 @@
 		213757111E56A3DF00C21415 /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213757101E56A3DF00C21415 /* LabelCell.swift */; };
 		213FC9151E67B88400BBEFE4 /* UIColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213FC9141E67B88400BBEFE4 /* UIColorExt.swift */; };
 		213FC9D91E73573C00BBEFE4 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213FC9D81E73573C00BBEFE4 /* FormViewController.swift */; };
-		21492FCD1E5A3DF2005660F3 /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21492FCC1E5A3DF2005660F3 /* Stop.swift */; };
 		21492FCF1E5A3EF9005660F3 /* SiteStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21492FCE1E5A3EF9005660F3 /* SiteStop.swift */; };
-		21492FD11E5A3F51005660F3 /* MealStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21492FD01E5A3F51005660F3 /* MealStop.swift */; };
-		21492FD31E5A3F8E005660F3 /* GenericStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21492FD21E5A3F8E005660F3 /* GenericStop.swift */; };
-		21492FDB1E5A4C81005660F3 /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21492FDA1E5A4C81005660F3 /* NameCell.swift */; };
+		2168DF381EA2FFFE005E3F9E /* TripLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2168DF371EA2FFFE005E3F9E /* TripLabelCell.swift */; };
+		2168DF3A1EA300A5005E3F9E /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2168DF391EA300A5005E3F9E /* NameCell.swift */; };
+		2168DF3C1EA30687005E3F9E /* Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2168DF3B1EA30687005E3F9E /* Validate.swift */; };
 		217164C71E7C36CE005EF679 /* CombineDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217164C61E7C36CE005EF679 /* CombineDates.swift */; };
 		217164CA1E7DB59B005EF679 /* RealmWrite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217164C91E7DB59B005EF679 /* RealmWrite.swift */; };
 		217164CC1E7DB5B4005EF679 /* RealmQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217164CB1E7DB5B4005EF679 /* RealmQuery.swift */; };
@@ -44,7 +43,6 @@
 		84B1F0361E3941C00048986C /* Timeline-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = FAB740D21DDEAF7900BA859F /* Timeline-Bridging-Header.h */; };
 		84B1F0381E3BCC9E0048986C /* LocationDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B1F0371E3BCC9E0048986C /* LocationDetails.storyboard */; };
 		84CBA0361E67BB83004398B7 /* FinalTimeLineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CBA0351E67BB83004398B7 /* FinalTimeLineVC.swift */; };
-		84EF3A561E44EE0E00A8B00A /* JsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EF3A551E44EE0E00A8B00A /* JsonParser.swift */; };
 		B6109DA31D528DDE002A6D77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6109DA21D528DDE002A6D77 /* Assets.xcassets */; };
 		B6109DA61D528DDE002A6D77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6109DA41D528DDE002A6D77 /* LaunchScreen.storyboard */; };
 		B6DB3BBB1D7A100200FC737D /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DB3BB81D7A100200FC737D /* Pin.swift */; };
@@ -85,11 +83,10 @@
 		213757101E56A3DF00C21415 /* LabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
 		213FC9141E67B88400BBEFE4 /* UIColorExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColorExt.swift; path = View/UIColorExt.swift; sourceTree = "<group>"; };
 		213FC9D81E73573C00BBEFE4 /* FormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
-		21492FCC1E5A3DF2005660F3 /* Stop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stop.swift; path = Model/Stop.swift; sourceTree = "<group>"; };
 		21492FCE1E5A3EF9005660F3 /* SiteStop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SiteStop.swift; path = Model/SiteStop.swift; sourceTree = "<group>"; };
-		21492FD01E5A3F51005660F3 /* MealStop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MealStop.swift; path = Model/MealStop.swift; sourceTree = "<group>"; };
-		21492FD21E5A3F8E005660F3 /* GenericStop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericStop.swift; sourceTree = "<group>"; };
-		21492FDA1E5A4C81005660F3 /* NameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameCell.swift; sourceTree = "<group>"; };
+		2168DF371EA2FFFE005E3F9E /* TripLabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripLabelCell.swift; sourceTree = "<group>"; };
+		2168DF391EA300A5005E3F9E /* NameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameCell.swift; sourceTree = "<group>"; };
+		2168DF3B1EA30687005E3F9E /* Validate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validate.swift; sourceTree = "<group>"; };
 		217164C61E7C36CE005EF679 /* CombineDates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombineDates.swift; sourceTree = "<group>"; };
 		217164C91E7DB59B005EF679 /* RealmWrite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmWrite.swift; sourceTree = "<group>"; };
 		217164CB1E7DB5B4005EF679 /* RealmQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmQuery.swift; sourceTree = "<group>"; };
@@ -112,7 +109,6 @@
 		8493937A1DDE568C00BB7220 /* TripOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripOrder.swift; sourceTree = "<group>"; };
 		84B1F0371E3BCC9E0048986C /* LocationDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LocationDetails.storyboard; sourceTree = "<group>"; };
 		84CBA0351E67BB83004398B7 /* FinalTimeLineVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalTimeLineVC.swift; sourceTree = "<group>"; };
-		84EF3A551E44EE0E00A8B00A /* JsonParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonParser.swift; sourceTree = "<group>"; };
 		866A48BE69E58B36CE7AFA90 /* Pods-Frank Lloyd Wright Trail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frank Lloyd Wright Trail.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Frank Lloyd Wright Trail/Pods-Frank Lloyd Wright Trail.debug.xcconfig"; sourceTree = "<group>"; };
 		B6109D961D528DDD002A6D77 /* Frank Lloyd Wright Trail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Frank Lloyd Wright Trail.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6109DA21D528DDE002A6D77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -176,6 +172,7 @@
 				21D660421E9D85FD00D1CED1 /* NetworkAlert.swift */,
 				21D660441E9D862400D1CED1 /* LocationAlert.swift */,
 				21D660461E9D8BBF00D1CED1 /* Network.swift */,
+				2168DF3B1EA30687005E3F9E /* Validate.swift */,
 			);
 			name = "Helper Classes";
 			sourceTree = "<group>";
@@ -251,7 +248,6 @@
 				FAB740E71DDEB21B00BA859F /* TimelineVC.swift */,
 				211EB2E41E5E6FAB00176C13 /* SignUpVC.swift */,
 				84CBA0351E67BB83004398B7 /* FinalTimeLineVC.swift */,
-				84EF3A551E44EE0E00A8B00A /* JsonParser.swift */,
 				21D507AE1E85F7050088AD47 /* GoogleDirectionsAPI.swift */,
 			);
 			name = "Trip Planner";
@@ -281,8 +277,9 @@
 				FAB740E51DDEB1AB00BA859F /* TimelineView.swift */,
 				2137570E1E56A0F700C21415 /* DatePickCell.swift */,
 				213757101E56A3DF00C21415 /* LabelCell.swift */,
-				21492FDA1E5A4C81005660F3 /* NameCell.swift */,
 				219A12921E9B136E00356BD7 /* LinkCell.swift */,
+				2168DF371EA2FFFE005E3F9E /* TripLabelCell.swift */,
+				2168DF391EA300A5005E3F9E /* NameCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -326,10 +323,7 @@
 				8493937A1DDE568C00BB7220 /* TripOrder.swift */,
 				218502C31E3EF84700CAFE6D /* TimelineCardModel.swift */,
 				218502FF1E4198D000CAFE6D /* Date+Comparable.swift */,
-				21492FCC1E5A3DF2005660F3 /* Stop.swift */,
 				21492FCE1E5A3EF9005660F3 /* SiteStop.swift */,
-				21492FD01E5A3F51005660F3 /* MealStop.swift */,
-				21492FD21E5A3F8E005660F3 /* GenericStop.swift */,
 				217164C91E7DB59B005EF679 /* RealmWrite.swift */,
 				217164CB1E7DB5B4005EF679 /* RealmQuery.swift */,
 				210D47701E81C3230031129A /* RealmDelete.swift */,
@@ -503,19 +497,19 @@
 			files = (
 				8493937B1DDE568C00BB7220 /* TripOrder.swift in Sources */,
 				21F452FE1E88740D005B2E17 /* DateHelp.swift in Sources */,
-				21492FD11E5A3F51005660F3 /* MealStop.swift in Sources */,
+				2168DF3A1EA300A5005E3F9E /* NameCell.swift in Sources */,
 				84B1F0361E3941C00048986C /* Timeline-Bridging-Header.h in Sources */,
 				213757071E56412000C21415 /* AddStopCell.swift in Sources */,
+				2168DF3C1EA30687005E3F9E /* Validate.swift in Sources */,
 				21D660471E9D8BBF00D1CED1 /* Network.swift in Sources */,
 				FAB740E11DDEB14A00BA859F /* JTSImageViewController.m in Sources */,
 				218502C41E3EF84700CAFE6D /* TimelineCardModel.swift in Sources */,
+				2168DF381EA2FFFE005E3F9E /* TripLabelCell.swift in Sources */,
 				FAB740E31DDEB14A00BA859F /* UIApplication+JTSImageViewController.m in Sources */,
 				FAB740E41DDEB14A00BA859F /* UIImage+JTSImageEffects.m in Sources */,
-				21492FCD1E5A3DF2005660F3 /* Stop.swift in Sources */,
 				FAB740E01DDEB14A00BA859F /* JTSImageInfo.m in Sources */,
 				217164C71E7C36CE005EF679 /* CombineDates.swift in Sources */,
 				FA6143921D81FD6300E3A076 /* SiteSorter.swift in Sources */,
-				21492FDB1E5A4C81005660F3 /* NameCell.swift in Sources */,
 				217164CE1E7DCD54005EF679 /* Trip.swift in Sources */,
 				FAD304BB1D6F66B500D8CE2F /* AppDelegate.swift in Sources */,
 				847AE4BA1DA720AA0056B6D7 /* LocationGalleryPageControlller.swift in Sources */,
@@ -550,11 +544,9 @@
 				219A12931E9B136E00356BD7 /* LinkCell.swift in Sources */,
 				B6DB3BBF1D7A104900FC737D /* LocationCollectionDelegate.swift in Sources */,
 				FAD304B31D6D28E800D8CE2F /* DetailViewController.swift in Sources */,
-				84EF3A561E44EE0E00A8B00A /* JsonParser.swift in Sources */,
 				FAB740E81DDEB21B00BA859F /* TimelineVC.swift in Sources */,
 				847AE4B61DA71FFA0056B6D7 /* PhotosProvider.swift in Sources */,
 				847AE4BC1DA720B30056B6D7 /* LocationGalleryImageController.swift in Sources */,
-				21492FD31E5A3F8E005660F3 /* GenericStop.swift in Sources */,
 				21D507AF1E85F7050088AD47 /* GoogleDirectionsAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

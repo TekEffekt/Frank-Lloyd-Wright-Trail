@@ -9,7 +9,8 @@
 import Foundation
 import RealmSwift
 
-class RealmWrite{
+class RealmWrite {
+    
     static func writeTripName(tripName: String, trip: Trip){
         do {
             let realm = try Realm()
@@ -44,28 +45,6 @@ class RealmWrite{
         }
     }
     
-    static func writeSiteStopDate(index: Int, date: Date, trip: Trip){
-        do {
-            let realm = try Realm()
-            try realm.write {
-                trip.siteStops[index].date = date
-            }
-        } catch let error {
-            print(error)
-        }
-    }
-    
-    static func writeSiteStopStartTime(index: Int, date: Date, trip: Trip){
-        do {
-            let realm = try Realm()
-            try realm.write {
-                trip.siteStops[index].startTime = date
-            }
-        } catch let error {
-            print(error)
-        }
-    }
-    
     static func writeSiteStopFullStartDate(index: Int, date: Date, trip: Trip) {
         do {
             let realm = try Realm()
@@ -87,18 +66,6 @@ class RealmWrite{
             print(error)
         }
     }
-    
-    static func writeSiteStopEndTime(index: Int, date: Date, trip: Trip){
-        do {
-            let realm = try Realm()
-            try realm.write {
-                trip.siteStops[index].endTime = date
-            }
-        } catch let error {
-            print(error)
-        }
-    }
-    
     
     static func add(siteStop: SiteStop, trip: Trip){
         do {

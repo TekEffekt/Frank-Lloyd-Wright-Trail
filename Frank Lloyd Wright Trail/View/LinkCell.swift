@@ -10,9 +10,10 @@ import UIKit
 
 class LinkCell: UITableViewCell {
 
+    @IBOutlet weak var textIndicator: UILabel!
     
-    @IBOutlet weak var url: UITextView!
-    @IBOutlet weak var phoneIcon: UIImageView!
+
+    @IBOutlet weak var icon: UIImageView!
     
     
     override func awakeFromNib() {

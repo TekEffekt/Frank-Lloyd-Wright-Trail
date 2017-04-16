@@ -67,19 +67,27 @@ class TimelineVC: UIViewController {
             if (tripTime?.isLess(than: driveTime))! {
                 timeFrames.append(TimeFrame(text: "", date: "Not Enough Time For Trip", image: UIImage(named:"NoEntry")!))
             } else {
-                var timeOfDay = DateHelp.getStartOfDayFrom(startDate: trip.startTime!, firstDriveSeconds: timeLineCards[1].durationValue!)
+                var timeOfDay = trip.startTime!
                 var timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
                 for (index, card) in timeLineCards.enumerated() {
-                    if index == 0 || index == timeLineCards.count - 1 {
+                    if index == 0 {
                         //home card
-                        let timeFrame = TimeFrame(text: "", date: timeOfDayFormatted, image: card.icon!)
+                        let timeFrame = TimeFrame(text: "Leave Home", date: timeOfDayFormatted, image: card.icon!)
                         timeFrames.append(timeFrame)
-                    } else if let name = card.name {
+                    } else if index == timeLineCards.count - 1 {
+                        //home card
+                        let timeFrame = TimeFrame(text: "Arrive Home", date: timeOfDayFormatted, image: card.icon!)
+                        timeFrames.append(timeFrame)
+                    }
+                    
+                    else if let name = card.name {
                         //location card
                         //add 10 min of leeway 
                         timeOfDay = DateHelp.addMinutesToDate(minutes: 10, date: timeOfDay)
                         timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
-                        let timeFrame = TimeFrame(text: name, date: ("Tour Start: \(timeOfDayFormatted)"), image: card.locationImage!)
+                        let secondTimeOfDay = DateHelp.addHoursToDate(hours: 1, date: timeOfDay)
+                        let secondTimeOfDayFormatted = DateHelp.getHoursAndMinutes(from: secondTimeOfDay)
+                        let timeFrame = TimeFrame(text: name, date: ("Tour: \(timeOfDayFormatted) - \(secondTimeOfDayFormatted)"), image: card.locationImage!)
                         timeFrames.append(timeFrame)
                         //assume hour spent at site
                         timeOfDay = DateHelp.addHoursToDate(hours: 1, date: timeOfDay)
@@ -89,7 +97,8 @@ class TimelineVC: UIViewController {
                         let seconds = card.durationValue!
                         timeOfDay = DateHelp.addSecondsToDate(seconds, date: timeOfDay)
                         timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
-                        let timeFrame = TimeFrame(text: "\(card.durationText!) (est arrival: \(timeOfDayFormatted))", date: "", image: card.icon!)
+                        let duration = card.durationText!.substring(to: card.durationText!.index(before: card.durationText!.endIndex))
+                        let timeFrame = TimeFrame(text: "(est arrival: \(timeOfDayFormatted))", date: "\(duration)ute drive", image: card.icon!)
                         timeFrames.append(timeFrame)
                     }
                 }

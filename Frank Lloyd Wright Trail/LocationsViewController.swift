@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class LocationsViewController: UIViewController, MKMapViewDelegate, LocationCollectionDelegate, CLLocationManagerDelegate, TripJsonDelegate {
+class LocationsViewController: UIViewController, MKMapViewDelegate, LocationCollectionDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var mapView: MKMapView!
     

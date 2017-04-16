@@ -1,20 +1,16 @@
 //
-//  LabelCell.swift
+//  TripLabelCell.swift
 //  Frank Lloyd Wright Trail
 //
-//  Created by Max on 2/16/17.
+//  Created by Max on 4/15/17.
 //  Copyright © 2017 App Factory. All rights reserved.
 //
 
 import UIKit
 
-class LabelCell: UITableViewCell {
+class TripLabelCell: UITableViewCell {
 
-    @IBOutlet weak var signUpLabel: UILabel!
-    
-    @IBOutlet weak var icon: UIImageView!
-    
-    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var tripName: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -46,7 +46,7 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
         self.navigationItem.title = ""
     }
     
-    func doneSelected(_ sender: UIBarButtonItem){
+    func doneSelected(_ sender: UIBarButtonItem) {
         self.navigationController?.popViewController(animated: true)
     }
 
@@ -86,31 +86,30 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
         //visuallySelectSurface(imageView!, withAnimation: true)
         cell.selected(true)
         let location = sites[indexPath.row]
-        let stop = SiteStop(name: location.title!, site: location)
-        RealmWrite.add(siteStop: stop, trip: self.trip)
+        
+        if let invalidSite = Validate.checkMultipleSites(forSite: location, inTrip: self.trip) {
+            let alertController = UIAlertController(title: "Duplicate Location", message: "You've already added \(invalidSite)", preferredStyle: .alert)
+            let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(okButton)
+            self.present(alertController, animated: true, completion: nil)
+            collectionView.deselectItem(at: indexPath, animated: true)
+        } else {
+            let stop = SiteStop(name: location.title!, site: location)
+            RealmWrite.add(siteStop: stop, trip: self.trip)
+        }
+        
+        
+        
+        
         for place in trip.siteStops{
             print(place.name)
         }
         sitesSelected += 1
     }
     
-    //cells only selectable once
-    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        if self.selectedCells.contains(indexPath){
-            return false
-        }
-        else{
-            self.selectedCells.append(indexPath)
-            return true
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        if self.selectedCells.contains(indexPath){
-            return false
-        } else {
-            return true
-        }
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! DestinationCell
+        RealmDelete.siteStop(siteTitle: cell.siteName.text!, trip: self.trip)
     }
     
     
