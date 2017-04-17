@@ -52,7 +52,7 @@ class TripsVC : UITableViewController{
         let cell = tableView.dequeueReusableCell(withIdentifier: "labelCell") as! TripLabelCell
         if let trips = self.trips{
             if trips[indexPath.row].tripName == "" {
-                cell.tripName.text! = "Trip"
+                cell.tripName.text! = "Trip (No Name)"
                 cell.accessoryType = .none
             } else {
                 cell.tripName.text! = trips[indexPath.row].tripName

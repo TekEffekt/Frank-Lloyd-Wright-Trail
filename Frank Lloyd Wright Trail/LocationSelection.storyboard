@@ -138,14 +138,13 @@
                                     <outlet property="delegate" destination="0Vr-b5-rlz" id="NwS-3l-JtK"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j3T-Hq-UdQ">
-                                <rect key="frame" x="9" y="0.0" width="137" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j3T-Hq-UdQ">
+                                <rect key="frame" x="5" y="0.0" width="67" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="miles away" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sfL-Is-rUx">
-                                <rect key="frame" x="280" y="-2" width="83" height="30"/>
+                                <rect key="frame" x="284" y="0.0" width="83" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -153,15 +152,16 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="8yk-zY-5xL" firstAttribute="top" secondItem="sfL-Is-rUx" secondAttribute="bottom" constant="2" id="6IW-CN-qR1"/>
-                            <constraint firstItem="8yk-zY-5xL" firstAttribute="top" secondItem="sfL-Is-rUx" secondAttribute="bottom" constant="2" id="LhZ-DM-vRA"/>
-                            <constraint firstItem="sfL-Is-rUx" firstAttribute="top" secondItem="MgU-cQ-iSK" secondAttribute="topMargin" constant="-2" id="NYj-N1-Yki"/>
+                            <constraint firstItem="8yk-zY-5xL" firstAttribute="top" secondItem="j3T-Hq-UdQ" secondAttribute="bottom" id="4PE-bN-nhR"/>
                             <constraint firstItem="8yk-zY-5xL" firstAttribute="top" secondItem="TAP-Wq-Syg" secondAttribute="bottom" constant="30" id="Qez-Lf-Mbj"/>
+                            <constraint firstItem="sfL-Is-rUx" firstAttribute="top" secondItem="TAP-Wq-Syg" secondAttribute="bottom" id="Rdf-kQ-QBp"/>
+                            <constraint firstItem="j3T-Hq-UdQ" firstAttribute="top" secondItem="TAP-Wq-Syg" secondAttribute="bottom" id="Sch-rq-z6m"/>
+                            <constraint firstItem="j3T-Hq-UdQ" firstAttribute="leading" secondItem="MgU-cQ-iSK" secondAttribute="leading" constant="5" id="TQo-ee-aQs"/>
                             <constraint firstItem="9An-e4-YS4" firstAttribute="top" secondItem="8yk-zY-5xL" secondAttribute="bottom" id="UgL-so-0cT"/>
                             <constraint firstItem="8yk-zY-5xL" firstAttribute="leading" secondItem="MgU-cQ-iSK" secondAttribute="leading" id="aNI-UQ-rG7"/>
-                            <constraint firstItem="sfL-Is-rUx" firstAttribute="top" secondItem="MgU-cQ-iSK" secondAttribute="top" constant="-2" id="ceM-oC-zhU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sfL-Is-rUx" secondAttribute="trailing" id="ga9-gn-5mE"/>
+                            <constraint firstItem="8yk-zY-5xL" firstAttribute="top" secondItem="sfL-Is-rUx" secondAttribute="bottom" id="gcC-q2-E8c"/>
                             <constraint firstAttribute="trailing" secondItem="8yk-zY-5xL" secondAttribute="trailing" id="k3j-ci-Rh4"/>
-                            <constraint firstAttribute="trailing" secondItem="sfL-Is-rUx" secondAttribute="trailing" constant="20" id="q5h-G5-skV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="vtq-UO-h9A"/>

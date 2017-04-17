@@ -142,13 +142,6 @@ class TimelineVC: UIViewController {
             print("Not Enough Time for Trip")
         }
     }
-    
-    
-    override var prefersStatusBarHidden : Bool {
-        return true
-    }
-    
-    
 
 }
 

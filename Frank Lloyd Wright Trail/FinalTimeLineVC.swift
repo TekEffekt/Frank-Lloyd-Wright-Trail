@@ -153,14 +153,10 @@ class FinalTimeLineVC: UIViewController {
         //self.navigationItem.rightBarButtonItem = button
     }
     
-    //    func doneSelected(sender: UIBarButtonItem){
-    //        performSegueWithIdentifier("segueToFinal", sender: nil)
-    //    }
+    
+ 
     
     
-    override var prefersStatusBarHidden : Bool {
-        return true
-    }
     
     
     
