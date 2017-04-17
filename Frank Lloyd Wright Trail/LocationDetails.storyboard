@@ -73,7 +73,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WkP-b0-o4p">
-                                <rect key="frame" x="0.0" y="334" width="375" height="284"/>
+                                <rect key="frame" x="0.0" y="317" width="375" height="301"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -81,7 +81,7 @@
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dFf-s3-ni7" userLabel="LabelsView">
-                                <rect key="frame" x="0.0" y="237" width="375" height="92"/>
+                                <rect key="frame" x="0.0" y="237" width="375" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rr1-dr-L91">
                                         <rect key="frame" x="10" y="0.0" width="365" height="34"/>
@@ -94,14 +94,14 @@
                                                 <attributes>
                                                     <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <font key="NSFont" size="18" name="HelveticaNeue-Medium"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nnw-TM-pwc">
-                                        <rect key="frame" x="10" y="34" width="365" height="56"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nnw-TM-pwc">
+                                        <rect key="frame" x="10" y="34" width="365" height="39"/>
                                         <color key="backgroundColor" red="0.65098039215686276" green="0.098039215686274508" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Label">
@@ -124,7 +124,7 @@
                                     <constraint firstItem="rr1-dr-L91" firstAttribute="leading" secondItem="dFf-s3-ni7" secondAttribute="leading" constant="10" id="hXs-dW-TrQ"/>
                                     <constraint firstAttribute="bottom" secondItem="Nnw-TM-pwc" secondAttribute="bottom" constant="2" id="hbD-em-giR"/>
                                     <constraint firstItem="Nnw-TM-pwc" firstAttribute="leading" secondItem="dFf-s3-ni7" secondAttribute="leading" constant="10" id="k4b-xQ-nLi"/>
-                                    <constraint firstAttribute="height" constant="92" id="oXZ-y5-cqE"/>
+                                    <constraint firstAttribute="height" constant="75" id="oXZ-y5-cqE"/>
                                     <constraint firstAttribute="trailing" secondItem="Nnw-TM-pwc" secondAttribute="trailing" id="xb3-Kg-TYU"/>
                                     <constraint firstItem="Nnw-TM-pwc" firstAttribute="leading" secondItem="dFf-s3-ni7" secondAttribute="leading" constant="10" id="zpD-oJ-Sr2"/>
                                 </constraints>

@@ -33,7 +33,7 @@ class DetailViewController: UIViewController,NYTPhotosViewControllerDelegate, UI
         
         displayDetailAnnotation(viaSegue)
         super.viewDidLoad()
-        
+        siteTitle.adjustsFontSizeToFitWidth = true
         
     }
     
