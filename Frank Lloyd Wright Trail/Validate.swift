@@ -49,6 +49,10 @@ class Validate {
             if siteStartDate.isGreaterThanDate(siteEndDate) {
                 return "\(siteStop.name!)'s tour start time is after the end time."
             }
+            
+            if !DateHelp.isInSameDay(siteStartDate, siteEndDate) {
+                return "\(siteStop.name!)'s tour start date and end date must be on the same day"
+            }
         }
         
         return nil

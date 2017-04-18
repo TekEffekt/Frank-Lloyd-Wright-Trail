@@ -245,7 +245,13 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
         //validate all stops date entries
         if let error = Validate.siteStops(forTrip: trip) {
             let charset = CharacterSet(charactersIn: "is after")
+            let secondcharset = CharacterSet(charactersIn: "same day")
             if error.rangeOfCharacter(from: charset) == nil {
+                let alertController = UIAlertController(title: "Invalid Date Entry", message: error, preferredStyle: .alert)
+                let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(okButton)
+                self.present(alertController, animated: true, completion: nil)
+            } else if error.rangeOfCharacter(from: secondcharset) == nil {
                 let alertController = UIAlertController(title: "Invalid Date Entry", message: error, preferredStyle: .alert)
                 let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alertController.addAction(okButton)
