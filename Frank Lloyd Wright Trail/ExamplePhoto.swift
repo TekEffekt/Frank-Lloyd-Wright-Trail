@@ -11,7 +11,7 @@ import UIKit
 import NYTPhotoViewer
 
 // creates object that uses NYTPhoto protocal
-class ExamplePhoto:NSObject ,NYTPhoto{
+class ExamplePhoto:NSObject,NYTPhoto{
     
 
     var image: UIImage?

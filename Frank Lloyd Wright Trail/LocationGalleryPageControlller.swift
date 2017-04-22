@@ -9,8 +9,18 @@
 import UIKit
 import MapKit
 import NYTPhotoViewer
-class LocationGalleryPageControlller: UIPageViewController, UIPageViewControllerDataSource, NYTPhotosViewControllerDelegate {
-
+class LocationGalleryPageControlller: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, NYTPhotosViewControllerDelegate {
+   
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        for view in self.view.subviews {
+            if view is UIScrollView {
+                view.frame = UIScreen.main.bounds
+            } else if view is UIPageControl {
+                view.backgroundColor = UIColor.clear
+            }
+        }
+    }
     // var to take value from segue sent by DetailViewController
     var picture: MKAnnotationView!
     
@@ -31,57 +41,58 @@ class LocationGalleryPageControlller: UIPageViewController, UIPageViewController
 
     
     override func viewDidAppear(_ animated: Bool) {
-        
+        self.delegate = self
+        self.dataSource = self
         // for loop that creates 3 LocationGalleryImageControllers, one for each picture in the sites
         // sets nytphoto to current annotation being view by using its latitude
-        for i in 0...2 {
+        for i in 0...6 {
             let controller = storyboard?.instantiateViewController(withIdentifier: "LocationGalleryImageController") as! LocationGalleryImageController
             
             switch  picture.annotation!.coordinate.latitude{
             case 43.3334718:
-                if site8[i] != nil {
+                if i < site8.count {
                     controller.nytphoto = 43.3334718
                     controller.image = site8[i]
                     imageControllers.append(controller)
                 }
             case 43.1439006:
-                if site7[i] != nil {
+                if i < site7.count {
                     controller.nytphoto = 43.1192397
                     controller.image = site7[i]
                     imageControllers.append(controller)
                 }
             case 42.7152375:
-                if site1[i] != nil {
+                if i < site1.count{
                     controller.nytphoto = 42.7152375
                     controller.image = site1[i]
                     imageControllers.append(controller)
                 }
             case 42.784472:
-                if site2[i] != nil {
+                if i < site2.count {
                     controller.nytphoto = 42.784472
                     controller.image = site2[i]
                     imageControllers.append(controller)
                 }
             case 43.0105838:
-                if site3[i] != nil {
+                if i < site3.count {
                     controller.nytphoto = 43.0105838
                     controller.image = site3[i]
                     imageControllers.append(controller)
                 }
             case 43.0717445:
-                if site4[i] != nil {
+                if i < site4.count {
                     controller.nytphoto = 43.0717445
                     controller.image = site4[i]
                     imageControllers.append(controller)
                 }
             case 43.0757361:
-                if site5[i] != nil {
+                if i < site5.count {
                     controller.nytphoto = 43.0757361
                     controller.image = site5[i]
                     imageControllers.append(controller)
                 }
             case 43.1192675:
-                if site6[i] != nil {
+                if i < site6.count {
                     controller.nytphoto = 43.1439006
                     controller.image = site6[i]
                     imageControllers.append(controller)
@@ -98,8 +109,7 @@ class LocationGalleryPageControlller: UIPageViewController, UIPageViewController
                                animated: false,
                                completion: nil)
         }
-        
-        self.dataSource = self
+       
     }
     
     func pageViewController(_ pageViewController: UIPageViewController,
@@ -143,12 +153,21 @@ class LocationGalleryPageControlller: UIPageViewController, UIPageViewController
         return imageControllers[nextIndex]
     }
     
-    ///func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
-    ///    return imageControllers.count
-    ///}
+    override func viewDidLoad() {
+   
+        
+    }
     
-    ///func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-    ///    return 0
-    ///}
+    
+    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+        return imageControllers.count
+    }
+    
+    public func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
+        guard let firstViewController = imageControllers.first, let firstViewControllerIndex = imageControllers.index(of: firstViewController) else {
+            return 0
+        }
+        return firstViewControllerIndex
+    }
 }
 

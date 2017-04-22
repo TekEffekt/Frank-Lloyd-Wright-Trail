@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7A7EF2C91016A4A138C8C9A486609787"
+               BlueprintIdentifier = "F798FDB767B15156E5AFF10AC7ED4944"
                BuildableName = "Pods_Frank_Lloyd_Wright_Trail.framework"
                BlueprintName = "Pods-Frank Lloyd Wright Trail"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7A7EF2C91016A4A138C8C9A486609787"
+            BlueprintIdentifier = "F798FDB767B15156E5AFF10AC7ED4944"
             BuildableName = "Pods_Frank_Lloyd_Wright_Trail.framework"
             BlueprintName = "Pods-Frank Lloyd Wright Trail"
             ReferencedContainer = "container:Pods.xcodeproj">
