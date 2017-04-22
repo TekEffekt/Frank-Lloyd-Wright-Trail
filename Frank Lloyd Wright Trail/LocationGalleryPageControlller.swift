@@ -9,8 +9,18 @@
 import UIKit
 import MapKit
 import NYTPhotoViewer
-class LocationGalleryPageControlller: UIPageViewController, UIPageViewControllerDataSource, NYTPhotosViewControllerDelegate {
-
+class LocationGalleryPageControlller: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, NYTPhotosViewControllerDelegate {
+   
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        for view in self.view.subviews {
+            if view is UIScrollView {
+                view.frame = UIScreen.main.bounds
+            } else if view is UIPageControl {
+                view.backgroundColor = UIColor.clear
+            }
+        }
+    }
     // var to take value from segue sent by DetailViewController
     var picture: MKAnnotationView!
     
@@ -31,7 +41,8 @@ class LocationGalleryPageControlller: UIPageViewController, UIPageViewController
 
     
     override func viewDidAppear(_ animated: Bool) {
-        
+        self.delegate = self
+        self.dataSource = self
         // for loop that creates 3 LocationGalleryImageControllers, one for each picture in the sites
         // sets nytphoto to current annotation being view by using its latitude
         for i in 0...6 {
@@ -40,67 +51,51 @@ class LocationGalleryPageControlller: UIPageViewController, UIPageViewController
             switch  picture.annotation!.coordinate.latitude{
             case 43.3334718:
                 if i < site8.count {
-                    if site8[i] != nil {
-                        controller.nytphoto = 43.3334718
-                        controller.image = site8[i]
-                        imageControllers.append(controller)
-                    }
+                    controller.nytphoto = 43.3334718
+                    controller.image = site8[i]
+                    imageControllers.append(controller)
                 }
             case 43.1439006:
                 if i < site7.count {
-                    if site7[i] != nil {
-                        controller.nytphoto = 43.1192397
-                        controller.image = site7[i]
-                        imageControllers.append(controller)
-                    }
+                    controller.nytphoto = 43.1192397
+                    controller.image = site7[i]
+                    imageControllers.append(controller)
                 }
             case 42.7152375:
-                if i < site1.count {
-                    if site1[i] != nil {
-                        controller.nytphoto = 42.7152375
-                        controller.image = site1[i]
-                        imageControllers.append(controller)
-                    }
+                if i < site1.count{
+                    controller.nytphoto = 42.7152375
+                    controller.image = site1[i]
+                    imageControllers.append(controller)
                 }
             case 42.784472:
                 if i < site2.count {
-                    if site2[i] != nil {
-                        controller.nytphoto = 42.784472
-                        controller.image = site2[i]
-                        imageControllers.append(controller)
-                    }
+                    controller.nytphoto = 42.784472
+                    controller.image = site2[i]
+                    imageControllers.append(controller)
                 }
             case 43.0105838:
                 if i < site3.count {
-                    if site3[i] != nil {
-                        controller.nytphoto = 43.0105838
-                        controller.image = site3[i]
-                        imageControllers.append(controller)
-                    }
+                    controller.nytphoto = 43.0105838
+                    controller.image = site3[i]
+                    imageControllers.append(controller)
                 }
             case 43.0717445:
                 if i < site4.count {
-                    if site4[i] != nil {
-                        controller.nytphoto = 43.0717445
-                        controller.image = site4[i]
-                        imageControllers.append(controller)
-                    }
+                    controller.nytphoto = 43.0717445
+                    controller.image = site4[i]
+                    imageControllers.append(controller)
                 }
             case 43.0757361:
                 if i < site5.count {
-                    if site5[i] != nil {
-                        controller.nytphoto = 43.0757361
-                        controller.image = site5[i]
-                        imageControllers.append(controller)
-                    }
+                    controller.nytphoto = 43.0757361
+                    controller.image = site5[i]
+                    imageControllers.append(controller)
                 }
             case 43.1192675:
                 if i < site6.count {
-                    if site6[i] != nil {
-                        controller.nytphoto = 43.1439006
-                        controller.image = site6[i]
-                        imageControllers.append(controller)
-                    }
+                    controller.nytphoto = 43.1439006
+                    controller.image = site6[i]
+                    imageControllers.append(controller)
                 }
             default:
                 break
@@ -114,8 +109,7 @@ class LocationGalleryPageControlller: UIPageViewController, UIPageViewController
                                animated: false,
                                completion: nil)
         }
-        
-        self.dataSource = self
+       
     }
     
     func pageViewController(_ pageViewController: UIPageViewController,
@@ -159,12 +153,21 @@ class LocationGalleryPageControlller: UIPageViewController, UIPageViewController
         return imageControllers[nextIndex]
     }
     
-//    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
-//        return imageControllers.count
-//    }
-//    
-//    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-//       return 0
-//    }
+    override func viewDidLoad() {
+   
+        
+    }
+    
+    
+    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+        return imageControllers.count
+    }
+    
+    public func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
+        guard let firstViewController = imageControllers.first, let firstViewControllerIndex = imageControllers.index(of: firstViewController) else {
+            return 0
+        }
+        return firstViewControllerIndex
+    }
 }
 

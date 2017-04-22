@@ -36,7 +36,7 @@ class LocationGalleryImageController: UIViewController, NYTPhotoViewControllerDe
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         // UITapGestureRecognizer to display the correct [Example] photo
 
         let imageTapped = UITapGestureRecognizer(target: self, action: #selector(LocationGalleryImageController.tapped))
@@ -55,33 +55,57 @@ class LocationGalleryImageController: UIViewController, NYTPhotoViewControllerDe
         self.setNeedsStatusBarAppearanceUpdate()
     }
     
+    func currentPhoto(photo: [ExamplePhoto]) -> Int{
+    
+        let comparedPhoto = UIImagePNGRepresentation(self.galleryImage.image!)
+        for i in 0..<photo.count {
+        
+            let data = UIImagePNGRepresentation(photo[i].image!)
+            if let photoNYT = data, let compareTo = comparedPhoto {
+             
+                if photoNYT.elementsEqual(compareTo){
+                 return i
+                }
+            }
+        }
+        return 0
+    }
+    
     // switch statment to select correct photos
     func tapped(){
         
         switch  nytphoto!{
         case 43.0105838:
-            let photosViewController = NYTPhotosViewController(photos: self.photos7)
+            let index = currentPhoto(photo: photos7)
+            let photosViewController = NYTPhotosViewController(photos: photos7, initialPhoto: photos7[index])
             present(photosViewController, animated: true, completion: nil)
         case 43.1192397:
-            let photosViewController = NYTPhotosViewController(photos: self.photos8)
+            let index = currentPhoto(photo: photos8)
+            let photosViewController = NYTPhotosViewController(photos: photos8, initialPhoto: photos8[index])
             present(photosViewController, animated: true, completion: nil)
         case 42.7152375:
-            let photosViewController = NYTPhotosViewController(photos: self.photos1)
-                present(photosViewController, animated: true, completion: nil)
+            let index = currentPhoto(photo: photos1)
+            let photosViewController = NYTPhotosViewController(photos: photos1, initialPhoto: photos1[index])
+            present(photosViewController, animated: true, completion: nil)
         case 42.784472:
-            let photosViewController = NYTPhotosViewController(photos: self.photos2)
+            let index = currentPhoto(photo: photos2)
+            let photosViewController = NYTPhotosViewController(photos: photos2, initialPhoto: photos2[index])
             present(photosViewController, animated: true, completion: nil)
         case 43.0717445:
-            let photosViewController = NYTPhotosViewController(photos: self.photos3)
+            let index = currentPhoto(photo: photos3)
+            let photosViewController = NYTPhotosViewController(photos: photos3, initialPhoto: photos3[index])
             present(photosViewController, animated: true, completion: nil)
         case 43.0757361:
-            let photosViewController = NYTPhotosViewController(photos: self.photos4)
+            let index = currentPhoto(photo: photos4)
+            let photosViewController = NYTPhotosViewController(photos: photos4, initialPhoto: photos4[index])
             present(photosViewController, animated: true, completion: nil)
         case 43.1439006:
-            let photosViewController = NYTPhotosViewController(photos: self.photos5)
+            let index = currentPhoto(photo: photos5)
+            let photosViewController = NYTPhotosViewController(photos: photos5, initialPhoto: photos5[index])
             present(photosViewController, animated: true, completion: nil)
         case 43.3334718:
-            let photosViewController = NYTPhotosViewController(photos: self.photos6)
+            let index = currentPhoto(photo: photos6)
+            let photosViewController = NYTPhotosViewController(photos: photos6, initialPhoto: photos6[index])
             present(photosViewController, animated: true, completion: nil)
         default :
             break
