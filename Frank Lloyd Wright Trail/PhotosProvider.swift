@@ -231,5 +231,7 @@ class PhotosProvider: NSObject {
         return mutablePhotos
     }()
     
+    
+    
 }
 

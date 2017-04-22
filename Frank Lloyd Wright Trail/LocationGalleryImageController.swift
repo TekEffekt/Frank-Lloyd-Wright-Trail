@@ -60,28 +60,36 @@ class LocationGalleryImageController: UIViewController, NYTPhotoViewControllerDe
         
         switch  nytphoto!{
         case 43.0105838:
-            let photosViewController = NYTPhotosViewController(photos: self.photos7)
+            let initialIndex = galleryImage.tag
+            let photosViewController = NYTPhotosViewController(photos: self.photos7, initialPhoto: self.photos7[initialIndex])
             present(photosViewController, animated: true, completion: nil)
         case 43.1192397:
-            let photosViewController = NYTPhotosViewController(photos: self.photos8)
+            let initialIndex = galleryImage.tag
+            let photosViewController = NYTPhotosViewController(photos: self.photos8, initialPhoto: self.photos8[initialIndex])
             present(photosViewController, animated: true, completion: nil)
         case 42.7152375:
-            let photosViewController = NYTPhotosViewController(photos: self.photos1)
+            let initialIndex = galleryImage.tag
+            let photosViewController = NYTPhotosViewController(photos: self.photos1, initialPhoto: self.photos1[initialIndex])
                 present(photosViewController, animated: true, completion: nil)
         case 42.784472:
-            let photosViewController = NYTPhotosViewController(photos: self.photos2)
+            let initialIndex = galleryImage.tag
+            let photosViewController = NYTPhotosViewController(photos: self.photos2, initialPhoto: self.photos2[initialIndex])
             present(photosViewController, animated: true, completion: nil)
         case 43.0717445:
-            let photosViewController = NYTPhotosViewController(photos: self.photos3)
+            let initialIndex = galleryImage.tag
+            let photosViewController = NYTPhotosViewController(photos: self.photos3, initialPhoto: self.photos3[initialIndex])
             present(photosViewController, animated: true, completion: nil)
         case 43.0757361:
-            let photosViewController = NYTPhotosViewController(photos: self.photos4)
+            let initialIndex = galleryImage.tag
+            let photosViewController = NYTPhotosViewController(photos: self.photos4, initialPhoto: self.photos4[initialIndex])
             present(photosViewController, animated: true, completion: nil)
         case 43.1439006:
-            let photosViewController = NYTPhotosViewController(photos: self.photos5)
+            let initialIndex = galleryImage.tag
+            let photosViewController = NYTPhotosViewController(photos: self.photos5, initialPhoto: self.photos5[initialIndex])
             present(photosViewController, animated: true, completion: nil)
         case 43.3334718:
-            let photosViewController = NYTPhotosViewController(photos: self.photos6)
+            let initialIndex = galleryImage.tag
+            let photosViewController = NYTPhotosViewController(photos: self.photos6, initialPhoto: self.photos6[initialIndex])
             present(photosViewController, animated: true, completion: nil)
         default :
             break

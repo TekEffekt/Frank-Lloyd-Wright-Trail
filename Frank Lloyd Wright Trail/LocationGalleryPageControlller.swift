@@ -145,6 +145,8 @@ class LocationGalleryPageControlller: UIPageViewController, UIPageViewController
             return nil
         }
         
+        imageControllers[viewControllerIndex].galleryImage.tag = viewControllerIndex
+        
         let nextIndex = viewControllerIndex + 1
         let orderedViewControllersCount = imageControllers.count
         
@@ -159,12 +161,5 @@ class LocationGalleryPageControlller: UIPageViewController, UIPageViewController
         return imageControllers[nextIndex]
     }
     
-//    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
-//        return imageControllers.count
-//    }
-//    
-//    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-//       return 0
-//    }
 }
 
