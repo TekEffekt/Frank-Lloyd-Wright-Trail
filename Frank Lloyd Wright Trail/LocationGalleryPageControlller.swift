@@ -20,14 +20,15 @@ class LocationGalleryPageControlller: UIPageViewController, UIPageViewController
     var sites = Site.getSites()
     
     // organize the site photos for displaying
-    var site1:[UIImage?] = [#imageLiteral(resourceName: "scjohnson"), #imageLiteral(resourceName: "scjohnson2"), #imageLiteral(resourceName: "scjohnson3"), #imageLiteral(resourceName: "scjohnson4")]
-    var site2:[UIImage?] = [#imageLiteral(resourceName: "wingspread"), #imageLiteral(resourceName: "wingspread2"), #imageLiteral(resourceName: "wingspread3"), #imageLiteral(resourceName: "wingspread4"), #imageLiteral(resourceName: "wingspread5")]
-    var site4:[UIImage?] = [#imageLiteral(resourceName: "mononaterrace"), #imageLiteral(resourceName: "mononaterrace2"), #imageLiteral(resourceName: "mononaterrace3"), #imageLiteral(resourceName: "mononaterrace4"), #imageLiteral(resourceName: "mononaterrace5"), #imageLiteral(resourceName: "mononaterrace6"), #imageLiteral(resourceName: "mononaterrace7")]
-    var site5:[UIImage?] = [#imageLiteral(resourceName: "meetinghouse"), #imageLiteral(resourceName: "meetinghouse2"), #imageLiteral(resourceName: "meetinghouse3"), #imageLiteral(resourceName: "meetinghouse4"), #imageLiteral(resourceName: "meetinghouse5"), #imageLiteral(resourceName: "meetinghouse7")]
-    var site6:[UIImage?] = [#imageLiteral(resourceName: "visitorcenter"), #imageLiteral(resourceName: "visitorcenter2"), #imageLiteral(resourceName: "visitorcenter3"), #imageLiteral(resourceName: "visitorcenter4"), #imageLiteral(resourceName: "visitorcenter5"), #imageLiteral(resourceName: "visitorcenter6")]
-    var site8:[UIImage?] = [#imageLiteral(resourceName: "warehouse"), #imageLiteral(resourceName: "warehouse2"), #imageLiteral(resourceName: "warehouse3"), #imageLiteral(resourceName: "warehouse4"), #imageLiteral(resourceName: "warehouse5")]
-    var site3:[UIImage?] = [#imageLiteral(resourceName: "asbh"), #imageLiteral(resourceName: "asbh2"), #imageLiteral(resourceName: "asbh3"), #imageLiteral(resourceName: "asbh4"), #imageLiteral(resourceName: "asbh5"), #imageLiteral(resourceName: "asbh6"), #imageLiteral(resourceName: "asbh7")]
-    var site7:[UIImage?] = [#imageLiteral(resourceName: "wyoming"), #imageLiteral(resourceName: "wyoming2"), #imageLiteral(resourceName: "wyoming3"), #imageLiteral(resourceName: "wyoming4")]
+    var site1:[UIImage?] = [#imageLiteral(resourceName: "scjohnson"), #imageLiteral(resourceName: "scjohnson2"), #imageLiteral(resourceName: "scjohnson3")]
+    var site2:[UIImage?] = [#imageLiteral(resourceName: "wingspread"), #imageLiteral(resourceName: "wingspread2"), #imageLiteral(resourceName: "wingspread3")]
+    var site4:[UIImage?] = [#imageLiteral(resourceName: "mononaterrace"), #imageLiteral(resourceName: "mononaterrace2"), #imageLiteral(resourceName: "mononaterrace3"), #imageLiteral(resourceName: "mononaterrace4")]
+    var site5:[UIImage?] = [#imageLiteral(resourceName: "meetinghouse"), #imageLiteral(resourceName: "meetinghouse2"), #imageLiteral(resourceName: "meetinghouse3")]
+    var site6:[UIImage?] = [#imageLiteral(resourceName: "visitorcenter"), #imageLiteral(resourceName: "visitorcenter2"), #imageLiteral(resourceName: "visitorcenter3")]
+    var site8:[UIImage?] = [#imageLiteral(resourceName: "warehouse"), #imageLiteral(resourceName: "warehouse2"), #imageLiteral(resourceName: "warehouse3")]
+    var site3:[UIImage?] = [#imageLiteral(resourceName: "asbh"), #imageLiteral(resourceName: "asbh2"), #imageLiteral(resourceName: "asbh3"), #imageLiteral(resourceName: "asbh4")
+        , #imageLiteral(resourceName: "asbh5")]
+    var site7:[UIImage?] = [#imageLiteral(resourceName: "wyoming"), #imageLiteral(resourceName: "wyoming2"), #imageLiteral(resourceName: "wyoming3")]
 
     
     override func viewDidAppear(_ animated: Bool) {

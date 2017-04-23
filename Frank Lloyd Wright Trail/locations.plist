@@ -18,7 +18,12 @@
 		<key>title</key>
 		<string>SC Johnson Administration Building</string>
 		<key>details</key>
-		<string>SC Johnson Administration BuildingDesigned by Frank Lloyd Wright and opened in 1939, the SC Johnson Administration Building is celebrated as one of the top 25 buildings of the 20th century. From its 43 miles of Pyrex glass tubing to the dendriform columns soaring in the Great Workroom, it is truly a unique work of art that reflects the innovation and adventure that are still the spirit of SC Johnson today. The Administration Building is the only Frank Lloyd Wright commercial building still in use today.SC Johnson Research TowerThe Research Tower was Frank Lloyd Wright’s vision of a vertical complement to the Administration Building. Opened in 1950, the Research Tower is one of the tallest structures ever built on the cantilever principle. It stands 153 feet tall and its central core, which is 13 feet in diameter, extends 54 feet into the ground. All 15 floors of the Research Tower are supported by the “taproot” core, much like a tree supports its branches. In 2013, the Research Tower went through an extensive 12-month restoration, which involved both exterior and interior updates. The Research Tower was opened to the public for the first time in spring 2014. </string>
+		<string>SC Johnson Administration Building
+Designed by Frank Lloyd Wright and opened in 1939, the SC Johnson Administration Building is celebrated as one of the top 25 buildings of the 20th century. From its 43 miles of Pyrex glass tubing to the dendriform columns soaring in the Great Workroom, it is truly a unique work of art that reflects the innovation and adventure that are still the spirit of SC Johnson today. The Administration Building is the only Frank Lloyd Wright commercial building still in use today.
+
+SC Johnson Research Tower
+The Research Tower was Frank Lloyd Wright’s vision of a vertical complement to the Administration Building. Opened in 1950, the Research Tower is one of the tallest structures ever built on the cantilever principle. It stands 153 feet tall and its central core, which is 13 feet in diameter, extends 54 feet into the ground. All 15 floors of the Research Tower are supported by the “taproot” core, much like a tree supports its branches. In 2013, the Research Tower went through an extensive 12-month restoration, which involved both exterior and interior updates. The Research Tower was opened to the public for the first time in spring 2014. 
+</string>
 		<key>imageName</key>
 		<string>scjohnson</string>
 	</dict>
@@ -58,7 +63,10 @@
 		<key>title</key>
 		<string>American System Built Homes</string>
 		<key>details</key>
-		<string>In a 1901 speech entitled, “The Art and Craft of the Machine,” Wright outlined his vision of affordable housing. He asserted that the home would have to go to the factory, instead of the skilled labor coming to the building site. Between 1915 and 1917 Wright designed a series of standardized &quot;system-built&quot; homes, known today as the American System-Built Homes. By system-built, he did not mean pre-fabrication off-site, but rather a system that involved cutting the lumber and other materials in a mill or factory, then bringing them to the site for assembly. This system would save material waste and a substantial fraction of the wages paid to skilled tradesmen. Wright produced 966 working drawings and sketches of various designs for the system. Six examples were constructed, still standing, on West Burnham Street and Layton Boulevard in Milwaukee, Wisconsin. Other examples were constructed on scattered sites throughout the Midwest with a few yet to be discovered.</string>
+		<string>In a 1901 speech entitled, “The Art and Craft of the Machine,” Wright outlined his vision of affordable housing. He asserted that the home would have to go to the factory, instead of the skilled labor coming to the building site. Between 1915 and 1917 Wright designed a series of standardized &quot;system-built&quot; homes, known today as the American System-Built Homes. By system-built, he did not mean pre-fabrication off-site, but rather a system that involved cutting the lumber and other materials in a mill or factory, then bringing them to the site for assembly. 
+
+This system would save material waste and a substantial fraction of the wages paid to skilled tradesmen. Wright produced 966 working drawings and sketches of various designs for the system. Six examples were constructed, still standing, on West Burnham Street and Layton Boulevard in Milwaukee, Wisconsin. Other examples were constructed on scattered sites throughout the Midwest with a few yet to be discovered.
+</string>
 		<key>imageName</key>
 		<string>asbh</string>
 	</dict>
@@ -70,7 +78,8 @@
 		<key>website</key>
 		<string>https://www.mononaterrace.com/experience-monona-terrace/tours_and_education</string>
 		<key>subtitle</key>
-		<string>Monona Terrace completed in 1997</string>
+		<string>Monona Terrace completed in 1997
+</string>
 		<key>lat</key>
 		<real>43.0717445</real>
 		<key>long</key>
@@ -78,7 +87,10 @@
 		<key>title</key>
 		<string>Monona Terrace</string>
 		<key>details</key>
-		<string>The story of Monona Terrace began in 1938 when renowned architect Frank Lloyd Wright, then at the height of his international fame, first proposed plans for a “dream civic center” in downtown Madison. His visionary project became mired in political battles that polarized Madison for almost 60 years. Wright’s “long awaited dream of a wedding between the city and beautiful Lake Monona” was finally realized in Monona Terrace.Frank Lloyd Wright’s plan, executed after his death by Lead Architect Anthony Puttnam of Taliesin Architects, was inspired by two key elements of the unique site – the nearby State Capitol and the waterfront. Monona Terrace bears Wright’s signature style with dramatic open spaces, breathtaking views of Lake Monona, and curvilinear forms in interior and exterior details. </string>
+		<string>The story of Monona Terrace began in 1938 when renowned architect Frank Lloyd Wright, then at the height of his international fame, first proposed plans for a “dream civic center” in downtown Madison. His visionary project became mired in political battles that polarized Madison for almost 60 years. Wright’s “long awaited dream of a wedding between the city and beautiful Lake Monona” was finally realized in Monona Terrace.
+
+Frank Lloyd Wright’s plan, executed after his death by Lead Architect Anthony Puttnam of Taliesin Architects, was inspired by two key elements of the unique site – the nearby State Capitol and the waterfront. Monona Terrace bears Wright’s signature style with dramatic open spaces, breathtaking views of Lake Monona, and curvilinear forms in interior and exterior details. 
+</string>
 		<key>imageName</key>
 		<string>mononaterrace</string>
 	</dict>
@@ -118,7 +130,8 @@
 		<key>title</key>
 		<string>Talisesin and Frank Lloyd Wright Visitor Center</string>
 		<key>details</key>
-		<string>Taliesin is the home, studio, school, and 800-acre agricultural estate of architect Frank Lloyd Wright. Wright built Taliesin on his favorite boyhood hill in the Wisconsin River valley homesteaded by his Welsh grandparents. The estate was his laboratory of organic architecture, with designs from nearly every decade of Wright’s life. The Taliesin residence is the heart of these buildings that Wright designed from 1897 to 1959, including the Romeo &amp; Juliet Windmill, Hillside School, Tan-y-Deri, Midway Barn, and the Frank Lloyd Wright Visitor Center.</string>
+		<string>Taliesin is the home, studio, school, and 800-acre agricultural estate of architect Frank Lloyd Wright. Wright built Taliesin on his favorite boyhood hill in the Wisconsin River valley homesteaded by his Welsh grandparents. The estate was his laboratory of organic architecture, with designs from nearly every decade of Wright’s life. The Taliesin residence is the heart of these buildings that Wright designed from 1897 to 1959, including the Romeo &amp; Juliet Windmill, Hillside School, Tan-y-Deri, Midway Barn, and the Frank Lloyd Wright Visitor Center.
+</string>
 		<key>imageName</key>
 		<string>visitorcenter</string>
 	</dict>
@@ -138,7 +151,8 @@
 		<key>title</key>
 		<string>Wyoming Valley School</string>
 		<key>details</key>
-		<string>Wyoming Valley School Cultural Arts Center is a nonprofit organization that promotes the arts and culture of the surrounding region by opening the dynamic architecture of Wyoming Valley School to provide incomparable spaces for workshops, performances, lectures, and exhibits for all ages. It also offers space for private functions such as weddings, banquets, business meetings, or other events. Its mission is to maintain and preserve this architectural gem for the continued benefit of and use by the community. Wyoming Valley School is listed on state and national registers of historic places and is located three miles from Wright&apos;s home, Taliesin, in rural Spring Green, Wisconsin.</string>
+		<string>Wyoming Valley School Cultural Arts Center is a nonprofit organization that promotes the arts and culture of the surrounding region by opening the dynamic architecture of Wyoming Valley School to provide incomparable spaces for workshops, performances, lectures, and exhibits for all ages. It also offers space for private functions such as weddings, banquets, business meetings, or other events. Its mission is to maintain and preserve this architectural gem for the continued benefit of and use by the community. Wyoming Valley School is listed on state and national registers of historic places and is located three miles from Wright&apos;s home, Taliesin, in rural Spring Green, Wisconsin.
+</string>
 		<key>imageName</key>
 		<string>wyoming</string>
 	</dict>
@@ -158,7 +172,8 @@
 		<key>title</key>
 		<string>A.D. German Warehouse</string>
 		<key>details</key>
-		<string>This massive red brick and concrete building would be impressive in any setting; it is especially so in the small Wisconsin town where Wright was born. Designed in 1915 and constructed between 1917 and 1921 for a local commodity wholesaler, Albert D. German, the four-story warehouse was subsequently used to store sugar, flour, coffee, tobacco and other staples. In the 1970s it was modified to accommodate a gift shop and small theater on the first floor, and an exhibition of large photo murals which illustrate Wright’s architectural work on the second floor. With the demolition of Midway Gardens in Chicago and the Imperial Hotel in Tokyo, it is the only extant example from that decade in which he employed sculptural ornamentation so extensively. The elaborate cast concrete frieze of repeated geometric motifs surrounding the upper portion of the Warehouse foreshadows Wright’s even more extensive integration of structure and ornament in the concrete block residences he designed in the 1920s.</string>
+		<string>This massive red brick and concrete building would be impressive in any setting; it is especially so in the small Wisconsin town where Wright was born. Designed in 1915 and constructed between 1917 and 1921 for a local commodity wholesaler, Albert D. German, the four-story warehouse was subsequently used to store sugar, flour, coffee, tobacco and other staples. In the 1970s it was modified to accommodate a gift shop and small theater on the first floor, and an exhibition of large photo murals which illustrate Wright’s architectural work on the second floor. With the demolition of Midway Gardens in Chicago and the Imperial Hotel in Tokyo, it is the only extant example from that decade in which he employed sculptural ornamentation so extensively. The elaborate cast concrete frieze of repeated geometric motifs surrounding the upper portion of the Warehouse foreshadows Wright’s even more extensive integration of structure and ornament in the concrete block residences he designed in the 1920s.
+</string>
 		<key>imageName</key>
 		<string>warehouse</string>
 	</dict>

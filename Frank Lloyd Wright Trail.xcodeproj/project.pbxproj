@@ -166,6 +166,7 @@
 		217164C81E7C36EC005EF679 /* Helper Classes */ = {
 			isa = PBXGroup;
 			children = (
+				213FC9D81E73573C00BBEFE4 /* FormViewController.swift */,
 				213FC9141E67B88400BBEFE4 /* UIColorExt.swift */,
 				217164C61E7C36CE005EF679 /* CombineDates.swift */,
 				21F452FD1E88740D005B2E17 /* DateHelp.swift */,
@@ -207,7 +208,6 @@
 				FAD304BE1D6F673E00D8CE2F /* Controller */,
 				FAD304C01D6F677D00D8CE2F /* Resources */,
 				FAD304BF1D6F676500D8CE2F /* Supporting Files */,
-				213FC9D81E73573C00BBEFE4 /* FormViewController.swift */,
 			);
 			path = "Frank Lloyd Wright Trail";
 			sourceTree = "<group>";

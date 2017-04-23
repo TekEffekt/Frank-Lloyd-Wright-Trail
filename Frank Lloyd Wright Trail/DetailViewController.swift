@@ -59,11 +59,14 @@ class DetailViewController: UIViewController,NYTPhotosViewControllerDelegate, UI
         
         switch  viaSegue.annotation!.coordinate.latitude{
         case 42.7152375:
-            let plainString = sites[0].details! + "\n\n More Information \n"
+            let plainString = sites[0].details! + "\n\nMore Information \n\nSchedule a Tour \n\nPhone Number: 262-260-2154"
             let attributedString = NSMutableAttributedString(string: plainString)
             let range = (plainString as NSString).range(of: "More Information")
             let webURL = sites[0].infoURL
             attributedString.addAttributes([NSLinkAttributeName: NSURL(string: webURL!)!], range: range)
+            let tourRange = (plainString as NSString).range(of: "Schedule a Tour")
+            let tourURL = sites[0].website
+            attributedString.addAttributes([NSLinkAttributeName: NSURL(string: tourURL!)!], range: tourRange)
             siteDetails.delegate = self
             siteDetails.attributedText = attributedString
             siteDetails.font = UIFont.systemFont(ofSize: 15)
@@ -71,11 +74,14 @@ class DetailViewController: UIViewController,NYTPhotosViewControllerDelegate, UI
             siteSubtitle.text = sites[0].subtitle
             siteTitle.text = sites[0].title
         case 42.784472:
-            let plainString = sites[1].details! + "\n\n More Information \n"
+            let plainString = sites[1].details! + "\n\nMore Information \n\nSchedule a Tour \n\nPhone Number: 262-639-3211"
             let attributedString = NSMutableAttributedString(string: plainString)
             let range = (plainString as NSString).range(of: "More Information")
             let webURL = sites[1].infoURL
             attributedString.addAttributes([NSLinkAttributeName: NSURL(string: webURL!)!], range: range)
+            let tourRange = (plainString as NSString).range(of: "Schedule a Tour")
+            let tourURL = sites[1].website
+            attributedString.addAttributes([NSLinkAttributeName: NSURL(string: tourURL!)!], range: tourRange)
             siteDetails.delegate = self
             siteDetails.attributedText = attributedString
             siteDetails.font = UIFont.systemFont(ofSize: 15)
@@ -83,7 +89,7 @@ class DetailViewController: UIViewController,NYTPhotosViewControllerDelegate, UI
             siteSubtitle.text = sites[1].subtitle
             siteTitle.text = sites[1].title
         case 43.0105838:
-            let plainString = sites[2].details! + "\n\n More Information \n"
+            let plainString = sites[2].details! + "\n\nMore Information \n\nPhone Number: 608-287-0339 \n"
             let attributedString = NSMutableAttributedString(string: plainString)
             let range = (plainString as NSString).range(of: "More Information")
             let webURL = sites[2].infoURL
@@ -96,11 +102,14 @@ class DetailViewController: UIViewController,NYTPhotosViewControllerDelegate, UI
             siteTitle.text = sites[2].title
             
         case 43.0717445:
-            let plainString = sites[3].details! + "\n\n More Information \n"
+            let plainString = sites[3].details! + "\n\nMore Information \n\nSchedule a Tour \n\nPhone Number: 608-261-4000"
             let attributedString = NSMutableAttributedString(string: plainString)
             let range = (plainString as NSString).range(of: "More Information")
             let webURL = sites[3].infoURL
             attributedString.addAttributes([NSLinkAttributeName: NSURL(string: webURL!)!], range: range)
+            let tourRange = (plainString as NSString).range(of: "Schedule a Tour")
+            let tourURL = sites[3].website
+            attributedString.addAttributes([NSLinkAttributeName: NSURL(string: tourURL!)!], range: tourRange)
             siteDetails.delegate = self
             siteDetails.attributedText = attributedString
             siteDetails.font = UIFont.systemFont(ofSize: 15)
@@ -109,11 +118,14 @@ class DetailViewController: UIViewController,NYTPhotosViewControllerDelegate, UI
             siteTitle.text = sites[3].title
             
         case 43.0757361:
-            let plainString = sites[4].details! + "\n\n More Information \n"
+            let plainString = sites[4].details! + "\n\nMore Information \n\nSchedule a Tour \n\nPhone Number: 608-233-9774 \n"
             let attributedString = NSMutableAttributedString(string: plainString)
             let range = (plainString as NSString).range(of: "More Information")
             let webURL = sites[4].infoURL
             attributedString.addAttributes([NSLinkAttributeName: NSURL(string: webURL!)!], range: range)
+            let tourRange = (plainString as NSString).range(of: "Schedule a Tour")
+            let tourURL = sites[4].website
+            attributedString.addAttributes([NSLinkAttributeName: NSURL(string: tourURL!)!], range: tourRange)
             siteDetails.delegate = self
             siteDetails.attributedText = attributedString
             siteDetails.font = UIFont.systemFont(ofSize: 15)
@@ -122,13 +134,16 @@ class DetailViewController: UIViewController,NYTPhotosViewControllerDelegate, UI
             siteTitle.text = sites[4].title
             
         case 43.1192675:
-            let plainString = sites[5].details! + "\n\n More Information \n"
+            let plainString = sites[5].details! + "\n\nMore Information \n\nSchedule a Tour \n\nPhone Number: 877-588-7900"
             let attributedString = NSMutableAttributedString(string: plainString)
             let range = (plainString as NSString).range(of: "More Information")
             let webURL = sites[5].infoURL
             if let url = NSURL(string: webURL!) {
             attributedString.addAttributes([NSLinkAttributeName: url], range: range)
             }
+            let tourRange = (plainString as NSString).range(of: "Schedule a Tour")
+            let tourURL = sites[5].website
+            attributedString.addAttributes([NSLinkAttributeName: NSURL(string: tourURL!)!], range: tourRange)
             siteDetails.delegate = self
             siteDetails.attributedText = attributedString
             siteDetails.font = UIFont.systemFont(ofSize: 15)
@@ -137,7 +152,7 @@ class DetailViewController: UIViewController,NYTPhotosViewControllerDelegate, UI
             siteTitle.text = sites[5].title
             
         case 43.1439006:
-            let plainString = sites[6].details! + "\n\n More Information \n"
+            let plainString = sites[6].details! + "\n\nMore Information \n\nEmail: WyomingValleySchool@gmail.com \n\nPhone Number: 608-588-2544\n"
             let attributedString = NSMutableAttributedString(string: plainString)
             let range = (plainString as NSString).range(of: "More Information")
             let webURL = sites[6].infoURL
@@ -150,11 +165,14 @@ class DetailViewController: UIViewController,NYTPhotosViewControllerDelegate, UI
             siteTitle.text = sites[6].title
             
         case 43.3334718:
-            let plainString = sites[7].details! + "\n\n More Information \n"
+            let plainString = sites[7].details! + "\n\nMore Information \n\nSchedule a Tour \n\nPhone Number: 608-604-5034 \n"
             let attributedString = NSMutableAttributedString(string: plainString)
-            let range = (plainString as NSString).range(of: "More Information")
+            let webRange = (plainString as NSString).range(of: "More Information")
             let webURL = sites[7].infoURL
-            attributedString.addAttributes([NSLinkAttributeName: NSURL(string: webURL!)!], range: range)
+            attributedString.addAttributes([NSLinkAttributeName: NSURL(string: webURL!)!], range: webRange)
+            let tourRange = (plainString as NSString).range(of: "Schedule a Tour")
+            let tourURL = sites[7].website
+            attributedString.addAttributes([NSLinkAttributeName: NSURL(string: tourURL!)!], range: tourRange)
             siteDetails.delegate = self
             siteDetails.attributedText = attributedString
             siteDetails.font = UIFont.systemFont(ofSize: 15)
