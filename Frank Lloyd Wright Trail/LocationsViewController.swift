@@ -27,6 +27,7 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
         centerMapOnLocation(center)
         mapView.showsUserLocation = true
         
+        
         // use this
         //parser = JsonParser(withDelegate: self, locations: sites)
     }
@@ -36,6 +37,7 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
         // setting up the delegate
         locationCollectionVc = childViewControllers.first as! CollectionViewController
         locationCollectionVc.delegate = self
+        drawRoute()
     }
     
     
@@ -45,7 +47,6 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
     }
     
     func loadPins(){
-        let sites = Site.getSites()
         for site in sites {
             let annotation = Pin(lat: site.lat.value!, long: site.lon.value!)
             annotation.title = site.title
@@ -107,5 +108,52 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
             }
         }
     }
+    
+    func drawRoute() {
+        var locationCoordinateArray = [CLLocationCoordinate2D]()
+        for site in sites {
+            let lat = site.lat.value!
+            let lon = site.lon.value!
+            let location = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+            locationCoordinateArray.append(location)
+        }
+        
+        for i in 0..<locationCoordinateArray.count - 1 {
+            
+            let sourcePlacemark = MKPlacemark(coordinate: locationCoordinateArray[i], addressDictionary: nil)
+            let destinationPlacemark = MKPlacemark(coordinate: locationCoordinateArray[i+1], addressDictionary: nil)
+            
+            
+            let request = MKDirectionsRequest()
+            request.source = MKMapItem(placemark: sourcePlacemark)
+            request.destination = MKMapItem(placemark: destinationPlacemark)
+            request.transportType = .automobile
+            
+            let directions = MKDirections(request: request)
+            
+            directions.calculate(completionHandler: { response, error in
+                guard error == nil else {
+                    print(error!)
+                    return
+                }
+                
+                let polyline = response!.routes.first!.polyline
+                 self.mapView.add(polyline)
+                
+            })
+        }
+        
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if (overlay is MKPolyline) {
+            let pr = MKPolylineRenderer(overlay: overlay)
+            pr.strokeColor = UIColor(hexString: "#A6192E")
+            pr.lineWidth = 4
+            return pr
+        }
+        return MKPolylineRenderer()
+    }
+    
 
 }

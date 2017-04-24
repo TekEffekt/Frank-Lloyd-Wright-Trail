@@ -35,7 +35,7 @@ class LocationGalleryPageControlller: UIPageViewController, UIPageViewController
         
         // for loop that creates 3 LocationGalleryImageControllers, one for each picture in the sites
         // sets nytphoto to current annotation being view by using its latitude
-        for i in 0...6 {
+        for i in 0...4 {
             let controller = storyboard?.instantiateViewController(withIdentifier: "LocationGalleryImageController") as! LocationGalleryImageController
             
             switch  picture.annotation!.coordinate.latitude{
@@ -50,7 +50,7 @@ class LocationGalleryPageControlller: UIPageViewController, UIPageViewController
             case 43.1439006:
                 if i < site7.count {
                     if site7[i] != nil {
-                        controller.nytphoto = 43.1192397
+                        controller.nytphoto = 43.1439006
                         controller.image = site7[i]
                         imageControllers.append(controller)
                     }
@@ -98,7 +98,7 @@ class LocationGalleryPageControlller: UIPageViewController, UIPageViewController
             case 43.1192675:
                 if i < site6.count {
                     if site6[i] != nil {
-                        controller.nytphoto = 43.1439006
+                        controller.nytphoto = 43.1192675
                         controller.image = site6[i]
                         imageControllers.append(controller)
                     }
