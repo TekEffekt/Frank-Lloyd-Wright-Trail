@@ -110,38 +110,10 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
     }
     
     func drawRoute() {
-        var locationCoordinateArray = [CLLocationCoordinate2D]()
-        for site in sites {
-            let lat = site.lat.value!
-            let lon = site.lon.value!
-            let location = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-            locationCoordinateArray.append(location)
-        }
         
-        for i in 0..<locationCoordinateArray.count - 1 {
-            
-            let sourcePlacemark = MKPlacemark(coordinate: locationCoordinateArray[i], addressDictionary: nil)
-            let destinationPlacemark = MKPlacemark(coordinate: locationCoordinateArray[i+1], addressDictionary: nil)
-            
-            
-            let request = MKDirectionsRequest()
-            request.source = MKMapItem(placemark: sourcePlacemark)
-            request.destination = MKMapItem(placemark: destinationPlacemark)
-            request.transportType = .automobile
-            
-            let directions = MKDirections(request: request)
-            
-            directions.calculate(completionHandler: { response, error in
-                guard error == nil else {
-                    print(error!)
-                    return
-                }
-                
-                let polyline = response!.routes.first!.polyline
-                 self.mapView.add(polyline)
-                
-            })
-        }
+        guard let locationCoordinateArray = PolylineParser.parseCoordinates() else { return }
+        let polyline = MKPolyline(coordinates: locationCoordinateArray, count: locationCoordinateArray.count)
+        self.mapView.add(polyline)
         
     }
     
