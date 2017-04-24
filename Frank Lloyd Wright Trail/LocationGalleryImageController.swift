@@ -63,7 +63,7 @@ class LocationGalleryImageController: UIViewController, NYTPhotoViewControllerDe
             let initialIndex = galleryImage.tag
             let photosViewController = NYTPhotosViewController(photos: self.photos7, initialPhoto: self.photos7[initialIndex])
             present(photosViewController, animated: true, completion: nil)
-        case 43.1192397:
+        case 43.1439006:
             let initialIndex = galleryImage.tag
             let photosViewController = NYTPhotosViewController(photos: self.photos8, initialPhoto: self.photos8[initialIndex])
             present(photosViewController, animated: true, completion: nil)
@@ -83,7 +83,7 @@ class LocationGalleryImageController: UIViewController, NYTPhotoViewControllerDe
             let initialIndex = galleryImage.tag
             let photosViewController = NYTPhotosViewController(photos: self.photos4, initialPhoto: self.photos4[initialIndex])
             present(photosViewController, animated: true, completion: nil)
-        case 43.1439006:
+        case 43.1192675:
             let initialIndex = galleryImage.tag
             let photosViewController = NYTPhotosViewController(photos: self.photos5, initialPhoto: self.photos5[initialIndex])
             present(photosViewController, animated: true, completion: nil)

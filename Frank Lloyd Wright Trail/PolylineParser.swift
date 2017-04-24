@@ -22,8 +22,6 @@ class PolylineParser {
                     var coordinate2d = CLLocationCoordinate2D()
                     guard var latitude = coordinate["latitude"] as? Double else { return nil }
                     guard var longitude = coordinate["longitude"] as? Double else { return nil }
-                    latitude = latitude.roundTo(places: 5)
-                    longitude = longitude.roundTo(places: 5)
                     coordinate2d.latitude = latitude
                     coordinate2d.longitude = longitude
                     coordinateArray.append(coordinate2d)
