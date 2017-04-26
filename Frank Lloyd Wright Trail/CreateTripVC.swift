@@ -185,7 +185,7 @@ class CreateTripVC : FormViewController, CLLocationManagerDelegate {
         if (indexPath.section != 0 && indexPath.section != 1 && indexPath.row == 1 || indexPath.row == 3){
             
             if indexPath.row == currentRow && indexPath.section == currentSection && cellTapped{
-                return 80
+                return 95
             }
             else if (indexPath.row == 1 || indexPath.row == 3 && indexPath.section != 1 && indexPath.section != 0){
                 return 0

@@ -121,7 +121,7 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
         if (overlay is MKPolyline) {
             let pr = MKPolylineRenderer(overlay: overlay)
             pr.strokeColor = UIColor(hexString: "#A6192E")
-            pr.lineWidth = 4
+            pr.lineWidth = 1.5
             return pr
         }
         return MKPolylineRenderer()

@@ -31,6 +31,8 @@
 		21AB85E11EAE63F300519092 /* flw-polyline.json in Resources */ = {isa = PBXBuildFile; fileRef = 21AB85E01EAE63F300519092 /* flw-polyline.json */; };
 		21AB85E31EAE657300519092 /* PolylineParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AB85E21EAE657300519092 /* PolylineParser.swift */; };
 		21D507AF1E85F7050088AD47 /* GoogleDirectionsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D507AE1E85F7050088AD47 /* GoogleDirectionsAPI.swift */; };
+		21D5E6421EB1116F00877FFC /* IdentifiableDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5E6411EB1116F00877FFC /* IdentifiableDatePicker.swift */; };
+		21D5E6441EB112F400877FFC /* IdentifiableDatePickCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5E6431EB112F400877FFC /* IdentifiableDatePickCell.swift */; };
 		21D660431E9D85FD00D1CED1 /* NetworkAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D660421E9D85FD00D1CED1 /* NetworkAlert.swift */; };
 		21D660451E9D862400D1CED1 /* LocationAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D660441E9D862400D1CED1 /* LocationAlert.swift */; };
 		21D660471E9D8BBF00D1CED1 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D660461E9D8BBF00D1CED1 /* Network.swift */; };
@@ -100,6 +102,8 @@
 		21AB85E01EAE63F300519092 /* flw-polyline.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "flw-polyline.json"; sourceTree = "<group>"; };
 		21AB85E21EAE657300519092 /* PolylineParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolylineParser.swift; sourceTree = "<group>"; };
 		21D507AE1E85F7050088AD47 /* GoogleDirectionsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleDirectionsAPI.swift; sourceTree = "<group>"; };
+		21D5E6411EB1116F00877FFC /* IdentifiableDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifiableDatePicker.swift; sourceTree = "<group>"; };
+		21D5E6431EB112F400877FFC /* IdentifiableDatePickCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifiableDatePickCell.swift; sourceTree = "<group>"; };
 		21D660421E9D85FD00D1CED1 /* NetworkAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAlert.swift; sourceTree = "<group>"; };
 		21D660441E9D862400D1CED1 /* LocationAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAlert.swift; sourceTree = "<group>"; };
 		21D660461E9D8BBF00D1CED1 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -179,6 +183,7 @@
 				21D660461E9D8BBF00D1CED1 /* Network.swift */,
 				2168DF3B1EA30687005E3F9E /* Validate.swift */,
 				21AB85E21EAE657300519092 /* PolylineParser.swift */,
+				21D5E6411EB1116F00877FFC /* IdentifiableDatePicker.swift */,
 			);
 			name = "Helper Classes";
 			sourceTree = "<group>";
@@ -285,6 +290,7 @@
 				219A12921E9B136E00356BD7 /* LinkCell.swift */,
 				2168DF371EA2FFFE005E3F9E /* TripLabelCell.swift */,
 				2168DF391EA300A5005E3F9E /* NameCell.swift */,
+				21D5E6431EB112F400877FFC /* IdentifiableDatePickCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -550,11 +556,13 @@
 				FAEE90AE1D6771B5008264DC /* TabBarController.swift in Sources */,
 				FAEE90B41D677EBB008264DC /* LocationsViewController.swift in Sources */,
 				219A12931E9B136E00356BD7 /* LinkCell.swift in Sources */,
+				21D5E6421EB1116F00877FFC /* IdentifiableDatePicker.swift in Sources */,
 				B6DB3BBF1D7A104900FC737D /* LocationCollectionDelegate.swift in Sources */,
 				FAD304B31D6D28E800D8CE2F /* DetailViewController.swift in Sources */,
 				FAB740E81DDEB21B00BA859F /* TimelineVC.swift in Sources */,
 				847AE4B61DA71FFA0056B6D7 /* PhotosProvider.swift in Sources */,
 				847AE4BC1DA720B30056B6D7 /* LocationGalleryImageController.swift in Sources */,
+				21D5E6441EB112F400877FFC /* IdentifiableDatePickCell.swift in Sources */,
 				21D507AF1E85F7050088AD47 /* GoogleDirectionsAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

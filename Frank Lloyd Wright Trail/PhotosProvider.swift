@@ -34,7 +34,7 @@ class PhotosProvider: NSObject {
         for photoIndex in 0 ..< arrayPic.capacity {
             let title = NSAttributedString(string: "SC Johnson Administration Building", attributes: [NSForegroundColorAttributeName: UIColor.white])
             let captionSummary = NSAttributedString(string: "SC Johnson – Iconic architecture, inspiring tours", attributes: [NSForegroundColorAttributeName: UIColor.gray])
-            let captionCredit = NSAttributedString(string: "", attributes: [NSForegroundColorAttributeName: UIColor.darkGray])
+            let captionCredit = NSAttributedString(string: "Photo Courtesy: SC Johnson", attributes: [NSForegroundColorAttributeName: UIColor.darkGray])
             let photo = shouldSetImageOnIndex(photoIndex) ? ExamplePhoto(image: arrayPic[photoIndex], attributedCaptionTitle: title, attributedCaptionSummary: captionSummary, attributedCaptionCredit: captionCredit) : ExamplePhoto(attributedCaptionTitle: title, attributedCaptionSummary: captionSummary, attributedCaptionCredit: captionCredit)
 
             
@@ -88,7 +88,7 @@ class PhotosProvider: NSObject {
             let captionSummary = NSAttributedString(string: "Monona Terrace completed in 1997", attributes: [NSForegroundColorAttributeName: UIColor.gray])
             var captionCredit = NSAttributedString(string: "", attributes: [NSForegroundColorAttributeName: UIColor.darkGray])
             if photoIndex == 3 {
-                captionCredit = NSAttributedString(string: "Photo Credit: Sarah Wykhuis", attributes: [NSForegroundColorAttributeName: UIColor.darkGray])
+                captionCredit = NSAttributedString(string: "Photo Courtesy: Sarah Wykhuis", attributes: [NSForegroundColorAttributeName: UIColor.darkGray])
             }
             let photo = shouldSetImageOnIndex(photoIndex) ? ExamplePhoto(image: arrayPic[photoIndex], attributedCaptionTitle: title, attributedCaptionSummary: captionSummary, attributedCaptionCredit: captionCredit) : ExamplePhoto(attributedCaptionTitle: title, attributedCaptionSummary: captionSummary, attributedCaptionCredit: captionCredit)
             

@@ -90,12 +90,15 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
             
             return cell
         case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "datepick", for: indexPath) as! DatePickCell
-            cell.datePicker.datePickerMode = .dateAndTime
-            cell.datePicker.tag = index
-            if let startDate = sites[index].startDate {
-                cell.datePicker.date = startDate as Date
+            let cell = tableView.dequeueReusableCell(withIdentifier: "idDatePick", for: indexPath) as! IdentifiableDatePickCell
+            cell.identifiableDatePicker.datePickerMode = .dateAndTime
+            cell.identifiableDatePicker.dateType = .StartDate
+            cell.identifiableDatePicker.tag = index
+            
+            if let startDate = sites[index].endDate {
+                cell.identifiableDatePicker.date = startDate as Date
             }
+        
             return cell
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "label", for: indexPath) as! LabelCell
@@ -108,12 +111,15 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
             
             return cell
         case 5:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "datepick", for: indexPath) as! DatePickCell
-            cell.datePicker.datePickerMode = .dateAndTime
-            cell.datePicker.tag = index + 30
+            let cell = tableView.dequeueReusableCell(withIdentifier: "idDatePick", for: indexPath) as! IdentifiableDatePickCell
+            cell.identifiableDatePicker.datePickerMode = .dateAndTime
+            cell.identifiableDatePicker.dateType = .EndDate
+            cell.identifiableDatePicker.tag = index
+    
             if let endDate = sites[index].endDate {
-                cell.datePicker.date = endDate as Date
+                cell.identifiableDatePicker.date = endDate as Date
             }
+            
             return cell
         default:
             break
@@ -208,7 +214,7 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
         
         if indexPath.row == 3 || indexPath.row == 5 {
             if indexPath.row == currentRow && indexPath.section == currentSection && cellTapped {
-                return 80
+                return 95
             }
                 
             else if indexPath.row == 3 || indexPath.row == 5 {
@@ -219,20 +225,28 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
         return super.tableView(tableView, heightForRowAt: indexPath)
     }
     
-    @IBAction func dateChanged(_ picker: UIDatePicker){
-        //>30 means it's end date picker
-        if picker.tag >= 30 {
-            let index = picker.tag - 30
-            RealmWrite.writeSiteStopFullEndDate(index: index, date: picker.date, trip: self.trip)
-            let indexPath = IndexPath(row: 4, section: index)
-            tableView.reloadRows(at: [indexPath], with: .none)
-        } else {
+    
+    
+    @IBAction func dateChanged(_ picker: IdentifiableDatePicker) {
+        switch picker.dateType {
+        case .StartDate:
             let index = picker.tag
             RealmWrite.writeSiteStopFullStartDate(index: index, date: picker.date, trip: self.trip)
-            let indexPath = IndexPath(row: 2, section: index)
+            let indexPath = IndexPath(row: 2, section: picker.tag)
             tableView.reloadRows(at: [indexPath], with: .none)
+            tableView.reloadData()
+            tableView.reloadSections(<#T##sections: IndexSet##IndexSet#>, with: <#T##UITableViewRowAnimation#>)
+        case .EndDate:
+            let index = picker.tag
+            RealmWrite.writeSiteStopFullEndDate(index: index, date: picker.date, trip: self.trip)
+            let indexPath = IndexPath(row: 4, section: picker.tag)
+            tableView.reloadRows(at: [indexPath], with: .none)
+            tableView.reloadData()
         }
+        
+        
     }
+    
     
     //toggle function
     private func togglePicker(){

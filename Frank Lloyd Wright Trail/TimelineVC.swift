@@ -139,6 +139,12 @@ class TimelineVC: UIViewController {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
         performSegue(withIdentifier: "signup", sender: nil)
         } else {
+            let alertController = UIAlertController(title: "Not Enough Time For This Trip", message: "Suggested timeline assumes one hour at each site. Go back and add more time to your trip interval.", preferredStyle: .alert)
+            let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(okButton)
+            self.present(alertController, animated: true, completion: nil)
+            
+            
             print("Not Enough Time for Trip")
         }
     }
