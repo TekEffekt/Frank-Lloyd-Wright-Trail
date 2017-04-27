@@ -29,6 +29,7 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
         
         self.navigationItem.title = "Tours"
         self.navigationItem.rightBarButtonItem = button
+        tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -86,6 +87,8 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
             cell.icon.image = #imageLiteral(resourceName: "calendar")
             if let startDate = trip.siteStops[index].startDate {
                 cell.dateLabel.text = DateHelp.getShortDateName(date: startDate) + " \(DateHelp.getHoursAndMinutes(from: startDate))"
+            } else {
+                cell.dateLabel.text = ""
             }
             
             return cell
@@ -107,6 +110,8 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
             cell.icon.image = #imageLiteral(resourceName: "calendar")
             if let endDate = trip.siteStops[index].endDate {
                 cell.dateLabel.text = DateHelp.getShortDateName(date: endDate) + " \(DateHelp.getHoursAndMinutes(from: endDate))"
+            } else {
+                cell.dateLabel.text = ""
             }
             
             return cell
@@ -233,17 +238,15 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
             let index = picker.tag
             RealmWrite.writeSiteStopFullStartDate(index: index, date: picker.date, trip: self.trip)
             let indexPath = IndexPath(row: 2, section: picker.tag)
-            tableView.reloadRows(at: [indexPath], with: .none)
+            //tableView.reloadRows(at: [indexPath], with: .none)
             tableView.reloadData()
-            tableView.reloadSections(<#T##sections: IndexSet##IndexSet#>, with: <#T##UITableViewRowAnimation#>)
         case .EndDate:
             let index = picker.tag
             RealmWrite.writeSiteStopFullEndDate(index: index, date: picker.date, trip: self.trip)
             let indexPath = IndexPath(row: 4, section: picker.tag)
-            tableView.reloadRows(at: [indexPath], with: .none)
+            //tableView.reloadRows(at: [indexPath], with: .none)
             tableView.reloadData()
         }
-        
         
     }
     
