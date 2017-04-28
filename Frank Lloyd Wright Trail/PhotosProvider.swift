@@ -32,7 +32,7 @@ class PhotosProvider: NSObject {
         
         
         for photoIndex in 0 ..< arrayPic.capacity {
-            let title = NSAttributedString(string: "SC Johnson Administration Building", attributes: [NSForegroundColorAttributeName: UIColor.white])
+            let title = NSAttributedString(string: "SC Johnson Administration Building & Research Tower", attributes: [NSForegroundColorAttributeName: UIColor.white])
             let captionSummary = NSAttributedString(string: "SC Johnson – Iconic architecture, inspiring tours", attributes: [NSForegroundColorAttributeName: UIColor.gray])
             let captionCredit = NSAttributedString(string: "Photo Courtesy: SC Johnson", attributes: [NSForegroundColorAttributeName: UIColor.darkGray])
             let photo = shouldSetImageOnIndex(photoIndex) ? ExamplePhoto(image: arrayPic[photoIndex], attributedCaptionTitle: title, attributedCaptionSummary: captionSummary, attributedCaptionCredit: captionCredit) : ExamplePhoto(attributedCaptionTitle: title, attributedCaptionSummary: captionSummary, attributedCaptionCredit: captionCredit)
