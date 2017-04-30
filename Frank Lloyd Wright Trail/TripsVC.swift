@@ -16,6 +16,7 @@ class TripsVC : UITableViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        trips = trips?.sorted(byKeyPath: "tripName", ascending: true)
         trip = Trip()
     }
     
@@ -56,6 +57,7 @@ class TripsVC : UITableViewController{
                 cell.accessoryType = .none
             } else {
                 cell.tripName.text! = trips[indexPath.row].tripName
+                print("cellForRowAt: \(cell.tripName)")
                 cell.accessoryType = .none
             }
             return cell
@@ -89,6 +91,7 @@ class TripsVC : UITableViewController{
                 RealmDelete.deleteTrip(index: indexPath.row, trips: self.trips!)
                 //also remove
                 tableView.deleteRows(at: [indexPath], with: .automatic)
+                //tableView.reloadData()
             })
             
             ac.addAction(cancelAction)
