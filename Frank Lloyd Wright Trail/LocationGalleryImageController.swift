@@ -12,16 +12,16 @@ import MapKit
 
 class LocationGalleryImageController: UIViewController, NYTPhotoViewControllerDelegate {
     
-    var nytPhotoDictionary: [Int : [ExamplePhoto]] = [
-        0 : PhotosProvider().photos0,
-        1 : PhotosProvider().photos1,
-        2 : PhotosProvider().photos2,
-        3 : PhotosProvider().photos3,
-        4 : PhotosProvider().photos4,
-        5 : PhotosProvider().photos5,
-        6 : PhotosProvider().photos6,
-        7 : PhotosProvider().photos7,
-    ]
+//    var nytPhotoDictionary: [Int : [ExamplePhoto]] = [
+//        0 : PhotosProvider().photos0,
+//        1 : PhotosProvider().photos1,
+//        2 : PhotosProvider().photos2,
+//        3 : PhotosProvider().photos3,
+//        4 : PhotosProvider().photos4,
+//        5 : PhotosProvider().photos5,
+//        6 : PhotosProvider().photos6,
+//        7 : PhotosProvider().photos7,
+//    ]
     
     var statusBarHidden = false
     
@@ -60,8 +60,20 @@ class LocationGalleryImageController: UIViewController, NYTPhotoViewControllerDe
     // switch statment to select correct photos
     func tapped(){
         let initialIndex = galleryImage.tag
-        let photos = nytPhotoDictionary[indexTapped]
-        let photosViewController = NYTPhotosViewController(photos: photos, initialPhoto: photos?[initialIndex])
+        var photos = [ExamplePhoto]()
+        switch indexTapped {
+            case 0: photos = PhotosProvider.getPhotos0()
+            case 1: photos = PhotosProvider.getPhotos1()
+            case 2: photos = PhotosProvider.getPhotos2()
+            case 3: photos = PhotosProvider.getPhotos3()
+            case 4: photos = PhotosProvider.getPhotos4()
+            case 5: photos = PhotosProvider.getPhotos5()
+            case 6: photos = PhotosProvider.getPhotos6()
+            case 7: photos = PhotosProvider.getPhotos7()
+            default: break
+        }
+        //let photos = nytPhotoDictionary[indexTapped]
+        let photosViewController = NYTPhotosViewController(photos: photos, initialPhoto: photos[initialIndex])
         present(photosViewController, animated: true, completion: nil)
 
     }

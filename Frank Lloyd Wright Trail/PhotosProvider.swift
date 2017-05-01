@@ -19,7 +19,7 @@ let PlaceholderImageName = "NYTimesBuildingPlaceholder"
 // creates 6 [ExamplePhoto] and loads it with three correct pictures to be viewed
 class PhotosProvider: NSObject {
     
-    let photos0: [ExamplePhoto] = {
+    static func getPhotos0() -> [ExamplePhoto] {
         var arrayPic: [UIImage] = [#imageLiteral(resourceName: "scjohnson"), #imageLiteral(resourceName: "scjohnson2"), #imageLiteral(resourceName: "scjohnson3")]
         var mutablePhotos: [ExamplePhoto] = []
         var image = UIImage(named: "scjohnson")
@@ -45,9 +45,9 @@ class PhotosProvider: NSObject {
         }
         
         return mutablePhotos
-    }()
+    }
     
-    let photos1: [ExamplePhoto] = {
+    static func getPhotos1() -> [ExamplePhoto] {
         var arrayPic: [UIImage] = [#imageLiteral(resourceName: "wingspread"), #imageLiteral(resourceName: "wingspread2"), #imageLiteral(resourceName: "wingspread3")]
         var mutablePhotos: [ExamplePhoto] = []
         var image = UIImage(named: "scjohnson")
@@ -71,9 +71,9 @@ class PhotosProvider: NSObject {
         }
         
         return mutablePhotos
-    }()
+    }
     
-    let photos2: [ExamplePhoto] = {
+    static func getPhotos2() -> [ExamplePhoto]  {
         var arrayPic: [UIImage] = [#imageLiteral(resourceName: "asbh"), #imageLiteral(resourceName: "asbh2"), #imageLiteral(resourceName: "asbh3"), #imageLiteral(resourceName: "asbh4"), #imageLiteral(resourceName: "asbh5")]
         var mutablePhotos: [ExamplePhoto] = []
         var image = UIImage(named: "scjohnson")
@@ -97,9 +97,9 @@ class PhotosProvider: NSObject {
         }
         
         return mutablePhotos
-    }()
+    }
     
-    let photos3: [ExamplePhoto] = {
+    static func getPhotos3() -> [ExamplePhoto] {
         var arrayPic: [UIImage] = [#imageLiteral(resourceName: "mononaterrace"), #imageLiteral(resourceName: "mononaterrace2"), #imageLiteral(resourceName: "mononaterrace3"), #imageLiteral(resourceName: "mononaterrace4")]
         var mutablePhotos: [ExamplePhoto] = []
         var image = UIImage(named: "scjohnson")
@@ -126,9 +126,9 @@ class PhotosProvider: NSObject {
         }
         
         return mutablePhotos
-    }()
+    }
     
-    let photos4: [ExamplePhoto] = {
+    static func getPhotos4() -> [ExamplePhoto] {
         var arrayPic: [UIImage] = [#imageLiteral(resourceName: "meetinghouse"), #imageLiteral(resourceName: "meetinghouse2"), #imageLiteral(resourceName: "meetinghouse3")]
         var mutablePhotos: [ExamplePhoto] = []
         var image = UIImage(named: "scjohnson")
@@ -152,9 +152,9 @@ class PhotosProvider: NSObject {
         }
         
         return mutablePhotos
-    }()
+    }
     
-    let photos5: [ExamplePhoto] = {
+    static func getPhotos5() -> [ExamplePhoto] {
         var arrayPic: [UIImage] = [#imageLiteral(resourceName: "visitorcenter"), #imageLiteral(resourceName: "visitorcenter2"), #imageLiteral(resourceName: "visitorcenter3")]
         var mutablePhotos: [ExamplePhoto] = []
         var image = UIImage(named: "scjohnson")
@@ -178,9 +178,9 @@ class PhotosProvider: NSObject {
         }
         
         return mutablePhotos
-    }()
+    }
     
-    let photos6: [ExamplePhoto] = {
+    static func getPhotos6() -> [ExamplePhoto] {
         var arrayPic: [UIImage] = [#imageLiteral(resourceName: "wyoming"), #imageLiteral(resourceName: "wyoming2"), #imageLiteral(resourceName: "wyoming3")]
         var mutablePhotos: [ExamplePhoto] = []
         var image = UIImage(named: "scjohnson")
@@ -204,9 +204,9 @@ class PhotosProvider: NSObject {
         }
         
         return mutablePhotos
-    }()
+    }
     
-    let photos7: [ExamplePhoto] = {
+    static func getPhotos7() -> [ExamplePhoto] {
         var arrayPic: [UIImage] = [#imageLiteral(resourceName: "warehouse"), #imageLiteral(resourceName: "warehouse2"), #imageLiteral(resourceName: "warehouse3")]
         var mutablePhotos: [ExamplePhoto] = []
         var image = UIImage(named: "scjohnson")
@@ -230,7 +230,7 @@ class PhotosProvider: NSObject {
         }
         
         return mutablePhotos
-    }()
+    }
     
 }
 
