@@ -32,7 +32,7 @@ class LocationGalleryPageControlller: UIPageViewController, UIPageViewController
         7 : [#imageLiteral(resourceName: "warehouse"), #imageLiteral(resourceName: "warehouse2"), #imageLiteral(resourceName: "warehouse3")]
     ]
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidLoad() {
         let index = Int(indexTapped)
         for image in photoDictionary[index]! {
             let controller = storyboard?.instantiateViewController(withIdentifier: "LocationGalleryImageController") as! LocationGalleryImageController

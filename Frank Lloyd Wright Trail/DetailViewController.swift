@@ -83,7 +83,7 @@ class DetailViewController: UIViewController,NYTPhotosViewControllerDelegate, UI
             siteTitle.text = sites[6].title
         } else {
             let phoneNumber = sites[indexTapped].phoneNumber
-            let plainString = sites[indexTapped].details! + "\n\nMore Information \n\nSchedule a Tour \n\nPhone Number: \(String(describing: phoneNumber))"
+            let plainString = sites[indexTapped].details! + "\n\nMore Information \n\nSchedule a Tour \n\nPhone Number: \(phoneNumber!)"
             let attributedString = NSMutableAttributedString(string: plainString)
             let range = (plainString as NSString).range(of: "More Information")
             let webURL = sites[indexTapped].infoURL
@@ -98,7 +98,6 @@ class DetailViewController: UIViewController,NYTPhotosViewControllerDelegate, UI
             siteSubtitle.text = sites[indexTapped].subtitle
             siteTitle.text = sites[indexTapped].title
         }
-        
     }
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {

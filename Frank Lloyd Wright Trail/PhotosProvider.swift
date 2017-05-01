@@ -36,7 +36,6 @@ class PhotosProvider: NSObject {
             let captionCredit = NSAttributedString(string: "Photo Courtesy: SC Johnson", attributes: [NSForegroundColorAttributeName: UIColor.darkGray])
             let photo = shouldSetImageOnIndex(photoIndex) ? ExamplePhoto(image: arrayPic[photoIndex], attributedCaptionTitle: title, attributedCaptionSummary: captionSummary, attributedCaptionCredit: captionCredit) : ExamplePhoto(attributedCaptionTitle: title, attributedCaptionSummary: captionSummary, attributedCaptionCredit: captionCredit)
 
-            
             if photoIndex == CustomEverythingPhotoIndex {
                 photo.placeholderImage = UIImage(named: PlaceholderImageName)
             }
