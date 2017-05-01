@@ -16,6 +16,7 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
     var locationCollectionVc: CollectionViewController!
     let center = CLLocation(latitude: 43.105304, longitude: -89.046729)
     var sites = Site.getSites()
+    var indexTapped = 0
     
     // use this var
     //var parser: JsonParser!
@@ -56,9 +57,16 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let identifier = "pin"
+        
         if let customAnnotation = annotation as? Pin {
             // How the pin itself is going to look
             let pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            //set tag for pin
+            for (index, site) in sites.enumerated() {
+                if site.title == customAnnotation.title {
+                    pin.tag = index
+                }
+            }
             //Shows title and detail button when user clicks on the pin
             pin.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView
             // Color of the pin
@@ -87,6 +95,7 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
+            self.indexTapped = view.tag
             self.performSegue(withIdentifier: "details", sender: view)
         }
     }
@@ -97,7 +106,7 @@ class LocationsViewController: UIViewController, MKMapViewDelegate, LocationColl
         if (segue.identifier == "details" ){
             // segue into DetailViewController and pass through the slected pin's MKPinAnnotaion
             let blank = segue.destination as! DetailViewController
-            blank.viaSegue = sender as! MKPinAnnotationView
+            blank.indexTapped = self.indexTapped
         }
     }
     
