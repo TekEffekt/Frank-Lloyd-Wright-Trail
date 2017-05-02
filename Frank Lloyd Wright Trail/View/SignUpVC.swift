@@ -88,7 +88,9 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
             if let startDate = trip.siteStops[index].startDate {
                 cell.dateLabel.text = DateHelp.getShortDateName(date: startDate) + " \(DateHelp.getHoursAndMinutes(from: startDate))"
             } else {
-                cell.dateLabel.text = ""
+                let date = Date()
+                cell.dateLabel.text = DateHelp.getShortDateName(date: date) + "\(DateHelp.getHoursAndMinutes(from: date))"
+                RealmWrite.writeSiteStopFullStartDate(index: index, date: date, trip: self.trip)
             }
             
             return cell
@@ -111,7 +113,9 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
             if let endDate = trip.siteStops[index].endDate {
                 cell.dateLabel.text = DateHelp.getShortDateName(date: endDate) + " \(DateHelp.getHoursAndMinutes(from: endDate))"
             } else {
-                cell.dateLabel.text = ""
+                let date = Date()
+                cell.dateLabel.text = DateHelp.getShortDateName(date: date) + "\(DateHelp.getHoursAndMinutes(from: date))"
+                RealmWrite.writeSiteStopFullEndDate(index: index, date: date, trip: self.trip)
             }
             
             return cell
@@ -219,7 +223,7 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
         
         if indexPath.row == 3 || indexPath.row == 5 {
             if indexPath.row == currentRow && indexPath.section == currentSection && cellTapped {
-                return 95
+                return 110
             }
                 
             else if indexPath.row == 3 || indexPath.row == 5 {
@@ -262,7 +266,7 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
         //validate all stops date entries
         if let error = Validate.siteStops(forTrip: trip) {
             let charset = CharacterSet(charactersIn: "is after")
-            let secondcharset = CharacterSet(charactersIn: "same day")
+            let secondcharset = CharacterSet(charactersIn: "same")
             if error.rangeOfCharacter(from: charset) == nil {
                 let alertController = UIAlertController(title: "Invalid Date Entry", message: error, preferredStyle: .alert)
                 let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)

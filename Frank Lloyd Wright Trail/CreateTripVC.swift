@@ -33,7 +33,7 @@ class CreateTripVC : FormViewController, CLLocationManagerDelegate {
         tableView.reloadData()
     }
     
-    func nextSelected(_ sender: UIBarButtonItem){
+    func nextSelected(_ sender: UIBarButtonItem) {
         validateAndSave()
     }
     
@@ -50,11 +50,11 @@ class CreateTripVC : FormViewController, CLLocationManagerDelegate {
     
     //number of rows in each section
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0{
+        if section == 0 {
             return 1
-        }else if section == 1 {
+        } else if section == 1 {
             return trip.siteStops.count + 1
-        }else {
+        } else {
             return 2
         }
     }
@@ -132,11 +132,22 @@ class CreateTripVC : FormViewController, CLLocationManagerDelegate {
             cell.signUpLabel.textColor = UIColor.lightGray
             cell.icon.image = #imageLiteral(resourceName: "clock")
             if indexPath.section == 2 {
+                //start time label cell
                 if let startTime = trip.startTime {
                     cell.dateLabel.text = DateHelp.getHoursAndMinutes(from: startTime)
+                } else {
+                    let date = Date()
+                    cell.dateLabel.text = DateHelp.getHoursAndMinutes(from: date)
+                    RealmWrite.writeStartTime(startTime: date, trip: self.trip)
                 }
+                //end time label cell
             } else if let endTime = trip.endTime {
-                    cell.dateLabel.text = DateHelp.getHoursAndMinutes(from: endTime)
+                cell.dateLabel.text = DateHelp.getHoursAndMinutes(from: endTime)
+            } else {
+                let date = Date()
+                cell.dateLabel.text = DateHelp.getHoursAndMinutes(from: date)
+                RealmWrite.writeEndTime(endTime: date, trip: self.trip)
+                
             }
             return cell
         }
@@ -185,7 +196,7 @@ class CreateTripVC : FormViewController, CLLocationManagerDelegate {
         if (indexPath.section != 0 && indexPath.section != 1 && indexPath.row == 1 || indexPath.row == 3){
             
             if indexPath.row == currentRow && indexPath.section == currentSection && cellTapped{
-                return 95
+                return 110
             }
             else if (indexPath.row == 1 || indexPath.row == 3 && indexPath.section != 1 && indexPath.section != 0){
                 return 0
@@ -311,6 +322,11 @@ class CreateTripVC : FormViewController, CLLocationManagerDelegate {
                 let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alertController.addAction(okButton)
                 self.present(alertController, animated: true, completion: nil)
+            } else if error == "The selected trip start time and trip end time are the same" {
+                let alertController = UIAlertController(title: "Invalid Time Entry", message: error, preferredStyle: .alert)
+                let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(okButton)
+                self.present(alertController, animated: true, completion: nil)
             } else {
                 let alertController = UIAlertController(title: "Incomplete Form", message: error, preferredStyle: .alert)
                 let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -318,7 +334,7 @@ class CreateTripVC : FormViewController, CLLocationManagerDelegate {
                 self.present(alertController, animated: true, completion: nil)
             }
         }
-        
+
         //validate user location
         let locationManager = CLLocationManager()
         locationManager.delegate = self
