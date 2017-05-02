@@ -22,29 +22,6 @@ class RealmWrite {
         }
     }
     
-    
-    static func writeStartTime(startTime: Date, trip: Trip){
-        do {
-            let realm = try Realm()
-            try realm.write {
-                trip.startTime = startTime
-            }
-        } catch let error {
-            print(error)
-        }
-    }
-    
-    static func writeEndTime(endTime: Date, trip: Trip){
-        do {
-            let realm = try Realm()
-            try realm.write {
-                trip.endTime = endTime
-            }
-        } catch let error {
-            print(error)
-        }
-    }
-    
     static func writeSiteStopFullStartDate(index: Int, date: Date, trip: Trip) {
         do {
             let realm = try Realm()

@@ -23,23 +23,7 @@ class Validate {
         }
         return nil
     }
-    
-    static func tripTimes(forTrip trip: Trip) -> String? {
-        //check to make sure trip has both times assigned, and that start time isn't after end time
-        guard let tripStartTime = trip.startTime else { return "You have not selected a trip start time." }
-        guard let tripEndTime = trip.endTime else { return "You have not selected a trip end time." }
-        
-        let start = DateHelp.getHoursAndMinutes(from: tripStartTime)
-        let end = DateHelp.getHoursAndMinutes(from: tripEndTime)
-        if start == end {
-            return "The selected trip start time and end time are the same."
-        }
-        
-        if tripStartTime.isGreaterThanDate(tripEndTime) {
-            return "The selected trip start time is after the trip end time."
-        }
-        return nil
-    }
+
     
     static func siteStops(forTrip trip: Trip) -> String? {
         

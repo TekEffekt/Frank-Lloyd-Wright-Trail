@@ -12,8 +12,8 @@ import CoreLocation
 
 class CreateTripVC : FormViewController, CLLocationManagerDelegate {
     
-    let section = ["TRIP", "STOPS", "TRIP START", "TRIP END"]
-    var labels = [["TRIP"], ["Add Stop"], ["Start Time"], ["End Time"]]
+    let section = ["TRIP", "STOPS"]
+    var labels = [["TRIP"], ["Add Stop"]]
     var tappedStopType: StopActions?
     var cellTapped = false
     var currentRow = -1
@@ -52,11 +52,10 @@ class CreateTripVC : FormViewController, CLLocationManagerDelegate {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
-        } else if section == 1 {
-            return trip.siteStops.count + 1
         } else {
-            return 2
+            return trip.siteStops.count + 1
         }
+        
     }
     
     
@@ -65,7 +64,6 @@ class CreateTripVC : FormViewController, CLLocationManagerDelegate {
         if section == 0 {
             return "Trip Name"
         }
-        
         return self.section[section]
     }
     
@@ -101,55 +99,6 @@ class CreateTripVC : FormViewController, CLLocationManagerDelegate {
                     return cell
                 }
             }
-        } else if indexPath.row == 1 {
-            //date pick cell
-            switch (indexPath.section, indexPath.row) {
-            case (2,1):
-                let cell = tableView.dequeueReusableCell(withIdentifier: "dateCell") as! DatePickCell
-                self.dateHelper(cell, indexPath: indexPath)
-                cell.datePicker.tag = indexPath.section
-                if let time = trip.startTime{
-                    cell.datePicker.date = time as Date
-                }
-                return cell
-            case (3,1):
-                let cell = tableView.dequeueReusableCell(withIdentifier: "dateCell") as! DatePickCell
-                self.dateHelper(cell, indexPath: indexPath)
-                cell.datePicker.tag = indexPath.section
-                if let time = trip.endTime{
-                    cell.datePicker.date = time as Date
-                }
-                return cell
-            default:
-                break
-            }
-            
-        }
-            //label cell
-        else if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "labelCell") as! LabelCell
-            cell.signUpLabel.text! = labels[indexPath.section][indexPath.row]
-            cell.signUpLabel.textColor = UIColor.lightGray
-            cell.icon.image = #imageLiteral(resourceName: "clock")
-            if indexPath.section == 2 {
-                //start time label cell
-                if let startTime = trip.startTime {
-                    cell.dateLabel.text = DateHelp.getHoursAndMinutes(from: startTime)
-                } else {
-                    let date = Date()
-                    cell.dateLabel.text = DateHelp.getHoursAndMinutes(from: date)
-                    RealmWrite.writeStartTime(startTime: date, trip: self.trip)
-                }
-                //end time label cell
-            } else if let endTime = trip.endTime {
-                cell.dateLabel.text = DateHelp.getHoursAndMinutes(from: endTime)
-            } else {
-                let date = Date()
-                cell.dateLabel.text = DateHelp.getHoursAndMinutes(from: date)
-                RealmWrite.writeEndTime(endTime: date, trip: self.trip)
-                
-            }
-            return cell
         }
         
         return UITableViewCell()
@@ -285,21 +234,6 @@ class CreateTripVC : FormViewController, CLLocationManagerDelegate {
     }
     
     
-    @IBAction func dateChanged(_ picker: UIDatePicker){
-        switch picker.tag{
-        case 2:
-            RealmWrite.writeStartTime(startTime: picker.date, trip: self.trip)
-            let indexPath = IndexPath(row: 0, section: 2)
-            tableView.reloadRows(at: [indexPath], with: .none)
-        case 3:
-            RealmWrite.writeEndTime(endTime: picker.date, trip: self.trip)
-            let indexPath = IndexPath(row: 0, section: 3)
-            tableView.reloadRows(at: [indexPath], with: .none)
-        default:
-            break
-        }
-    }
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let name = textField.text {
           RealmWrite.writeTripName(tripName: name, trip: self.trip)
@@ -313,26 +247,6 @@ class CreateTripVC : FormViewController, CLLocationManagerDelegate {
             let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(okButton)
             self.present(alertController, animated: true, completion: nil)
-        }
-        
-        //validate trip times
-        if let error = Validate.tripTimes(forTrip: trip) {
-            if error == "The selected trip start time is after the trip end time." {
-                let alertController = UIAlertController(title: "Invalid Time Entry", message: error, preferredStyle: .alert)
-                let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alertController.addAction(okButton)
-                self.present(alertController, animated: true, completion: nil)
-            } else if error == "The selected trip start time and trip end time are the same" {
-                let alertController = UIAlertController(title: "Invalid Time Entry", message: error, preferredStyle: .alert)
-                let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alertController.addAction(okButton)
-                self.present(alertController, animated: true, completion: nil)
-            } else {
-                let alertController = UIAlertController(title: "Incomplete Form", message: error, preferredStyle: .alert)
-                let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alertController.addAction(okButton)
-                self.present(alertController, animated: true, completion: nil)
-            }
         }
 
         //validate user location

@@ -105,7 +105,7 @@
                                 <rect key="frame" x="0.0" y="55" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v3k-4l-Two" id="4cp-vA-ZH6">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vjA-Ke-gf7">
@@ -151,7 +151,7 @@
                                 <rect key="frame" x="0.0" y="99" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lgn-Zv-f8g" id="T0b-Au-DnO">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="qbP-Io-BjM" customClass="IdentifiableDatePicker" customModule="Frank_Lloyd_Wright_Trail" customModuleProvider="target">
@@ -177,7 +177,7 @@
                                 <rect key="frame" x="0.0" y="143" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="roY-rL-MxC" id="f3F-dd-781">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="maE-aQ-a7X">
@@ -212,7 +212,7 @@
                                 <rect key="frame" x="0.0" y="187" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kVv-m3-H6F" id="oNW-0i-mRK">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZHH-ZR-YDn">
@@ -359,7 +359,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="Igu-ca-G0M" customClass="AddStopCell" customModule="Frank_Lloyd_Wright_Trail" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="55" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Igu-ca-G0M" id="sW7-7w-qIS">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -393,80 +393,8 @@
                                     <outlet property="stopName" destination="EQI-YY-aDX" id="QJV-Dk-RyV"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="labelCell" id="Vs1-gZ-nOW" customClass="LabelCell" customModule="Frank_Lloyd_Wright_Trail" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="100" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vs1-gZ-nOW" id="pRc-Tj-AUv">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HBR-LO-MPa">
-                                            <rect key="frame" x="18" y="11" width="20" height="20"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="20" id="Q0h-88-zNV"/>
-                                                <constraint firstAttribute="height" constant="20" id="XjL-1W-74O"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2D-Qh-znv" userLabel="SignUp">
-                                            <rect key="frame" x="56" y="8" width="161" height="27.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BjN-35-x1s" userLabel="Date">
-                                            <rect key="frame" x="217" y="8" width="117" height="27"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="HBR-LO-MPa" firstAttribute="centerY" secondItem="pRc-Tj-AUv" secondAttribute="centerY" id="0YC-jA-wis"/>
-                                        <constraint firstItem="BjN-35-x1s" firstAttribute="bottom" secondItem="pRc-Tj-AUv" secondAttribute="bottomMargin" id="Dcn-wj-2wL"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="Y2D-Qh-znv" secondAttribute="bottom" id="FgV-31-Cpk"/>
-                                        <constraint firstItem="BjN-35-x1s" firstAttribute="leading" secondItem="Y2D-Qh-znv" secondAttribute="trailing" id="LdU-hs-pUh"/>
-                                        <constraint firstItem="Y2D-Qh-znv" firstAttribute="top" secondItem="pRc-Tj-AUv" secondAttribute="topMargin" id="QxK-AR-BRu"/>
-                                        <constraint firstItem="BjN-35-x1s" firstAttribute="top" secondItem="pRc-Tj-AUv" secondAttribute="topMargin" id="S9r-R0-g3E"/>
-                                        <constraint firstAttribute="trailing" secondItem="Y2D-Qh-znv" secondAttribute="trailing" constant="125" id="a7i-9S-ZoJ"/>
-                                        <constraint firstItem="Y2D-Qh-znv" firstAttribute="leading" secondItem="HBR-LO-MPa" secondAttribute="trailing" constant="18" id="crf-Uv-q74"/>
-                                        <constraint firstItem="HBR-LO-MPa" firstAttribute="leading" secondItem="pRc-Tj-AUv" secondAttribute="leadingMargin" constant="10" id="iE6-ap-KjB"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="BjN-35-x1s" secondAttribute="trailing" id="uWn-cP-gaM"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="dateLabel" destination="BjN-35-x1s" id="djo-b4-4vB"/>
-                                    <outlet property="icon" destination="HBR-LO-MPa" id="xbm-VA-doD"/>
-                                    <outlet property="signUpLabel" destination="Y2D-Qh-znv" id="h7m-fa-zQ9"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dateCell" id="YX9-zx-HWS" customClass="DatePickCell" customModule="Frank_Lloyd_Wright_Trail" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="144" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YX9-zx-HWS" id="lpY-XW-CSP">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="fSm-o1-J4I">
-                                            <rect key="frame" x="27.5" y="-87" width="320" height="216"/>
-                                            <date key="date" timeIntervalSinceReferenceDate="508994574.42212802">
-                                                <!--2017-02-17 03:22:54 +0000-->
-                                            </date>
-                                            <connections>
-                                                <action selector="dateChanged:" destination="xdu-bm-ZFg" eventType="valueChanged" id="8MX-oM-s5f"/>
-                                            </connections>
-                                        </datePicker>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="fSm-o1-J4I" firstAttribute="centerY" secondItem="lpY-XW-CSP" secondAttribute="centerY" id="1OL-DF-nGc"/>
-                                        <constraint firstItem="fSm-o1-J4I" firstAttribute="centerX" secondItem="lpY-XW-CSP" secondAttribute="centerX" id="eKM-gd-mUj"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="datePicker" destination="fSm-o1-J4I" id="G0i-EU-1AM"/>
-                                </connections>
-                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="nameCell" id="ZGe-zU-P6b" userLabel="name" customClass="NameCell" customModule="Frank_Lloyd_Wright_Trail" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="188" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="99" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZGe-zU-P6b" id="4oS-qD-jdT">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>

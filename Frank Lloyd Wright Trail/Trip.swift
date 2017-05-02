@@ -11,8 +11,6 @@ import RealmSwift
 
 class Trip: Object{
     dynamic var tripName = ""
-    dynamic var startTime: Date?
-    dynamic var endTime: Date?
     let sitesInfo = List<TripObject>()
     let siteStops = List<SiteStop>()
     dynamic var id = 0
