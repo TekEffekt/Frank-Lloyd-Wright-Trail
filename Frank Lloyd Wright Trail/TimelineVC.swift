@@ -10,85 +10,144 @@ import UIKit
 import RealmSwift
 
 class TimelineVC: UIViewController {
-    var enoughTime = true
-    var scrollView: UIScrollView!
-    var timeline: TimelineView!
+//    var enoughTime = true
+//    var scrollView: UIScrollView!
+//    var timeline: TimelineView!
     var trip: Trip!
-    var wayPointOrder = [Int]()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        scrollView = UIScrollView(frame: view.bounds)
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(scrollView)
-  
-        view.addConstraints([
-            NSLayoutConstraint(item: scrollView, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: scrollView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: scrollView, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: scrollView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0)
-            ])
-
-        loadTimeline()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationItem.title = "Suggested Order"
-        let button = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.plain, target: self, action: #selector(doneSelected))
-        self.navigationItem.rightBarButtonItem = button
-    }
-    
-    
-    func loadTimeline(){
-        let google = GoogleDirectionsAPI()
-        //must send ID to seperate thread can't pass realm objects between threads
-        let tripID = trip.id
-        google.getOptimizedWayPoints(tripID, completion: {(timeLineCards: [TimelineCardModel], wayPointOrder: [Int]) -> Void in
-            
-            var timeFrames = [TimeFrame]()
-            
-            for card in timeLineCards {
-                if let name = card.name {
-                    let timeFrame = TimeFrame(text: name, date: "", image: card.locationImage!)
-                    timeFrames.append(timeFrame)
-                }
-            }
-            //back to main thread before UI changes
-            DispatchQueue.main.async {
-                self.wayPointOrder = wayPointOrder
-                self.timeline = TimelineView(bulletType: .circle, timeFrames: timeFrames)
-                self.timeline.isUserInteractionEnabled = false
-                if self.timeline.timeFrames.count == 1 {
-                    self.enoughTime = false
-                }
-                self.timeline.detailLabelColor = UIColor(hexString: "#A6192E")
-                self.timeline.titleLabelColor = UIColor(hexString: "#A6192E")
-                self.scrollView.addSubview(self.timeline)
-                self.scrollView.addConstraints([
-                    NSLayoutConstraint(item: self.timeline, attribute: .left, relatedBy: .equal, toItem: self.scrollView, attribute: .left, multiplier: 1.0, constant: 0),
-                    NSLayoutConstraint(item: self.timeline, attribute: .bottom, relatedBy: .lessThanOrEqual, toItem: self.scrollView, attribute: .bottom, multiplier: 1.0, constant: 0),
-                    NSLayoutConstraint(item: self.timeline, attribute: .top, relatedBy: .equal, toItem: self.scrollView, attribute: .top, multiplier: 1.0, constant: 0),
-                    NSLayoutConstraint(item: self.timeline, attribute: .right, relatedBy: .equal, toItem: self.scrollView, attribute: .right, multiplier: 1.0, constant: 0),
-                    
-                    NSLayoutConstraint(item: self.timeline, attribute: .width, relatedBy: .equal, toItem: self.scrollView, attribute: .width, multiplier: 1.0, constant: 0)
-                    ])
-                
-                self.view.sendSubview(toBack: self.scrollView)
-            }
-        })
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let signupVC = segue.destination as! SignUpVC
-        signupVC.wayPointOrder = self.wayPointOrder
-        signupVC.trip = self.trip
-    }
-    
-    func doneSelected(_ sender: UIBarButtonItem){
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
-        performSegue(withIdentifier: "signup", sender: nil)
-    }
+//    var wayPointOrder = [Int]()
+//    
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        // Do any additional setup after loading the view, typically from a nib.
+//        scrollView = UIScrollView(frame: view.bounds)
+//        scrollView.translatesAutoresizingMaskIntoConstraints = false
+//        view.addSubview(scrollView)
+//        
+//        view.addConstraints([
+//            NSLayoutConstraint(item: scrollView, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 0),
+//            NSLayoutConstraint(item: scrollView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 0),
+//            NSLayoutConstraint(item: scrollView, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: 0),
+//            NSLayoutConstraint(item: scrollView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0)
+//            ])
+//        
+//        loadTimeline()
+//    }
+//    
+//    override func viewWillAppear(_ animated: Bool) {
+//        self.navigationItem.title = "Suggested Trip"
+//        let button = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.plain, target: self, action: #selector(doneSelected))
+//        self.navigationItem.rightBarButtonItem = button
+//    }
+//    
+//    
+//    func loadTimeline(){
+//        let google = GoogleDirectionsAPI()
+//        //must send ID to seperate thread can't pass realm objects between threads
+//        let tripID = trip.id
+//        google.getOptimizedWayPoints(tripID, completion: {(timeLineCards: [TimelineCardModel], wayPointOrder: [Int]) -> Void in
+//            guard let trip = RealmQuery.queryTripByID(tripID) else {
+//                print("Could Not Find Trip by ID")
+//                return
+//            }
+//            
+//            let tripTime = trip.endTime?.timeIntervalSince(trip.startTime!)
+//            var driveTime = 0.0
+//            //add up duration in minutes to see if enough time to complete trip
+//            for driveCard in timeLineCards {
+//                if let duration = driveCard.durationValue {
+//                    //convert string to seconds (timeIntervalSlice is in seconds)
+//                    driveTime += Double(duration/60)
+//                }
+//            }
+//            //consider hour spent at each site stop
+//            driveTime += (Double(trip.siteStops.count) * 3600.0)
+//            
+//            var timeFrames = [TimeFrame]()
+//       
+//            if (tripTime?.isLess(than: driveTime))! {
+//                timeFrames.append(TimeFrame(text: "", date: "Not Enough Time For Trip", image: UIImage(named:"NoEntry")!))
+//            } else {
+//                var timeOfDay = trip.startTime!
+//                var timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
+//                for (index, card) in timeLineCards.enumerated() {
+//                    if index == 0 {
+//                        //home card
+//                        let timeFrame = TimeFrame(text: "Leave Home", date: timeOfDayFormatted, image: card.icon!)
+//                        timeFrames.append(timeFrame)
+//                    } else if index == timeLineCards.count - 1 {
+//                        //home card
+//                        let timeFrame = TimeFrame(text: "Arrive Home", date: timeOfDayFormatted, image: card.icon!)
+//                        timeFrames.append(timeFrame)
+//                    }
+//                    
+//                    else if let name = card.name {
+//                        //location card
+//                        //add 10 min of leeway 
+//                        timeOfDay = DateHelp.addMinutesToDate(minutes: 10, date: timeOfDay)
+//                        timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
+//                        let secondTimeOfDay = DateHelp.addHoursToDate(hours: 1, date: timeOfDay)
+//                        let secondTimeOfDayFormatted = DateHelp.getHoursAndMinutes(from: secondTimeOfDay)
+//                        let timeFrame = TimeFrame(text: name, date: ("Tour: \(timeOfDayFormatted) - \(secondTimeOfDayFormatted)"), image: card.locationImage!)
+//                        timeFrames.append(timeFrame)
+//                        //assume hour spent at site
+//                        timeOfDay = DateHelp.addHoursToDate(hours: 1, date: timeOfDay)
+//                        timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
+//                    } else {
+//                        //drive card
+//                        let seconds = card.durationValue!
+//                        timeOfDay = DateHelp.addSecondsToDate(seconds, date: timeOfDay)
+//                        timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
+//                        let duration = card.durationText!.substring(to: card.durationText!.index(before: card.durationText!.endIndex))
+//                        let timeFrame = TimeFrame(text: "(est arrival: \(timeOfDayFormatted))", date: "\(duration)ute drive", image: card.icon!)
+//                        timeFrames.append(timeFrame)
+//                    }
+//                }
+//            }
+//            //back to main thread before UI changes
+//            DispatchQueue.main.async {
+//                self.wayPointOrder = wayPointOrder
+//                self.timeline = TimelineView(bulletType: .circle, timeFrames: timeFrames)
+//                self.timeline.isUserInteractionEnabled = false
+//                if self.timeline.timeFrames.count == 1 {
+//                    self.enoughTime = false
+//                }
+//                self.timeline.detailLabelColor = UIColor(hexString: "#A6192E")
+//                self.timeline.titleLabelColor = UIColor(hexString: "#A6192E")
+//                self.scrollView.addSubview(self.timeline)
+//                self.scrollView.addConstraints([
+//                    NSLayoutConstraint(item: self.timeline, attribute: .left, relatedBy: .equal, toItem: self.scrollView, attribute: .left, multiplier: 1.0, constant: 0),
+//                    NSLayoutConstraint(item: self.timeline, attribute: .bottom, relatedBy: .lessThanOrEqual, toItem: self.scrollView, attribute: .bottom, multiplier: 1.0, constant: 0),
+//                    NSLayoutConstraint(item: self.timeline, attribute: .top, relatedBy: .equal, toItem: self.scrollView, attribute: .top, multiplier: 1.0, constant: 0),
+//                    NSLayoutConstraint(item: self.timeline, attribute: .right, relatedBy: .equal, toItem: self.scrollView, attribute: .right, multiplier: 1.0, constant: 0),
+//                    
+//                    NSLayoutConstraint(item: self.timeline, attribute: .width, relatedBy: .equal, toItem: self.scrollView, attribute: .width, multiplier: 1.0, constant: 0)
+//                    ])
+//                
+//                self.view.sendSubview(toBack: self.scrollView)
+//            }
+//        })
+//    }
+//    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let signupVC = segue.destination as! SignUpVC
+//        signupVC.wayPointOrder = self.wayPointOrder
+//        signupVC.trip = self.trip
+//    }
+//    
+//    func doneSelected(_ sender: UIBarButtonItem){
+//        if enoughTime {
+//        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
+//        performSegue(withIdentifier: "signup", sender: nil)
+//        } else {
+//            let alertController = UIAlertController(title: "Not Enough Time For This Trip", message: "Suggested timeline assumes one hour at each site. Go back and add more time to your trip interval.", preferredStyle: .alert)
+//            let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+//            alertController.addAction(okButton)
+//            self.present(alertController, animated: true, completion: nil)
+//            
+//            
+//            print("Not Enough Time for Trip")
+//        }
+//    }
 
 }
 
