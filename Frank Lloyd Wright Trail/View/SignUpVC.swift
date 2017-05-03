@@ -100,7 +100,7 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
             cell.identifiableDatePicker.dateType = .StartDate
             cell.identifiableDatePicker.tag = index
             
-            if let startDate = sites[index].endDate {
+            if let startDate = sites[index].startDate {
                 cell.identifiableDatePicker.date = startDate as Date
             }
         

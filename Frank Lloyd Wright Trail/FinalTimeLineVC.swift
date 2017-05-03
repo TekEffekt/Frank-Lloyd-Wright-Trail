@@ -147,7 +147,7 @@ class FinalTimeLineVC: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationItem.title = "Trip"
+        self.navigationItem.title = "Timeline"
         //let button = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(doneSelected))
         
         //self.navigationItem.rightBarButtonItem = button
