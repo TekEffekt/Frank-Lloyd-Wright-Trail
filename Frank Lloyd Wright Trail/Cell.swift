@@ -20,22 +20,22 @@ class Cell: UICollectionViewCell {
     }
     func color(_ title : String){
         switch title {
-        case "SC Johnson Administration Building and Research Tower" :
+        case "SC Johnson Administration Building & Research Tower" :
             circleColor.backgroundColor = UIColor.red
         case "Wingspread" :
-            circleColor.backgroundColor = UIColor.orange
+            circleColor.backgroundColor = UIColor.yellow
         case "Monona Terrace" :
-            circleColor.backgroundColor = UIColor.magenta
-        case "First Unitatrian Society Meeting House" :
+            circleColor.backgroundColor = UIColor.orange
+        case "First Unitarian Society Meeting House" :
             circleColor.backgroundColor = UIColor.green
-        case "Talisesin and Frank Lloyd Wright Visitor Center" :
+        case "Taliesin and Frank Lloyd Wright Visitor Center" :
             circleColor.backgroundColor = UIColor.blue
         case "A.D. German Warehouse" :
             circleColor.backgroundColor = UIColor.purple
         case "American System Built Homes" :
             circleColor.backgroundColor = UIColor.cyan
         case "Wyoming Valley School" :
-            circleColor.backgroundColor = UIColor.yellow
+            circleColor.backgroundColor = UIColor.magenta
         default :
             circleColor.backgroundColor = UIColor.red
         }

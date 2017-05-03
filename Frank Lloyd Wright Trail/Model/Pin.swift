@@ -33,22 +33,22 @@ class Pin: NSObject, MKAnnotation {
     // versions since .pinColor has been depricated
     func newPinColor() -> UIColor{
         switch title! {
-        case "SC Johnson Administration Building and Research Tower" :
+        case "SC Johnson Administration Building & Research Tower" :
             return UIColor.red
         case "Wingspread" :
-            return UIColor.orange
+            return UIColor.yellow
         case "Monona Terrace" :
-            return UIColor.magenta
-        case "First Unitatrian Society Meeting House" :
+            return UIColor.orange
+        case "First Unitarian Society Meeting House" :
             return UIColor.green
-        case "Talisesin and Frank Lloyd Wright Visitor Center" :
+        case "Taliesin and Frank Lloyd Wright Visitor Center" :
             return UIColor.blue
         case "A.D. German Warehouse" :
             return UIColor.purple
         case "American System Built Homes" :
             return UIColor.cyan
         case "Wyoming Valley School" :
-            return UIColor.yellow
+            return UIColor.magenta
         default :
             return UIColor.red
         }

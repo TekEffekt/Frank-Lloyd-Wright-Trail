@@ -12,17 +12,6 @@ import MapKit
 
 class LocationGalleryImageController: UIViewController, NYTPhotoViewControllerDelegate {
     
-//    var nytPhotoDictionary: [Int : [ExamplePhoto]] = [
-//        0 : PhotosProvider().photos0,
-//        1 : PhotosProvider().photos1,
-//        2 : PhotosProvider().photos2,
-//        3 : PhotosProvider().photos3,
-//        4 : PhotosProvider().photos4,
-//        5 : PhotosProvider().photos5,
-//        6 : PhotosProvider().photos6,
-//        7 : PhotosProvider().photos7,
-//    ]
-    
     var statusBarHidden = false
     
     override var prefersStatusBarHidden: Bool {
@@ -75,7 +64,6 @@ class LocationGalleryImageController: UIViewController, NYTPhotoViewControllerDe
         //let photos = nytPhotoDictionary[indexTapped]
         let photosViewController = NYTPhotosViewController(photos: photos, initialPhoto: photos[initialIndex])
         present(photosViewController, animated: true, completion: nil)
-
     }
     
     

@@ -90,10 +90,6 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         milesAway.text! = "\(site.distance.value!) miles away"
         delegate?.cellTapped(withSite: site)
     }
-    
-
-    
-    
 }
 
 

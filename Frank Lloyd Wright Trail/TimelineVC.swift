@@ -41,6 +41,7 @@ class TimelineVC: UIViewController {
     
     
     func loadTimeline(){
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
         let google = GoogleDirectionsAPI()
         //must send ID to seperate thread can't pass realm objects between threads
         let tripID = trip.id
@@ -96,6 +97,7 @@ class TimelineVC: UIViewController {
                     ])
                 
                 self.view.sendSubview(toBack: self.scrollView)
+                self.navigationItem.rightBarButtonItem?.isEnabled = true
             }
         })
     }
