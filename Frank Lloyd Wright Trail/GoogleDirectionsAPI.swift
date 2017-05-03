@@ -110,40 +110,9 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
                 }
                 //timelineCards to be returned
                 var timelineCards = [TimelineCardModel]()
-                var timelineHomeCard = TimelineCardModel()
-                timelineHomeCard.icon = UIImage(named: "home")
-                
-                timelineCards.append(timelineHomeCard)
                 var i = 0
-                for (index, leg) in legs.enumerated() {
+                for (index, _) in legs.enumerated() {
                     var timelineSiteCard = TimelineCardModel()
-                    var timelineCarCard = TimelineCardModel()
-                    guard let distance = leg["distance"] as? [String: Any] else {
-                        print("Conversion to Distance Failed")
-                        return
-                    }
-                    guard let distanceText = distance["text"] as? String else {
-                        print("Conversion to Distance Text Failed")
-                        return
-                    }
-                    guard let duration = leg["duration"] as? [String: Any] else {
-                        print("Conversion to Duration Failed")
-                        return
-                    }
-                    guard let durationValue = duration["value"] as? Int else {
-                        print("Conversion to Duration Value Failed")
-                        return
-                    }
-                    guard let durationText = duration["text"] as? String else {
-                        print("Conversion to Duration Text Failed")
-                        return
-                    }
-                    
-                    timelineCarCard.distance = distanceText
-                    timelineCarCard.durationText = durationText
-                    timelineCarCard.durationValue = durationValue
-                    timelineCarCard.icon = UIImage(named: "car")
-                    timelineCards.append(timelineCarCard)
                     //add sites in correct order
                     if i < legs.count - 1 {
                         let index = waypointOrder[index]
@@ -154,7 +123,6 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
                     }
                     i += 1
                 }
-                timelineCards.append(timelineHomeCard)
                 completion(timelineCards, waypointOrder)
                 
             } catch let error {
@@ -187,7 +155,7 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
         }
         
         //create dictionary for multi day trips
-        var siteDict = DateHelp.getStopDictionary(sortedList: sortedList)
+        let siteDict = DateHelp.getStopDictionary(sortedList: sortedList)
         
         var timeLineCards: [TimelineCardModel] = []
         //iterate dictionary in order of dates
