@@ -67,8 +67,29 @@ class TripsVC : UITableViewController{
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let trips = self.trips {
-        trip = trips[indexPath.row]
-        performSegue(withIdentifier: "createTrip", sender: nil)
+            trip = trips[indexPath.row]
+            //if all sitestops have times filled in, go straight to tour sign up scene
+            if trip.complete {
+                //convert waypoint string to waypoint order int array
+                let wayPoint = trip.wayPointOrder.characters.flatMap({Int(String($0))})
+                
+                let createTripVC = self.storyboard?.instantiateViewController(withIdentifier: "createTrip") as! CreateTripVC
+                createTripVC.trip = trip
+                let suggestionVC = self.storyboard?.instantiateViewController(withIdentifier: "suggestion") as! TimelineVC
+                suggestionVC.trip = trip
+                let signupVC = self.storyboard?.instantiateViewController(withIdentifier: "signup") as! SignUpVC
+                signupVC.trip = trip
+                signupVC.wayPointOrder = wayPoint
+                createTripVC.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+                suggestionVC.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+                signupVC.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+                self.navigationController?.pushViewController(createTripVC, animated: false)
+                self.navigationController?.pushViewController(suggestionVC, animated: false)
+                self.navigationController?.pushViewController(signupVC, animated: false)
+                
+            } else {
+                performSegue(withIdentifier: "createTrip", sender: nil)
+            }
         }
     }
     

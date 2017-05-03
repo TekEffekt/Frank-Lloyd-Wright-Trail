@@ -26,8 +26,6 @@ class Validate {
 
     
     static func siteStops(forTrip trip: Trip) -> String? {
-        
-        
         for siteStop in trip.siteStops {
             guard let siteStartDate = siteStop.startDate else {
                 return "\(siteStop.name!)'s tour has no start date."
@@ -50,8 +48,6 @@ class Validate {
                 return "\(siteStop.name!)'s tour start date and end date must be on the same day."
             }
         }
-        
         return nil
-        
     }
 }

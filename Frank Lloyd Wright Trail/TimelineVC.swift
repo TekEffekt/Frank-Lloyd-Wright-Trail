@@ -51,28 +51,33 @@ class TimelineVC: UIViewController {
             for (index, card) in timeLineCards.enumerated() {
                 if index == 0 {
                     //home card
-                    let timeFrame = TimeFrame(text: "Leave Home", date: "", image: card.icon!)
+                    let timeFrame = TimeFrame(text: "Leave Home", date: "", image: card.icon!, gray: false)
                     timeFrames.append(timeFrame)
                 } else if index == timeLineCards.count - 1 {
                     //home card
-                    let timeFrame = TimeFrame(text: "Arrive Home", date: "", image: card.icon!)
+                    let timeFrame = TimeFrame(text: "Arrive Home", date: "", image: card.icon!, gray: false)
                     timeFrames.append(timeFrame)
                 }
                     
                 else if let name = card.name {
                     //location card
-                    let timeFrame = TimeFrame(text: name, date: "", image: card.locationImage!)
+                    let timeFrame = TimeFrame(text: name, date: "", image: card.locationImage!, gray: false)
                     timeFrames.append(timeFrame)
                 } else {
                     //drive card
                     let duration = card.durationText!.substring(to: card.durationText!.index(before: card.durationText!.endIndex))
-                    let timeFrame = TimeFrame(text: "\(duration)ute drive", date: "", image: card.icon!)
+                    let timeFrame = TimeFrame(text: "\(duration)ute drive", date: "", image: card.icon!, gray: false)
                     timeFrames.append(timeFrame)
                 }
             }
             //back to main thread before UI changes
             DispatchQueue.main.async {
                 self.wayPointOrder = wayPointOrder
+                var string = ""
+                for num in wayPointOrder {
+                    string += String(num)
+                }
+                RealmWrite.add(wayPointOrder: string, trip: self.trip)
                 self.timeline = TimelineView(bulletType: .circle, timeFrames: timeFrames)
                 self.timeline.isUserInteractionEnabled = false
                 if self.timeline.timeFrames.count == 1 {

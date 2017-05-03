@@ -24,7 +24,9 @@ public struct TimeFrame{
 	/**
 		An optional image to show with the text and the date in the timeline.
 	*/
-	let image: UIImage?
+	var image: UIImage?
+    
+    var gray: Bool
 }
 
 /**
@@ -313,11 +315,12 @@ open class TimelineView: UIView {
 				v.addConstraint(NSLayoutConstraint(item: backgroundViewForImage, attribute: .left, relatedBy: .equal, toItem: v, attribute: .left, multiplier: 1.0, constant: 40))
 			}
 			
+            
 			let imageView = UIImageView(image: image)
-			imageView.layer.cornerRadius = 10
-			imageView.translatesAutoresizingMaskIntoConstraints = false
-			imageView.contentMode = UIViewContentMode.scaleAspectFit
-			v.addSubview(imageView)
+            imageView.layer.cornerRadius = 10
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            imageView.contentMode = UIViewContentMode.scaleAspectFit
+            v.addSubview(imageView)
 			imageView.tag = imageTag
 			v.addConstraints([
 				NSLayoutConstraint(item: imageView, attribute: .left, relatedBy: .equal, toItem: backgroundViewForImage, attribute: .left, multiplier: 1.0, constant: 0),

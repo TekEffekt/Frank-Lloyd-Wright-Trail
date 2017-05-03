@@ -37,6 +37,7 @@ class FinalTimeLineVC: UIViewController {
     }
     
     func saveSelected(){
+        RealmWrite.save(complete: true, forTrip: self.trip)
         navigationController?.popToRootViewController(animated: true)
     }
     
@@ -78,28 +79,41 @@ class FinalTimeLineVC: UIViewController {
                     if DateHelp.isInSameDay(card.date!, timeOfDay) {
                         let monthAndDay = DateHelp.getShortDateName(date: timeOfDay)
                         timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
-                        let timeFrame = TimeFrame(text: "Leave Home", date: monthAndDay + timeOfDayFormatted, image: card.icon!)
+                        let timeFrame = TimeFrame(text: monthAndDay + timeOfDayFormatted, date: "Leave Home", image: card.icon!, gray: false)
                         timeFrames.append(timeFrame)
                     } else {
                         firstDuration = timeLineCards[index + 1].durationValue
                         timeOfDay = DateHelp.getStartOfDayFrom(startDate: card.date!, firstDriveSeconds: firstDuration!)
                         let monthAndDay = DateHelp.getShortDateName(date: timeOfDay)
                         timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
-                        let timeFrame = TimeFrame(text: "Leave Home", date: monthAndDay + timeOfDayFormatted, image: card.icon!)
+                        let timeFrame = TimeFrame(text: monthAndDay + timeOfDayFormatted, date: "Leave Home", image: card.icon!, gray: false)
                         timeFrames.append(timeFrame)
                     }
                     
                 } else if card.name == "end" {
                     timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
-                    let timeFrame = TimeFrame(text: "Arrive Home", date: timeOfDayFormatted, image: card.icon!)
+                    let timeFrame = TimeFrame(text: timeOfDayFormatted, date: "Arrive Home", image: card.icon!, gray: false)
                     timeFrames.append(timeFrame)
                 } else if let name = card.name {
+                    var cardImage = card.locationImage!
+                    //won't be able to reach in time
+                    if timeOfDay.isGreaterThanDate(sortedList[siteIndex].startDate!) {
+                        let ciImage = CIImage(image: cardImage)
+                        let cgImage = self.convertCIImageToCGImage(inputImage: ciImage!)
+                        let grayImage = self.convertToGrayScale(image: cgImage!)
+                        cardImage = UIImage(cgImage: grayImage)
+                        
+                        let alertController = UIAlertController(title: "Conflicting Times", message: "You might be late for your tour at \(card.name!).", preferredStyle: .alert)
+                        let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                        alertController.addAction(okButton)
+                        self.present(alertController, animated: true, completion: nil)
+                    }
                     //location card
                     timeOfDay = sortedList[siteIndex].startDate!
                     timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
                     let secondTimeOfDay = sortedList[siteIndex].endDate!
                     let secondTimeOfDayFormatted = DateHelp.getHoursAndMinutes(from: secondTimeOfDay)
-                    let timeFrame = TimeFrame(text: name, date: ("Tour: \(timeOfDayFormatted) - \(secondTimeOfDayFormatted)"), image: card.locationImage!)
+                    let timeFrame = TimeFrame(text: ("Tour: \(timeOfDayFormatted) - \(secondTimeOfDayFormatted)"), date: name, image: cardImage, gray: false)
                     timeFrames.append(timeFrame)
                     //add time spent at site
                     let tourTime = tourTimes[durationIndex]
@@ -114,7 +128,7 @@ class FinalTimeLineVC: UIViewController {
                     timeOfDay = DateHelp.addSecondsToDate(seconds!, date: timeOfDay)
                     timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
                     let duration = card.durationText!.substring(to: card.durationText!.index(before: card.durationText!.endIndex))
-                    let timeFrame = TimeFrame(text:"(est arrival: \(timeOfDayFormatted))", date: "\(duration)ute drive", image: card.icon!)
+                    let timeFrame = TimeFrame(text:"(est arrival: \(timeOfDayFormatted))", date: "\(duration)ute drive", image: card.icon!, gray: false)
                     timeFrames.append(timeFrame)
                 }
             }
@@ -154,7 +168,24 @@ class FinalTimeLineVC: UIViewController {
     }
     
     
- 
+    private func convertToGrayScale(image: CGImage) -> CGImage {
+        let height = image.height
+        let width = image.width
+        let colorSpace = CGColorSpaceCreateDeviceGray();
+        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.none.rawValue)
+        let context = CGContext.init(data: nil, width: Int(width), height: Int(height), bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)!
+        let rect = CGRect(x: 0, y: 0, width: width, height: height)
+        context.draw(image, in: rect)
+        return context.makeImage()!
+    }
+    
+    private func convertCIImageToCGImage(inputImage: CIImage) -> CGImage! {
+        let context = CIContext(options: nil)
+        if context != nil {
+            return context.createCGImage(inputImage, from: inputImage.extent)
+        }
+        return nil
+    }
     
     
     

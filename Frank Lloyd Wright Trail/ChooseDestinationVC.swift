@@ -47,6 +47,9 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
     }
     
     func doneSelected(_ sender: UIBarButtonItem) {
+        if sitesSelected > 0 {
+            RealmWrite.save(complete: false, forTrip: self.trip)
+        }
         self.navigationController?.popViewController(animated: true)
     }
 
@@ -98,9 +101,6 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
             RealmWrite.add(siteStop: stop, trip: self.trip)
         }
         
-        
-        
-        
         for place in trip.siteStops{
             print(place.name)
         }
@@ -110,6 +110,7 @@ class ChooseDestinationVC: UIViewController, UICollectionViewDelegate, UICollect
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! DestinationCell
         RealmDelete.siteStop(siteTitle: cell.siteName.text!, trip: self.trip)
+        sitesSelected -= 1
     }
     
     

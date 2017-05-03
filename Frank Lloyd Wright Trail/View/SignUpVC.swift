@@ -321,6 +321,7 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
             return
         }
         
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         performSegue(withIdentifier: "segueToFinal", sender: nil)
     }
     

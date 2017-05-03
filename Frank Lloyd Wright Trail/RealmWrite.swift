@@ -44,7 +44,7 @@ class RealmWrite {
         }
     }
     
-    static func add(siteStop: SiteStop, trip: Trip){
+    static func add(siteStop: SiteStop, trip: Trip) {
         do {
             let realm = try Realm()
             try realm.write {
@@ -61,6 +61,28 @@ class RealmWrite {
             let realm = try Realm()
             try realm.write {
                 realm.add(trip)
+            }
+        } catch let error {
+            print(error)
+        }
+    }
+    
+    static func add(wayPointOrder: String, trip: Trip) {
+        do {
+            let realm = try Realm()
+            try realm.write {
+                trip.wayPointOrder = wayPointOrder
+            }
+        } catch let error {
+            print(error)
+        }
+    }
+    
+    static func save(complete: Bool, forTrip trip: Trip) {
+        do {
+            let realm = try Realm()
+            try realm.write {
+                trip.complete = complete
             }
         } catch let error {
             print(error)
