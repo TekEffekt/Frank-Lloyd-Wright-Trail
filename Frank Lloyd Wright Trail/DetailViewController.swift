@@ -57,20 +57,8 @@ class DetailViewController: UIViewController,NYTPhotosViewControllerDelegate, UI
     // func to display the right annotaion site info using a switch statment,
     // then setting the correct labels and text view
     func displayDetailAnnotation(_ indexTapped: Int){
-        if indexTapped == 2 {
-            let plainString = sites[2].details! + "\n\nMore Information \n\nPhone Number: 608-287-0339 \n"
-            let attributedString = NSMutableAttributedString(string: plainString)
-            let range = (plainString as NSString).range(of: "More Information")
-            let webURL = sites[2].infoURL
-            attributedString.addAttributes([NSLinkAttributeName: NSURL(string: webURL!)!], range: range)
-            siteDetails.delegate = self
-            siteDetails.attributedText = attributedString
-            siteDetails.font = UIFont.systemFont(ofSize: 15)
-            
-            siteSubtitle.text = sites[2].subtitle
-            siteTitle.text = sites[2].title
-        } else if indexTapped == 6 {
-            let plainString = sites[6].details! + "\n\nMore Information \n\nEmail: WyomingValleySchool@gmail.com \n\nPhone Number: 608-588-2544\n"
+         if indexTapped == 6 {
+            let plainString = sites[6].details! + "\n\nMore Information \n\nEmail to Schedule a Tour: WyomingValleySchool@gmail.com \n\nPhone Number: 608-588-2544\n"
             let attributedString = NSMutableAttributedString(string: plainString)
             let range = (plainString as NSString).range(of: "More Information")
             let webURL = sites[6].infoURL

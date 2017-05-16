@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		210D47711E81C3230031129A /* RealmDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210D47701E81C3230031129A /* RealmDelete.swift */; };
 		211EB2E51E5E6FAB00176C13 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211EB2E41E5E6FAB00176C13 /* SignUpVC.swift */; };
+		212DBD6C1EBD2A470049095C /* flw-polyline.json in Resources */ = {isa = PBXBuildFile; fileRef = 212DBD6B1EBD2A470049095C /* flw-polyline.json */; };
 		213757011E52D38A00C21415 /* TripsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213757001E52D38A00C21415 /* TripsVC.swift */; };
 		213757031E52D65000C21415 /* CreateTripVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213757021E52D65000C21415 /* CreateTripVC.swift */; };
 		213757071E56412000C21415 /* AddStopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213757061E56412000C21415 /* AddStopCell.swift */; };
@@ -28,7 +29,6 @@
 		218502C41E3EF84700CAFE6D /* TimelineCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218502C31E3EF84700CAFE6D /* TimelineCardModel.swift */; };
 		218503001E4198D000CAFE6D /* Date+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218502FF1E4198D000CAFE6D /* Date+Comparable.swift */; };
 		219A12931E9B136E00356BD7 /* LinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219A12921E9B136E00356BD7 /* LinkCell.swift */; };
-		21AB85E11EAE63F300519092 /* flw-polyline.json in Resources */ = {isa = PBXBuildFile; fileRef = 21AB85E01EAE63F300519092 /* flw-polyline.json */; };
 		21AB85E31EAE657300519092 /* PolylineParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AB85E21EAE657300519092 /* PolylineParser.swift */; };
 		21D507AF1E85F7050088AD47 /* GoogleDirectionsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D507AE1E85F7050088AD47 /* GoogleDirectionsAPI.swift */; };
 		21D5E6421EB1116F00877FFC /* IdentifiableDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5E6411EB1116F00877FFC /* IdentifiableDatePicker.swift */; };
@@ -80,6 +80,7 @@
 /* Begin PBXFileReference section */
 		210D47701E81C3230031129A /* RealmDelete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmDelete.swift; sourceTree = "<group>"; };
 		211EB2E41E5E6FAB00176C13 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpVC.swift; path = View/SignUpVC.swift; sourceTree = "<group>"; };
+		212DBD6B1EBD2A470049095C /* flw-polyline.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "flw-polyline.json"; sourceTree = "<group>"; };
 		213757001E52D38A00C21415 /* TripsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsVC.swift; sourceTree = "<group>"; };
 		213757021E52D65000C21415 /* CreateTripVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTripVC.swift; sourceTree = "<group>"; };
 		213757061E56412000C21415 /* AddStopCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStopCell.swift; sourceTree = "<group>"; };
@@ -99,7 +100,6 @@
 		218502C31E3EF84700CAFE6D /* TimelineCardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineCardModel.swift; sourceTree = "<group>"; };
 		218502FF1E4198D000CAFE6D /* Date+Comparable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Comparable.swift"; sourceTree = "<group>"; };
 		219A12921E9B136E00356BD7 /* LinkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkCell.swift; sourceTree = "<group>"; };
-		21AB85E01EAE63F300519092 /* flw-polyline.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "flw-polyline.json"; sourceTree = "<group>"; };
 		21AB85E21EAE657300519092 /* PolylineParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolylineParser.swift; sourceTree = "<group>"; };
 		21D507AE1E85F7050088AD47 /* GoogleDirectionsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleDirectionsAPI.swift; sourceTree = "<group>"; };
 		21D5E6411EB1116F00877FFC /* IdentifiableDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifiableDatePicker.swift; sourceTree = "<group>"; };
@@ -357,7 +357,7 @@
 			children = (
 				217503511E4BBB0300EC9693 /* UWParkside.gpx */,
 				B6109DA71D528DDE002A6D77 /* Info.plist */,
-				21AB85E01EAE63F300519092 /* flw-polyline.json */,
+				212DBD6B1EBD2A470049095C /* flw-polyline.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -443,7 +443,7 @@
 				84B1F0381E3BCC9E0048986C /* LocationDetails.storyboard in Resources */,
 				B6109DA61D528DDE002A6D77 /* LaunchScreen.storyboard in Resources */,
 				217503521E4BBB0300EC9693 /* UWParkside.gpx in Resources */,
-				21AB85E11EAE63F300519092 /* flw-polyline.json in Resources */,
+				212DBD6C1EBD2A470049095C /* flw-polyline.json in Resources */,
 				847AE4BE1DA723450056B6D7 /* locations.plist in Resources */,
 				B6109DA31D528DDE002A6D77 /* Assets.xcassets in Resources */,
 				FAC91F871DA84A2E002B368E /* TripPlanner.storyboard in Resources */,

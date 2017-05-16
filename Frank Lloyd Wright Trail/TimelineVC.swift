@@ -15,6 +15,7 @@ class TimelineVC: UIViewController {
     var timeline: TimelineView!
     var trip: Trip!
     var wayPointOrder = [Int]()
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,9 @@ class TimelineVC: UIViewController {
         scrollView = UIScrollView(frame: view.bounds)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scrollView)
+        activityIndicator.startAnimating()
+        
+        
         
         view.addConstraints([
             NSLayoutConstraint(item: scrollView, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 0),
@@ -47,6 +51,9 @@ class TimelineVC: UIViewController {
         let tripID = trip.id
         google.getOptimizedWayPoints(tripID, completion: {(timeLineCards: [TimelineCardModel], wayPointOrder: [Int]) -> Void in
             
+            //back to main thread before UI changes
+            DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
             var timeFrames = [TimeFrame]()
             
             for (index, card) in timeLineCards.enumerated() {
@@ -71,8 +78,6 @@ class TimelineVC: UIViewController {
                     timeFrames.append(timeFrame)
                 }
             }
-            //back to main thread before UI changes
-            DispatchQueue.main.async {
                 self.wayPointOrder = wayPointOrder
                 var string = ""
                 for num in wayPointOrder {

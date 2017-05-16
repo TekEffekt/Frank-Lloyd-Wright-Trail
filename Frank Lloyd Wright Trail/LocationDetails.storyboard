@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -42,10 +41,10 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="pWh-YV-VB1" firstAttribute="leading" secondItem="7lY-25-oiF" secondAttribute="leadingMargin" constant="-16" id="0nc-zZ-hdB"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="pWh-YV-VB1" secondAttribute="trailing" constant="-16" id="eSM-Xz-C5Y"/>
-                            <constraint firstItem="pWh-YV-VB1" firstAttribute="top" secondItem="KWK-GL-NAt" secondAttribute="bottom" id="fjW-lJ-qjq"/>
-                            <constraint firstItem="XGH-hb-3Ts" firstAttribute="top" secondItem="pWh-YV-VB1" secondAttribute="bottom" id="moa-a2-2Cd"/>
+                            <constraint firstItem="pWh-YV-VB1" firstAttribute="top" secondItem="KWK-GL-NAt" secondAttribute="bottom" id="3g5-cp-rSQ"/>
+                            <constraint firstAttribute="trailing" secondItem="pWh-YV-VB1" secondAttribute="trailing" id="9fv-qu-U46"/>
+                            <constraint firstItem="XGH-hb-3Ts" firstAttribute="top" secondItem="pWh-YV-VB1" secondAttribute="bottom" id="DbE-s5-TL2"/>
+                            <constraint firstItem="pWh-YV-VB1" firstAttribute="leading" secondItem="7lY-25-oiF" secondAttribute="leading" id="Ih6-wT-i8x"/>
                         </constraints>
                     </view>
                     <fixedSimulatedSizeMetrics key="simulatedDestinationMetrics">

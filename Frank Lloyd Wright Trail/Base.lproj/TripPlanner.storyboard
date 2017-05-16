@@ -268,9 +268,20 @@
                     <view key="view" contentMode="scaleToFill" id="cch-x8-UHx">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="A8p-hd-FSl">
+                                <rect key="frame" x="169" y="283" width="37" height="37"/>
+                                <color key="color" red="0.65098039220000004" green="0.098039215690000001" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="A8p-hd-FSl" firstAttribute="centerY" secondItem="cch-x8-UHx" secondAttribute="centerY" id="1Ua-1N-gAz"/>
+                            <constraint firstItem="A8p-hd-FSl" firstAttribute="centerX" secondItem="cch-x8-UHx" secondAttribute="centerX" id="Pkx-lq-S0K"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="A8p-hd-FSl" id="O0T-Zs-4Dk"/>
                         <segue destination="e16-jc-cMf" kind="show" identifier="signup" id="aGL-iM-Yvd"/>
                     </connections>
                 </viewController>
@@ -444,8 +455,21 @@
                     <view key="view" contentMode="scaleToFill" id="luw-WR-uuh">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Ih6-RK-uSe">
+                                <rect key="frame" x="169" y="283" width="37" height="37"/>
+                                <color key="color" red="0.65098039220000004" green="0.098039215690000001" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ih6-RK-uSe" firstAttribute="centerX" secondItem="luw-WR-uuh" secondAttribute="centerX" id="Pus-ME-u4y"/>
+                            <constraint firstItem="Ih6-RK-uSe" firstAttribute="centerY" secondItem="luw-WR-uuh" secondAttribute="centerY" id="YGq-gL-4DX"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="Ih6-RK-uSe" id="DQm-IO-4lt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oAV-1K-mS9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

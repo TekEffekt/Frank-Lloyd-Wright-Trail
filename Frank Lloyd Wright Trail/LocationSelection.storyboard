@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="0.0"/>
                             </mapView>
                             <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xit-Bo-jwH">
-                                <rect key="frame" x="-4" y="63" width="383" height="547"/>
+                                <rect key="frame" x="-4" y="334" width="383" height="212"/>
                                 <connections>
                                     <segue destination="0Vr-b5-rlz" kind="embed" identifier="mapView" id="MJu-wc-hLP"/>
                                 </connections>
@@ -34,16 +34,16 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="8G7-rr-gBN" firstAttribute="leading" secondItem="x77-s5-c5o" secondAttribute="leadingMargin" constant="-16" id="19g-w3-1oe"/>
                             <constraint firstItem="8G7-rr-gBN" firstAttribute="height" secondItem="x77-s5-c5o" secondAttribute="height" id="7dV-zo-sEV"/>
-                            <constraint firstItem="8G7-rr-gBN" firstAttribute="top" secondItem="BVr-Ba-l6L" secondAttribute="bottom" id="A0T-BE-9MG"/>
+                            <constraint firstAttribute="trailing" secondItem="8G7-rr-gBN" secondAttribute="trailing" id="AuQ-nC-YOO"/>
+                            <constraint firstItem="xit-Bo-jwH" firstAttribute="top" secondItem="8G7-rr-gBN" secondAttribute="bottom" id="Gq2-1Q-SKd"/>
                             <constraint firstItem="8G7-rr-gBN" firstAttribute="width" secondItem="x77-s5-c5o" secondAttribute="width" id="Pll-eo-W3T"/>
+                            <constraint firstItem="8G7-rr-gBN" firstAttribute="top" secondItem="BVr-Ba-l6L" secondAttribute="bottom" id="RCe-NA-XDK"/>
                             <constraint firstItem="xit-Bo-jwH" firstAttribute="height" secondItem="x77-s5-c5o" secondAttribute="height" multiplier="0.3" constant="30.900000000000006" id="UMI-i7-Cv5"/>
                             <constraint firstItem="CAE-Pi-Mjk" firstAttribute="top" secondItem="xit-Bo-jwH" secondAttribute="bottom" constant="8" id="YNa-oE-zZm"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="8G7-rr-gBN" secondAttribute="trailing" constant="-16" id="gdQ-c3-KQ7"/>
+                            <constraint firstItem="8G7-rr-gBN" firstAttribute="leading" secondItem="x77-s5-c5o" secondAttribute="leading" id="ZjT-CG-Hlz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xit-Bo-jwH" secondAttribute="trailing" constant="-20" id="ghe-fR-XTS"/>
                             <constraint firstItem="xit-Bo-jwH" firstAttribute="leading" secondItem="x77-s5-c5o" secondAttribute="leadingMargin" constant="-20" id="h65-3W-73P"/>
-                            <constraint firstItem="xit-Bo-jwH" firstAttribute="top" secondItem="8G7-rr-gBN" secondAttribute="bottom" constant="-1" id="uOO-H6-yCE"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -72,11 +72,11 @@
                         <viewControllerLayoutGuide type="bottom" id="9An-e4-YS4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="MgU-cQ-iSK">
-                        <rect key="frame" x="0.0" y="0.0" width="383" height="547"/>
+                        <rect key="frame" x="0.0" y="0.0" width="383" height="212"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8yk-zY-5xL">
-                                <rect key="frame" x="0.0" y="30" width="383" height="517"/>
+                                <rect key="frame" x="0.0" y="30" width="383" height="182"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="MIa-l8-VVT">
                                     <size key="itemSize" width="191" height="114"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>

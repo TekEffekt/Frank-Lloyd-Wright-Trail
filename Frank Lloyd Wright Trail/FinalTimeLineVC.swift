@@ -15,12 +15,13 @@ class FinalTimeLineVC: UIViewController {
     var timeline:   TimelineView!
     var trip: Trip!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        
+        activityIndicator.startAnimating()
         scrollView = UIScrollView(frame: view.bounds)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scrollView)
@@ -48,6 +49,12 @@ class FinalTimeLineVC: UIViewController {
         let tripID = trip.id
         
         google.getFinalTimeLine(tripID, completion: {(timeLineCards: [TimelineCardModel]) -> Void in
+            
+            //back to main thread before UI changes
+            DispatchQueue.main.async {
+                
+            self.activityIndicator.stopAnimating()
+                
             guard let trip = RealmQuery.queryTripByID(tripID) else {
                 print("Could Not Find Trip by ID")
                 return
@@ -133,8 +140,6 @@ class FinalTimeLineVC: UIViewController {
                 }
             }
             
-            //back to main thread before UI changes
-            DispatchQueue.main.async {
                 
                 
                 
