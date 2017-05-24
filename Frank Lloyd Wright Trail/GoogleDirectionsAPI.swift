@@ -48,12 +48,22 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
             return
         }
         
+        var sortedByDistanceSites = trip.siteStops.sorted(by: {$0.site!.distance.value! > $1.site!.distance.value!})
+        print(sortedByDistanceSites)
+        let destinationSite: [SiteStop] = [sortedByDistanceSites.removeLast()]
+        
         
         //retrieve coordinates of all the sitestops to be used as waypoints
-        guard let waypointCoords = getSiteCoords(Array(trip.siteStops)) else {
+        guard let waypointCoords = getSiteCoords(sortedByDistanceSites) else {
             print("Error Getting Sites' Coords")
             return
         }
+        
+        guard let destinationCoords = getSiteCoords(destinationSite) else {
+            print("Error Getting Destination Site Coords")
+            return
+        }
+        
         //format coordinates for use in url
         let userCoordString = "\(userCoords.lat),\(userCoords.lon)"
         var waypointsCoordString = ""
@@ -65,9 +75,12 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
         waypointsCoordString = String(waypointsCoordString.characters.dropLast())
         waypointsCoordString = String(waypointsCoordString.characters.dropLast())
         
+        let destinationCoordsString = "\(destinationCoords[0].lat,destinationCoords[0].lon)"
+        
+        
         let key = "AIzaSyD99efuqx7jK3bOi7txWUDRZNlh-G50b0w"
         
-        let directionEndPoint = "https://maps.googleapis.com/maps/api/directions/json?origin=\(userCoordString)&destination=\(userCoordString)&waypoints=optimize:true%7C\(waypointsCoordString)&key=\(key)"
+        let directionEndPoint = "https://maps.googleapis.com/maps/api/directions/json?origin=\(userCoordString)&destination=\(destinationCoordsString)&waypoints=optimize:true%7C\(waypointsCoordString)&key=\(key)"
         
         guard let url = URL(string: directionEndPoint) else {
             print("Error Converting to URL")

@@ -35,4 +35,5 @@ class SiteSorter{
         
         return myNewArray
     }
+    
 }
