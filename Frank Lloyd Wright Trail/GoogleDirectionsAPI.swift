@@ -320,11 +320,13 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
                     print("Conversion to Duration Text Failed")
                     return []
                 }
+                
                 timelineCarCard.distance = distanceText
                 timelineCarCard.durationText = durationText
                 timelineCarCard.durationValue = durationValue
                 timelineCarCard.icon = UIImage(named: "car")
                 timelineCards.append(timelineCarCard)
+                
                 //add sites in correct order
                 if index < legs.count - 1 {
                     let site = sortedList[index].site
@@ -333,8 +335,9 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
                     timelineCards.append(timelineSiteCard)
                 }
             }
-            timelineHomeCard.name = "end"
-            timelineCards.append(timelineHomeCard)
+            //FIXED FINAL TIMELINE
+//            timelineHomeCard.name = "end"
+//            timelineCards.append(timelineHomeCard)
             return timelineCards
         } catch let error {
             print(error)

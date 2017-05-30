@@ -96,11 +96,11 @@ class FinalTimeLineVC: UIViewController {
                         let timeFrame = TimeFrame(text: monthAndDay + timeOfDayFormatted, date: "Leave Home", image: card.icon!, gray: false)
                         timeFrames.append(timeFrame)
                     }
-                    
-                } else if card.name == "end" {
-                    timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
-                    let timeFrame = TimeFrame(text: timeOfDayFormatted, date: "Arrive Home", image: card.icon!, gray: false)
-                    timeFrames.append(timeFrame)
+                    //FIXED FINAL TIMELINE
+//                } else if card.name == "end" {
+//                    timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
+//                    let timeFrame = TimeFrame(text: timeOfDayFormatted, date: "Arrive Home", image: card.icon!, gray: false)
+//                    timeFrames.append(timeFrame)
                 } else if let name = card.name {
                     var cardImage = card.locationImage!
                     //won't be able to reach in time
@@ -128,7 +128,9 @@ class FinalTimeLineVC: UIViewController {
                     timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
                     durationIndex += 1
                     siteIndex += 1
-                } else {
+                }
+                    //FIXED FINAL TIMELINE
+                else if index < timeLineCards.count - 1 {
                     //drive card
                     //get actual int from duration of drive instead of string
                     let seconds = card.durationValue
@@ -171,7 +173,6 @@ class FinalTimeLineVC: UIViewController {
         
         //self.navigationItem.rightBarButtonItem = button
     }
-    
     
     private func convertToGrayScale(image: CGImage) -> CGImage {
         let height = image.height
