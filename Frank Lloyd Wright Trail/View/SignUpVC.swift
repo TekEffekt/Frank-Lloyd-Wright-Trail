@@ -97,6 +97,7 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
             cell.signUpLabel.text! = "Tour Start"
             cell.signUpLabel.textColor = UIColor.lightGray
             cell.icon.image = #imageLiteral(resourceName: "calendar")
+            cell.dateLabel.adjustsFontSizeToFitWidth = true
             
             if let startDate = trip.siteStops[index].startDate {
                 cell.dateLabel.text = DateHelp.getShortDateName(date: startDate) + " \(DateHelp.getHoursAndMinutes(from: startDate))"
@@ -123,6 +124,7 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
             cell.signUpLabel.text! = "Tour End"
             cell.signUpLabel.textColor = UIColor.lightGray
             cell.icon.image = #imageLiteral(resourceName: "calendar")
+            cell.dateLabel.adjustsFontSizeToFitWidth = true
             
             if let endDate = trip.siteStops[index].endDate {
                 cell.dateLabel.text = DateHelp.getShortDateName(date: endDate) + " \(DateHelp.getHoursAndMinutes(from: endDate))"
