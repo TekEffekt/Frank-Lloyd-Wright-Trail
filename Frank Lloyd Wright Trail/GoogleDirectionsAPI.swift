@@ -36,7 +36,7 @@ extension URLSession {
 
 class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
     
-    func getOptimizedWayPoints(_ id: Int, completion: @escaping (_ timeLineCards: [TimelineCardModel], _ wayPointOrder: [Int]) -> Void) {
+    func getOptimizedWayPoints(_ id: Int, completion: @escaping (_ timeLineCards: [TimelineCardModel], _ wayPointOrder: [Int], _ sortedIndex: [Int]) -> Void) {
         //retrieve the start and end coordinates from user location
         guard let userCoords = getStartCoordinates() else {
             print("User Location Failed")
@@ -48,13 +48,17 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
             return
         }
         
-        var sortedByDistanceSites = trip.siteStops.sorted(by: {$0.site!.distance.value! > $1.site!.distance.value!})
-        print(sortedByDistanceSites)
-        let destinationSite: [SiteStop] = [sortedByDistanceSites.removeLast()]
+        let userLocation = CLLocation(latitude: userCoords.lat, longitude: userCoords.lon)
+        var sortedByDistanceIndex = SiteSorter.sortSelectedSites(userLocation, tripID: id)
+        let finalIndex = sortedByDistanceIndex.removeLast()
+        let destinationSite: [SiteStop] = [trip.siteStops[finalIndex]]
         
+        let sortedByDistanceWayPoints = sortedByDistanceIndex.map { (sortedIndex) -> SiteStop in
+            trip.siteStops[sortedIndex]
+        }
         
         //retrieve coordinates of all the sitestops to be used as waypoints
-        guard let waypointCoords = getSiteCoords(sortedByDistanceSites) else {
+        guard let waypointCoords = getSiteCoords(sortedByDistanceWayPoints) else {
             print("Error Getting Sites' Coords")
             return
         }
@@ -75,7 +79,7 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
         waypointsCoordString = String(waypointsCoordString.characters.dropLast())
         waypointsCoordString = String(waypointsCoordString.characters.dropLast())
         
-        let destinationCoordsString = "\(destinationCoords[0].lat,destinationCoords[0].lon)"
+        let destinationCoordsString = "\(destinationCoords[0].lat),\(destinationCoords[0].lon)"
         
         
         let key = "AIzaSyD99efuqx7jK3bOi7txWUDRZNlh-G50b0w"
@@ -93,6 +97,14 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
                 print("Could Not Find Trip by ID")
                 return
             }
+            
+            //these also have to be down here because this is a new thread
+            let destinationSite: [SiteStop] = [trip.siteStops[finalIndex]]
+            
+            let sortedByDistanceWayPoints = sortedByDistanceIndex.map { (sortedIndex) -> SiteStop in
+                trip.siteStops[sortedIndex]
+            }
+            
             guard error == nil else {
                 print("Error Calling GET")
                 print(error!)
@@ -113,7 +125,7 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
                     return
                 }
                 guard let route = routes.first else { return }
-                guard let waypointOrder = route["waypoint_order"] as? [Int] else {
+                guard var waypointOrder = route["waypoint_order"] as? [Int] else {
                     print("Conversion to Waypoint Order Failed")
                     return
                 }
@@ -160,15 +172,21 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
                     //add sites in correct order
                     if i < legs.count - 1 {
                         let index = waypointOrder[index]
-                        let site = trip.siteStops[index].site
+                        let site = sortedByDistanceWayPoints[index].site
+                        timelineSiteCard.name = site?.title!
+                        timelineSiteCard.locationImage = UIImage(named: (site?.imageName!)!)
+                        timelineCards.append(timelineSiteCard)
+                    } else {
+                        let site = destinationSite.first?.site
                         timelineSiteCard.name = site?.title!
                         timelineSiteCard.locationImage = UIImage(named: (site?.imageName!)!)
                         timelineCards.append(timelineSiteCard)
                     }
                     i += 1
+                    
                 }
-                timelineCards.append(timelineHomeCard)
-                completion(timelineCards, waypointOrder)
+                sortedByDistanceIndex.append(finalIndex)
+                completion(timelineCards, waypointOrder, sortedByDistanceIndex)
                 
             } catch let error {
                 print(error)
@@ -200,7 +218,7 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
         }
         
         //create dictionary for multi day trips
-        var siteDict = DateHelp.getStopDictionary(sortedList: sortedList)
+        let siteDict = DateHelp.getStopDictionary(sortedList: sortedList)
         
         var timeLineCards: [TimelineCardModel] = []
         //iterate dictionary in order of dates

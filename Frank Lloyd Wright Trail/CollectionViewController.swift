@@ -87,7 +87,9 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         let site = sites[indexPath.row]
         
         // Updates the label with the distance from the selected site to the user
+        if site.distance.value! != 0.0 {
         milesAway.text! = "\(site.distance.value!) miles away"
+        }
         delegate?.cellTapped(withSite: site)
     }
 }

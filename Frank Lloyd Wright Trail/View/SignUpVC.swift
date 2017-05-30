@@ -18,10 +18,21 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
     var sites = List<SiteStop>()
     var trip: Trip!
     var wayPointOrder = [Int]()
+    var sortedByIndex: [Int]!
+    var sortedByDistWaypoints: [SiteStop]!
+    var lastStop: SiteStop!
+    var finalStopIndex: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         sites = trip.siteStops
+        
+        self.finalStopIndex = sortedByIndex.removeLast()
+        self.sortedByDistWaypoints = sortedByIndex.map { (sortedIndex) -> SiteStop in
+            trip.siteStops[sortedIndex]
+        }
+        
+        self.lastStop = trip.siteStops[finalStopIndex]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,10 +56,6 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     // MARK: - Table view data source
     
@@ -61,7 +68,12 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let index = wayPointOrder[indexPath.section]
+        var index = 0
+        if indexPath.section < wayPointOrder.count {
+            index = sortedByIndex[indexPath.section]
+        } else {
+            index = finalStopIndex
+        }
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "URLCell", for: indexPath) as! LinkCell
@@ -85,6 +97,7 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
             cell.signUpLabel.text! = "Tour Start"
             cell.signUpLabel.textColor = UIColor.lightGray
             cell.icon.image = #imageLiteral(resourceName: "calendar")
+            
             if let startDate = trip.siteStops[index].startDate {
                 cell.dateLabel.text = DateHelp.getShortDateName(date: startDate) + " \(DateHelp.getHoursAndMinutes(from: startDate))"
             } else {
@@ -110,6 +123,7 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
             cell.signUpLabel.text! = "Tour End"
             cell.signUpLabel.textColor = UIColor.lightGray
             cell.icon.image = #imageLiteral(resourceName: "calendar")
+            
             if let endDate = trip.siteStops[index].endDate {
                 cell.dateLabel.text = DateHelp.getShortDateName(date: endDate) + " \(DateHelp.getHoursAndMinutes(from: endDate))"
             } else {
@@ -124,7 +138,7 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
             cell.identifiableDatePicker.datePickerMode = .dateAndTime
             cell.identifiableDatePicker.dateType = .EndDate
             cell.identifiableDatePicker.tag = index
-    
+
             if let endDate = sites[index].endDate {
                 cell.identifiableDatePicker.date = endDate as Date
             }
@@ -153,6 +167,7 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
     
     func callLocation(_ sender: UITapGestureRecognizer) {
         let phone = sender.view!
+        //HERE
         let phoneNumber = trip.siteStops[phone.tag].site?.phoneNumber!
         
         guard let number = URL(string: "telprompt://" + phoneNumber!) else { return }
@@ -167,7 +182,11 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sites[wayPointOrder[section]].name!
+        if section < wayPointOrder.count {
+            return sortedByDistWaypoints[section].name!
+        } else {
+            return sites[finalStopIndex].name!
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -184,9 +203,16 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
             currentSection = -1
         }
         
-        let index = wayPointOrder[indexPath.section]
+        var index = 0
+        if indexPath.section < wayPointOrder.count {
+            index = sortedByIndex[indexPath.section]
+        } else {
+            index = finalStopIndex
+        }
+        
         switch indexPath.row {
         case 0:
+            //HERE
             let url = trip.siteStops[index].site?.website
             let linkURL = URL(string: url!)
             if url == "WyomingValleySchool@gmail.com" {
@@ -198,6 +224,7 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
                 UIApplication.shared.openURL(linkURL!)
             }
         case 1:
+            //HERE
             let phoneNumber = trip.siteStops[index].site?.phoneNumber!
             
             guard let number = URL(string: "telprompt://" + phoneNumber!) else { return }
@@ -237,18 +264,15 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
     
     
     @IBAction func dateChanged(_ picker: IdentifiableDatePicker) {
+        //HERE
         switch picker.dateType {
         case .StartDate:
             let index = picker.tag
             RealmWrite.writeSiteStopFullStartDate(index: index, date: picker.date, trip: self.trip)
-            let indexPath = IndexPath(row: 2, section: picker.tag)
-            //tableView.reloadRows(at: [indexPath], with: .none)
             tableView.reloadData()
         case .EndDate:
             let index = picker.tag
             RealmWrite.writeSiteStopFullEndDate(index: index, date: picker.date, trip: self.trip)
-            let indexPath = IndexPath(row: 4, section: picker.tag)
-            //tableView.reloadRows(at: [indexPath], with: .none)
             tableView.reloadData()
         }
         

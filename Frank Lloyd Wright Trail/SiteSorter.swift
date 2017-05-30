@@ -36,4 +36,32 @@ class SiteSorter{
         return myNewArray
     }
     
+    static func sortSelectedSites(_ location: CLLocation, tripID: Int) -> [Int] {
+        
+        
+        guard let trip = RealmQuery.queryTripByID(tripID) else {
+            print("Could not find trip by ID")
+            return []
+        }
+        let siteStops = trip.siteStops
+        
+        var myNewArray = [SiteStop]()
+        // manipulating the distance variable of each site so that the distance
+        for (index, siteStop) in siteStops.enumerated() {
+            let distanceInMeters = location.distance(from: CLLocation(latitude: siteStop.site!.lat.value!, longitude: siteStop.site!.lon.value!))
+            let num = (distanceInMeters / 1609.344) * 100
+            let distanceInMiles = round(num) / 100
+            RealmWrite.add(siteDistance: distanceInMiles, index: index, trip: trip)
+            myNewArray.append(siteStop)
+            
+        }
+        
+        
+        // sorting the array from closest to farthest
+//        let sorted = myNewArray
+//            .enumerated().sorted(by: {$0.site!.distance.value! < $1.site!.distance.value!})
+        let sorted = myNewArray.enumerated().sorted(by: {$0.element.site!.distance.value! < $1.element.site!.distance.value!})
+        return sorted.map{$0.offset}
+    }
+    
 }

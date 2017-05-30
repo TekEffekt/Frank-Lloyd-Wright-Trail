@@ -89,6 +89,17 @@ class RealmWrite {
         }
     }
     
+    static func add(siteDistance: Double, index: Int, trip: Trip) {
+        do {
+            let realm = try Realm()
+            try realm.write {
+                trip.siteStops[index].site?.distance.value! = siteDistance
+            }
+        } catch let error {
+            print(error)
+        }
+    }
+    
     
     
     

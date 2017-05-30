@@ -15,6 +15,8 @@ class TimelineVC: UIViewController {
     var timeline: TimelineView!
     var trip: Trip!
     var wayPointOrder = [Int]()
+    var sortedByIndex: [Int]!
+    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
@@ -49,7 +51,7 @@ class TimelineVC: UIViewController {
         let google = GoogleDirectionsAPI()
         //must send ID to seperate thread can't pass realm objects between threads
         let tripID = trip.id
-        google.getOptimizedWayPoints(tripID, completion: {(timeLineCards: [TimelineCardModel], wayPointOrder: [Int]) -> Void in
+        google.getOptimizedWayPoints(tripID, completion: {(timeLineCards: [TimelineCardModel], wayPointOrder: [Int], sortedByIndex: [Int]) -> Void in
             
             //back to main thread before UI changes
             DispatchQueue.main.async {
@@ -61,13 +63,7 @@ class TimelineVC: UIViewController {
                     //home card
                     let timeFrame = TimeFrame(text: "Leave Home", date: "", image: card.icon!, gray: false)
                     timeFrames.append(timeFrame)
-                } else if index == timeLineCards.count - 1 {
-                    //home card
-                    let timeFrame = TimeFrame(text: "Arrive Home", date: "", image: card.icon!, gray: false)
-                    timeFrames.append(timeFrame)
-                }
-                    
-                else if let name = card.name {
+                } else if let name = card.name {
                     //location card
                     let timeFrame = TimeFrame(text: name, date: "", image: card.locationImage!, gray: false)
                     timeFrames.append(timeFrame)
@@ -79,6 +75,8 @@ class TimelineVC: UIViewController {
                 }
             }
                 self.wayPointOrder = wayPointOrder
+                self.sortedByIndex = sortedByIndex
+                
                 var string = ""
                 for num in wayPointOrder {
                     string += String(num)
@@ -91,6 +89,10 @@ class TimelineVC: UIViewController {
                 }
                 self.timeline.detailLabelColor = UIColor(hexString: "#A6192E")
                 self.timeline.titleLabelColor = UIColor(hexString: "#A6192E")
+                let adjustForTabbarInsets: UIEdgeInsets = UIEdgeInsetsMake(self.tabBarController!.tabBar.frame.height, 0, 0, 0)
+                self.scrollView.contentInset = adjustForTabbarInsets
+                self.scrollView.scrollIndicatorInsets = adjustForTabbarInsets
+        
                 self.scrollView.addSubview(self.timeline)
                 self.scrollView.addConstraints([
                     NSLayoutConstraint(item: self.timeline, attribute: .left, relatedBy: .equal, toItem: self.scrollView, attribute: .left, multiplier: 1.0, constant: 0),
@@ -110,6 +112,7 @@ class TimelineVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let signupVC = segue.destination as! SignUpVC
         signupVC.wayPointOrder = self.wayPointOrder
+        signupVC.sortedByIndex = self.sortedByIndex
         signupVC.trip = self.trip
     }
     
