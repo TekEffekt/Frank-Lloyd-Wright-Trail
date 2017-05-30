@@ -11,6 +11,7 @@ import CoreLocation
 import RealmSwift
 import UIKit
 
+//need to wait for possible multiple api calls for multi day trips
 extension URLSession {
     func synchronousDataTask(with url: URL) -> (Data?, URLResponse?, Error?) {
         var data: Data?

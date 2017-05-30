@@ -167,7 +167,6 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
     
     func callLocation(_ sender: UITapGestureRecognizer) {
         let phone = sender.view!
-        //HERE
         let phoneNumber = trip.siteStops[phone.tag].site?.phoneNumber!
         
         guard let number = URL(string: "telprompt://" + phoneNumber!) else { return }
@@ -212,7 +211,6 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
         
         switch indexPath.row {
         case 0:
-            //HERE
             let url = trip.siteStops[index].site?.website
             let linkURL = URL(string: url!)
             if url == "WyomingValleySchool@gmail.com" {
@@ -224,7 +222,6 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
                 UIApplication.shared.openURL(linkURL!)
             }
         case 1:
-            //HERE
             let phoneNumber = trip.siteStops[index].site?.phoneNumber!
             
             guard let number = URL(string: "telprompt://" + phoneNumber!) else { return }
@@ -247,7 +244,6 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         if indexPath.row == 3 || indexPath.row == 5 {
             if indexPath.row == currentRow && indexPath.section == currentSection && cellTapped {
                 return 110
@@ -257,14 +253,12 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
                 return 0
             }
         }
-        
         return super.tableView(tableView, heightForRowAt: indexPath)
     }
     
     
     
     @IBAction func dateChanged(_ picker: IdentifiableDatePicker) {
-        //HERE
         switch picker.dateType {
         case .StartDate:
             let index = picker.tag
