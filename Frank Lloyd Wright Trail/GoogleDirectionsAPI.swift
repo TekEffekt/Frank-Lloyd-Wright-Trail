@@ -335,9 +335,9 @@ class GoogleDirectionsAPI: NSObject, CLLocationManagerDelegate {
                     timelineCards.append(timelineSiteCard)
                 }
             }
-            //FIXED FINAL TIMELINE
-//            timelineHomeCard.name = "end"
-//            timelineCards.append(timelineHomeCard)
+            //FIXED FINAL TIMELINE KEEP FOR CHECKING
+            timelineHomeCard.name = "end"
+            timelineCards.append(timelineHomeCard)
             return timelineCards
         } catch let error {
             print(error)

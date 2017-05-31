@@ -77,6 +77,16 @@ class RealmWrite {
             print(error)
         }
     }
+    static func add(sortedByIndex: String, trip: Trip) {
+        do {
+            let realm = try Realm()
+            try realm.write {
+                trip.sortedByIndex = sortedByIndex
+            }
+        } catch let error {
+            print(error)
+        }
+    }
     
     static func save(complete: Bool, forTrip trip: Trip) {
         do {

@@ -97,10 +97,8 @@ class FinalTimeLineVC: UIViewController {
                         timeFrames.append(timeFrame)
                     }
                     //FIXED FINAL TIMELINE
-//                } else if card.name == "end" {
-//                    timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
-//                    let timeFrame = TimeFrame(text: timeOfDayFormatted, date: "Arrive Home", image: card.icon!, gray: false)
-//                    timeFrames.append(timeFrame)
+                } else if card.name == "end" {
+                    continue
                 } else if let name = card.name {
                     var cardImage = card.locationImage!
                     //won't be able to reach in time
@@ -131,16 +129,20 @@ class FinalTimeLineVC: UIViewController {
                 }
                     //FIXED FINAL TIMELINE
                 else if index < timeLineCards.count - 1 {
-                    //drive card
-                    //get actual int from duration of drive instead of string
-                    let seconds = card.durationValue
-                    timeOfDay = DateHelp.addSecondsToDate(seconds!, date: timeOfDay)
-                    timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
-                    let duration = card.durationText!.substring(to: card.durationText!.index(before: card.durationText!.endIndex))
-                    let timeFrame = TimeFrame(text:"(est arrival: \(timeOfDayFormatted))", date: "\(duration)ute drive", image: card.icon!, gray: false)
-                    timeFrames.append(timeFrame)
+                    if timeLineCards[index + 1] != nil {
+                        if timeLineCards[index + 1].name != "end" {
+                            //drive card
+                            //get actual int from duration of drive instead of string
+                            let seconds = card.durationValue
+                            timeOfDay = DateHelp.addSecondsToDate(seconds!, date: timeOfDay)
+                            timeOfDayFormatted = DateHelp.getHoursAndMinutes(from: timeOfDay)
+                            let duration = card.durationText!.substring(to: card.durationText!.index(before: card.durationText!.endIndex))
+                            let timeFrame = TimeFrame(text:"(est arrival: \(timeOfDayFormatted))", date: "\(duration)ute drive", image: card.icon!, gray: false)
+                            timeFrames.append(timeFrame)
+                        }
+                    }
                 }
-            }
+                }
             
                 
                 

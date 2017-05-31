@@ -80,6 +80,8 @@ class TripsVC : UITableViewController{
                 let signupVC = self.storyboard?.instantiateViewController(withIdentifier: "signup") as! SignUpVC
                 signupVC.trip = trip
                 signupVC.wayPointOrder = wayPoint
+                let ordered = trip.sortedByIndex.characters.flatMap({Int(String($0))})
+                signupVC.sortedByIndex = ordered
                 createTripVC.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
                 suggestionVC.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
                 signupVC.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
