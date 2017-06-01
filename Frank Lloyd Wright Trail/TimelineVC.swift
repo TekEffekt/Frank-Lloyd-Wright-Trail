@@ -86,7 +86,6 @@ class TimelineVC: UIViewController {
                     string2 += String(num)
                 }
                 
-                RealmWrite.add(sortedByIndex: string2, trip: self.trip)
                 RealmWrite.add(wayPointOrder: string, trip: self.trip)
                 self.timeline = TimelineView(bulletType: .circle, timeFrames: timeFrames)
                 self.timeline.isUserInteractionEnabled = false

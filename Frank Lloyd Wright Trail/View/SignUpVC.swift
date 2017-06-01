@@ -22,25 +22,36 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
     var sortedByDistWaypoints: [SiteStop]!
     var lastStop: SiteStop!
     var finalStopIndex: Int!
+    var shouldLeave: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         sites = trip.siteStops
-        
-        self.finalStopIndex = sortedByIndex.removeLast()
-        self.sortedByDistWaypoints = sortedByIndex.map { (sortedIndex) -> SiteStop in
-            trip.siteStops[sortedIndex]
+        if let userCoords = self.getStartCoordinates() {
+            let userLocation = CLLocation(latitude: userCoords.lat, longitude: userCoords.lon)
+            let sortedByDistanceIndex = SiteSorter.sortSelectedSites(userLocation, tripID: trip.id)
+            self.sortedByIndex = sortedByDistanceIndex
+            self.finalStopIndex = sortedByIndex.removeLast()
+            self.sortedByDistWaypoints = sortedByIndex.map { (sortedIndex) -> SiteStop in
+                trip.siteStops[sortedIndex]
+            }
+            
+            self.lastStop = trip.siteStops[finalStopIndex]
+        } else {
+            shouldLeave = true
         }
-        
-        self.lastStop = trip.siteStops[finalStopIndex]
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let button = UIBarButtonItem(title: "Confirm", style: UIBarButtonItemStyle.plain, target: self, action: #selector(confirmSelected))
-        
-        self.navigationItem.title = "Tours"
-        self.navigationItem.rightBarButtonItem = button
-        tableView.reloadData()
+        if shouldLeave {
+            dismiss(animated: true, completion: nil)
+        } else {
+            let button = UIBarButtonItem(title: "Confirm", style: UIBarButtonItemStyle.plain, target: self, action: #selector(confirmSelected))
+            
+            self.navigationItem.title = "Tours"
+            self.navigationItem.rightBarButtonItem = button
+            tableView.reloadData()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -343,6 +354,30 @@ class SignUpVC: UITableViewController, CLLocationManagerDelegate {
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         performSegue(withIdentifier: "segueToFinal", sender: nil)
+    }
+    
+    func getStartCoordinates() -> (lat: Double, lon: Double)? {
+        let locationManager = CLLocationManager()
+        locationManager.delegate = self
+        
+        if CLLocationManager.authorizationStatus() == .notDetermined {
+            locationManager.requestWhenInUseAuthorization()
+        }
+        
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.startUpdatingLocation()
+            guard let latitude = locationManager.location?.coordinate.latitude
+            , let longitude = locationManager.location?.coordinate.longitude
+            else {
+                self.dismiss(animated: true, completion: nil)
+                return nil }
+            
+           
+            
+            return (Double(latitude), Double(longitude))
+        }
+        return nil
     }
     
     

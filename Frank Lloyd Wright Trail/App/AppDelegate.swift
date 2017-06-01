@@ -8,13 +8,20 @@
 
 import UIKit
 import ReachabilitySwift
+import RealmSwift
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate{
     
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+
+        
+//        var config = Realm.Configuration()
+//        config.deleteRealmIfMigrationNeeded = true
+//        Realm.Configuration.defaultConfiguration = config
+        
         // Override point for customization after application launch.
         UITabBar.appearance().tintColor = UIColor(red: 187/255.0, green: 62/255.0, blue: 24/255.0, alpha: 1.0)
         UIApplication.shared.statusBarStyle = .lightContent

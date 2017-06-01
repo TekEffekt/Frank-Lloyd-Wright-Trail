@@ -13,7 +13,6 @@ class Trip: Object {
     dynamic var tripName = ""
     let sitesInfo = List<TripObject>()
     let siteStops = List<SiteStop>()
-    dynamic var sortedByIndex = ""
     dynamic var wayPointOrder = ""
     dynamic var id = 0
     dynamic var complete = false
